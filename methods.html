@@ -1,7 +1,80 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="A concise, literature-led note on the Spolar-Record approach in FT-ITC Analysis."><title>Methods | FT-ITC Analysis</title><link rel="icon" href="assets/icon-180.png" type="image/png"><link rel="stylesheet" href="styles.css"></head>
-<body data-page="methods"><header class="topbar wrap"><a class="brand" href="index.html"><img src="assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button><nav id="site-nav" class="site-nav" aria-label="Primary navigation"><a data-nav="app" href="app-desktop.html">Desktop app</a><a data-link="webApp" href="https://app.ft-itc.org" target="_blank" rel="noreferrer">Web app ↗</a><a data-nav="resources" href="resources.html">Resources</a><a data-nav="methods" href="methods.html">Methods</a><a class="button button-primary nav-download" data-link="releases" href="#">Download <span aria-hidden="true">↗</span></a></nav></header>
-<main><section class="page-hero wrap"><p class="eyebrow">Advanced method note</p><h1>Spolar–Record, <span>in context.</span></h1><p class="lede">This is a specialised thermodynamic interpretation for particular experimental questions—not a required step in a standard FT-ITC Analysis workflow.</p></section>
-<section class="section section-tint"><div class="wrap method-layout"><div><p class="eyebrow">What it asks</p><h2>How much conformational change accompanies binding?</h2><p>The Spolar–Record approach relates temperature-dependent binding thermodynamics to conformational entropy and estimates of residues folding upon binding. FT-ITC Analysis provides a practical workflow for examining this chain of reasoning alongside the underlying experimental analysis.</p><p>Interpretation depends on the assumptions, parameter choices and appropriate supporting evidence for a given system. Read the source literature alongside any software output.</p></div><aside class="equation-card"><small>Conceptual relationship</small><strong>ΔS<sub>conf</sub> = ΔS<sub>bind</sub> − ΔS<sub>hydr</sub> − ΔS<sub>rt</sub></strong><p>Method-specific terms and assumptions require careful literature-based treatment.</p></aside></div></section>
-<section class="section wrap"><div class="section-heading narrow"><p class="eyebrow">Starting literature</p><h2>Start with the source.</h2><p>These papers provide context for the approach and its application.</p></div><div class="reference-list"><a href="https://pubmed.ncbi.nlm.nih.gov/8303294/" target="_blank" rel="noreferrer"><span>1994</span><div><strong>Coupling of local folding to site-specific binding of proteins to DNA</strong><small>R. S. Spolar &amp; M. T. Record Jr. · Science 263, 777–784 · DOI 10.1126/science.8303294</small></div><b>↗</b></a><a href="https://doi.org/10.1021/jacs.1c04214" target="_blank" rel="noreferrer"><span>2021</span><div><strong>Quantification of Conformational Entropy Unravels Effect of Disordered Flanking Region in Coupled Folding and Binding</strong><small>F. F. Theisen et al. · JACS 143, 14540–14550 · DOI 10.1021/jacs.1c04214</small></div><b>↗</b></a></div></section>
-<section class="section wrap two-column"><div><p class="eyebrow">For the main workflow</p><h2>Most analyses begin elsewhere.</h2><p>For routine processing, integration, fitting, multi-experiment work and export, begin with the application workflow and available resources.</p></div><div class="note-box"><h3>Use the method deliberately</h3><p>Review the experimental design and cited assumptions before applying a specialised interpretation.</p><a href="resources.html">Read the practical workflow →</a></div></section>
-</main><footer class="footer wrap"><a class="brand" href="index.html"><img src="assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a><p>Transparent tools for calorimetry.</p><div><a href="app-desktop.html">Desktop app</a><a href="resources.html">Resources</a><a data-link="repository" href="#">GitHub</a><a data-link="support" href="#">Support</a></div><small>© <span data-year></span> FT-ITC Analysis</small></footer><script src="script.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Global, temperature-dependent and advanced ITC analyses in FT-ITC Analysis.">
+    <title>Analysis | FT-ITC Analysis</title>
+    <link rel="icon" href="assets/icon-180.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body data-page="analysis">
+    <header class="topbar wrap">
+      <a class="brand" href="index.html"><img src="assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+        <a data-nav="app" href="app-desktop.html">Desktop app</a>
+        <a data-link="webApp" href="https://app.ft-itc.org" target="_blank" rel="noreferrer">Web app ↗</a>
+        <a data-nav="resources" href="resources.html">Resources</a>
+        <a data-nav="analysis" href="methods.html">Analysis</a>
+        <a class="button button-primary nav-download" data-link="releases" href="#">Download <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+    <main>
+      <section class="page-hero wrap">
+        <p class="eyebrow">Across experiments</p>
+        <h1>See the patterns <span>beyond one titration.</span></h1>
+        <p class="lede">FT-ITC Analysis brings related experiments together for global fitting, temperature evaluation and advanced thermodynamic interpretation.</p>
+      </section>
+      <section class="section section-tint">
+        <div class="wrap analysis-overview">
+          <div>
+            <p class="eyebrow">The analysis result</p>
+            <h2>One place to review the result across your experiments.</h2>
+            <p>Move from individual fits to a result that makes the relationship between experiments legible. Review shared and experiment-specific parameters, fit quality and residuals without losing the underlying datasets.</p>
+          </div>
+          <div class="analysis-points">
+            <article><span>01</span><h3>Average parameters</h3><p>Summarise fitted values across replicates and selected experiments.</p></article>
+            <article><span>02</span><h3>Temperature evaluation</h3><p>Examine temperature-dependent behaviour and derived relationships such as ΔC<sub>p</sub>.</p></article>
+            <article><span>03</span><h3>Traceable context</h3><p>Keep the contributing experiments, assumptions and model choices close to the result.</p></article>
+          </div>
+        </div>
+      </section>
+      <section class="section wrap">
+        <div class="section-heading narrow">
+          <p class="eyebrow">Global analysis</p>
+          <h2>Fit related experiments as a connected question.</h2>
+          <p>Optimise multiple isotherms simultaneously, decide which parameters are shared, and keep other parameters experiment-specific where that is scientifically appropriate.</p>
+        </div>
+        <div class="numbered-list">
+          <article><span>01</span><div><h3>Combine active datasets</h3><p>Analyse experiments collected across temperatures, buffers, salt conditions or replicates as one connected result.</p></div></article>
+          <article><span>02</span><div><h3>Set meaningful relationships</h3><p>Share selected parameters or connect them through physical relationships while retaining experiment-level values where needed.</p></div></article>
+          <article><span>03</span><div><h3>Review the evidence</h3><p>Read global parameters together with individual isotherms, residuals and the experiments contributing to the fit.</p></div></article>
+        </div>
+      </section>
+      <section class="section section-tint">
+        <div class="wrap advanced-analysis">
+          <div class="section-heading narrow">
+            <p class="eyebrow">Advanced analyses</p>
+            <h2>What changes when binding happens?</h2>
+            <p>When an experiment series is designed for it, FT-ITC Analysis supports additional views of the physical processes behind binding.</p>
+          </div>
+          <div class="capability-grid">
+            <article class="capability-featured"><span>01</span><h3>Conformational &amp; structuring analysis</h3><p>Use temperature-dependent binding thermodynamics to examine conformational entropy and the structural change associated with binding. This specialised workflow builds on the Spolar-Record approach and belongs with its assumptions, data and literature context.</p></article>
+            <article><span>02</span><h3>Salt dependence</h3><p>Evaluate ionic-strength effects and estimate the selected model's extrapolated dissociation constant at zero ionic strength.</p></article>
+            <article><span>03</span><h3>Proton linkage</h3><p>Compare titrations across buffers with different protonation enthalpies to investigate linked protonation changes.</p></article>
+          </div>
+        </div>
+      </section>
+      <section class="section wrap">
+        <div class="section-heading narrow"><p class="eyebrow">Further reading</p><h2>Advanced interpretation starts with the literature.</h2><p>Read the underlying methods and review the assumptions before drawing specialised conclusions.</p></div>
+        <div class="reference-list">
+          <a href="https://pubmed.ncbi.nlm.nih.gov/8303294/" target="_blank" rel="noreferrer"><span>1994</span><div><strong>Coupling of local folding to site-specific binding of proteins to DNA</strong><small>R. S. Spolar &amp; M. T. Record Jr. · Science 263, 777–784 · DOI 10.1126/science.8303294</small></div><b>↗</b></a>
+          <a href="https://doi.org/10.1021/jacs.1c04214" target="_blank" rel="noreferrer"><span>2021</span><div><strong>Quantification of Conformational Entropy Unravels Effect of Disordered Flanking Region in Coupled Folding and Binding</strong><small>F. F. Theisen et al. · JACS 143, 14540–14550 · DOI 10.1021/jacs.1c04214</small></div><b>↗</b></a>
+        </div>
+      </section>
+    </main>
+    <footer class="footer wrap"><a class="brand" href="index.html"><img src="assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a><p>Transparent tools for calorimetry.</p><div><a href="app-desktop.html">Desktop app</a><a href="resources.html">Resources</a><a data-link="repository" href="#">GitHub</a><a data-link="support" href="#">Support</a></div><small>© <span data-year></span> FT-ITC Analysis</small></footer>
+    <script src="script.js"></script>
+  </body>
+</html>
