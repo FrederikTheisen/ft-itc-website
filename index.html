@@ -3,96 +3,32 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="FT-ITC Analysis — open tools for isothermal titration calorimetry and thermodynamic interpretation.">
-  <title>FT-ITC Analysis | ITC made inspectable</title>
+  <meta name="description" content="FT-ITC Analysis is free, local-first software for processing and analysing isothermal titration calorimetry data.">
+  <title>FT-ITC Analysis | Clear ITC analysis, on your computer</title>
+  <link rel="icon" href="assets/icon-180.png" type="image/png">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <div class="site-shell">
-    <header class="topbar">
-      <a class="brand" href="#top" aria-label="FT-ITC Analysis home">
-        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
-        <span>FT-ITC <em>Analysis</em></span>
-      </a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
-      <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
-        <a href="#software">Software</a>
-        <a href="#method">Spolar–Record</a>
-        <a href="#papers">Papers</a>
-        <a class="nav-cta" href="https://app.ft-itc.org">Open web app <span aria-hidden="true">↗</span></a>
-      </nav>
-    </header>
-
-    <main id="top">
-      <section class="hero section-grid">
-        <div class="hero-copy">
-          <p class="eyebrow"><span class="pulse"></span> Open tools for calorimetry</p>
-          <h1>Turn heat into a <span>clearer story.</span></h1>
-          <p class="lede">FT-ITC Analysis is a focused workspace for inspecting, processing and interpreting isothermal titration calorimetry data—from the first thermogram to the final thermodynamic model.</p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#software">Explore the project <span aria-hidden="true">↓</span></a>
-            <a class="button button-quiet" href="https://github.com/FrederikTheisen/FT-ITC-Analysis">View on GitHub <span aria-hidden="true">↗</span></a>
-          </div>
-          <div class="hero-meta"><span>Mac app available</span><span>Web viewer in development</span><span>Built for transparent analysis</span></div>
-        </div>
-        <div class="hero-visual" aria-label="Stylised calorimetry plot preview">
-          <div class="visual-glow"></div>
-          <div class="plot-card">
-            <div class="plot-toolbar"><span>temperature series / binding</span><span class="plot-dot"></span></div>
-            <svg viewBox="0 0 620 340" role="img" aria-label="Thermogram and fitted curve">
-              <defs>
-                <linearGradient id="area" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#8ce0c0" stop-opacity=".35"/><stop offset="1" stop-color="#8ce0c0" stop-opacity="0"/></linearGradient>
-                <linearGradient id="line" x1="0" x2="1"><stop offset="0" stop-color="#8ce0c0"/><stop offset="1" stop-color="#ffbe78"/></linearGradient>
-              </defs>
-              <g class="grid-lines"><path d="M55 42H580M55 110H580M55 178H580M55 246H580M55 314H580"/><path d="M55 42V314M185 42V314M315 42V314M445 42V314M580 42V314"/></g>
-              <path class="plot-fill" d="M55 274 C72 266 81 267 93 275 S112 291 126 281 S142 181 155 195 S168 281 181 267 S198 254 212 261 S229 282 241 274 S259 170 270 184 S286 261 302 251 S322 235 335 249 S348 270 362 259 S377 142 392 160 S410 252 425 238 S442 218 455 231 S470 258 485 247 S504 116 518 137 S538 229 553 219 S571 205 580 211 V314 H55Z"/>
-              <path class="raw-line" d="M55 274 C72 266 81 267 93 275 S112 291 126 281 S142 181 155 195 S168 281 181 267 S198 254 212 261 S229 282 241 274 S259 170 270 184 S286 261 302 251 S322 235 335 249 S348 270 362 259 S377 142 392 160 S410 252 425 238 S442 218 455 231 S470 258 485 247 S504 116 518 137 S538 229 553 219 S571 205 580 211"/>
-              <path class="fit-line" d="M55 269 C113 270 120 270 145 244 S168 270 204 260 S226 263 259 230 S285 257 326 246 S350 250 382 210 S411 242 447 233 S472 238 505 189 S538 219 580 209"/>
-              <g class="injection-ticks"><path d="M126 308V320M181 308V320M241 308V320M302 308V320M362 308V320M425 308V320M485 308V320M553 308V320"/></g>
-              <text x="55" y="335">time / s</text><text x="17" y="52" transform="rotate(-90 17 52)">power</text>
-            </svg>
-            <div class="plot-legend"><span><b class="legend-raw"></b>raw thermogram</span><span><b class="legend-fit"></b>fit</span><span><b class="legend-injection"></b>injections</span></div>
-          </div>
-          <div class="floating-note"><span class="note-icon">∂</span><span><strong>inspectable</strong><small>from raw data to model</small></span></div>
-        </div>
-      </section>
-
-      <section id="software" class="section section-grid software-section">
-        <div class="section-heading"><p class="eyebrow">01 / The software</p><h2>A calm workspace for complex experiments.</h2></div>
-        <div class="section-content">
-          <p class="section-intro">FT-ITC Analysis is designed to keep the analytical path visible. Open project files, review the underlying measurements, make processing choices deliberately, and carry the result into a model you can explain.</p>
-          <div class="feature-grid">
-            <article class="feature-card feature-card-tall"><span class="card-number">01</span><h3>Open what you already have</h3><p>Work with MicroCal-style <code>.itc</code> files, portable <code>.ftitc</code> projects and the data that surrounds them.</p><div class="mini-file"><span>.ftitc</span><span>project + state</span></div><div class="mini-file"><span>.itc</span><span>raw experiment</span></div></article>
-            <article class="feature-card"><span class="card-number">02</span><h3>See every layer</h3><p>Move from raw thermograms to integrated heats, processing decisions and fitted results without losing the thread.</p><div class="layer-stack"><span>fit</span><span>integrated</span><span>processed</span><span>raw</span></div></article>
-            <article class="feature-card accent-card"><span class="card-number">03</span><h3>Keep the reasoning close</h3><p>Record assumptions, inspect uncertainty and export figures that make the analysis easier to communicate.</p><a href="#web-app" class="text-link">See the web roadmap <span>→</span></a></article>
-          </div>
-        </div>
-      </section>
-
-      <section id="method" class="method-section section-grid">
-        <div class="method-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div><div class="method-core"><span>ΔS</span><small>conformational</small></div><span class="orbit-label label-one">ΔC<sub>p</sub></span><span class="orbit-label label-two">T<sub>S</sub></span><span class="orbit-label label-three">R<sub>th</sub></span></div>
-        <div class="method-copy"><p class="eyebrow">02 / Method notes</p><h2>Making the Spolar–Record approach easier to inspect.</h2><p>The Spolar–Record thermodynamic approach connects temperature-dependent binding data to the entropy of conformational change and the number of residues that fold upon binding. FT-ITC Analysis makes that chain of reasoning available as a practical, inspectable workflow.</p><div class="equation"><span>ΔS<sub>conf</sub></span><b>=</b><span>ΔS<sub>bind</sub> − ΔS<sub>hydr</sub> − ΔS<sub>rt</sub></span></div><p class="method-caption">The exact treatment, assumptions and parameter choices belong with the paper and the data—not hidden behind a single number.</p><a class="button button-outline" href="#papers">Read the literature <span aria-hidden="true">↓</span></a></div>
-      </section>
-
-      <section id="papers" class="section papers-section">
-        <div class="section-heading section-heading-wide"><p class="eyebrow">03 / Literature</p><h2>Start with the source. Follow the method forward.</h2><p>The references below are a starting point for a curated method page. More examples can be added as the website grows.</p></div>
-        <div class="paper-list">
-          <a class="paper-card" href="https://pubmed.ncbi.nlm.nih.gov/8303294/" target="_blank" rel="noreferrer"><span class="paper-year">1994</span><span class="paper-body"><strong>Coupling of local folding to site-specific binding of proteins to DNA</strong><small>R. S. Spolar &amp; M. T. Record Jr. · <em>Science</em> 263, 777–784 · DOI 10.1126/science.8303294</small></span><span class="paper-arrow">↗</span></a>
-          <a class="paper-card paper-card-highlight" href="https://doi.org/10.1021/jacs.1c04214" target="_blank" rel="noreferrer"><span class="paper-year">2021</span><span class="paper-body"><strong>Quantification of Conformational Entropy Unravels Effect of Disordered Flanking Region in Coupled Folding and Binding</strong><small>F. F. Theisen et al. · <em>JACS</em> 143, 14540–14550 · DOI 10.1021/jacs.1c04214</small></span><span class="paper-arrow">↗</span></a>
-          <div class="paper-card paper-card-dashed"><span class="paper-year">Next</span><span class="paper-body"><strong>A living reference list</strong><small>Examples that apply, adapt or critically discuss the approach will be collected here.</small></span><span class="paper-arrow">＋</span></div>
-        </div>
-      </section>
-
-      <section id="web-app" class="app-section section-grid">
-        <div class="app-copy"><p class="eyebrow">04 / The web viewer</p><h2>Your data, one browser tab away.</h2><p>The online version is being built as a focused viewer first: open a project, inspect raw and integrated data, compare processing layers and review fitted results. Editing and heavier analysis can follow when the foundations are ready.</p><a class="button button-primary" href="https://app.ft-itc.org">Open the web app <span aria-hidden="true">↗</span></a></div>
-        <div class="roadmap" aria-label="Web application roadmap"><div class="roadmap-line"></div><div class="roadmap-step complete"><span>01</span><div><strong>Viewer foundation</strong><small>Open <code>.itc</code> and <code>.ftitc</code> files</small></div></div><div class="roadmap-step active"><span>02</span><div><strong>Inspectable graphs</strong><small>Raw, integrated, processed and fitted layers</small></div></div><div class="roadmap-step"><span>03</span><div><strong>Shareable analysis</strong><small>Projects, exports and collaboration</small></div></div></div>
-      </section>
-
-      <section class="contact-strip section-grid"><div><p class="eyebrow">Questions, bugs, ideas</p><h2>Help shape what comes next.</h2></div><a class="button button-light" href="mailto:support@ft-itc.org">Contact support <span aria-hidden="true">↗</span></a></section>
-    </main>
-
-    <footer class="footer"><div class="footer-brand"><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>FT-ITC <em>Analysis</em></span></a><p>A transparent place for thermodynamic analysis.</p></div><div class="footer-links"><a href="https://github.com/FrederikTheisen/FT-ITC-Analysis">GitHub</a><a href="mailto:support@ft-itc.org">Support</a><a href="#papers">References</a></div><p class="footer-note">© <span id="year"></span> FT-ITC Analysis · Built for careful science.</p></footer>
-  </div>
-  <script src="script.js"></script>
-</body>
-</html>
+<body data-page="home">
+  <header class="topbar wrap">
+    <a class="brand" href="index.html" aria-label="FT-ITC Analysis home"><img src="assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+      <a data-nav="app" href="app.html">App</a><a data-nav="resources" href="resources.html">Resources</a><a data-nav="methods" href="methods.html">Methods</a>
+      <a class="button button-primary nav-download" data-link="releases" href="#">Download <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+  <main>
+    <section class="hero wrap">
+      <div class="hero-copy"><p class="eyebrow">Free, open-source ITC analysis</p><h1>Understand your experiment. <span>Keep your data close.</span></h1><p class="lede">FT-ITC Analysis is a local desktop application for processing, fitting and communicating isothermal titration calorimetry experiments. From raw trace to exported figure, the analytical path stays visible.</p>
+        <div class="actions"><a class="button button-primary" data-link="releases" href="#">Download FT-ITC Analysis <span aria-hidden="true">↗</span></a><a class="button button-secondary" href="app.html">Explore the app <span aria-hidden="true">↓</span></a></div>
+        <ul class="trust-list"><li>Free &amp; MIT licensed</li><li>Runs on your computer</li><li>No data uploaded</li></ul>
+      </div>
+      <figure class="hero-figure"><img src="assets/thermogram-binding-1.png" alt="An ITC thermogram, fitted binding isotherm, and residual plot exported from FT-ITC Analysis"><figcaption>Raw injections, fitted model and residuals in one analysis view.</figcaption></figure>
+    </section>
+    <section class="band"><div class="wrap platform-intro"><div><p class="eyebrow">Desktop first</p><h2>Download the analysis workspace.</h2><p>Use the app where your experimental data lives. No account, cloud upload or hosted project space is required.</p></div><div class="platform-cards"><a class="platform-card available" data-link="releases" href="#"><strong>macOS</strong><span>Available now <b>↗</b></span></a><div class="platform-card"><strong>Windows</strong><span>Coming soon</span></div><div class="platform-card"><strong>Linux</strong><span>Coming soon</span></div></div></div></section>
+    <section class="section wrap"><div class="section-heading"><p class="eyebrow">A visible workflow</p><h2>Work through the experiment without losing the thread.</h2><p>FT-ITC Analysis keeps experimental data, processing choices and results together instead of treating them as disconnected steps.</p></div><div class="workflow"><article><span>01</span><h3>Open &amp; inspect</h3><p>Bring in instrument exports and review the raw experiment before making decisions.</p></article><article><span>02</span><h3>Process &amp; fit</h3><p>Adjust baselines, integrate peaks and fit standard models with the underlying data in view.</p></article><article><span>03</span><h3>Compare &amp; export</h3><p>Use multi-experiment analyses and make clear figures or results for the next conversation.</p></article></div></section>
+    <section class="section section-tint"><div class="wrap evidence-grid"><figure><img src="assets/program-workflow-1.png" alt="Annotated FT-ITC Analysis interface showing experiment list, data visualization, workflow navigator and analysis results"><figcaption>A practical workspace for data, processing, analysis and figure export.</figcaption></figure><div><p class="eyebrow">Built for day-to-day analysis</p><h2>From files you already have to results you can explain.</h2><p>Import common MicroCal and instrument-derived files, correct concentrations when needed, work with integrated heats, then make model and global-analysis choices deliberately.</p><a class="text-link" href="resources.html">See supported files and a first-analysis guide <span>→</span></a></div></div></section>
+    <section class="section wrap viewer-panel"><div><p class="eyebrow">Web viewer</p><h2>A browser companion is in development.</h2><p>The web version is being developed as a future way to inspect FT-ITC data and help prospective users understand the workflow. It is not presented as a replacement for desktop processing or analysis.</p></div><div class="status-card"><span class="status-dot"></span><strong>In development</strong><p>Capabilities and availability will be announced when ready.</p><a data-link="repository" href="#">Follow development on GitHub ↗</a></div></section>
+  </main>
+  <footer class="footer wrap"><a class="brand" href="index.html"><img src="assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a><p>Transparent tools for calorimetry.</p><div><a href="resources.html">Resources</a><a href="methods.html">Methods</a><a data-link="repository" href="#">GitHub</a><a data-link="support" href="#">Support</a></div><small>© <span data-year></span> FT-ITC Analysis</small></footer><script src="script.js"></script>
+</body></html>
