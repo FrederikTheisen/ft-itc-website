@@ -696,6 +696,43 @@ figure figcaption {
   font-size: 1.1rem;
 }
 
+.publication-feature {
+  display: grid;
+  grid-template-columns: 115px minmax(0, 1fr);
+  gap: 28px;
+  margin-top: 38px;
+  padding: 30px 34px;
+  border-radius: 8px;
+  background: var(--navy);
+  color: #fff;
+}
+
+.publication-feature h3 {
+  margin: 0;
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+}
+
+.publication-feature p {
+  margin: 8px 0 0;
+  color: rgba(255, 255, 255, .72);
+}
+
+.publication-feature .publication-status {
+  margin: 3px 0 0;
+  color: var(--mint);
+  font: 700 .72rem/1.2 ui-monospace, monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.research-listing {
+  margin-top: 52px;
+}
+
+.research-listing > .eyebrow {
+  margin-bottom: 15px;
+}
+
 .reference-groups {
   display: grid;
   gap: 42px;
@@ -924,6 +961,12 @@ figure figcaption {
   grid-template-columns: 55px 1fr 15px;
   gap: 12px;
   padding-inline: 0;
+}
+
+.publication-feature {
+  grid-template-columns: 1fr;
+  gap: 10px;
+  padding: 25px 22px;
 }
 
 .footer {
