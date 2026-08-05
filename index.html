@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="FT-ITC Analysis is free, local-first software for processing and analysing isothermal titration calorimetry data.">
-  <title>FT-ITC Analysis | Clear ITC analysis, on your computer</title>
+  <title>FT-ITC | Clear ITC analysis, on your computer</title>
   <link rel="icon" href="assets/icon-180.png" type="image/png">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -13,7 +13,7 @@
     <a class="brand" href="index.html" aria-label="FT-ITC Analysis home"><img src="assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
-      <a data-nav="app" href="app-desktop.html">Desktop app</a><a data-link="webApp" href="https://app.ft-itc.org" target="_blank" rel="noreferrer">Web viewer ↗</a><a data-nav="resources" href="resources.html">Workflow</a><a data-nav="analysis" href="methods.html">Analysis</a>
+      <a data-nav="app" href="app-desktop.html">Desktop app</a><a data-link="webApp" href="https://app.ft-itc.org" target="_blank" rel="noreferrer">Web viewer ↗</a><a data-nav="resources" href="workflow.html">Workflow</a><a data-nav="analysis" href="analysis.html">Analysis</a>
       <a class="button button-primary nav-download" data-link="releases" href="#">Download <span aria-hidden="true">↗</span></a>
     </nav>
   </header>
@@ -27,9 +27,28 @@
     </section>
     <section class="band"><div class="wrap platform-intro"><div><p class="eyebrow">Desktop first</p><h2>Download the analysis workspace.</h2><p>Use the app where your experimental data lives. No account, cloud upload or hosted project space is required.</p></div><div class="platform-cards"><a class="platform-card available" data-link="releases" href="#"><strong>macOS</strong><span>Available now <b>↗</b></span></a><div class="platform-card"><strong>Windows</strong><span>Coming soon</span></div><div class="platform-card"><strong>Linux</strong><span>Coming soon</span></div></div></div></section>
     <section class="capability-strip"><div class="wrap"><p class="eyebrow">Built for more than one fit</p><div class="capability-list"><span>Global fitting</span><span>Buffer subtraction</span><span>Tandem experiment merging</span><span>Publication &amp; supporting figures</span><span>Advanced analyses</span></div></div></section>
-    <section class="section wrap"><div class="section-heading"><p class="eyebrow">A visible workflow</p><h2>Work through the experiment without losing the thread.</h2><p>FT-ITC Analysis keeps experimental data, processing choices and results together instead of treating them as disconnected steps.</p></div><div class="workflow"><article><span>01</span><h3>Open &amp; inspect</h3><p>Bring in instrument exports and review the raw experiment before making decisions.</p></article><article><span>02</span><h3>Process &amp; fit</h3><p>Adjust baselines, integrate peaks and fit standard models with the underlying data in view. Flexible processing and advanced correction options help recover useful conclusions from experiments affected by baseline shifts, bubbles or other artefacts.</p></article><article><span>03</span><h3>Compare &amp; export</h3><p>Use multi-experiment analyses and make clear figures or results for the next conversation.</p></article></div></section>
+    <section class="section wrap">
+      <div class="section-heading"><p class="eyebrow">A visible workflow</p>
+        <h2>Work through the experiment without losing the thread.</h2>
+          <p>FT-ITC Analysis keeps experimental data, processing choices and results together instead of treating them as disconnected steps.</p>
+      </div>
+      <div class="workflow">
+        <article><span>01</span>
+          <h3>Open &amp; inspect</h3>
+          <p>Import data and review the experimental setup. Add comments and inspect injections.</p>
+        </article>
+        <article><span>02</span>
+          <h3>Process &amp; fit</h3>
+          <p>Adjust baselines, integrate peaks and fit standard models with the underlying data in view. Flexible processing and advanced correction options help recover useful conclusions.</p>
+        </article>
+        <article><span>03</span>
+          <h3>Compare &amp; export</h3>
+          <p>Use multi-experiment analyses and make clear figures for your next publication.</p>
+        </article>
+      </div>
+    </section>
     <section class="section section-tint"><div class="wrap evidence-grid"><figure><img src="assets/global-fitting-sketch-v1.jpg" alt="Conceptual sketch of a global fitting workspace with several ITC thermograms, binding isotherms, residuals and shared parameters"><figcaption>Concept sketch: multiple experiments evaluated together through shared and experiment-specific parameters.</figcaption></figure><div><p class="eyebrow">Global fitting</p><h2>Find one model across the experiments that belong together.</h2><p>Fit multiple isotherms simultaneously while deciding which parameters should be shared and which remain experiment-specific. This is especially useful for systematic changes across conditions, including temperature-dependent relationships such as ΔC<sub>p</sub>.</p><a class="text-link" href="app-desktop.html#global-fitting">See the app capabilities <span>→</span></a></div></div></section>
-    <section class="section wrap viewer-panel"><div><p class="eyebrow">Web viewer</p><h2>Share a result without losing the details.</h2><p>The online viewer at app.ft-itc.org opens FT-ITC project files for easy sharing and review while retaining the data and analytical context behind a result. The desktop app remains the home for local processing and analysis.</p></div><div class="status-card"><span class="status-dot"></span><strong>Online project viewer</strong><p>Open a project in the browser for easy sharing and review.</p><a data-link="webApp" href="https://app.ft-itc.org" target="_blank" rel="noreferrer">Open the web viewer ↗</a></div></section>
+    <section class="section wrap viewer-panel"><div><p class="eyebrow">Web viewer</p><h2>Share results without losing the evidence.</h2><p>The online viewer at app.ft-itc.org opens FT-ITC project files for easy sharing and review while retaining the data and analytical context behind a result. The desktop app remains the home for local processing and analysis.</p></div><div class="status-card"><span class="status-dot"></span><strong>Online project viewer</strong><p>Open a project in the browser for easy sharing and review.</p><a data-link="webApp" href="https://app.ft-itc.org" target="_blank" rel="noreferrer">Open the web viewer ↗</a></div></section>
   </main>
-  <footer class="footer wrap"><a class="brand" href="index.html"><img src="assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a><p>Transparent tools for calorimetry.</p><div><a href="resources.html">Resources</a><a href="methods.html">Analysis</a><a data-link="repository" href="#">GitHub</a><a data-link="support" href="#">Support</a></div><small>© <span data-year></span> FT-ITC Analysis</small></footer><script src="script.js"></script>
+  <footer class="footer wrap"><a class="brand" href="index.html"><img src="assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a><p>Transparent tools for calorimetry.</p><div><a href="workflow.html">Workflow</a><a href="analysis.html">Analysis</a><a data-link="repository" href="#">GitHub</a><a data-link="support" href="#">Support</a></div><small>© <span data-year></span> FT-ITC Analysis</small></footer><script src="script.js"></script>
 </body></html>
