@@ -25,3 +25,56 @@ navigation?.querySelectorAll('a').forEach((link) => link.addEventListener('click
 const active = document.body.dataset.page;
 document.querySelector(`[data-nav="${active}"]`)?.setAttribute('aria-current', 'page');
 document.querySelectorAll('[data-year]').forEach((year) => { year.textContent = new Date().getFullYear(); });
+
+const viewerStatusCard = document.querySelector('[data-viewer-status]');
+const viewerStatusText = document.querySelector('[data-viewer-status-text]');
+const viewerStatusDescription = document.querySelector('[data-viewer-status-description]');
+
+if (viewerStatusCard && viewerStatusText && viewerStatusDescription) {
+  const setViewerStatus = (state) => {
+    viewerStatusCard.dataset.viewerStatus = state;
+
+    if (state === 'online') {
+      viewerStatusText.textContent = 'Online.';
+      viewerStatusDescription.textContent = 'Open a project in the browser for easy sharing and review.';
+      return;
+    }
+
+    if (state === 'unavailable') {
+      viewerStatusText.textContent = 'Temporarily unavailable.';
+      viewerStatusDescription.textContent = 'Please try again shortly.';
+      return;
+    }
+
+    viewerStatusText.textContent = 'Checking availability…';
+    viewerStatusDescription.textContent = 'Open a project in the browser for easy sharing and review.';
+  };
+
+  const checkViewerStatus = () => {
+    setViewerStatus('checking');
+
+    const probe = new Image();
+    let settled = false;
+    const finish = (state) => {
+      if (settled) return;
+      settled = true;
+      window.clearTimeout(timeout);
+      setViewerStatus(state);
+    };
+    const timeout = window.setTimeout(() => {
+      probe.src = '';
+      finish('unavailable');
+    }, 8000);
+
+    probe.onload = () => {
+      finish('online');
+    };
+    probe.onerror = () => {
+      finish('unavailable');
+    };
+    probe.src = `${site.webApp}/assets/ft-itc-icon-32.png?status=${Date.now()}`;
+  };
+
+  checkViewerStatus();
+  window.setInterval(checkViewerStatus, 60000);
+}

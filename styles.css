@@ -480,6 +480,18 @@ figure figcaption {
   background: var(--sun);
 }
 
+.status-card[data-viewer-status="online"] .status-dot {
+  background: #489a82;
+}
+
+.status-card[data-viewer-status="unavailable"] .status-dot {
+  background: var(--coral);
+}
+
+[data-viewer-status-text] {
+  font-weight: 800;
+}
+
 .page-hero {
   padding: 92px 0 95px;
 }
