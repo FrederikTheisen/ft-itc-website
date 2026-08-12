@@ -40,6 +40,12 @@ document.querySelectorAll('[data-link="download"]').forEach((link) => {
   });
 });
 
+document.querySelectorAll('a[aria-disabled="true"]').forEach((link) => {
+  link.addEventListener('click', (event) => {
+    if (link.getAttribute('aria-disabled') === 'true') event.preventDefault();
+  });
+});
+
 const menuButton = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('.site-nav');
 menuButton?.addEventListener('click', () => {
@@ -58,15 +64,22 @@ document.querySelectorAll('[data-year]').forEach((year) => { year.textContent = 
 const releasePlatforms = {
   macos: {
     enabled: true,
-    assetPattern: /\.dmg$/i
+    assetPattern: /\.dmg$/i,
+    downloadLabel: 'Download FT-ITC for macOS',
+    releaseDescription: 'Signed and notarized universal application.'
   },
   windows: {
     enabled: false,
     assetPattern: /\.(msi|exe)$/i
   },
   linux: {
+    // Enable only after completing the release-time verification checklist.
     enabled: false,
-    assetPattern: null
+    assetPattern: /^ft-itc-analysis_[\d.]+_amd64\.deb$/i,
+    downloadLabel: 'Download Linux AMD64 (.deb)',
+    releaseDescription: 'AMD64 Debian package for Debian-based desktop Linux.',
+    requireVerificationAssets: true,
+    arm64Enabled: false
   }
 };
 
@@ -74,6 +87,11 @@ const releaseStatus = document.querySelector('[data-release-status]');
 const releaseVersion = document.querySelector('[data-release-version]');
 const releaseDate = document.querySelector('[data-release-date]');
 const platformDownload = document.querySelector('[data-platform-download]');
+const downloadSignature = document.querySelector('[data-download-signature]');
+const downloadChecksum = document.querySelector('[data-download-checksum]');
+const linuxVerification = document.querySelector('[data-linux-verification]');
+const linuxInstallCommand = document.querySelector('[data-linux-install-command]');
+const linuxChecksumCommand = document.querySelector('[data-linux-checksum-command]');
 const currentPlatform = document.body.dataset.platform;
 const releasePlatform = releasePlatforms[currentPlatform];
 
@@ -152,9 +170,25 @@ if (releaseStatus && releaseVersion && releaseDate && platformDownload && releas
     const asset = release?.assets.find((candidate) => releasePlatform.assetPattern.test(candidate.name));
     if (!release || !asset) return;
 
+    const signature = release.assets.find((candidate) => candidate.name === `${asset.name}.asc`);
+    const checksum = release.assets.find((candidate) => candidate.name === `${asset.name}.sha256`);
+    if (releasePlatform.requireVerificationAssets && (!signature || !checksum)) return;
+
     releaseVersion.textContent = release.tag;
-    releaseDate.textContent = `Released ${new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }).format(new Date(release.publishedAt))} · Signed and notarized universal application.`;
+    releaseDate.textContent = `Released ${new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }).format(new Date(release.publishedAt))} · ${releasePlatform.releaseDescription}`;
     platformDownload.href = asset.url;
+    platformDownload.removeAttribute('aria-disabled');
+    platformDownload.classList.remove('is-disabled');
+    platformDownload.textContent = releasePlatform.downloadLabel;
+
+    if (currentPlatform === 'linux') {
+      if (signature && downloadSignature) downloadSignature.href = signature.url;
+      if (checksum && downloadChecksum) downloadChecksum.href = checksum.url;
+      if (linuxVerification && signature && checksum) linuxVerification.hidden = false;
+      if (linuxInstallCommand) linuxInstallCommand.textContent = `sudo apt install ./${asset.name}`;
+      if (linuxChecksumCommand && checksum) linuxChecksumCommand.textContent = `sha256sum --check ${checksum.name}`;
+    }
+
     releaseStatus.dataset.releaseStatus = 'available';
   };
 

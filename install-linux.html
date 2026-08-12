@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Current development status and future installation information for FT-ITC Analysis on Linux.">
-    <title>Linux Status | FT-ITC Analysis</title>
+    <meta name="description" content="Download and install the FT-ITC Analysis Debian package on Linux. Review requirements, installation, updating, removal and troubleshooting guidance.">
+    <title>Install on Linux | FT-ITC Analysis</title>
     <link rel="icon" href="assets/icon-180.png" type="image/png">
     <link rel="stylesheet" href="styles.css">
   </head>
@@ -22,22 +22,131 @@
     </header>
 
     <main>
-      <section class="page-hero wrap">
-        <p class="eyebrow">Platform status</p>
-        <h1>FT-ITC Analysis <span>for Linux.</span></h1>
-        <p class="lede">The Linux version is currently in development. Downloads, system requirements and installation instructions will be published here when the first supported release is available.</p>
+      <section class="page-hero wrap linux-hero">
+        <div>
+          <p class="eyebrow">Linux distribution</p>
+          <h1>FT-ITC Analysis <span>for Linux.</span></h1>
+          <p class="lede">Download the native Linux desktop version of FT-ITC Analysis for processing, fitting and presenting isothermal titration calorimetry data. The self-contained package integrates with the application menu and associates FT-ITC <code>.ftxtc</code> and legacy <code>.ftitc</code> project files with the application.</p>
+        </div>
+        <figure class="linux-preview">
+          <img src="https://ft-itc.org/media/avalonia/avalonia-process-data-baseline.png" alt="FT-ITC Analysis on Linux showing a processed thermogram with baseline controls and integrated injection peaks">
+          <figcaption>Correct baselines and integrate injection peaks in the native Linux desktop application.</figcaption>
+        </figure>
       </section>
-      <section class="band platform-status-band">
+
+      <section class="band release-band" data-release-status="pending">
         <div class="wrap download-grid">
-          <div><p class="eyebrow">Linux release</p><h2>In development.</h2><p>No Linux installer is currently available.</p></div>
-          <div class="status-message"><strong>This page will become the Linux installation guide.</strong><p>Requirements and setup instructions will be added only after the first Linux build has been verified.</p></div>
+          <div>
+            <p class="eyebrow">Linux package</p>
+            <h2 data-release-version>Release in preparation.</h2>
+            <p data-release-date role="status" aria-live="polite">The verified Linux package download will appear here when the release is published.</p>
+          </div>
+          <div class="release-action linux-release-action">
+            <a class="button release-download is-disabled" data-platform-download href="#install" aria-disabled="true">AMD64 download not yet published</a>
+            <div class="verification-links" data-linux-verification hidden>
+              <a data-download-signature href="#">OpenPGP signature</a>
+              <a data-download-checksum href="#">SHA-256 checksum</a>
+            </div>
+            <small>The <code>.deb</code> will be downloaded directly from the project’s release storage.</small>
+          </div>
         </div>
       </section>
+
+      <section class="section wrap" id="requirements">
+        <div class="section-heading narrow">
+          <p class="eyebrow">System requirements</p>
+          <h2>A native package for Debian-based desktop Linux.</h2>
+          <p>The Linux download is provided as a 64-bit Debian package for Debian, Ubuntu and compatible Debian-based desktop distributions. FT-ITC Analysis is a graphical application and requires a working desktop session.</p>
+        </div>
+        <div class="requirement-grid">
+          <article><span>01</span><h3>Package format</h3><p>A native Debian package (<code>.deb</code>). It is not currently distributed through an APT repository, Flatpak, Snap, RPM or AppImage.</p></article>
+          <article><span>02</span><h3>Architecture</h3><p>AMD64/x86-64 for most Intel and AMD Linux PCs. ARM64 will be shown only after a package has been published and tested on ARM64 hardware.</p></article>
+          <article><span>03</span><h3>Included runtime</h3><p>The package is self-contained and includes the required .NET runtime. You do not need to install .NET separately.</p></article>
+        </div>
+      </section>
+
+      <section class="section section-tint architecture-section">
+        <div class="wrap two-column">
+          <div>
+            <p class="eyebrow">Choose an architecture</p>
+            <h2>Most Linux PCs use AMD64.</h2>
+            <p>If you are unsure, open a terminal and check the architecture reported by Debian’s package tools.</p>
+            <pre><code>dpkg --print-architecture</code></pre>
+          </div>
+          <div class="note-box architecture-key">
+            <h3>Reading the result</h3>
+            <p><code>amd64</code> means use the AMD64 package for an Intel or AMD 64-bit PC.</p>
+            <p><code>arm64</code> means use an ARM64 package, but only when an ARM64 download is displayed on this page.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section wrap" id="install">
+        <div class="section-heading narrow">
+          <p class="eyebrow">Installation</p>
+          <h2>Install the downloaded Debian package.</h2>
+          <p>Using APT for a local package allows required system dependencies to be resolved automatically.</p>
+        </div>
+        <div class="numbered-list install-steps">
+          <article><span>01</span><div><h3>Download the package</h3><p>Download the AMD64 <code>.deb</code> from the release panel. The button becomes available only after the package has been published and verified.</p></div></article>
+          <article><span>02</span><div><h3>Open a terminal in Downloads</h3><pre><code>cd ~/Downloads</code></pre></div></article>
+          <article><span>03</span><div><h3>Install with APT</h3><pre><code data-linux-install-command>sudo apt install ./ft-itc-analysis_VERSION_amd64.deb</code></pre><p>Keep the leading <code>./</code>; it tells APT that the argument is a local package.</p></div></article>
+          <article><span>04</span><div><h3>Launch FT-ITC Analysis</h3><p>Open FT-ITC Analysis from the desktop application menu, or start it from a terminal:</p><pre><code>ft-itc-analysis</code></pre></div></article>
+        </div>
+      </section>
+
+      <section class="section section-tint">
+        <div class="wrap two-column install-maintenance">
+          <div>
+            <p class="eyebrow">Updating</p>
+            <h2>Install each new package manually.</h2>
+            <p>FT-ITC Analysis does not currently configure an automatic Linux update repository. To update, download the newer <code>.deb</code> and install it with the same <code>sudo apt install ./filename.deb</code> command. APT replaces the previous package while preserving user projects and application preferences.</p>
+          </div>
+          <div class="note-box">
+            <h3>Removing FT-ITC Analysis</h3>
+            <pre><code>sudo apt remove ft-itc-analysis</code></pre>
+            <p>To remove package configuration as well, use:</p>
+            <pre><code>sudo apt purge ft-itc-analysis</code></pre>
+            <p>Removing the application does not delete <code>.ftxtc</code> or <code>.ftitc</code> projects, original calorimetry data or exported results stored in your folders.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section wrap">
+        <div class="section-heading narrow">
+          <p class="eyebrow">Optional verification</p>
+          <h2>Check the downloaded package.</h2>
+          <p>The Linux release will provide a detached OpenPGP signature and SHA-256 checksum beside the Debian package. Verification links will appear after the release assets have been published and checked.</p>
+        </div>
+        <details class="verification-details">
+          <summary>Verify the SHA-256 checksum</summary>
+          <div>
+            <p>Download the <code>.deb</code> and adjacent checksum file into the same folder, then run:</p>
+            <pre><code data-linux-checksum-command>sha256sum --check ft-itc-analysis_VERSION_amd64.deb.sha256</code></pre>
+            <p>A successful check reports that the package is <strong>OK</strong>. OpenPGP verification instructions will be added after the release public key is available from a stable FT-ITC website address.</p>
+          </div>
+        </details>
+      </section>
+
+      <section class="section section-tint">
+        <div class="wrap">
+          <div class="section-heading narrow">
+            <p class="eyebrow">Troubleshooting</p>
+            <h2>Common installation questions.</h2>
+          </div>
+          <div class="troubleshooting-grid">
+            <article><h3>APT cannot install a dependency</h3><p>Confirm that the system is Debian, Ubuntu or a compatible Debian-based release and that its normal package repositories are enabled. Run <code>sudo apt update</code> and retry. Include the distribution, version, architecture and complete APT error when requesting support.</p></article>
+            <article><h3>The application does not launch</h3><p>Run <code>ft-itc-analysis</code> in a terminal and include the complete output in a bug report.</p><a data-link="issues" href="https://github.com/FrederikTheisen/FT-ITC-Analysis/issues">Report a problem ↗</a></article>
+            <article><h3>File associations do not appear</h3><p>Log out and back in, or restart the desktop session. The package updates the desktop, MIME and icon caches during installation.</p></article>
+          </div>
+        </div>
+      </section>
+
       <section class="section wrap install-footer-grid">
         <div>
-          <p class="eyebrow">Questions</p>
-          <h2>Contact the FT-ITC project.</h2>
-          <p>If you have a question about future Linux support, contact the project directly.</p>
+          <p class="eyebrow">Installation support</p>
+          <h2>Need help installing FT-ITC?</h2>
+          <p>Contact support with your Linux distribution, version, architecture and the complete error message or terminal output.</p>
           <a class="text-link" data-link="support" href="mailto:support@ft-itc.org">Contact support ↗</a>
         </div>
         <div>
@@ -54,7 +163,7 @@
     <footer class="footer wrap">
       <a class="brand" href="index.html"><img src="assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a>
       <p>Transparent tools for calorimetry.</p>
-      <div><a href="workflow.html">Workflow</a><a href="analysis.html">Analysis</a><a data-link="repository" href="https://github.com/FrederikTheisen/FT-ITC-Analysis">GitHub</a><a data-link="support" href="mailto:support@ft-itc.org">Support</a></div>
+      <div><a href="app-desktop.html">Desktop app</a><a href="workflow.html">Workflow</a><a href="analysis.html">Analysis</a><a data-link="repository" href="https://github.com/FrederikTheisen/FT-ITC-Analysis">GitHub</a><a data-link="support" href="mailto:support@ft-itc.org">Support</a></div>
       <small>© <span data-year></span> FT-ITC Analysis</small>
     </footer>
     <script src="script.js"></script>

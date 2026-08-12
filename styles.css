@@ -533,6 +533,124 @@ figure figcaption {
   font-size: .75rem;
 }
 
+.release-download.is-disabled {
+  border-color: rgb(255 255 255 / .25);
+  background: rgb(255 255 255 / .08);
+  color: rgb(255 255 255 / .55);
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.verification-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+}
+
+.verification-links[hidden] {
+  display: none;
+}
+
+.verification-links a {
+  color: var(--mint);
+  font-size: .78rem;
+  font-weight: 800;
+}
+
+.linux-hero {
+  display: grid;
+  grid-template-columns: 1.08fr .92fr;
+  align-items: center;
+  gap: 78px;
+}
+
+.linux-preview {
+  margin: 0;
+  padding: 10px;
+  border: 1px solid var(--line);
+  background: var(--white);
+  box-shadow: 0 14px 35px rgb(23 53 64 / .08);
+}
+
+.linux-preview img {
+  width: 100%;
+}
+
+pre {
+  max-width: 100%;
+  margin: 18px 0 0;
+  padding: 16px 18px;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--navy);
+  color: #fff;
+  font: .82rem/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+
+code {
+  font-family: ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+
+p code,.lede code {
+  padding: .08em .3em;
+  border-radius: 4px;
+  background: #edf2ee;
+  color: var(--ink);
+  font-size: .9em;
+}
+
+.architecture-key p + p {
+  margin-top: 16px;
+}
+
+.verification-details {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
+}
+
+.verification-details summary {
+  padding: 20px 24px;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.verification-details > div {
+  padding: 0 24px 24px;
+}
+
+.verification-details p {
+  max-width: 720px;
+  color: var(--ink-soft);
+}
+
+.troubleshooting-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 12px;
+}
+
+.troubleshooting-grid article {
+  min-height: 230px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
+}
+
+.troubleshooting-grid p {
+  color: var(--ink-soft);
+  font-size: .9rem;
+}
+
+.troubleshooting-grid a {
+  color: #28755f;
+  font-size: .82rem;
+  font-weight: 800;
+}
+
 .requirement-grid {
   display: grid;
   grid-template-columns: repeat(3,1fr);
@@ -939,7 +1057,7 @@ a:focus-visible,button:focus-visible {
 }
 
 @media (max-width:850px) {
-  .hero,.evidence-grid,.viewer-panel,.platform-intro,.download-grid,.method-layout,.two-column,.install-footer-grid {
+  .hero,.evidence-grid,.viewer-panel,.platform-intro,.download-grid,.method-layout,.two-column,.install-footer-grid,.linux-hero {
   grid-template-columns: 1fr;
   gap: 42px;
 }
@@ -995,6 +1113,10 @@ a:focus-visible,button:focus-visible {
 }
 
 .requirement-grid {
+  grid-template-columns: 1fr;
+}
+
+.troubleshooting-grid {
   grid-template-columns: 1fr;
 }
 
