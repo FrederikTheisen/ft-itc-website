@@ -60,7 +60,7 @@
         </div>
         <div class="requirement-grid">
           <article><span>01</span><h3>Package format</h3><p>A native Debian package (<code>.deb</code>). It is not currently distributed through an APT repository, Flatpak, Snap, RPM or AppImage.</p></article>
-          <article><span>02</span><h3>Architecture</h3><p>AMD64/x86-64 for most Intel and AMD Linux PCs. ARM64 will be shown only after a package has been published and tested on ARM64 hardware.</p></article>
+          <article><span>02</span><h3>Architecture</h3><p>The current package is for AMD64/x86-64 systems, used by most 64-bit Intel and AMD Linux PCs.</p></article>
           <article><span>03</span><h3>Included runtime</h3><p>The package is self-contained and includes the required .NET runtime. You do not need to install .NET separately.</p></article>
         </div>
       </section>
@@ -68,15 +68,15 @@
       <section class="section section-tint architecture-section">
         <div class="wrap two-column">
           <div>
-            <p class="eyebrow">Choose an architecture</p>
-            <h2>Most Linux PCs use AMD64.</h2>
+            <p class="eyebrow">Check compatibility</p>
+            <h2>The Linux package requires AMD64.</h2>
             <p>If you are unsure, open a terminal and check the architecture reported by Debian’s package tools.</p>
             <pre><code>dpkg --print-architecture</code></pre>
           </div>
           <div class="note-box architecture-key">
             <h3>Reading the result</h3>
-            <p><code>amd64</code> means use the AMD64 package for an Intel or AMD 64-bit PC.</p>
-            <p><code>arm64</code> means use an ARM64 package, but only when an ARM64 download is displayed on this page.</p>
+            <p>If the command reports <code>amd64</code>, the package on this page is suitable for your system.</p>
+            <p>If it reports another architecture, do not install the AMD64 package.</p>
           </div>
         </div>
       </section>

@@ -78,8 +78,7 @@ const releasePlatforms = {
     assetPattern: /^ft-itc-analysis_[\d.]+_amd64\.deb$/i,
     downloadLabel: 'Download Linux AMD64 (.deb)',
     releaseDescription: 'AMD64 Debian package for Debian-based desktop Linux.',
-    requireVerificationAssets: true,
-    arm64Enabled: false
+    requireVerificationAssets: true
   }
 };
 
