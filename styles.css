@@ -655,24 +655,6 @@ figure figcaption {
   width: 100%;
 }
 
-.results-gallery {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: start;
-  gap: 18px;
-  margin-top: 42px;
-}
-
-.results-gallery .workflow-screenshot {
-  height: 100%;
-}
-
-.results-gallery img {
-  aspect-ratio: 621/480;
-  object-fit: contain;
-  background: #f3f5f6;
-}
-
 pre {
   max-width: 100%;
   margin: 18px 0 0;
@@ -1100,6 +1082,17 @@ a:focus-visible,button:focus-visible {
   color: var(--ink-soft);
 }
 
+.analysis-result-figure {
+  align-self: start;
+}
+
+.analysis-result-points {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column: 1/-1;
+  column-gap: 42px;
+}
+
 .analysis-points {
   border-top: 1px solid var(--line);
 }
@@ -1164,10 +1157,6 @@ a:focus-visible,button:focus-visible {
 
 .workflow-processing-showcase {
   margin-top: 56px;
-}
-
-.results-gallery {
-  grid-template-columns: 1fr;
 }
 
 .macos-install-figure {
@@ -1365,6 +1354,10 @@ a:focus-visible,button:focus-visible {
   .analysis-overview {
     grid-template-columns: 1fr;
     gap: 42px;
+  }
+
+  .analysis-result-points {
+    grid-template-columns: 1fr;
   }
 }
 
