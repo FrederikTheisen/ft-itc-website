@@ -29,25 +29,26 @@
           <p class="lede">Download the native Linux desktop version of FT-ITC Analysis for processing, fitting and presenting isothermal titration calorimetry data. The self-contained package integrates with the application menu and associates FT-ITC <code>.ftxtc</code> and legacy <code>.ftitc</code> project files with the application.</p>
         </div>
         <figure class="linux-preview">
-          <img src="https://ft-itc.org/media/avalonia/avalonia-process-data-baseline.png" alt="FT-ITC Analysis on Linux showing a processed thermogram with baseline controls and integrated injection peaks">
+          <img src="https://ft-itc.org/media/avalonia/avalonia-linux-publication-figure.png" alt="FT-ITC Analysis on Linux showing a processed thermogram with baseline controls and integrated injection peaks">
           <figcaption>Correct baselines and integrate injection peaks in the native Linux desktop application.</figcaption>
         </figure>
       </section>
 
-      <section class="band release-band" data-release-status="pending">
+      <section class="band release-band" data-release-status="available">
         <div class="wrap download-grid">
           <div>
             <p class="eyebrow">Linux package</p>
-            <h2 data-release-version>Release in preparation.</h2>
-            <p data-release-date role="status" aria-live="polite">The verified Linux package download will appear here when the release is published.</p>
+            <h2 data-release-version>v1.4.2</h2>
+            <p data-release-date role="status" aria-live="polite">Released 13 Aug 2026 · AMD64 Debian package for Debian-based desktop Linux.</p>
           </div>
           <div class="release-action linux-release-action">
-            <a class="button release-download is-disabled" data-platform-download href="#install" aria-disabled="true">AMD64 download not yet published</a>
-            <div class="verification-links" data-linux-verification hidden>
-              <a data-download-signature href="#">OpenPGP signature</a>
-              <a data-download-checksum href="#">SHA-256 checksum</a>
+            <a class="button release-download" data-platform-download href="https://github.com/FrederikTheisen/FT-ITC-Analysis/releases/download/v1.4.2/ft-itc-analysis_1.4.2_amd64.deb">Download Linux AMD64 (.deb)</a>
+            <div class="verification-links" data-linux-verification>
+              <a data-download-signature href="https://github.com/FrederikTheisen/FT-ITC-Analysis/releases/download/v1.4.2/ft-itc-analysis_1.4.2_amd64.deb.asc">OpenPGP signature</a>
+              <a data-download-checksum href="#" hidden>SHA-256 checksum file</a>
+              <span data-linux-checksum-digest-row>SHA-256: <code data-linux-checksum-digest>11bef95f5e64c15d492c517fb64b064e5579b788209e120d010d2f1ad12b69af</code></span>
             </div>
-            <small>The <code>.deb</code> will be downloaded directly from the project’s release storage.</small>
+            <small>The <code>.deb</code> is downloaded directly from the project’s release storage.</small>
           </div>
         </div>
       </section>
@@ -88,9 +89,9 @@
           <p>Using APT for a local package allows required system dependencies to be resolved automatically.</p>
         </div>
         <div class="numbered-list install-steps">
-          <article><span>01</span><div><h3>Download the package</h3><p>Download the AMD64 <code>.deb</code> from the release panel. The button becomes available only after the package has been published and verified.</p></div></article>
+          <article><span>01</span><div><h3>Download the package</h3><p>Download the published AMD64 <code>.deb</code> from the release panel.</p></div></article>
           <article><span>02</span><div><h3>Open a terminal in Downloads</h3><pre><code>cd ~/Downloads</code></pre></div></article>
-          <article><span>03</span><div><h3>Install with APT</h3><pre><code data-linux-install-command>sudo apt install ./ft-itc-analysis_VERSION_amd64.deb</code></pre><p>Keep the leading <code>./</code>; it tells APT that the argument is a local package.</p></div></article>
+          <article><span>03</span><div><h3>Install with APT</h3><pre><code data-linux-install-command>sudo apt install ./ft-itc-analysis_1.4.2_amd64.deb</code></pre><p>Keep the leading <code>./</code>; it tells APT that the argument is a local package.</p></div></article>
           <article><span>04</span><div><h3>Launch FT-ITC Analysis</h3><p>Open FT-ITC Analysis from the desktop application menu, or start it from a terminal:</p><pre><code>ft-itc-analysis</code></pre></div></article>
         </div>
       </section>
@@ -116,13 +117,13 @@
         <div class="section-heading narrow">
           <p class="eyebrow">Optional verification</p>
           <h2>Check the downloaded package.</h2>
-          <p>The Linux release will provide a detached OpenPGP signature and SHA-256 checksum beside the Debian package. Verification links will appear after the release assets have been published and checked.</p>
+          <p>The Linux release includes a detached OpenPGP signature, and GitHub publishes the SHA-256 digest for the Debian package.</p>
         </div>
-        <details class="verification-details">
+        <details class="verification-details" data-linux-checksum-verification>
           <summary>Verify the SHA-256 checksum</summary>
           <div>
-            <p>Download the <code>.deb</code> and adjacent checksum file into the same folder, then run:</p>
-            <pre><code data-linux-checksum-command>sha256sum --check ft-itc-analysis_VERSION_amd64.deb.sha256</code></pre>
+            <p>Download the <code>.deb</code>, open a terminal in the same folder, then run:</p>
+            <pre><code data-linux-checksum-command>echo "11bef95f5e64c15d492c517fb64b064e5579b788209e120d010d2f1ad12b69af  ft-itc-analysis_1.4.2_amd64.deb" | sha256sum --check -</code></pre>
             <p>A successful check reports that the package is <strong>OK</strong>. OpenPGP verification instructions will be added after the release public key is available from a stable FT-ITC website address.</p>
           </div>
         </details>

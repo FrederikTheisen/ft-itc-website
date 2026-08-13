@@ -64,6 +64,7 @@ document.querySelectorAll('[data-year]').forEach((year) => { year.textContent = 
 const releasePlatforms = {
   macos: {
     enabled: true,
+    minimumVersion: '1.4.2',
     assetPattern: /\.dmg$/i,
     downloadLabel: 'Download FT-ITC for macOS',
     releaseDescription: 'Signed and notarized universal application.'
@@ -73,12 +74,11 @@ const releasePlatforms = {
     assetPattern: /\.(msi|exe)$/i
   },
   linux: {
-    // Enable only after completing the release-time verification checklist.
-    enabled: false,
+    enabled: true,
+    minimumVersion: '1.4.2',
     assetPattern: /^ft-itc-analysis_[\d.]+_amd64\.deb$/i,
     downloadLabel: 'Download Linux AMD64 (.deb)',
-    releaseDescription: 'AMD64 Debian package for Debian-based desktop Linux.',
-    requireVerificationAssets: true
+    releaseDescription: 'AMD64 Debian package for Debian-based desktop Linux.'
   }
 };
 
@@ -88,7 +88,10 @@ const releaseDate = document.querySelector('[data-release-date]');
 const platformDownload = document.querySelector('[data-platform-download]');
 const downloadSignature = document.querySelector('[data-download-signature]');
 const downloadChecksum = document.querySelector('[data-download-checksum]');
+const linuxChecksumDigestRow = document.querySelector('[data-linux-checksum-digest-row]');
+const linuxChecksumDigest = document.querySelector('[data-linux-checksum-digest]');
 const linuxVerification = document.querySelector('[data-linux-verification]');
+const linuxChecksumVerification = document.querySelector('[data-linux-checksum-verification]');
 const linuxInstallCommand = document.querySelector('[data-linux-install-command]');
 const linuxChecksumCommand = document.querySelector('[data-linux-checksum-command]');
 const currentPlatform = document.body.dataset.platform;
@@ -96,7 +99,7 @@ const releasePlatform = releasePlatforms[currentPlatform];
 
 if (releaseStatus && releaseVersion && releaseDate && platformDownload && releasePlatform?.enabled) {
   const releasesApi = 'https://api.github.com/repos/FrederikTheisen/FT-ITC-Analysis/releases?per_page=20';
-  const cacheKey = 'ft-itc-release-cache-v1';
+  const cacheKey = 'ft-itc-release-cache-v2';
   const cacheLifetime = 30 * 60 * 1000;
 
   const isValidDownloadUrl = (value) => {
@@ -118,7 +121,7 @@ if (releaseStatus && releaseVersion && releaseDate && platformDownload && releas
         assets: Array.isArray(release.assets)
           ? release.assets
             .filter((asset) => asset?.state === 'uploaded' && typeof asset?.name === 'string' && isValidDownloadUrl(asset?.browser_download_url))
-            .map((asset) => ({ name: asset.name, url: asset.browser_download_url }))
+            .map((asset) => ({ name: asset.name, url: asset.browser_download_url, digest: asset.digest }))
           : []
       }))
       .filter((release) => release.publishedAt && !Number.isNaN(Date.parse(release.publishedAt)))
@@ -165,13 +168,30 @@ if (releaseStatus && releaseVersion && releaseDate && platformDownload && releas
   };
 
   const showRelease = (releases) => {
-    const release = releases.find((candidate) => candidate.assets.some((asset) => releasePlatform.assetPattern.test(asset.name)));
+    const versionParts = (value) => {
+      const match = value.match(/^v?(\d+)\.(\d+)\.(\d+)$/i);
+      return match ? match.slice(1).map(Number) : null;
+    };
+    const isAtLeastMinimumVersion = (value) => {
+      const candidate = versionParts(value);
+      const minimum = versionParts(releasePlatform.minimumVersion);
+      if (!candidate || !minimum) return false;
+      for (let index = 0; index < candidate.length; index += 1) {
+        if (candidate[index] > minimum[index]) return true;
+        if (candidate[index] < minimum[index]) return false;
+      }
+      return true;
+    };
+    const release = releases.find((candidate) => isAtLeastMinimumVersion(candidate.tag)
+      && candidate.assets.some((asset) => releasePlatform.assetPattern.test(asset.name)));
     const asset = release?.assets.find((candidate) => releasePlatform.assetPattern.test(candidate.name));
     if (!release || !asset) return;
 
     const signature = release.assets.find((candidate) => candidate.name === `${asset.name}.asc`);
     const checksum = release.assets.find((candidate) => candidate.name === `${asset.name}.sha256`);
-    if (releasePlatform.requireVerificationAssets && (!signature || !checksum)) return;
+    const checksumDigest = typeof asset.digest === 'string' && /^sha256:[a-f\d]{64}$/i.test(asset.digest)
+      ? asset.digest.slice('sha256:'.length)
+      : null;
 
     releaseVersion.textContent = release.tag;
     releaseDate.textContent = `Released ${new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }).format(new Date(release.publishedAt))} · ${releasePlatform.releaseDescription}`;
@@ -181,11 +201,23 @@ if (releaseStatus && releaseVersion && releaseDate && platformDownload && releas
     platformDownload.textContent = releasePlatform.downloadLabel;
 
     if (currentPlatform === 'linux') {
-      if (signature && downloadSignature) downloadSignature.href = signature.url;
-      if (checksum && downloadChecksum) downloadChecksum.href = checksum.url;
-      if (linuxVerification && signature && checksum) linuxVerification.hidden = false;
+      if (downloadSignature) {
+        downloadSignature.hidden = !signature;
+        if (signature) downloadSignature.href = signature.url;
+      }
+      if (downloadChecksum) {
+        downloadChecksum.hidden = !checksum;
+        if (checksum) downloadChecksum.href = checksum.url;
+      }
+      if (linuxChecksumDigestRow) linuxChecksumDigestRow.hidden = !checksumDigest;
+      if (linuxChecksumDigest && checksumDigest) linuxChecksumDigest.textContent = checksumDigest;
+      if (linuxVerification) linuxVerification.hidden = !(signature || checksum || checksumDigest);
+      if (linuxChecksumVerification) linuxChecksumVerification.hidden = !(checksum || checksumDigest);
       if (linuxInstallCommand) linuxInstallCommand.textContent = `sudo apt install ./${asset.name}`;
-      if (linuxChecksumCommand && checksum) linuxChecksumCommand.textContent = `sha256sum --check ${checksum.name}`;
+      if (linuxChecksumCommand) {
+        if (checksum) linuxChecksumCommand.textContent = `sha256sum --check ${checksum.name}`;
+        if (!checksum && checksumDigest) linuxChecksumCommand.textContent = `echo "${checksumDigest}  ${asset.name}" | sha256sum --check -`;
+      }
     }
 
     releaseStatus.dataset.releaseStatus = 'available';
