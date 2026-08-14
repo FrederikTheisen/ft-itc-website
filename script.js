@@ -70,8 +70,11 @@ const releasePlatforms = {
     releaseDescription: 'Signed and notarized universal application.'
   },
   windows: {
-    enabled: false,
-    assetPattern: /\.(msi|exe)$/i
+    enabled: true,
+    minimumVersion: '1.4.2',
+    assetPattern: /_win-x64-setup\.exe$/i,
+    downloadLabel: 'Download Windows x64 (.exe)',
+    releaseDescription: '64-bit Windows installer.'
   },
   linux: {
     enabled: true,

@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Current development status and future installation information for FT-ITC Analysis on Windows.">
-    <title>Windows Status | FT-ITC Analysis</title>
+    <meta name="description" content="Download and install FT-ITC Analysis on 64-bit Windows. Review requirements, installation, updating and removal guidance.">
+    <title>Install on Windows | FT-ITC Analysis</title>
     <link rel="icon" href="assets/icon-180.png" type="image/png">
     <link rel="stylesheet" href="styles.css">
   </head>
@@ -23,29 +23,80 @@
 
     <main>
       <section class="page-hero wrap">
-        <p class="eyebrow">Platform status</p>
-        <h1>FT-ITC Analysis <span>for Windows.</span></h1>
-        <p class="lede">The Windows version is currently in development. Downloads, system requirements and installation instructions will be published here when the first supported release is available.</p>
+        <p class="eyebrow">Windows installer</p>
+        <h1>Install FT-ITC Analysis <span>on Windows.</span></h1>
+        <p class="lede">Download version 1.4.2 for a 64-bit Windows PC, then follow the guided setup to install the native desktop application.</p>
       </section>
-      <section class="band platform-status-band">
+
+      <section class="band release-band" data-release-status="available">
         <div class="wrap download-grid">
-          <div><p class="eyebrow">Windows release</p><h2>In development.</h2><p>No Windows installer is currently available.</p></div>
-          <div class="status-message"><strong>This page will become the Windows installation guide.</strong><p>Requirements and setup instructions will be added only after the first Windows build has been verified.</p></div>
+          <div>
+            <p class="eyebrow">Windows release</p>
+            <h2 data-release-version>v1.4.2</h2>
+            <p data-release-date role="status" aria-live="polite">Released 13 Aug 2026 · 64-bit Windows installer.</p>
+          </div>
+          <div class="release-action">
+            <a class="button release-download" data-platform-download href="https://github.com/FrederikTheisen/FT-ITC-Analysis/releases/download/v1.4.2/ft-itc-analyis_1.4.2_win-x64-setup.exe">Download Windows x64 (.exe)</a>
+            <small>The installer is downloaded directly from the project’s release storage.</small>
+          </div>
         </div>
       </section>
-      <section class="section wrap install-footer-grid">
-        <div>
-          <p class="eyebrow">Questions</p>
-          <h2>Contact the FT-ITC project.</h2>
-          <p>If you have a question about future Windows support, contact the project directly.</p>
-          <a class="text-link" data-link="support" href="mailto:support@ft-itc.org">Contact support ↗</a>
+
+      <section class="section wrap">
+        <div class="section-heading narrow">
+          <p class="eyebrow">System requirements</p>
+          <h2>Built for 64-bit Windows PCs.</h2>
+          <p>The current installer targets the x64 architecture used by most modern Intel and AMD Windows computers.</p>
         </div>
+        <div class="requirement-grid">
+          <article><span>01</span><h3>Architecture</h3><p>A 64-bit Windows PC with an Intel or AMD processor.</p></article>
+          <article><span>02</span><h3>Installer format</h3><p>A guided Windows executable (<code>.exe</code>) installer.</p></article>
+          <article><span>03</span><h3>Local workspace</h3><p>Analyses run on your computer and projects remain available as portable FT-ITC files.</p></article>
+        </div>
+      </section>
+
+      <section class="section section-tint">
+        <div class="wrap">
+          <div class="section-heading narrow">
+            <p class="eyebrow">Installation steps</p>
+            <h2>Install the application in four steps.</h2>
+          </div>
+          <div class="numbered-list install-steps">
+            <article><span>01</span><div><h3>Download the installer</h3><p>Use the download button above to save the Windows x64 setup executable.</p></div></article>
+            <article><span>02</span><div><h3>Open the downloaded file</h3><p>Open <code>ft-itc-analyis_1.4.2_win-x64-setup.exe</code> from your browser or Downloads folder.</p></div></article>
+            <article><span>03</span><div><h3>Complete setup</h3><p>Follow the installer prompts to add FT-ITC Analysis to your computer.</p></div></article>
+            <article><span>04</span><div><h3>Launch FT-ITC Analysis</h3><p>Open FT-ITC Analysis from the Windows Start menu and begin a new project or reopen an existing one.</p></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section wrap two-column install-maintenance">
         <div>
-          <p class="eyebrow">Other platforms</p>
-          <div class="platform-switcher" aria-label="Choose another operating system">
-            <a href="install-macos.html">macOS</a>
-            <a aria-current="page" href="install-windows.html">Windows</a>
-            <a href="install-linux.html">Linux</a>
+          <p class="eyebrow">Updating</p>
+          <h2>Run the newest installer when an update is available.</h2>
+          <p>Download the newer Windows setup executable and run it to update the application. Original data and saved <code>.ftxtc</code> projects are stored separately and are not removed.</p>
+        </div>
+        <div class="note-box">
+          <h3>Uninstalling</h3>
+          <p>Open Windows Settings, choose Apps, find FT-ITC Analysis in the installed apps list and select Uninstall. Removing the application does not delete original experimental data or saved project files.</p>
+        </div>
+      </section>
+
+      <section class="section section-tint">
+        <div class="wrap install-footer-grid">
+          <div>
+            <p class="eyebrow">Installation support</p>
+            <h2>Need help installing FT-ITC?</h2>
+            <p>If setup or launch does not work as expected, contact support with your Windows version and a description of what happened.</p>
+            <a class="text-link" data-link="support" href="mailto:support@ft-itc.org">Contact support ↗</a>
+          </div>
+          <div>
+            <p class="eyebrow">Other platforms</p>
+            <div class="platform-switcher" aria-label="Choose another operating system">
+              <a href="install-macos.html">macOS</a>
+              <a aria-current="page" href="install-windows.html">Windows</a>
+              <a href="install-linux.html">Linux</a>
+            </div>
           </div>
         </div>
       </section>
