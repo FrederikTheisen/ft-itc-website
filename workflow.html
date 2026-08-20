@@ -3,21 +3,21 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ITC Data Workflow | FT-ITC Analysis</title>
-    <meta name="description" content="Learn how to import .itc, .TA, .apj, .dat, .aff, .dh and .ftxtc files, process thermograms, fit models and export results with FT-ITC Analysis.">
+    <title>ITC File Formats &amp; Data Workflow | FT-ITC Analysis</title>
+    <meta name="description" content="Import MicroCal .itc, TA Instruments / NanoAnalyze .TA, PEAQ-ITC .apj and integrated heat files, then process, fit and export ITC data with FT-ITC Analysis.">
     <meta name="robots" content="index,follow,max-image-preview:large">
     <meta name="theme-color" content="#173540">
     <link rel="canonical" href="https://ft-itc.org/workflow">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="FT-ITC Analysis">
-    <meta property="og:title" content="ITC Data Workflow | FT-ITC Analysis">
-    <meta property="og:description" content="Import calorimetry data, process thermograms, fit models and export traceable results with FT-ITC Analysis.">
+    <meta property="og:title" content="ITC File Formats &amp; Data Workflow | FT-ITC Analysis">
+    <meta property="og:description" content="Import MicroCal, TA Instruments / NanoAnalyze and PEAQ-ITC data, process thermograms, fit models and export traceable ITC results.">
     <meta property="og:url" content="https://ft-itc.org/workflow">
     <meta property="og:image" content="https://ft-itc.org/media/avalonia/AdvancedProcessing.png">
     <meta property="og:image:alt" content="FT-ITC Analysis advanced processing view with baseline and integration controls">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ITC Data Workflow | FT-ITC Analysis">
-    <meta name="twitter:description" content="Import calorimetry data, process thermograms, fit models and export traceable results with FT-ITC Analysis.">
+    <meta name="twitter:title" content="ITC File Formats &amp; Data Workflow | FT-ITC Analysis">
+    <meta name="twitter:description" content="Import MicroCal, TA Instruments / NanoAnalyze and PEAQ-ITC data, process thermograms, fit models and export traceable ITC results.">
     <meta name="twitter:image" content="https://ft-itc.org/media/avalonia/AdvancedProcessing.png">
     <link rel="icon" href="assets/icon-180.png" type="image/png">
     <link rel="apple-touch-icon" href="assets/icon-180.png">
@@ -30,8 +30,8 @@
             "@type": "WebPage",
             "@id": "https://ft-itc.org/workflow",
             "url": "https://ft-itc.org/workflow",
-            "name": "ITC Data Workflow | FT-ITC Analysis",
-            "description": "Learn how to import, process, fit and export isothermal titration calorimetry data with FT-ITC Analysis.",
+            "name": "ITC File Formats & Data Workflow | FT-ITC Analysis",
+            "description": "Import MicroCal, TA Instruments / NanoAnalyze and PEAQ-ITC data, then process, fit and export isothermal titration calorimetry results with FT-ITC Analysis.",
             "isPartOf": {
               "@id": "https://ft-itc.org/#website"
             },
@@ -76,6 +76,7 @@
         <a data-nav="app" href="app-desktop.html">Desktop app</a>
         <a data-link="webApp" href="https://app.ft-itc.org" target="_blank" rel="noreferrer">Web viewer ↗</a>
         <a data-nav="resources" href="workflow.html">Workflow</a>
+        <a data-nav="tutorial" href="/how-to-analyze-itc-data">Tutorial</a>
         <a data-nav="analysis" href="analysis.html">Analysis</a>
         <a class="button button-primary nav-download" data-link="download" href="app-desktop.html#platforms">Download <span aria-hidden="true">↗</span></a>
       </nav>
@@ -91,29 +92,35 @@
       <section class="section section-tint">
         <div class="wrap">
           <div class="section-heading narrow">
-            <p class="eyebrow">Supported file types</p>
-            <h2>Bring data from the instruments and tools you already use.</h2>
+            <p class="eyebrow">ITC file formats</p>
+            <h2>Supported instruments and file formats for your analysis workflow.</h2>
+            <p>Import compatible raw data, instrument exports, integrated heats and project files from the tools you already use.</p>
           </div>
           <div class="file-grid">
             <article>
               <code>.itc</code>
-              <h3>MicroCal raw data</h3>
+              <h3>MicroCal .itc raw data</h3>
               <p>Open raw ITC experiments for inspection, baseline fitting and integration.</p>
             </article>
             <article>
               <code>.TA</code>
-              <h3>NanoAnalyze export</h3>
-              <p>Import TA Instruments / NanoAnalyze data exports.</p>
+              <h3>TA Instruments / NanoAnalyze exports (.TA)</h3>
+              <p>Import TA Instruments / NanoAnalyze data exports for processing and analysis.</p>
             </article>
             <article>
               <code>.apj</code>
-              <h3>PEAQ ITC projects</h3>
-              <p>Extract raw data from PEAQ ITC project files.</p>
+              <h3>MicroCal PEAQ-ITC project files (.apj)</h3>
+              <p>Extract available integrated experiment data from PEAQ-ITC project files for further analysis.</p>
             </article>
             <article>
-              <code>.dat</code>
-              <h3>Integrated heats</h3>
-              <p>Bring in integrated heat data for fitting and further analysis. Reanalyze published data.</p>
+              <code>.dat · .aff · .dh</code>
+              <h3>Integrated heats (.dat, .aff, .dh)</h3>
+              <p>Bring in compatible integrated heat data for fitting and further analysis.</p>
+            </article>
+            <article>
+              <code>.ftxtc · .ftitc</code>
+              <h3>FT-ITC projects (.ftxtc; legacy .ftitc import)</h3>
+              <p>Save current projects as .ftxtc and open legacy .ftitc projects when you need to revisit earlier work.</p>
             </article>
           </div>
         </div>

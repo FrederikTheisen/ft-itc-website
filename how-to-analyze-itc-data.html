@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>How to Analyze ITC Data | FT-ITC Tutorial</title>
+    <meta name="description" content="Learn how to analyze ITC data: inspect thermograms, correct baselines, integrate injection peaks, fit binding models and assess residuals, uncertainty and exportable results with FT-ITC Analysis.">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <meta name="theme-color" content="#173540">
+    <link rel="canonical" href="https://ft-itc.org/how-to-analyze-itc-data">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="FT-ITC Analysis">
+    <meta property="og:title" content="How to Analyze ITC Data | FT-ITC Tutorial">
+    <meta property="og:description" content="A practical guide to isothermal titration calorimetry data analysis, from raw thermogram and baseline correction through fitting, residuals, uncertainty and export.">
+    <meta property="og:url" content="https://ft-itc.org/how-to-analyze-itc-data">
+    <meta property="og:image" content="https://ft-itc.org/assets/thermogram-tpx-1.png">
+    <meta property="og:image:alt" content="ITC thermogram, fitted binding curve and residuals shown as an interface illustration">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Analyze ITC Data | FT-ITC Tutorial">
+    <meta name="twitter:description" content="A practical guide to isothermal titration calorimetry data analysis, from raw thermogram and baseline correction through fitting, residuals, uncertainty and export.">
+    <meta name="twitter:image" content="https://ft-itc.org/assets/thermogram-tpx-1.png">
+    <link rel="icon" href="assets/icon-180.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/icon-180.png">
+    <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://ft-itc.org/how-to-analyze-itc-data",
+            "url": "https://ft-itc.org/how-to-analyze-itc-data",
+            "name": "How to Analyze ITC Data | FT-ITC Tutorial",
+            "description": "A practical guide to isothermal titration calorimetry data analysis, from raw thermogram and baseline correction through fitting, residuals, uncertainty and export.",
+            "inLanguage": "en-GB",
+            "isPartOf": {
+              "@id": "https://ft-itc.org/#website"
+            },
+            "mainEntity": {
+              "@id": "https://ft-itc.org/how-to-analyze-itc-data#article"
+            },
+            "breadcrumb": {
+              "@id": "https://ft-itc.org/how-to-analyze-itc-data#breadcrumb"
+            }
+          },
+          {
+            "@type": "TechArticle",
+            "@id": "https://ft-itc.org/how-to-analyze-itc-data#article",
+            "url": "https://ft-itc.org/how-to-analyze-itc-data",
+            "headline": "How to Analyze ITC Data: From Thermogram to Binding Parameters",
+            "name": "How to Analyze ITC Data | FT-ITC Tutorial",
+            "description": "Learn how to analyze ITC data by inspecting thermograms, correcting baselines, integrating injection peaks, fitting binding models and reviewing residuals and uncertainty.",
+            "inLanguage": "en-GB",
+            "articleSection": "ITC data analysis",
+            "about": {
+              "@type": "Thing",
+              "name": "Isothermal titration calorimetry data analysis"
+            },
+            "author": {
+              "@type": "Person",
+              "name": "Frederik Theisen"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "@id": "https://ft-itc.org/#organization",
+              "name": "FT-ITC Analysis",
+              "url": "https://ft-itc.org/"
+            },
+            "image": "https://ft-itc.org/assets/thermogram-tpx-1.png",
+            "mainEntityOfPage": {
+              "@id": "https://ft-itc.org/how-to-analyze-itc-data"
+            },
+            "breadcrumb": {
+              "@id": "https://ft-itc.org/how-to-analyze-itc-data#breadcrumb"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://ft-itc.org/how-to-analyze-itc-data#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "FT-ITC Analysis",
+                "item": "https://ft-itc.org/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "How to Analyze ITC Data",
+                "item": "https://ft-itc.org/how-to-analyze-itc-data"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body data-page="tutorial">
+    <header class="topbar wrap">
+      <a class="brand" href="index.html">
+        <img src="assets/icon-180.png" alt="">
+        <span>FT-ITC <em>Analysis</em></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+        <a data-nav="app" href="app-desktop.html">Desktop app</a>
+        <a data-link="webApp" href="https://app.ft-itc.org" target="_blank" rel="noreferrer">Web viewer ↗</a>
+        <a data-nav="resources" href="workflow.html">Workflow</a>
+        <a data-nav="tutorial" href="/how-to-analyze-itc-data">Tutorial</a>
+        <a data-nav="analysis" href="analysis.html">Analysis</a>
+        <a class="button button-primary nav-download" data-link="download" href="app-desktop.html#platforms">Download <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-hero wrap">
+        <p class="eyebrow">ITC data analysis tutorial</p>
+        <h1>How to Analyze ITC Data: From Thermogram to Binding Parameters</h1>
+        <p class="lede">Isothermal titration calorimetry data analysis is a chain of decisions: inspect the raw thermogram, establish a defensible baseline, integrate injection peaks, account for matched background or dilution heat, fit a model that reflects the experiment, and review residuals and uncertainty before interpreting the parameters. This practical guide shows how to analyze ITC data in FT-ITC Analysis without treating a single curve as proof that the model or experiment is correct.</p>
+        <p class="eyebrow">Frederik Theisen · FT-ITC Analysis</p>
+      </section>
+
+      <section class="section section-tint">
+        <div class="wrap">
+          <div class="section-heading narrow">
+            <p class="eyebrow">The short version</p>
+            <h2>Follow the evidence from signal to result.</h2>
+            <p>A useful ITC analysis keeps the raw measurement, processing choices, fitted model and reporting context connected. The order below is a practical starting point for a representative experiment.</p>
+          </div>
+          <div class="numbered-list">
+            <article>
+              <span>01</span>
+              <div>
+                <h3>Import and check the experiment</h3>
+                <p>Confirm the sample and titrant, concentrations, temperature, injection settings, units and available reference experiment before changing the data.</p>
+              </div>
+            </article>
+            <article>
+              <span>02</span>
+              <div>
+                <h3>Inspect the thermogram</h3>
+                <p>Look for stable between-injection regions, plausible peak shapes, baseline drift, irregular injections and signals that may reflect mixing or dilution.</p>
+              </div>
+            </article>
+            <article>
+              <span>03</span>
+              <div>
+                <h3>Set the baseline and integrate</h3>
+                <p>Choose baseline regions and integration windows deliberately, then inspect the resulting heat series before fitting an isotherm.</p>
+              </div>
+            </article>
+            <article>
+              <span>04</span>
+              <div>
+                <h3>Correct background heat when justified</h3>
+                <p>Use a matched buffer or dilution experiment when the design supports it, and distinguish a physical correction from a model offset.</p>
+              </div>
+            </article>
+            <article>
+              <span>05</span>
+              <div>
+                <h3>Fit, review and export</h3>
+                <p>Fit a model that reflects the chemistry, review residuals and conditional uncertainty, and export a result that retains its analytical context.</p>
+              </div>
+            </article>
+          </div>
+          <a class="text-link" href="app-desktop.html#platforms">Download FT-ITC Analysis for your platform <span>→</span></a>
+        </div>
+      </section>
+
+      <section class="section wrap">
+        <div class="section-heading narrow">
+          <p class="eyebrow">01 · Before processing</p>
+          <h2>What ITC data contain: thermogram, heats and isotherm.</h2>
+          <p>Before asking what a fitted parameter means, distinguish the different data products that appear during an ITC workflow.</p>
+        </div>
+        <div class="numbered-list">
+          <article>
+            <span>01</span>
+            <div>
+              <h3>Raw thermogram</h3>
+              <p>The thermogram records differential power over time. Each injection produces a peak whose direction and size depend on the heat associated with the experiment and the instrument convention.</p>
+            </div>
+          </article>
+          <article>
+            <span>02</span>
+            <div>
+              <h3>Integrated heats</h3>
+              <p>Peak integration assigns an area to each injection after baseline handling. Those values can contain binding heat as well as mixing, dilution, buffer mismatch, temperature-equilibration and other contributions.</p>
+            </div>
+          </article>
+          <article>
+            <span>03</span>
+            <div>
+              <h3>Binding isotherm and parameters</h3>
+              <p>The integrated heats are plotted against a concentration or molar-ratio coordinate to form a binding isotherm. A selected model then estimates quantities such as <em>K</em><sub>d</sub> or <em>K</em><sub>a</sub>, stoichiometry and enthalpy. These are model-dependent estimates, not direct readings from the raw trace.</p>
+            </div>
+          </article>
+        </div>
+        <p class="lede">When you import an experiment, verify cell and syringe identities, sample and titrant concentrations, temperature, buffer and salt composition, injection volume and spacing, units, and whether a matched reference or dilution measurement exists. FT-ITC Analysis supports several common input and export workflows; see the <a class="text-link" href="workflow.html">complete ITC workflow and supported file types</a> before interpreting a file.</p>
+      </section>
+
+      <section class="section section-tint">
+        <div class="wrap evidence-grid">
+          <figure class="workflow-screenshot">
+            <img src="media/avalonia/AdvancedProcessing.png" alt="FT-ITC Analysis advanced processing interface showing a thermogram, baseline and integration controls" loading="lazy" decoding="async">
+            <figcaption>Interface illustration, not a worked dataset: review baseline and integration controls alongside the thermogram.</figcaption>
+          </figure>
+          <div>
+            <p class="eyebrow">02 · Thermogram processing</p>
+            <h2>How to read an ITC thermogram.</h2>
+            <p>Good ITC thermogram analysis begins with inspection, not automatic fitting. Review stable regions between injections, the approximate direction and shape of each peak, baseline drift, slow return to baseline, irregular or missing injections, and any change that appears only after a particular addition.</p>
+            <p>A clean-looking trace is not by itself evidence of a valid binding experiment. A signal can also reflect dilution, aggregation, precipitation, buffer mismatch, a concentration error or instrument behaviour. Record what you see and keep the original input file available so that later processing choices remain reversible.</p>
+            <p>Use the thermogram to decide where processing needs attention; do not adjust the trace only to create a preferred-looking isotherm.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section wrap">
+        <div class="section-heading narrow">
+          <p class="eyebrow">03 · Baseline and integration</p>
+          <h2>Apply ITC baseline correction and injection peak integration.</h2>
+          <p>The baseline is an estimate of the non-injection power underneath a signal that is only directly observed between injections. Its choice can therefore influence every integrated heat that follows.</p>
+        </div>
+        <div class="numbered-list">
+          <article>
+            <span>01</span>
+            <div>
+              <h3>Choose baseline regions</h3>
+              <p>Identify sections where the instrument has returned towards its local baseline. Review whether drift, noise or incomplete recovery makes a single baseline strategy unsuitable for the whole experiment.</p>
+            </div>
+          </article>
+          <article>
+            <span>02</span>
+            <div>
+              <h3>Review the baseline model</h3>
+              <p>FT-ITC Analysis provides controls for refining baseline behaviour, including spline-based processing. Use the simplest approach that represents the trace and inspect how changes affect the integrated heats.</p>
+            </div>
+          </article>
+          <article>
+            <span>03</span>
+            <div>
+              <h3>Integrate the injection peaks</h3>
+              <p>Set the start time and integration length so the window captures the intended injection heat without including unrelated recovery or neighbouring events. Consistent settings can be useful, but unusable regions may need to be excluded and documented.</p>
+            </div>
+          </article>
+        </div>
+        <p class="lede">There is no automatic baseline that is correct for every experiment. Compare the resulting heat series with the thermogram and keep a record of excluded injections, baseline choices and integration settings before moving to binding-model fitting.</p>
+      </section>
+
+      <section class="section section-tint">
+        <div class="wrap two-column">
+          <div>
+            <p class="eyebrow">04 · Background heat</p>
+            <h2>Use ITC buffer and dilution correction with context.</h2>
+            <p>Integrated heats do not automatically equal binding heats. A matched reference can help estimate heat from buffer mismatch, dilution or mixing, but the right correction depends on how the experiment was designed and what the control actually measures.</p>
+            <p>Distinguish a physical reference subtraction from a mathematical offset in a binding model. A fitted offset can account for a consistent background term; it does not replace a well-designed control experiment.</p>
+          </div>
+          <div class="note-box">
+            <h3>Before subtracting a reference</h3>
+            <p>Check that the cell and syringe contents, buffer, concentration range, temperature and injection schedule are sufficiently matched for the intended comparison.</p>
+            <p>Decide whether direct, linear-fit or exponential-fit subtraction is scientifically defensible for the available control. Retain the reference data and note how the correction changes the heat series and its uncertainty.</p>
+            <a href="workflow.html">Review the processing workflow <span>→</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap evidence-grid">
+          <figure class="workflow-screenshot">
+            <img src="media/avalonia/desktop-analyze-data-focus.png" alt="FT-ITC Analysis interface illustration showing a fitted binding isotherm, residuals and fit controls" loading="lazy" decoding="async">
+            <figcaption>Interface illustration, not a worked dataset: inspect the fitted isotherm, residuals and uncertainty settings together.</figcaption>
+          </figure>
+          <div>
+            <p class="eyebrow">05 · Binding-model fitting</p>
+            <h2>Fit an ITC binding model, not just a curve.</h2>
+            <p>After inspecting the integrated heats, choose a binding model whose assumptions match the chemistry and experimental design. A one-site ITC model can be a useful teaching example, but it is not a universal default.</p>
+            <p>Review which quantities are fitted, such as <em>K</em><sub>d</sub> or <em>K</em><sub>a</sub>, stoichiometry and Δ<em>H</em>, and which are derived, such as Δ<em>G</em> and Δ<em>S</em>. Check units, concentration corrections, starting values, limits and weighting. A visually attractive curve does not prove that the model is appropriate.</p>
+            <p>For related experiments, the <a class="text-link" href="analysis.html">global fitting and advanced ITC analysis</a> page describes how shared and experiment-specific parameters can be reviewed together. Begin with the simplest model that can answer the question, then compare alternatives when the data justify doing so.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-tint">
+        <div class="wrap">
+          <div class="section-heading narrow">
+            <p class="eyebrow">06 · Fit quality and uncertainty</p>
+            <h2>Read ITC residuals and uncertainty estimation together.</h2>
+            <p>A fitted parameter is more useful when the evidence around it is visible. Review the data, model, residuals and uncertainty as one result rather than reducing the analysis to a single goodness-of-fit statistic.</p>
+          </div>
+          <div class="numbered-list">
+            <article>
+              <span>01</span>
+              <div>
+                <h3>Look for structure in the residuals</h3>
+                <p>Residuals show the difference between observed integrated heats and model-predicted heats. Check whether they are broadly scattered around zero or instead show curvature, a trend, clusters or one injection that dominates the fit. Structured residuals can indicate an unsuitable model, processing choice or experimental problem.</p>
+              </div>
+            </article>
+            <article>
+              <span>02</span>
+              <div>
+                <h3>Interpret uncertainty conditionally</h3>
+                <p>FT-ITC Analysis can expose uncertainty associated with the processed heat values and selected fitting procedure, including injection-error weighting and bootstrap-residual approaches where appropriate. Treat that estimate as conditional on the data processing, model, weighting and resampling choices.</p>
+              </div>
+            </article>
+            <article>
+              <span>03</span>
+              <div>
+                <h3>Keep the wider error budget in view</h3>
+                <p>Fitted uncertainty does not automatically account for concentration error, sample heterogeneity, baseline bias, systematic instrument effects or model misspecification. When comparing results, state the assumptions and processing decisions that support the comparison.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap two-column">
+          <div>
+            <p class="eyebrow">07 · Reporting</p>
+            <h2>Export a traceable ITC result.</h2>
+            <p>A publication figure should make the relationship between the raw signal, integrated heats, fitted model and residuals legible. Do not export only a final parameter table when the processing choices determine how that table was produced.</p>
+            <p>Retain the original input file, processing settings, baseline and integration decisions, any reference or dilution correction, model name and assumptions, parameter estimates, uncertainty, residuals, temperature and concentration metadata, and the saved FT-ITC project.</p>
+            <a class="text-link" href="app-desktop.html">Explore the desktop analysis workspace <span>→</span></a>
+          </div>
+          <div class="note-box">
+            <h3>Keep the evidence together</h3>
+            <p>FT-ITC projects keep the analysis context available for review. Export vector-based publication and supporting figures only after checking that the labels, units, fit and residuals describe the same processed result.</p>
+            <p>Every screenshot in this tutorial is an interface illustration from the existing site, not a worked dataset or a numerical result.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-tint">
+        <div class="wrap">
+          <div class="section-heading narrow">
+            <p class="eyebrow">Troubleshooting</p>
+            <h2>When ITC data are difficult.</h2>
+            <p>Difficult data are often a reason to revisit the experiment and processing decisions, not simply to add a more complex model.</p>
+          </div>
+          <div class="numbered-list">
+            <article>
+              <span>01</span>
+              <div>
+                <h3>Baseline drift or slow recovery</h3>
+                <p>Recheck the baseline regions, injection spacing and equilibration behaviour. Compare alternative processing choices without hiding regions that carry useful information.</p>
+              </div>
+            </article>
+            <article>
+              <span>02</span>
+              <div>
+                <h3>Noisy, overlapping or irregular peaks</h3>
+                <p>Inspect whether integration windows are capturing the intended events. Exclude an injection only with a documented reason and consider whether the underlying experiment can support a quantitative fit.</p>
+              </div>
+            </article>
+            <article>
+              <span>03</span>
+              <div>
+                <h3>Poor saturation or unstable parameters</h3>
+                <p>Check concentration range, signal size, reference heat and model assumptions. A more complicated fit cannot recover information that the experiment did not measure.</p>
+              </div>
+            </article>
+            <article>
+              <span>04</span>
+              <div>
+                <h3>Systematic residuals</h3>
+                <p>Compare the residual pattern with the thermogram, integration choices and plausible alternative models before treating the fitted parameters as interpretable.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section wrap">
+        <div class="section-heading narrow">
+          <p class="eyebrow">Frequently asked questions</p>
+          <h2>Questions that come up in ITC data analysis.</h2>
+        </div>
+        <div class="numbered-list">
+          <article>
+            <span>01</span>
+            <div>
+              <h3>How do I analyse ITC data?</h3>
+              <p>Inspect the thermogram and experimental context, correct the baseline, integrate injection peaks, apply a justified background correction, fit a suitable binding model, review residuals and uncertainty, and export the result with its processing history.</p>
+            </div>
+          </article>
+          <article>
+            <span>02</span>
+            <div>
+              <h3>Why is ITC baseline correction important?</h3>
+              <p>The baseline is used to estimate the non-injection power underneath each peak. A different baseline can change the integrated heats and therefore the fitted isotherm, so the choice should be reviewed against the thermogram and documented.</p>
+            </div>
+          </article>
+          <article>
+            <span>03</span>
+            <div>
+              <h3>Do I need ITC buffer subtraction or dilution correction?</h3>
+              <p>Not every experiment needs the same correction. Use a matched reference when the experimental design supports the comparison, and distinguish measured background heat from an offset term included in a model.</p>
+            </div>
+          </article>
+          <article>
+            <span>04</span>
+            <div>
+              <h3>What should ITC residuals look like?</h3>
+              <p>Residuals should be inspected for structure rather than judged by a single threshold. Trends, curvature, clusters or a dominant injection can indicate that processing, model choice or experiment quality needs further review.</p>
+            </div>
+          </article>
+          <article>
+            <span>05</span>
+            <div>
+              <h3>Can FT-ITC Analysis open a MicroCal <code>.itc</code> file?</h3>
+              <p>FT-ITC Analysis supports the file workflows described on the <a class="text-link" href="workflow.html">Workflow page</a>. Confirm the specific input type and what it contains before assuming that every project file preserves every raw and processed object.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-tint">
+        <div class="wrap two-column">
+          <div>
+            <p class="eyebrow">Continue the workflow</p>
+            <h2>Start with one experiment. Then ask what belongs together.</h2>
+            <p>Use the workflow page for supported files, processing and export details. Use the desktop app to work through a local analysis, and move to advanced analysis when related experiments need to be interpreted together.</p>
+          </div>
+          <div class="note-box">
+            <h3>Further reading in FT-ITC Analysis</h3>
+            <a href="workflow.html">ITC workflow and supported file types <span>→</span></a>
+            <a href="app-desktop.html">Desktop app capabilities and downloads <span>→</span></a>
+            <a href="analysis.html">Global fitting and advanced ITC analysis <span>→</span></a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer wrap">
+      <a class="brand" href="index.html">
+        <img src="assets/icon-180.png" alt="">
+        <span>FT-ITC <em>Analysis</em></span>
+      </a>
+      <p>Transparent tools for calorimetry.</p>
+      <div>
+        <a href="app-desktop.html">Desktop app</a>
+        <a href="workflow.html">Workflow</a>
+        <a href="/how-to-analyze-itc-data">Tutorial</a>
+        <a href="analysis.html">Analysis</a>
+        <a href="workflow.html#project-resources">Resources</a>
+        <a data-link="repository" href="#">GitHub</a>
+        <a data-link="support" href="#">Support</a>
+      </div>
+      <small>© <span data-year></span> FT-ITC Analysis</small>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
