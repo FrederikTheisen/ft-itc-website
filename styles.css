@@ -692,6 +692,142 @@ figure figcaption {
   width: 100%;
 }
 
+.tutorial-contents {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 760px;
+  margin: 28px 0 0;
+}
+
+.tutorial-contents a {
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--ink-soft);
+  font-size: .76rem;
+  font-weight: 750;
+}
+
+.tutorial-contents a:hover {
+  border-color: #9dc8b8;
+  color: var(--ink);
+}
+
+.tutorial-feature-grid {
+  display: grid;
+  grid-template-columns: minmax(0,1.34fr) minmax(300px,.86fr);
+  align-items: center;
+  gap: 56px;
+}
+
+.tutorial-feature-grid p:not(.eyebrow) {
+  color: var(--ink-soft);
+}
+
+.tutorial-figure,.tutorial-showcase,.tutorial-dual-figure {
+  margin: 0;
+  padding: 12px;
+  border: 1px solid var(--line);
+  background: var(--white);
+  box-shadow: 0 14px 35px rgb(23 53 64 / .08);
+}
+
+.tutorial-crop {
+  overflow: hidden;
+  background: var(--paper);
+}
+
+.tutorial-crop img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tutorial-crop--start {
+  aspect-ratio: 5 / 3;
+}
+
+.tutorial-crop--start img {
+  transform: scale(2.05);
+  transform-origin: 70% 52%;
+}
+
+.tutorial-crop--interface {
+  aspect-ratio: 1.31 / 1;
+}
+
+.tutorial-crop--interface img {
+  transform: scale(1.12);
+  transform-origin: 66% 52%;
+}
+
+.tutorial-showcase {
+  max-width: 1060px;
+  margin: 48px auto 0;
+}
+
+.tutorial-showcase--start {
+  max-width: 680px;
+}
+
+.tutorial-showcase--uncertainty {
+  max-width: 1080px;
+}
+
+.tutorial-crop--uncertainty {
+  aspect-ratio: 1.55 / 1;
+}
+
+.tutorial-crop--uncertainty img {
+  transform: scale(1.16);
+  transform-origin: 20% 50%;
+}
+
+.tutorial-dual-figure {
+  max-width: 1060px;
+  margin: 48px auto 0;
+}
+
+.tutorial-dual-grid {
+  display: grid;
+  grid-template-columns: minmax(0,.94fr) minmax(0,1.06fr);
+  gap: 18px;
+}
+
+.tutorial-dual-panel {
+  min-width: 0;
+  padding: 9px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.tutorial-crop--baseline,.tutorial-crop--integration {
+  aspect-ratio: 1 / 1;
+}
+
+.tutorial-crop--baseline img {
+  transform: scale(1.02);
+  transform-origin: center 32%;
+}
+
+.tutorial-crop--integration img {
+  transform: scale(1.35);
+  transform-origin: 46% 52%;
+}
+
+.tutorial-dual-panel p {
+  margin: 11px 3px 2px;
+  color: var(--ink-soft);
+  font-size: .82rem;
+  line-height: 1.45;
+}
+
+.tutorial-dual-panel strong,figure figcaption strong {
+  color: var(--ink);
+}
+
 pre {
   max-width: 100%;
   margin: 18px 0 0;
@@ -954,6 +1090,21 @@ a:focus-visible,button:focus-visible {
   font-size: .84rem;
 }
 
+.resources-grid .capability-featured .text-link {
+  color: var(--mint);
+}
+
+.resources-grid .text-link + .text-link {
+  margin-left: 16px;
+}
+
+.resource-status {
+  margin-top: 17px !important;
+  color: #438d78 !important;
+  font-size: .78rem !important;
+  font-weight: 800;
+}
+
 .file-grid {
   display: grid;
   grid-template-columns: repeat(4,1fr);
@@ -1192,6 +1343,51 @@ a:focus-visible,button:focus-visible {
   gap: 42px;
 }
 
+  .tutorial-feature-grid,.tutorial-dual-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .tutorial-feature-grid {
+    gap: 42px;
+  }
+
+  .tutorial-showcase,.tutorial-dual-figure {
+    max-width: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .site-nav {
+    display: none;
+    position: absolute;
+    top: 74px;
+    right: 0;
+    left: 0;
+    padding: 15px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--white);
+    box-shadow: 0 14px 35px rgb(23 53 64 / .14);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .site-nav.open {
+    display: flex;
+  }
+
+  .site-nav > a:not(.button) {
+    padding: 8px;
+  }
+
+  .nav-download {
+    margin-top: 4px;
+  }
+
 .workflow-processing-showcase {
   margin-top: 56px;
 }
@@ -1392,9 +1588,17 @@ a:focus-visible,button:focus-visible {
   text-align: left;
 }
 
-.evidence-grid figure {
+  .evidence-grid figure {
   padding: 7px;
 }
+
+  .tutorial-figure,.tutorial-showcase,.tutorial-dual-figure {
+    padding: 7px;
+  }
+
+  .tutorial-dual-panel {
+    padding: 6px;
+  }
 
 }
 

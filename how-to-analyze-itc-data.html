@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,12 +13,13 @@
     <meta property="og:title" content="How to Analyze ITC Data | FT-ITC Tutorial">
     <meta property="og:description" content="A practical guide to isothermal titration calorimetry data analysis, from raw thermogram and baseline correction through fitting, residuals, uncertainty and export.">
     <meta property="og:url" content="https://ft-itc.org/how-to-analyze-itc-data">
-    <meta property="og:image" content="https://ft-itc.org/assets/thermogram-tpx-1.png">
-    <meta property="og:image:alt" content="ITC thermogram, fitted binding curve and residuals shown as an interface illustration">
+    <meta property="og:image" content="https://ft-itc.org/media/tutorials/processing-and-analysis/analysis-basic.png">
+    <meta property="og:image:alt" content="FT-ITC Analysis showing a binding-model fit, residuals and fit setup controls">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="How to Analyze ITC Data | FT-ITC Tutorial">
     <meta name="twitter:description" content="A practical guide to isothermal titration calorimetry data analysis, from raw thermogram and baseline correction through fitting, residuals, uncertainty and export.">
-    <meta name="twitter:image" content="https://ft-itc.org/assets/thermogram-tpx-1.png">
+    <meta name="twitter:image" content="https://ft-itc.org/media/tutorials/processing-and-analysis/analysis-basic.png">
+    <meta name="twitter:image:alt" content="FT-ITC Analysis showing a binding-model fit, residuals and fit setup controls">
     <link rel="icon" href="assets/icon-180.png" type="image/png">
     <link rel="apple-touch-icon" href="assets/icon-180.png">
     <link rel="stylesheet" href="styles.css">
@@ -33,6 +34,8 @@
             "name": "How to Analyze ITC Data | FT-ITC Tutorial",
             "description": "A practical guide to isothermal titration calorimetry data analysis, from raw thermogram and baseline correction through fitting, residuals, uncertainty and export.",
             "inLanguage": "en-GB",
+            "datePublished": "2026-08-20",
+            "dateModified": "2026-08-20",
             "isPartOf": {
               "@id": "https://ft-itc.org/#website"
             },
@@ -66,7 +69,7 @@
               "name": "FT-ITC Analysis",
               "url": "https://ft-itc.org/"
             },
-            "image": "https://ft-itc.org/assets/thermogram-tpx-1.png",
+            "image": "https://ft-itc.org/media/tutorials/processing-and-analysis/analysis-basic.png",
             "mainEntityOfPage": {
               "@id": "https://ft-itc.org/how-to-analyze-itc-data"
             },
@@ -106,9 +109,9 @@
       <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
         <a data-nav="app" href="app-desktop.html">Desktop app</a>
         <a data-link="webApp" href="https://app.ft-itc.org" target="_blank" rel="noreferrer">Web viewer ↗</a>
-        <a data-nav="resources" href="workflow.html">Workflow</a>
-        <a data-nav="tutorial" href="/how-to-analyze-itc-data">Tutorial</a>
-        <a data-nav="analysis" href="analysis.html">Analysis</a>
+        <a data-nav="workflow" href="workflow.html">Workflow</a>
+        <a data-nav="resources" href="resources.html">Resources</a>
+        <a data-nav="analysis" href="analysis.html">Advanced analysis</a>
         <a class="button button-primary nav-download" data-link="download" href="app-desktop.html#platforms">Download <span aria-hidden="true">↗</span></a>
       </nav>
     </header>
@@ -116,9 +119,17 @@
     <main>
       <section class="page-hero wrap">
         <p class="eyebrow">ITC data analysis tutorial</p>
-        <h1>How to Analyze ITC Data: From Thermogram to Binding Parameters</h1>
+        <h1>How to Analyze ITC Data: <span>From Thermogram to Binding Parameters</span></h1>
         <p class="lede">Isothermal titration calorimetry data analysis is a chain of decisions: inspect the raw thermogram, establish a defensible baseline, integrate injection peaks, account for matched background or dilution heat, fit a model that reflects the experiment, and review residuals and uncertainty before interpreting the parameters. This practical guide shows how to analyze ITC data in FT-ITC Analysis without treating a single curve as proof that the model or experiment is correct.</p>
         <p class="eyebrow">Frederik Theisen · FT-ITC Analysis</p>
+        <nav class="tutorial-contents" aria-label="On this page">
+          <a href="#import">Import</a>
+          <a href="#thermogram">Thermogram</a>
+          <a href="#baseline">Baseline &amp; integration</a>
+          <a href="#fitting">Fit</a>
+          <a href="#uncertainty">Uncertainty</a>
+          <a href="#reporting">Export</a>
+        </nav>
       </section>
 
       <section class="section section-tint">
@@ -169,7 +180,7 @@
         </div>
       </section>
 
-      <section class="section wrap">
+      <section id="import" class="section wrap">
         <div class="section-heading narrow">
           <p class="eyebrow">01 · Before processing</p>
           <h2>What ITC data contain: thermogram, heats and isotherm.</h2>
@@ -198,14 +209,22 @@
             </div>
           </article>
         </div>
-        <p class="lede">When you import an experiment, verify cell and syringe identities, sample and titrant concentrations, temperature, buffer and salt composition, injection volume and spacing, units, and whether a matched reference or dilution measurement exists. FT-ITC Analysis supports several common input and export workflows; see the <a class="text-link" href="workflow.html">complete ITC workflow and supported file types</a> before interpreting a file.</p>
+        <p class="lede">When you import an experiment, verify cell and syringe identities, sample and titrant concentrations, temperature, buffer and salt composition, injection volume and spacing, units, and whether a matched reference or dilution measurement exists. FT-ITC Analysis can open MicroCal raw <code>.itc</code> files and TA Instruments / NanoAnalyze <code>.TA</code> exports, extract available integrated data from PEAQ-ITC <code>.apj</code> projects, and fit compatible integrated <code>.dat</code>, <code>.aff</code> and <code>.dh</code> data. See the <a class="text-link" href="workflow.html">complete ITC workflow and supported file types</a> before interpreting a file.</p>
+        <figure class="tutorial-showcase tutorial-showcase--start">
+          <div class="tutorial-crop tutorial-crop--start">
+            <img src="media/tutorials/processing-and-analysis/avalonia-startscreen.png" alt="FT-ITC Analysis welcome screen with an Open File button" width="2224" height="1480" loading="lazy" decoding="async">
+          </div>
+          <figcaption>Start with <strong>Open File…</strong>, then check the experiment context before changing the data.</figcaption>
+        </figure>
       </section>
 
-      <section class="section section-tint">
-        <div class="wrap evidence-grid">
-          <figure class="workflow-screenshot">
-            <img src="media/avalonia/AdvancedProcessing.png" alt="FT-ITC Analysis advanced processing interface showing a thermogram, baseline and integration controls" loading="lazy" decoding="async">
-            <figcaption>Interface illustration, not a worked dataset: review baseline and integration controls alongside the thermogram.</figcaption>
+      <section id="thermogram" class="section section-tint">
+        <div class="wrap tutorial-feature-grid">
+          <figure class="tutorial-figure tutorial-figure--processing">
+            <div class="tutorial-crop tutorial-crop--interface">
+              <img src="media/tutorials/processing-and-analysis/avalonia-processing.png" alt="FT-ITC Analysis Process Data workspace with a black thermogram trace, red baseline and processing controls" width="2576" height="1666" loading="lazy" decoding="async">
+            </div>
+            <figcaption>In the Process Data workspace, read the black thermogram trace, red baseline and processing controls together.</figcaption>
           </figure>
           <div>
             <p class="eyebrow">02 · Thermogram processing</p>
@@ -217,7 +236,7 @@
         </div>
       </section>
 
-      <section class="section wrap">
+      <section id="baseline" class="section wrap">
         <div class="section-heading narrow">
           <p class="eyebrow">03 · Baseline and integration</p>
           <h2>Apply ITC baseline correction and injection peak integration.</h2>
@@ -247,6 +266,23 @@
           </article>
         </div>
         <p class="lede">There is no automatic baseline that is correct for every experiment. Compare the resulting heat series with the thermogram and keep a record of excluded injections, baseline choices and integration settings before moving to binding-model fitting.</p>
+        <figure class="tutorial-dual-figure">
+          <div class="tutorial-dual-grid">
+            <div class="tutorial-dual-panel tutorial-dual-panel--baseline">
+              <div class="tutorial-crop tutorial-crop--baseline">
+                <img src="media/tutorials/processing-and-analysis/processing-baseline-linear.png" alt="Close view of an ITC thermogram with a red baseline and editable control points" width="1010" height="1190" loading="lazy" decoding="async">
+              </div>
+              <p><strong>Baseline:</strong> the red line and control points make the local baseline assumption visible.</p>
+            </div>
+            <div class="tutorial-dual-panel tutorial-dual-panel--integration">
+              <div class="tutorial-crop tutorial-crop--integration">
+                <img src="media/tutorials/processing-and-analysis/avalonia-processing-zoom.png" alt="Selected ITC injection with a blue integration window and calculated injection heat" width="2576" height="1666" loading="lazy" decoding="async">
+              </div>
+              <p><strong>Integration:</strong> the blue window identifies the selected injection and the resulting heat can be inspected directly.</p>
+            </div>
+          </div>
+          <figcaption>Use the red baseline and blue integration interval as checks on the processing decision—not as decoration for a preferred isotherm.</figcaption>
+        </figure>
       </section>
 
       <section class="section section-tint">
@@ -266,11 +302,13 @@
         </div>
       </section>
 
-      <section class="section">
-        <div class="wrap evidence-grid">
-          <figure class="workflow-screenshot">
-            <img src="media/avalonia/desktop-analyze-data-focus.png" alt="FT-ITC Analysis interface illustration showing a fitted binding isotherm, residuals and fit controls" loading="lazy" decoding="async">
-            <figcaption>Interface illustration, not a worked dataset: inspect the fitted isotherm, residuals and uncertainty settings together.</figcaption>
+      <section id="fitting" class="section">
+        <div class="wrap tutorial-feature-grid">
+          <figure class="tutorial-figure tutorial-figure--fit">
+            <div class="tutorial-crop tutorial-crop--interface">
+              <img src="media/tutorials/processing-and-analysis/analysis-basic.png" alt="FT-ITC Analysis Analyze Data workspace showing a One-Set-Of-Sites fit, residuals and Bootstrap residuals settings" width="2576" height="1666" loading="lazy" decoding="async">
+            </div>
+            <figcaption>The fit view keeps the selected model, isotherm, residuals, weighting and error method in the same evidence chain.</figcaption>
           </figure>
           <div>
             <p class="eyebrow">05 · Binding-model fitting</p>
@@ -282,7 +320,7 @@
         </div>
       </section>
 
-      <section class="section section-tint">
+      <section id="uncertainty" class="section section-tint">
         <div class="wrap">
           <div class="section-heading narrow">
             <p class="eyebrow">06 · Fit quality and uncertainty</p>
@@ -312,23 +350,37 @@
               </div>
             </article>
           </div>
+          <figure class="tutorial-showcase tutorial-showcase--uncertainty">
+            <div class="tutorial-crop tutorial-crop--uncertainty">
+              <img src="media/tutorials/processing-and-analysis/analysis-result.png" alt="FT-ITC Analysis fitted-result view showing parameter intervals, residuals and BootstrapResiduals completion status" width="2576" height="1666" loading="lazy" decoding="async">
+            </div>
+            <figcaption>Review fitted values and intervals with the residual plot and completed bootstrap-residual calculation, rather than interpreting one reported number in isolation.</figcaption>
+          </figure>
         </div>
       </section>
 
-      <section class="section">
-        <div class="wrap two-column">
-          <div>
-            <p class="eyebrow">07 · Reporting</p>
-            <h2>Export a traceable ITC result.</h2>
-            <p>A publication figure should make the relationship between the raw signal, integrated heats, fitted model and residuals legible. Do not export only a final parameter table when the processing choices determine how that table was produced.</p>
-            <p>Retain the original input file, processing settings, baseline and integration decisions, any reference or dilution correction, model name and assumptions, parameter estimates, uncertainty, residuals, temperature and concentration metadata, and the saved FT-ITC project.</p>
-            <a class="text-link" href="app-desktop.html">Explore the desktop analysis workspace <span>→</span></a>
+      <section id="reporting" class="section">
+        <div class="wrap">
+          <div class="two-column">
+            <div>
+              <p class="eyebrow">07 · Reporting</p>
+              <h2>Export a traceable ITC result.</h2>
+              <p>A publication figure should make the relationship between the raw signal, integrated heats, fitted model and residuals legible. Do not export only a final parameter table when the processing choices determine how that table was produced.</p>
+              <p>Retain the original input file, processing settings, baseline and integration decisions, any reference or dilution correction, model name and assumptions, parameter estimates, uncertainty, residuals, temperature and concentration metadata, and the saved FT-ITC project.</p>
+              <a class="text-link" href="app-desktop.html">Explore the desktop analysis workspace <span>→</span></a>
+            </div>
+            <div class="note-box">
+              <h3>Keep the evidence together</h3>
+              <p>FT-ITC projects keep the analysis context available for review. Export vector-based publication and supporting figures only after checking that the labels, units, fit and residuals describe the same processed result.</p>
+              <p>The screenshots use an illustrative example project. Treat its visible numerical values as interface context, not as a result to reproduce.</p>
+            </div>
           </div>
-          <div class="note-box">
-            <h3>Keep the evidence together</h3>
-            <p>FT-ITC projects keep the analysis context available for review. Export vector-based publication and supporting figures only after checking that the labels, units, fit and residuals describe the same processed result.</p>
-            <p>Every screenshot in this tutorial is an interface illustration from the existing site, not a worked dataset or a numerical result.</p>
-          </div>
+          <figure class="tutorial-showcase tutorial-showcase--export">
+            <div class="tutorial-crop tutorial-crop--interface">
+              <img src="media/tutorials/processing-and-analysis/finalfigure.png" alt="FT-ITC Analysis Final Figure workspace showing a thermogram, fitted binding isotherm, residuals and PDF export controls" width="2576" height="1666" loading="lazy" decoding="async">
+            </div>
+            <figcaption>Before selecting <strong>Export PDF</strong>, make sure the thermogram, fitted isotherm, residuals, labels and parameter box all describe the same processed result.</figcaption>
+          </figure>
         </div>
       </section>
 
@@ -409,8 +461,8 @@
           <article>
             <span>05</span>
             <div>
-              <h3>Can FT-ITC Analysis open a MicroCal <code>.itc</code> file?</h3>
-              <p>FT-ITC Analysis supports the file workflows described on the <a class="text-link" href="workflow.html">Workflow page</a>. Confirm the specific input type and what it contains before assuming that every project file preserves every raw and processed object.</p>
+              <h3>Which ITC file formats can FT-ITC Analysis open?</h3>
+              <p>FT-ITC Analysis opens MicroCal raw <code>.itc</code> files and TA Instruments / NanoAnalyze <code>.TA</code> exports. It can extract available integrated data from PEAQ-ITC <code>.apj</code> projects, work with compatible integrated <code>.dat</code>, <code>.aff</code> and <code>.dh</code> data, and reopen FT-ITC <code>.ftxtc</code> projects. See the <a class="text-link" href="workflow.html">Workflow page</a> for the current compatibility details.</p>
             </div>
           </article>
         </div>
@@ -442,9 +494,8 @@
       <div>
         <a href="app-desktop.html">Desktop app</a>
         <a href="workflow.html">Workflow</a>
-        <a href="/how-to-analyze-itc-data">Tutorial</a>
-        <a href="analysis.html">Analysis</a>
-        <a href="workflow.html#project-resources">Resources</a>
+        <a href="resources.html">Resources</a>
+        <a href="analysis.html">Advanced analysis</a>
         <a data-link="repository" href="#">GitHub</a>
         <a data-link="support" href="#">Support</a>
       </div>
