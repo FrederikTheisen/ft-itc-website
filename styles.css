@@ -1090,14 +1090,6 @@ a:focus-visible,button:focus-visible {
   font-size: .84rem;
 }
 
-.resources-grid .capability-featured .text-link {
-  color: var(--mint);
-}
-
-.resources-grid .text-link + .text-link {
-  margin-left: 16px;
-}
-
 .resource-status {
   margin-top: 17px !important;
   color: #438d78 !important;
