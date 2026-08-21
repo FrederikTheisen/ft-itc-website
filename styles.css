@@ -667,19 +667,18 @@ figure figcaption {
   color: var(--ink-soft);
 }
 
-.workflow-processing-showcase {
+.workflow-processing-showcase,.final-figure-showcase {
   display: grid;
   grid-template-columns: .8fr 1.2fr;
   align-items: center;
   gap: 58px;
-  margin-top: 72px;
 }
 
-.workflow-processing-showcase p:not(.eyebrow) {
+.workflow-processing-showcase p:not(.eyebrow),.final-figure-showcase p:not(.eyebrow) {
   color: var(--ink-soft);
 }
 
-.workflow-screenshot {
+.workflow-screenshot,.final-figure-screenshot {
   min-width: 0;
   margin: 0;
   padding: 10px;
@@ -688,7 +687,7 @@ figure figcaption {
   box-shadow: 0 14px 35px rgb(23 53 64 / .08);
 }
 
-.workflow-screenshot img {
+.workflow-screenshot img,.final-figure-screenshot img {
   width: 100%;
 }
 
@@ -1022,6 +1021,10 @@ a:focus-visible,button:focus-visible {
   align-items: start;
 }
 
+.local-first h2 span {
+  color: #478f7a;
+}
+
 .note-box h3 {
   margin-bottom: 8px;
 }
@@ -1164,6 +1167,10 @@ a:focus-visible,button:focus-visible {
   grid-column: span 2;
   background: var(--navy);
   color: #fff;
+}
+
+.capability-grid--compact .capability-featured {
+  grid-column: auto;
 }
 
 .capability-grid span {
@@ -1437,7 +1444,7 @@ a:focus-visible,button:focus-visible {
 }
 
 @media (max-width:850px) {
-  .hero,.evidence-grid,.viewer-panel,.platform-intro,.download-grid,.method-layout,.two-column,.install-footer-grid,.linux-hero,.macos-install-layout,.macos-analysis-showcase,.workflow-processing-showcase,.support-contact-grid {
+  .hero,.evidence-grid,.viewer-panel,.platform-intro,.download-grid,.method-layout,.two-column,.install-footer-grid,.linux-hero,.macos-install-layout,.macos-analysis-showcase,.workflow-processing-showcase,.final-figure-showcase,.support-contact-grid {
   grid-template-columns: 1fr;
   gap: 42px;
 }
@@ -1486,10 +1493,6 @@ a:focus-visible,button:focus-visible {
   .nav-download {
     margin-top: 4px;
   }
-
-.workflow-processing-showcase {
-  margin-top: 56px;
-}
 
 .macos-install-figure {
   position: static;
