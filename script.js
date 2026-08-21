@@ -3,7 +3,8 @@ const site = {
   webApp: 'https://app.ft-itc.org',
   repository: 'https://github.com/FrederikTheisen/FT-ITC-Analysis',
   issues: 'https://github.com/FrederikTheisen/FT-ITC-Analysis/issues',
-  support: 'mailto:support@ft-itc.org'
+  support: 'support.html',
+  supportEmail: 'mailto:support@ft-itc.org'
 };
 
 document.querySelectorAll('[data-link]').forEach((link) => {

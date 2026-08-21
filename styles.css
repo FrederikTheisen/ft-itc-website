@@ -1035,6 +1035,113 @@ a:focus-visible,button:focus-visible {
   margin-top: 10px;
 }
 
+.support-contact-grid {
+  display: grid;
+  grid-template-columns: 1.08fr .92fr;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.support-contact-card {
+  padding: 32px;
+  border-radius: 8px;
+  background: var(--navy);
+  color: #fff;
+}
+
+.support-contact-card .eyebrow {
+  color: var(--mint);
+}
+
+.support-contact-card h2 {
+  max-width: 500px;
+  margin-bottom: 13px;
+  font-size: clamp(2rem,3.2vw,3.1rem);
+}
+
+.support-contact-card p:not(.eyebrow) {
+  max-width: 540px;
+  color: rgb(255 255 255 / .7);
+}
+
+.support-contact-card .button {
+  margin-top: 10px;
+}
+
+.check-list {
+  display: grid;
+  gap: 11px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--ink-soft);
+  font-size: .92rem;
+}
+
+.check-list li {
+  padding-left: 22px;
+  position: relative;
+}
+
+.check-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #438d78;
+  font-weight: 850;
+}
+
+.faq-list {
+  border-top: 1px solid var(--line);
+}
+
+.faq-list details {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq-list summary {
+  position: relative;
+  padding: 23px 48px 23px 0;
+  cursor: pointer;
+  list-style: none;
+  font-size: 1.02rem;
+  font-weight: 800;
+}
+
+.faq-list summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-list summary::after {
+  content: "+";
+  position: absolute;
+  top: 19px;
+  right: 4px;
+  color: #438d78;
+  font-size: 1.45rem;
+  font-weight: 500;
+}
+
+.faq-list details[open] summary::after {
+  content: "–";
+}
+
+.faq-list details > div {
+  max-width: 760px;
+  padding: 0 48px 22px 0;
+}
+
+.faq-list p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: .94rem;
+}
+
+.faq-list a {
+  color: #28755f;
+  font-weight: 800;
+}
+
 .app-capabilities .section-heading {
   margin-bottom: 36px;
 }
@@ -1338,7 +1445,7 @@ a:focus-visible,button:focus-visible {
 }
 
 @media (max-width:850px) {
-  .hero,.evidence-grid,.viewer-panel,.platform-intro,.download-grid,.method-layout,.two-column,.install-footer-grid,.linux-hero,.macos-install-layout,.macos-analysis-showcase,.workflow-processing-showcase {
+  .hero,.evidence-grid,.viewer-panel,.platform-intro,.download-grid,.method-layout,.two-column,.install-footer-grid,.linux-hero,.macos-install-layout,.macos-analysis-showcase,.workflow-processing-showcase,.support-contact-grid {
   grid-template-columns: 1fr;
   gap: 42px;
 }
