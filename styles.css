@@ -1835,6 +1835,20 @@ a:focus-visible,button:focus-visible {
 .manual-callout.callout-interpretation { border-left-color: var(--sun); background: #fff7e9; }
 .manual-callout.callout-recommendation { border-left-color: #438d78; }
 .manual-callout.callout-platform-note { border-left-color: #6d9ac0; background: #edf5fb; }
+.manual-callout.callout-calculation { border-left-color: #725aa6; background: #f4f0fb; }
+
+.manual-equations { overflow-x: auto; margin-top: 8px; padding-bottom: 2px; }
+.manual-equation {
+  min-width: max-content;
+  margin: 7px 0;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.04rem;
+  line-height: 1.65;
+}
+.manual-equation sub,
+.manual-equation sup { line-height: 0; }
+.manual-equation-note { margin: 10px 0 0; font-size: .9rem; line-height: 1.55; }
 
 .manual-figure {
   margin: 28px 0 26px;
