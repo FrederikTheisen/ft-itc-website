@@ -23,11 +23,11 @@
   </header>
   <main class="manual-page wrap">
     <p class="manual-kicker">FT-ITC Analysis 1.4.3 user manual</p>
-    <nav class="manual-chapters" aria-label="Manual chapters"><a class="manual-nav-link" href="/manual"><span>01</span> FT-ITC Analysis user manual</a><a class="manual-nav-link" href="/manual/quick-start"><span>02</span> Quick start</a><a class="manual-nav-link is-current" href="/manual/installation-files-projects" aria-current="page"><span>03</span> Installation, files, and projects</a><a class="manual-nav-link" href="/manual/workspace-experiments"><span>04</span> Workspace and experiment management</a><a class="manual-nav-link" href="/manual/processing-thermograms"><span>05</span> Processing thermograms</a><a class="manual-nav-link" href="/manual/fitting-models"><span>06</span> Fitting models</a><a class="manual-nav-link" href="/manual/multiple-experiments"><span>07</span> Multiple-experiment analysis</a><a class="manual-nav-link" href="/manual/results-advanced-analysis"><span>08</span> Results and advanced analyses</a><a class="manual-nav-link" href="/manual/figures-printing-export"><span>09</span> Figures, printing, and export</a><a class="manual-nav-link" href="/manual/additional-tools"><span>10</span> Additional tools</a><a class="manual-nav-link" href="/manual/preferences-troubleshooting"><span>11</span> Preferences and troubleshooting</a><a class="manual-nav-link" href="/manual/reference"><span>12</span> Reference</a></nav>
+    <nav class="manual-chapters" aria-label="Manual chapters"><a class="manual-nav-link" href="/manual"><span>01</span> FT-ITC Analysis user manual</a><a class="manual-nav-link" href="/manual/quick-start"><span>02</span> Quick start</a><a class="manual-nav-link is-current" href="/manual/installation-files-projects" aria-current="page"><span>03</span> Installation, files, and projects</a><a class="manual-nav-link" href="/manual/workspace-experiments"><span>04</span> Workspace, experiments, and results</a><a class="manual-nav-link" href="/manual/processing-thermograms"><span>05</span> Processing thermograms</a><a class="manual-nav-link" href="/manual/fitting-models"><span>06</span> Fitting models</a><a class="manual-nav-link" href="/manual/multiple-experiments"><span>07</span> Multiple-experiment analysis</a><a class="manual-nav-link" href="/manual/results-advanced-analysis"><span>08</span> Results and advanced analyses</a><a class="manual-nav-link" href="/manual/figures-printing-export"><span>09</span> Figures, printing, and export</a><a class="manual-nav-link" href="/manual/additional-tools"><span>10</span> Additional tools</a><a class="manual-nav-link" href="/manual/preferences-troubleshooting"><span>11</span> Preferences and troubleshooting</a><a class="manual-nav-link" href="/manual/reference"><span>12</span> Reference</a></nav>
     <article class="manual-content">
       <h1 id="installation-files-and-projects">Installation, files, and projects</h1><p class="manual-summary">Install FT-ITC Analysis, open supported data, save portable projects, and use autosave or recovery safely.</p><p class="manual-freshness">Last verified: <time datetime="2026-08-23">2026-08-23</time></p>
 <h2 id="install-the-application">Install the application</h2>
-<p>Download an available release for your operating system from the <a href="https://github.com/FrederikTheisen/FT-ITC-Analysis/releases" target="_blank" rel="noreferrer">FT-ITC Analysis releases</a> page. Verify that the file came from the project release channel before accepting an operating-system security prompt. At this manual's verification date, public packages include a macOS disk image, a Windows x64 executable installer, and a Linux AMD64 Debian package.</p>
+<p>Use the <a href="https://github.com/FrederikTheisen/FT-ITC-Analysis/releases" target="_blank" rel="noreferrer">FT-ITC Analysis releases</a> page for the current packages. Verify that the file came from the project release channel before accepting an operating-system security prompt. The examples below describe package types available at this manual's verification date and may change between releases.</p>
 <h3 id="macos">macOS</h3>
 <p>Open the DMG, drag <strong>FT-ITC Analysis</strong> to <strong>Applications</strong>, and eject the disk image. If macOS blocks a verified download, review it in <strong>System Settings &gt; Privacy &amp; Security</strong> and use <strong>Open Anyway</strong> only after confirming its source.</p>
 <h3 id="windows">Windows</h3>
@@ -40,31 +40,27 @@
 <th scope="col">Extension</th>
 <th scope="col">Source</th>
 <th scope="col">Contains thermogram?</th>
-<th scope="col">Typical next step</th>
 </tr></thead><tbody>
-<tr><td><code>.itc</code></td><td>MicroCal-style raw data</td><td>Yes</td><td>Check details, then process</td></tr>
-<tr><td><code>.vpitc</code></td><td>VP-ITC data</td><td>Yes</td><td>Check details, then process</td></tr>
-<tr><td><code>.ta</code></td><td>TA Instruments/NanoAnalyze export</td><td>Usually</td><td>Check imported metadata</td></tr>
-<tr><td><code>.apj</code></td><td>PEAQ-ITC project export</td><td>As supported by import</td><td>Check imported experiment data</td></tr>
-<tr><td><code>.dat</code></td><td>Integrated heats</td><td>No</td><td>Check details, then fit</td></tr>
-<tr><td><code>.aff</code></td><td>Integrated heats</td><td>No</td><td>Check details, then fit</td></tr>
-<tr><td><code>.dh</code></td><td>Integrated heats</td><td>No</td><td>Check details, then fit</td></tr>
-<tr><td><code>.ftxtc</code></td><td>Current FT-ITC project</td><td>Stored project state</td><td>Continue the saved workflow</td></tr>
-<tr><td><code>.ftitc</code></td><td>Legacy FT-ITC project</td><td>Stored legacy state</td><td>Import, then save as <code>.ftxtc</code></td></tr>
+<tr><td><code>.itc</code></td><td>MicroCal-style raw data</td><td>Yes</td></tr>
+<tr><td><code>.ta</code></td><td>TA Instruments/NanoAnalyze export</td><td>Usually</td></tr>
+<tr><td><code>.apj</code></td><td>PEAQ-ITC project export</td><td>As supported by import</td></tr>
+<tr><td><code>.dat</code></td><td>Integrated heats</td><td>No</td></tr>
+<tr><td><code>.aff</code></td><td>Integrated heats</td><td>No</td></tr>
+<tr><td><code>.dh</code></td><td>Integrated heats</td><td>No</td></tr>
+<tr><td><code>.ftxtc</code></td><td>Current FT-ITC project</td><td>Stored project state</td></tr>
+<tr><td><code>.ftitc</code></td><td>Legacy FT-ITC project</td><td>Stored legacy state</td></tr>
 </tbody></table></div>
 <p>PEAQ project imports are converted into experiment information understood by FT-ITC Analysis. Content that is specific to the source application is not automatically equivalent to a native FT-ITC project.</p>
 <h2 id="open-files">Open files</h2>
 <p>Choose <strong>File &gt; Open...</strong>, use the welcome-screen action, or drag files into the application. Multiple raw or integrated files can be opened together.</p>
 <p>When you open an FT-ITC project while other data is loaded, choose whether to replace the current document or append the project's contents. Replace is appropriate when the opened project should become the complete working document. Append is useful for bringing experiments or results into an existing comparison project.</p>
+<p>Legacy <code>.ftitc</code> projects can be opened like other supported files; see <a href="/manual/preferences-troubleshooting">Preferences and troubleshooting</a> for compatibility details before saving them as current <code>.ftxtc</code> projects.</p>
 <aside class="manual-callout callout-caution" role="note" aria-label="Caution"><strong>Caution:</strong> Appending can create similarly named experiments or results. Confirm the data list and details before fitting or exporting.</aside>
 <h2 id="save-projects">Save projects</h2>
 <p>Choose <strong>File &gt; Save</strong> to update a named current project, or <strong>File &gt; Save As...</strong> to choose a new name or location. Use the current <code>.ftxtc</code> format for ongoing work.</p>
 <p>An <code>.ftxtc</code> project preserves the data and metadata needed to continue analysis, including thermograms where imported, concentrations and uncertainties, attributes and comments, injection inclusion, processing state, fit solutions, Analysis Results, and completed derived analyses. The package is portable and does not depend on the original raw-file path for ordinary reopening.</p>
-<p><strong>Save Selected...</strong> writes selected project content when you need a smaller handoff. Confirm the selection before saving and reopen the result if the subset is critical.</p>
+<p><strong>Save Selected...</strong> writes selected project content when you need a smaller handoff. Confirm the selection before saving and reopen the result if the subset is critical. Saving the selected experiments saves only the experiment with any solution. Saving the selected Analysis Results saves the result along with the involved experiments.</p>
 <aside class="manual-callout callout-recommendation" role="note" aria-label="Recommendation"><strong>Recommendation:</strong> Retain immutable copies of original instrument files, the named <code>.ftxtc</code> analysis project, and exported publication output. They serve different record-keeping purposes.</aside>
-<h2 id="import-a-legacy-project">Import a legacy project</h2>
-<p>Open <code>.ftitc</code> like any other supported file. Review the imported experiments, processing, and results, then choose <strong>Save As...</strong>. The saved file uses <code>.ftxtc</code>; the legacy source is not overwritten unless you deliberately choose its path and confirm an overwrite.</p>
-<p>Some historical state can require recovery or review because current validation is stricter. Treat an imported legacy result as something to inspect, not automatically as a newly verified analysis.</p>
 <h2 id="autosave-and-recovery">Autosave and recovery</h2>
 <p>Autosave behavior is configured in <strong>Preferences...</strong>. When recovery data is available after an interrupted session, the application offers a recovery path. Open the recovered document, inspect the data list and recent changes, then save it under a deliberate <code>.ftxtc</code> name.</p>
 <p>Recovery mode is designed to salvage valid project components when possible. A recovered project can be detached from its former save location and marked as changed. Use <strong>Save As...</strong> rather than assuming the damaged or interrupted file was repaired in place.</p>
@@ -73,10 +69,10 @@
 <p>Removing an experiment or Analysis Result changes only the open document; it does not delete the original raw file. <strong>Remove All</strong> clears the current document after confirmation. <strong>Clear Processing</strong> discards processing state for the selected experiment, and <strong>Clear Results</strong> removes dependent solution state. Use these commands only when you intend to repeat that work.</p>
 <p>Saving after removal makes the removal part of the saved project. Use <strong>Save As...</strong> first if you want to preserve the original project version.</p>
 <h2 id="privacy-and-online-checks">Privacy and online checks</h2>
-<p>Analysis is performed locally. The optional <strong>Check for updates and online resources on launch</strong> preference allows version and citation metadata checks; it does not upload experiment data as part of ordinary analysis. Disable the setting when launch-time network access is undesirable. A failed or disabled check does not prevent local processing, fitting, or saving.</p>
+<p>Analysis and the surrounding workflow—including saving, recovery, export, and printing—run locally. The application has no online analysis features. If <strong>Check for updates and online resources on launch</strong> is enabled, it only checks two repository files for version and citation updates; it does not upload experiment data. Disable the setting when launch-time network access is undesirable. A failed or disabled check does not prevent local processing, fitting, or saving.</p>
 <h2 id="update-safely">Update safely</h2>
 <p>Before installing a new application version, save important projects and retain the current installer when reproducibility policy requires it. After updating, open a copy of a representative project, confirm processing and results, and save only when you intend the project to be written by the new version.</p>
-      <nav class="manual-pager" aria-label="Adjacent manual chapters"><a class="manual-pager-prev" href="/manual/quick-start"><span>Previous</span>Quick start</a><a class="manual-pager-next" href="/manual/workspace-experiments"><span>Next</span>Workspace and experiment management</a></nav>
+      <nav class="manual-pager" aria-label="Adjacent manual chapters"><a class="manual-pager-prev" href="/manual/quick-start"><span>Previous</span>Quick start</a><a class="manual-pager-next" href="/manual/workspace-experiments"><span>Next</span>Workspace, experiments, and results</a></nav>
     </article>
   </main>
   <footer class="footer wrap"><a class="brand" href="/"><img src="/assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a><p>Transparent tools for calorimetry.</p><div><a href="/resources.html">Resources</a><a data-link="repository" href="#">GitHub</a><a data-link="support" href="/support.html">Support</a></div><small>© <span data-year></span> FT-ITC Analysis</small></footer>
