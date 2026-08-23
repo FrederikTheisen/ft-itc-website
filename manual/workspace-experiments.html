@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Workspace and experiment management | FT-ITC Analysis User Manual</title>
+  <meta name="description" content="Navigate the workspace, manage experiments and results, edit details, and keep project selections and metadata consistent.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#173540">
+  <link rel="canonical" href="https://ft-itc.org/manual/workspace-experiments">
+  <link rel="icon" href="/assets/icon-180.png" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/icon-180.png">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="manual" data-manual-slug="workspace-experiments">
+  <header class="topbar wrap">
+    <a class="brand" href="/"><img src="/assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+      <a data-nav="app" href="/app-desktop.html">Desktop app</a><a data-link="webApp" href="https://app.ft-itc.org" target="_blank" rel="noreferrer">Web viewer ↗</a><a data-nav="resources" href="/resources.html">Resources</a><a data-nav="analysis" href="/analysis.html">Advanced analysis</a><a data-nav="manual" href="/manual" aria-current="page">Manual</a>
+      <a class="button button-primary nav-download" data-link="download" href="/app-desktop.html#platforms">Download <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+  <main class="manual-page wrap">
+    <p class="manual-kicker">FT-ITC Analysis 1.4.3 user manual</p>
+    <nav class="manual-chapters" aria-label="Manual chapters"><a class="manual-nav-link" href="/manual"><span>01</span> FT-ITC Analysis user manual</a><a class="manual-nav-link" href="/manual/quick-start"><span>02</span> Quick start</a><a class="manual-nav-link" href="/manual/installation-files-projects"><span>03</span> Installation, files, and projects</a><a class="manual-nav-link is-current" href="/manual/workspace-experiments" aria-current="page"><span>04</span> Workspace and experiment management</a><a class="manual-nav-link" href="/manual/processing-thermograms"><span>05</span> Processing thermograms</a><a class="manual-nav-link" href="/manual/fitting-models"><span>06</span> Fitting models</a><a class="manual-nav-link" href="/manual/multiple-experiments"><span>07</span> Multiple-experiment analysis</a><a class="manual-nav-link" href="/manual/results-advanced-analysis"><span>08</span> Results and advanced analyses</a><a class="manual-nav-link" href="/manual/figures-printing-export"><span>09</span> Figures, printing, and export</a><a class="manual-nav-link" href="/manual/additional-tools"><span>10</span> Additional tools</a><a class="manual-nav-link" href="/manual/preferences-troubleshooting"><span>11</span> Preferences and troubleshooting</a><a class="manual-nav-link" href="/manual/reference"><span>12</span> Reference</a></nav>
+    <article class="manual-content">
+      <h1 id="workspace-and-experiment-management">Workspace and experiment management</h1><p class="manual-summary">Navigate the workspace, manage experiments and results, edit details, and keep project selections and metadata consistent.</p><p class="manual-freshness">Last verified: <time datetime="2026-08-22">2026-08-22</time></p>
+<h2 id="understand-the-data-list">Understand the data list</h2>
+<p>The data list is the project navigator. It contains experiments and completed Analysis Results. Selecting an experiment opens experiment views; selecting a result opens its combined summary and member fits.</p>
+<p>The enabled state controls whether an experiment participates in operations that use active datasets. Enable, disable, or invert active selections from the data commands. Inclusion of an individual injection is separate from inclusion of its experiment.</p>
+<aside class="manual-callout callout-note" role="note" aria-label="Note"><strong>Note:</strong> “Selected” means the item currently shown. “Enabled” or “active” means an item is eligible for a multi-item operation. Check both concepts before a global fit, merge, subtraction, or batch export.</aside>
+<h2 id="navigate-an-experiment">Navigate an experiment</h2>
+<p>For an experiment, use:</p>
+<ul class="manual-list"><li><strong>Overview</strong> to inspect origin, instrument information, duration, temperature, concentrations, and analysis state.</li><li><strong>Process Data</strong> to define the baseline and integration regions for a thermogram.</li><li><strong>Analyze Data</strong> to configure and run a single- or multiple-experiment fit.</li><li><strong>Final Figure</strong> to prepare the current experiment and result for presentation.</li></ul>
+<p>The available processing controls depend on whether the import contains a thermogram. Result-dependent controls remain unavailable until a compatible fit exists.</p>
+<h2 id="review-and-edit-details">Review and edit details</h2>
+<p>Choose <strong>Details...</strong> for the selected experiment. The details view can include:</p>
+<ul class="manual-list"><li>experiment name, comments, date, temperature, and instrument metadata;</li><li>cell and syringe concentrations;</li><li>concentration uncertainties;</li><li>attributes such as buffer identity, salt, ionic strength, competitor concentration, or prebound species.</li></ul>
+<p>Use the units shown by the control. Confirm changes before fitting because concentration and temperature values enter the model, while attributes can determine constraints and advanced-analysis availability.</p>
+<aside class="manual-callout callout-recommendation" role="note" aria-label="Recommendation"><strong>Recommendation:</strong> Record why a value was changed in the experiment comment or in the laboratory record. The application stores the value, but it cannot establish the provenance of a correction.</aside>
+<p>Merged tandem experiments store calculated starting concentrations for each segment. Edit merge inputs or recreate the merge when those values need correction; do not treat segment bookkeeping as an ordinary single-experiment concentration field.</p>
+<h2 id="duplicate-an-experiment">Duplicate an experiment</h2>
+<p>Use <strong>Duplicate</strong> when you want to compare processing or fitting choices without reimporting the raw file.</p>
+<ol class="manual-list"><li>Select the source experiment.</li><li>Choose the duplicate command.</li><li>Rename or comment the copy so its purpose is clear.</li><li>Change only the intended processing or analysis choices.</li></ol>
+<p>The duplicate belongs to the same project. It is not a second independent raw measurement and should not be counted as a biological or technical replicate.</p>
+<h2 id="remove-experiments-and-results">Remove experiments and results</h2>
+<p>Select an item and choose <strong>Remove Data</strong> or <strong>Remove Result</strong>. Confirm the operation. Removal does not delete an instrument file on disk, but it will be reflected in the project the next time you save.</p>
+<p>Removing or changing an experiment can invalidate or remove the usefulness of associated results. If you need an archival comparison, save the project under a new name before making structural changes.</p>
+<h2 id="sort-the-project">Sort the project</h2>
+<p>Use sorting commands to organize experiments by the exposed metadata, including experimental or attribute values where available. Sorting changes presentation order; it does not change the underlying fit or create a grouping constraint.</p>
+<p>Use explicit names and attributes in addition to sorting. A global analysis should be reproducible from the selected experiments and constraints, not from visual adjacency alone.</p>
+<h2 id="copy-and-clear-attributes">Copy and clear attributes</h2>
+<p>Project commands can copy attributes from one experiment to others, perform an attribute operation, or clear attributes. These are efficient for consistent metadata across a series, but they can also propagate a mistake.</p>
+<ol class="manual-list"><li>Check the source experiment and target selection.</li><li>Apply the copy or operation.</li><li>Reopen details on representative targets.</li><li>Save after confirming the result.</li></ol>
+<aside class="manual-callout callout-caution" role="note" aria-label="Caution"><strong>Caution:</strong> Buffer, salt, ionic strength, competitor, and prebound-species attributes can change model availability, constraints, or derived analyses. They are analysis inputs, not decorative labels.</aside>
+<h2 id="manage-injection-inclusion">Manage injection inclusion</h2>
+<p>An injection can be included in processing display yet excluded from fitting. Use the injection inclusion control to omit a demonstrably compromised injection, such as a first-injection artifact or a known delivery failure. Reinclude it to test sensitivity.</p>
+<p>Do not remove points solely because their residuals are large. First check raw signal, integration boundaries, baseline, concentrations, and model adequacy. Record the reason for exclusions.</p>
+<h2 id="clear-processing-or-results">Clear processing or results</h2>
+<p><strong>Clear Processing</strong> returns the selected thermogram to an unprocessed state. <strong>Clear Results</strong> removes fitted solution state associated with the selection. These commands are useful when starting a controlled reanalysis, but they deliberately discard work.</p>
+<p>Changes to data, details, processing, attributes, injection inclusion, or fit configuration can make an existing Analysis Result invalid for the current project state. The validity indicator is the authoritative warning; updating a figure does not make an invalid result current.</p>
+<h2 id="a-maintainable-project-pattern">A maintainable project pattern</h2>
+<p>For a multi-condition study:</p>
+<ol class="manual-list"><li>Name experiments consistently.</li><li>Enter concentrations, uncertainties, temperature, and attributes before processing.</li><li>Process each thermogram and record justified injection exclusions.</li><li>Save a checkpoint project.</li><li>Configure and run the combined analysis.</li><li>Save again before exporting tables and figures.</li></ol>
+<p>This separates experiment curation from model fitting and makes later troubleshooting easier.</p>
+      <nav class="manual-pager" aria-label="Adjacent manual chapters"><a class="manual-pager-prev" href="/manual/installation-files-projects"><span>Previous</span>Installation, files, and projects</a><a class="manual-pager-next" href="/manual/processing-thermograms"><span>Next</span>Processing thermograms</a></nav>
+    </article>
+  </main>
+  <footer class="footer wrap"><a class="brand" href="/"><img src="/assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a><p>Transparent tools for calorimetry.</p><div><a href="/resources.html">Resources</a><a data-link="repository" href="#">GitHub</a><a data-link="support" href="/support.html">Support</a></div><small>© <span data-year></span> FT-ITC Analysis</small></footer>
+  <script src="/script.js"></script>
+</body>
+</html>

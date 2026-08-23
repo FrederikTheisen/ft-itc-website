@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FT-ITC Analysis user manual | FT-ITC Analysis User Manual</title>
+  <meta name="description" content="Start here for a platform-neutral tour of FT-ITC Analysis and the conventions used throughout this manual.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#173540">
+  <link rel="canonical" href="https://ft-itc.org/manual">
+  <link rel="icon" href="/assets/icon-180.png" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/icon-180.png">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="manual" data-manual-slug="index">
+  <header class="topbar wrap">
+    <a class="brand" href="/"><img src="/assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+      <a data-nav="app" href="/app-desktop.html">Desktop app</a><a data-link="webApp" href="https://app.ft-itc.org" target="_blank" rel="noreferrer">Web viewer ↗</a><a data-nav="resources" href="/resources.html">Resources</a><a data-nav="analysis" href="/analysis.html">Advanced analysis</a><a data-nav="manual" href="/manual" aria-current="page">Manual</a>
+      <a class="button button-primary nav-download" data-link="download" href="/app-desktop.html#platforms">Download <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+  <main class="manual-page wrap">
+    <p class="manual-kicker">FT-ITC Analysis 1.4.3 user manual</p>
+    <nav class="manual-chapters" aria-label="Manual chapters"><a class="manual-nav-link is-current" href="/manual" aria-current="page"><span>01</span> FT-ITC Analysis user manual</a><a class="manual-nav-link" href="/manual/quick-start"><span>02</span> Quick start</a><a class="manual-nav-link" href="/manual/installation-files-projects"><span>03</span> Installation, files, and projects</a><a class="manual-nav-link" href="/manual/workspace-experiments"><span>04</span> Workspace and experiment management</a><a class="manual-nav-link" href="/manual/processing-thermograms"><span>05</span> Processing thermograms</a><a class="manual-nav-link" href="/manual/fitting-models"><span>06</span> Fitting models</a><a class="manual-nav-link" href="/manual/multiple-experiments"><span>07</span> Multiple-experiment analysis</a><a class="manual-nav-link" href="/manual/results-advanced-analysis"><span>08</span> Results and advanced analyses</a><a class="manual-nav-link" href="/manual/figures-printing-export"><span>09</span> Figures, printing, and export</a><a class="manual-nav-link" href="/manual/additional-tools"><span>10</span> Additional tools</a><a class="manual-nav-link" href="/manual/preferences-troubleshooting"><span>11</span> Preferences and troubleshooting</a><a class="manual-nav-link" href="/manual/reference"><span>12</span> Reference</a></nav>
+    <article class="manual-content">
+      <h1 id="ft-itc-analysis-user-manual">FT-ITC Analysis user manual</h1><p class="manual-summary">Start here for a platform-neutral tour of FT-ITC Analysis and the conventions used throughout this manual.</p><p class="manual-freshness">Last verified: <time datetime="2026-08-22">2026-08-22</time></p>
+<p>FT-ITC Analysis is a desktop application for processing, fitting, comparing, and presenting isothermal titration calorimetry (ITC) experiments. This manual is for people who already understand the purpose and basic practice of ITC but are new to this application. No programming is required.</p>
+<p>The instructions apply to the native macOS application and the cross-platform application for macOS, Windows, and Linux. Both are described as one product. A <strong>Platform note</strong> appears only when an operating-system or interface difference changes how you complete a task.</p>
+<aside class="manual-callout callout-verified" role="note" aria-label="Verified"><strong>Verified:</strong> The procedures in this edition were checked against FT-ITC Analysis 1.4.3. Each page shows its own verification date.</aside>
+<h2 id="what-the-application-does">What the application does</h2>
+<p>FT-ITC Analysis supports the complete path from compatible instrument data to an analysis project and publication-oriented output:</p>
+<ol class="manual-list"><li>Open a raw thermogram, integrated heats, or an existing project.</li><li>Check experiment details and concentrations.</li><li>Establish a baseline and integrate injection peaks when a thermogram is available.</li><li>Fit one experiment or a set of experiments to a supported model.</li><li>Review the solution, uncertainty, residuals, and result validity.</li><li>Create a final figure or export data and result tables.</li><li>Save the analysis as a portable <code>.ftxtc</code> project.</li></ol>
+<p>Raw input files are read, not rewritten. Ordinary analysis is local: the application does not upload experiment data. An optional launch-time online check retrieves version and citation information.</p>
+<h2 id="product-tour">Product tour</h2>
+<p>The data list contains loaded experiments and completed Analysis Results. Selecting an experiment exposes four shared task views:</p>
+<ul class="manual-list"><li><strong>Overview</strong> summarizes the experiment and provides access to its details.</li><li><strong>Process Data</strong> controls baseline correction and peak integration.</li><li><strong>Analyze Data</strong> fits a single experiment or multiple experiments.</li><li><strong>Final Figure</strong> presents the thermogram, heats, fitted curve, residuals, and annotations.</li></ul>
+<p>Selecting an Analysis Result opens its summary, member fits, parameters, uncertainty display, and any compatible advanced analyses. The menus provide project operations, experiment management, export commands, preferences, additional tools, citation information, and support links.</p>
+<h2 id="how-to-use-this-manual">How to use this manual</h2>
+<p>If you want a first result, follow <a href="/manual/quick-start">Quick start</a>. It deliberately uses your own compatible data instead of a bundled tutorial dataset. Continue to the task chapter when you need to understand a setting or diagnose a result.</p>
+<p>The manual uses these callouts:</p>
+<aside class="manual-callout callout-note" role="note" aria-label="Note"><strong>Note:</strong> A detail that affects how the application behaves.</aside>
+<aside class="manual-callout callout-caution" role="note" aria-label="Caution"><strong>Caution:</strong> A condition that can produce a failed task, invalid result, or misleading output.</aside>
+<aside class="manual-callout callout-interpretation" role="note" aria-label="Interpretation"><strong>Interpretation:</strong> Scientific context for judging output; it is not an automated conclusion made by the application.</aside>
+<aside class="manual-callout callout-recommendation" role="note" aria-label="Recommendation"><strong>Recommendation:</strong> A defensible working practice rather than a software requirement.</aside>
+<p>Interface labels appear in <strong>bold</strong>. A path such as <strong>File &gt; Save As...</strong> means choose the menu and then the command. The names of views and controls are used instead of position-dependent phrases, so the instruction remains usable when the window size or platform changes.</p>
+<h2 id="scope">Scope</h2>
+<p>The manual explains every supported end-user workflow: projects and recovery, thermogram processing, model fitting, global analysis, results, advanced analyses, figures and exports, experiment design, buffer subtraction, experiment merging, preferences, and troubleshooting.</p>
+<p>It does not document application architecture, developer workflows, the internal <code>.ftxtc</code> wire format, source-code APIs, or exhaustive derivations of the numerical methods. The <a href="https://github.com/FrederikTheisen/FT-ITC-Analysis" target="_blank" rel="noreferrer">project repository</a> and its technical documentation cover maintainer topics.</p>
+<h2 id="next-steps">Next steps</h2>
+<ul class="manual-list"><li><a href="/manual/quick-start">Quick start</a> - complete one ordinary analysis.</li><li><a href="/manual/installation-files-projects">Installation, files, and projects</a> - install the application and protect your work.</li><li><a href="/manual/reference">Reference</a> - look up formats, symbols, terminology, and model-selection reminders.</li></ul>
+<figure class="manual-figure"><img src="/manual/assets/analysis-result-workspace.png" alt="Analysis Result workspace with the project list, fitted curve, parameters, and residuals." loading="lazy" decoding="async"><figcaption>The common Analysis Result workspace. Screenshots use the cross-platform application; procedures are verified for the native macOS application as well.</figcaption></figure>
+      <nav class="manual-pager" aria-label="Adjacent manual chapters"><span></span><a class="manual-pager-next" href="/manual/quick-start"><span>Next</span>Quick start</a></nav>
+    </article>
+  </main>
+  <footer class="footer wrap"><a class="brand" href="/"><img src="/assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a><p>Transparent tools for calorimetry.</p><div><a href="/resources.html">Resources</a><a data-link="repository" href="#">GitHub</a><a data-link="support" href="/support.html">Support</a></div><small>© <span data-year></span> FT-ITC Analysis</small></footer>
+  <script src="/script.js"></script>
+</body>
+</html>

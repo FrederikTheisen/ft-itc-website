@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Preferences and troubleshooting | FT-ITC Analysis User Manual</title>
+  <meta name="description" content="Set user defaults, recover interrupted work, diagnose unavailable controls or failed fits, and create useful support reports.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#173540">
+  <link rel="canonical" href="https://ft-itc.org/manual/preferences-troubleshooting">
+  <link rel="icon" href="/assets/icon-180.png" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/icon-180.png">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="manual" data-manual-slug="preferences-troubleshooting">
+  <header class="topbar wrap">
+    <a class="brand" href="/"><img src="/assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+      <a data-nav="app" href="/app-desktop.html">Desktop app</a><a data-link="webApp" href="https://app.ft-itc.org" target="_blank" rel="noreferrer">Web viewer ↗</a><a data-nav="resources" href="/resources.html">Resources</a><a data-nav="analysis" href="/analysis.html">Advanced analysis</a><a data-nav="manual" href="/manual" aria-current="page">Manual</a>
+      <a class="button button-primary nav-download" data-link="download" href="/app-desktop.html#platforms">Download <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+  <main class="manual-page wrap">
+    <p class="manual-kicker">FT-ITC Analysis 1.4.3 user manual</p>
+    <nav class="manual-chapters" aria-label="Manual chapters"><a class="manual-nav-link" href="/manual"><span>01</span> FT-ITC Analysis user manual</a><a class="manual-nav-link" href="/manual/quick-start"><span>02</span> Quick start</a><a class="manual-nav-link" href="/manual/installation-files-projects"><span>03</span> Installation, files, and projects</a><a class="manual-nav-link" href="/manual/workspace-experiments"><span>04</span> Workspace and experiment management</a><a class="manual-nav-link" href="/manual/processing-thermograms"><span>05</span> Processing thermograms</a><a class="manual-nav-link" href="/manual/fitting-models"><span>06</span> Fitting models</a><a class="manual-nav-link" href="/manual/multiple-experiments"><span>07</span> Multiple-experiment analysis</a><a class="manual-nav-link" href="/manual/results-advanced-analysis"><span>08</span> Results and advanced analyses</a><a class="manual-nav-link" href="/manual/figures-printing-export"><span>09</span> Figures, printing, and export</a><a class="manual-nav-link" href="/manual/additional-tools"><span>10</span> Additional tools</a><a class="manual-nav-link is-current" href="/manual/preferences-troubleshooting" aria-current="page"><span>11</span> Preferences and troubleshooting</a><a class="manual-nav-link" href="/manual/reference"><span>12</span> Reference</a></nav>
+    <article class="manual-content">
+      <h1 id="preferences-and-troubleshooting">Preferences and troubleshooting</h1><p class="manual-summary">Set user defaults, recover interrupted work, diagnose unavailable controls or failed fits, and create useful support reports.</p><p class="manual-freshness">Last verified: <time datetime="2026-08-22">2026-08-22</time></p>
+<p>Open <strong>Preferences...</strong> to change user-level defaults. Preferences affect new work or display behavior as indicated; they do not retroactively certify an existing project.</p>
+<h2 id="general-preferences">General preferences</h2>
+<p>General settings include unit and presentation choices, uncertainty display, autosave and recovery behavior, and the optional launch-time check for updates and online resources.</p>
+<p>Choose units at the beginning of an analysis and report them with exports. Changing display units should not be confused with changing an entered physical value.</p>
+<p>Disable online checks when working offline or when launch-time network access is restricted. Local analysis remains available.</p>
+<h2 id="processing-preferences">Processing preferences</h2>
+<p>Processing defaults control the starting baseline and integration behavior for new or reset processors. Choose defaults that suit the instrument and routine protocol, then inspect every experiment rather than accepting a default invisibly.</p>
+<p>Project-specific processing is stored in the project. Changing a preference does not necessarily rewrite an already processed experiment.</p>
+<h2 id="fitting-preferences">Fitting preferences</h2>
+<p>Fitting defaults include optimizer, parameter-limit, weighting, resampling, and presentation choices exposed by the current interface. Use defaults to reduce repetitive setup, but confirm the actual configuration in each Analysis Result.</p>
+<h2 id="export-preferences">Export preferences</h2>
+<p>Export defaults control available formatting and presentation choices such as units, uncertainty columns, figure style, or destination-specific behavior. Reopen an exported file after changing these settings.</p>
+<h2 id="autosave-and-recovery">Autosave and recovery</h2>
+<p>Keep autosave enabled for routine work unless local policy requires otherwise. After an interrupted session:</p>
+<ol class="manual-list"><li>Accept the recovery candidate when it represents the work you need.</li><li>Inspect experiments, results, and recent edits.</li><li>Choose <strong>Save As...</strong> and create a named <code>.ftxtc</code> project.</li><li>Reopen the saved project and confirm important content.</li></ol>
+<p>If recovery reports omitted content, reprocess or refit only after confirming the underlying experiment data.</p>
+<h2 id="a-control-is-unavailable">A control is unavailable</h2>
+<p>Check these common prerequisites:</p>
+<ul class="manual-list"><li><strong>Process Data</strong> requires an input with a thermogram.</li><li>Graphical processing edits are disabled while processing is locked.</li><li>Fit actions require suitable processed or integrated heats and an eligible experiment selection.</li><li>Result actions require an Analysis Result with compatible member solutions.</li><li>Advanced tabs require a compatible one-set-of-sites result, valid members, sufficient condition variation, and complete metadata.</li><li>Export and print actions require the relevant active graph, figure, data, or result.</li></ul>
+<p>If the prerequisite is present, save the project, restart the application, reopen it, and reproduce the shortest sequence that demonstrates the issue.</p>
+<h2 id="a-result-became-invalid">A result became invalid</h2>
+<p>The project changed after the result was created. Review recent changes to details, processing, attributes, experiment or injection inclusion, and fit settings. Either revert the change or rerun the fit. Then inspect member fits and regenerate dependent exports.</p>
+<p>Do not report an invalidated result as current simply because its table remains visible.</p>
+<h2 id="a-fit-fails-or-gives-implausible-values">A fit fails or gives implausible values</h2>
+<p>Use this order:</p>
+<ol class="manual-list"><li>Check units, concentrations, temperature, volumes, and attributes.</li><li>Check baseline, integration regions, uncertainty bars, and injection inclusion.</li><li>Confirm the chosen model matches the experiment.</li><li>Use plausible initial values and standard limits.</li><li>Try the alternate optimizer.</li><li>Reduce model complexity or global constraints.</li><li>Inspect whether the titration spans an informative transition.</li><li>Expand parameter limits only with an independent scientific reason.</li></ol>
+<p>Retain failed configurations when they provide useful sensitivity evidence; do not keep only the visually preferred fit.</p>
+<h2 id="import-problems">Import problems</h2>
+<p>If a file does not open:</p>
+<ul class="manual-list"><li>confirm the extension and source application;</li><li>confirm the export is complete and not a shortcut, cloud placeholder, or partially copied file;</li><li>try a fresh export from the instrument software;</li><li>avoid editing structured source files in a spreadsheet before import;</li><li>record the exact error and application version.</li></ul>
+<p>For a damaged <code>.ftxtc</code> project, use the offered recovery path. Never overwrite the only copy while testing recovery.</p>
+<h2 id="export-or-print-problems">Export or print problems</h2>
+<p>If output is empty or unavailable, confirm the correct experiment or result and active view. For result tables, confirm that the result contains fitted solutions. For figures, confirm the current processing and fit are valid.</p>
+<p>If a CSV opens in one column, choose the matching delimiter during import or use TSV. If symbols or page elements are clipped, export again with a standard page size and inspect the PDF before printing.</p>
+<p>Printing depends on an operating-system printer service. Export to PDF to distinguish a figure-rendering problem from a printer-driver problem.</p>
+<h2 id="create-a-support-report">Create a support report</h2>
+<p>Open the support command and use <strong>Copy Report</strong> when available. Include:</p>
+<ul class="manual-list"><li>FT-ITC Analysis version;</li><li>operating system and application implementation;</li><li>shortest reproducible sequence;</li><li>exact error message;</li><li>whether the issue survives restart and project reopen;</li><li>a minimal, shareable project or synthetic input when permitted;</li><li>screenshots that show the complete relevant control state.</li></ul>
+<p>Remove confidential sample names and comments before sharing. Confirm that the reduced project still reproduces the problem.</p>
+<h2 id="citation-and-issue-reporting">Citation and issue reporting</h2>
+<p>Choose <strong>Help &gt; Citation</strong> for the current recommended paper and versioned software citation, BibTeX copy, or export. The persistent software DOI is <a href="https://doi.org/10.5281/zenodo.14832177" target="_blank" rel="noreferrer">10.5281/zenodo.14832177</a>.</p>
+<p>Search existing reports and create a new issue in the <a href="https://github.com/FrederikTheisen/FT-ITC-Analysis/issues" target="_blank" rel="noreferrer">GitHub issue tracker</a> when needed. One reproducible problem per issue is easiest to diagnose.</p>
+      <nav class="manual-pager" aria-label="Adjacent manual chapters"><a class="manual-pager-prev" href="/manual/additional-tools"><span>Previous</span>Additional tools</a><a class="manual-pager-next" href="/manual/reference"><span>Next</span>Reference</a></nav>
+    </article>
+  </main>
+  <footer class="footer wrap"><a class="brand" href="/"><img src="/assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a><p>Transparent tools for calorimetry.</p><div><a href="/resources.html">Resources</a><a data-link="repository" href="#">GitHub</a><a data-link="support" href="/support.html">Support</a></div><small>© <span data-year></span> FT-ITC Analysis</small></footer>
+  <script src="/script.js"></script>
+</body>
+</html>

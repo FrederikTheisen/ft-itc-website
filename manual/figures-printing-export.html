@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Figures, printing, and export | FT-ITC Analysis User Manual</title>
+  <meta name="description" content="Configure final and supporting figures, print active graphs, and export data, peaks, results, and publication-ready PDFs.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#173540">
+  <link rel="canonical" href="https://ft-itc.org/manual/figures-printing-export">
+  <link rel="icon" href="/assets/icon-180.png" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/icon-180.png">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="manual" data-manual-slug="figures-printing-export">
+  <header class="topbar wrap">
+    <a class="brand" href="/"><img src="/assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+      <a data-nav="app" href="/app-desktop.html">Desktop app</a><a data-link="webApp" href="https://app.ft-itc.org" target="_blank" rel="noreferrer">Web viewer ↗</a><a data-nav="resources" href="/resources.html">Resources</a><a data-nav="analysis" href="/analysis.html">Advanced analysis</a><a data-nav="manual" href="/manual" aria-current="page">Manual</a>
+      <a class="button button-primary nav-download" data-link="download" href="/app-desktop.html#platforms">Download <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+  <main class="manual-page wrap">
+    <p class="manual-kicker">FT-ITC Analysis 1.4.3 user manual</p>
+    <nav class="manual-chapters" aria-label="Manual chapters"><a class="manual-nav-link" href="/manual"><span>01</span> FT-ITC Analysis user manual</a><a class="manual-nav-link" href="/manual/quick-start"><span>02</span> Quick start</a><a class="manual-nav-link" href="/manual/installation-files-projects"><span>03</span> Installation, files, and projects</a><a class="manual-nav-link" href="/manual/workspace-experiments"><span>04</span> Workspace and experiment management</a><a class="manual-nav-link" href="/manual/processing-thermograms"><span>05</span> Processing thermograms</a><a class="manual-nav-link" href="/manual/fitting-models"><span>06</span> Fitting models</a><a class="manual-nav-link" href="/manual/multiple-experiments"><span>07</span> Multiple-experiment analysis</a><a class="manual-nav-link" href="/manual/results-advanced-analysis"><span>08</span> Results and advanced analyses</a><a class="manual-nav-link is-current" href="/manual/figures-printing-export" aria-current="page"><span>09</span> Figures, printing, and export</a><a class="manual-nav-link" href="/manual/additional-tools"><span>10</span> Additional tools</a><a class="manual-nav-link" href="/manual/preferences-troubleshooting"><span>11</span> Preferences and troubleshooting</a><a class="manual-nav-link" href="/manual/reference"><span>12</span> Reference</a></nav>
+    <article class="manual-content">
+      <h1 id="figures-printing-and-export">Figures, printing, and export</h1><p class="manual-summary">Configure final and supporting figures, print active graphs, and export data, peaks, results, and publication-ready PDFs.</p><p class="manual-freshness">Last verified: <time datetime="2026-08-22">2026-08-22</time></p>
+<p>FT-ITC Analysis separates visual figures from numerical exports. Decide whether the downstream need is a publication graphic, an injection table, processed traces, or a fitted-parameter table before choosing an export command.</p>
+<h2 id="build-a-final-figure">Build a Final Figure</h2>
+<p>Select an experiment or a compatible Analysis Result and open <strong>Final Figure</strong>. The view builds a publication-oriented figure from the current experiment, processing, and solution.</p>
+<p>Depending on the available data and controls, a final figure can include:</p>
+<ul class="manual-list"><li>raw thermogram and baseline;</li><li>integration-region markers or fills;</li><li>integrated heats and excluded points;</li><li>injection uncertainty bars;</li><li>fitted model curve and confidence band;</li><li>residual panel;</li><li>parameter or experiment annotation;</li><li>axis, line, symbol, font, and page controls.</li></ul>
+<p>Choose only elements that communicate the analysis. A diagnostic view can show baseline and excluded points; a final publication figure may use a cleaner subset while the methods describe processing.</p>
+<h2 id="check-residuals-and-confidence-bands">Check residuals and confidence bands</h2>
+<p>Enable residuals to expose systematic disagreement that the main curve can hide. Residuals should be interpreted with their scale and weighting.</p>
+<p>A confidence band is available when the solution contains suitable uncertainty information. It represents fitted uncertainty under the selected model and resampling workflow, not the full range of possible models or systematic experimental errors.</p>
+<aside class="manual-callout callout-interpretation" role="note" aria-label="Interpretation"><strong>Interpretation:</strong> A narrow band around a systematically wrong curve is not evidence of accuracy. Review residual structure and model assumptions together.</aside>
+<h2 id="coordinate-axes-across-figures">Coordinate axes across figures</h2>
+<p>Use shared or unified axis options when comparing experiments on a common visual scale. Check that all points and confidence regions remain visible. Independent axes maximize use of space but can exaggerate or conceal between-panel differences.</p>
+<p>Set axis ranges deliberately for final output. Avoid clipping error bars, fit curves, or annotations. Use consistent energy, concentration, and temperature units across a figure set.</p>
+<h2 id="export-a-final-figure-as-pdf">Export a final figure as PDF</h2>
+<p>Use the PDF export action in <strong>Final Figure</strong> or <strong>Export Associated Final Figures...</strong> for a selected Analysis Result. Choose a clear filename that identifies the result and analysis version.</p>
+<p>Reopen the exported PDF and check:</p>
+<ul class="manual-list"><li>page size and orientation;</li><li>text, symbols, subscripts, and units;</li><li>line weights and color contrast;</li><li>full axis ranges and uncropped annotations;</li><li>residual and confidence-band visibility at publication size.</li></ul>
+<p>PDF preserves vector output where the renderer supports it and is the preferred handoff for layout and print workflows.</p>
+<h2 id="print-the-active-graph">Print the active graph</h2>
+<p>Choose <strong>File &gt; Print</strong> while the intended graph or figure is active. The application prepares the current printable view and passes it to the operating-system print workflow.</p>
+<aside class="manual-callout callout-platform-note" role="note" aria-label="Platform note"><strong>Platform note:</strong> macOS and Windows use their native print dialogs. Linux uses the available CUPS printers and can offer PDF saving through the application print dialog. Printer options and naming therefore differ, but the source graph is the same.</aside>
+<p>Use print preview where available and check scaling before submitting. For reproducible archival output, export a PDF and retain it alongside the project.</p>
+<h2 id="export-raw-or-processed-data">Export raw or processed data</h2>
+<p>Choose <strong>File &gt; Export Data...</strong> for data traces in the selected export format. Use <strong>Export Selected Data...</strong> when the operation should be limited to the current selection. Review the export dialog because available columns depend on the source and processing state.</p>
+<p>Exported text data are useful for downstream plotting or review, but they do not carry the complete project state. Preserve the <code>.ftxtc</code> project as the reproducible source.</p>
+<h2 id="export-integrated-peaks">Export integrated peaks</h2>
+<p>Choose <strong>File &gt; Export Integrated Peaks...</strong> for injection-level integrated heat information. Verify inclusion flags, raw versus corrected values, buffer subtraction, and uncertainty columns in the resulting file.</p>
+<p>Use this export to audit processing or interoperate with another analysis workflow. When publishing a table, state whether heats were buffer-corrected and which injections were excluded.</p>
+<h2 id="export-result-tables">Export result tables</h2>
+<p>Open <strong>Analysis Result Exporter...</strong>. Select one or more results and configure:</p>
+<ul class="manual-list"><li>summary rows or individual fitted/member rows;</li><li>inline or separate value and uncertainty columns;</li><li>standard deviations, 95% confidence bounds, or both;</li><li>CSV or TSV output.</li></ul>
+<p>Copy the configured table to the clipboard for a quick transfer, or save it to preserve exact delimiters and encoding. Open the saved file in the destination tool and check that decimal values and delimiters were interpreted correctly.</p>
+<h2 id="copy-to-the-clipboard">Copy to the clipboard</h2>
+<p>Use <strong>Copy Result Table</strong> or a tool-specific copy command for tabular text. Clipboard output is convenient but easier to alter accidentally than a saved export. Keep a saved table for reported results.</p>
+<p>When copying figures, confirm the destination retained sufficient resolution and transparency. Prefer PDF export when the destination accepts it.</p>
+<h2 id="create-a-supporting-figure">Create a Supporting Figure</h2>
+<p>Choose <strong>Supporting Figure...</strong> to arrange several experiment or result figures in a configurable grid.</p>
+<ol class="manual-list"><li>Select the source figures.</li><li>Choose rows and columns.</li><li>Place the figures in the intended reading order.</li><li>Use shared visual options and axis alignment where appropriate.</li><li>Confirm that the grid has capacity for every selected figure.</li><li>Export the canvas as PDF and inspect it at final size.</li></ol>
+<p>The supporting-figure tool aligns multi-panel output; it does not change the underlying processing or fit. If a source result becomes invalid, rebuild the source result and export the composition again.</p>
+<h2 id="a-publication-handoff-checklist">A publication handoff checklist</h2>
+<p>Before handing off files:</p>
+<ul class="manual-list"><li>save the <code>.ftxtc</code> project;</li><li>confirm result validity;</li><li>export the exact numerical result table;</li><li>export final and supporting figures as PDF;</li><li>retain descriptions of processing, constraints, uncertainty, and exclusions;</li><li>cite the application version and software DOI;</li><li>reopen every exported file.</li></ul>
+      <nav class="manual-pager" aria-label="Adjacent manual chapters"><a class="manual-pager-prev" href="/manual/results-advanced-analysis"><span>Previous</span>Results and advanced analyses</a><a class="manual-pager-next" href="/manual/additional-tools"><span>Next</span>Additional tools</a></nav>
+    </article>
+  </main>
+  <footer class="footer wrap"><a class="brand" href="/"><img src="/assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a><p>Transparent tools for calorimetry.</p><div><a href="/resources.html">Resources</a><a data-link="repository" href="#">GitHub</a><a data-link="support" href="/support.html">Support</a></div><small>© <span data-year></span> FT-ITC Analysis</small></footer>
+  <script src="/script.js"></script>
+</body>
+</html>

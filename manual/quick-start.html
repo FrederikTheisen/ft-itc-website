@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quick start | FT-ITC Analysis User Manual</title>
+  <meta name="description" content="Open your own ITC dataset, process it, fit a one-set-of-sites model, review the result, save the project, and export a figure.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#173540">
+  <link rel="canonical" href="https://ft-itc.org/manual/quick-start">
+  <link rel="icon" href="/assets/icon-180.png" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/icon-180.png">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="manual" data-manual-slug="quick-start">
+  <header class="topbar wrap">
+    <a class="brand" href="/"><img src="/assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+      <a data-nav="app" href="/app-desktop.html">Desktop app</a><a data-link="webApp" href="https://app.ft-itc.org" target="_blank" rel="noreferrer">Web viewer ↗</a><a data-nav="resources" href="/resources.html">Resources</a><a data-nav="analysis" href="/analysis.html">Advanced analysis</a><a data-nav="manual" href="/manual" aria-current="page">Manual</a>
+      <a class="button button-primary nav-download" data-link="download" href="/app-desktop.html#platforms">Download <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+  <main class="manual-page wrap">
+    <p class="manual-kicker">FT-ITC Analysis 1.4.3 user manual</p>
+    <nav class="manual-chapters" aria-label="Manual chapters"><a class="manual-nav-link" href="/manual"><span>01</span> FT-ITC Analysis user manual</a><a class="manual-nav-link is-current" href="/manual/quick-start" aria-current="page"><span>02</span> Quick start</a><a class="manual-nav-link" href="/manual/installation-files-projects"><span>03</span> Installation, files, and projects</a><a class="manual-nav-link" href="/manual/workspace-experiments"><span>04</span> Workspace and experiment management</a><a class="manual-nav-link" href="/manual/processing-thermograms"><span>05</span> Processing thermograms</a><a class="manual-nav-link" href="/manual/fitting-models"><span>06</span> Fitting models</a><a class="manual-nav-link" href="/manual/multiple-experiments"><span>07</span> Multiple-experiment analysis</a><a class="manual-nav-link" href="/manual/results-advanced-analysis"><span>08</span> Results and advanced analyses</a><a class="manual-nav-link" href="/manual/figures-printing-export"><span>09</span> Figures, printing, and export</a><a class="manual-nav-link" href="/manual/additional-tools"><span>10</span> Additional tools</a><a class="manual-nav-link" href="/manual/preferences-troubleshooting"><span>11</span> Preferences and troubleshooting</a><a class="manual-nav-link" href="/manual/reference"><span>12</span> Reference</a></nav>
+    <article class="manual-content">
+      <h1 id="quick-start">Quick start</h1><p class="manual-summary">Open your own ITC dataset, process it, fit a one-set-of-sites model, review the result, save the project, and export a figure.</p><p class="manual-freshness">Last verified: <time datetime="2026-08-22">2026-08-22</time></p>
+<p>This procedure takes a compatible file through an ordinary one-set-of-sites analysis. Use a dataset for which that model is scientifically plausible. The goal is to learn the application workflow, not to prescribe the correct model for every interaction.</p>
+<figure class="manual-figure"><img src="/manual/assets/workflow.svg" alt="Six-step FT-ITC Analysis workflow from opening data through saving and export." loading="lazy" decoding="async"><figcaption>The analysis workflow. Integrated-heat imports enter after thermogram processing.</figcaption></figure>
+<h2 id="before-you-begin">Before you begin</h2>
+<p>Have one of these inputs available:</p>
+<ul class="manual-list"><li>a raw MicroCal-style thermogram (<code>.itc</code> or <code>.vpitc</code>);</li><li>a TA Instruments/NanoAnalyze export (<code>.ta</code>) or PEAQ-ITC export (<code>.apj</code>);</li><li>injection-level integrated heats (<code>.dat</code>, <code>.aff</code>, or <code>.dh</code>);</li><li>an FT-ITC project (<code>.ftxtc</code>) or legacy project (<code>.ftitc</code>).</li></ul>
+<aside class="manual-callout callout-note" role="note" aria-label="Note"><strong>Note:</strong> Integrated-heat files do not contain a raw thermogram. They skip baseline correction and peak integration; begin with experiment details and fitting.</aside>
+<h2 id="1-open-your-data">1. Open your data</h2>
+<p>Launch FT-ITC Analysis and choose <strong>Open File...</strong> on the welcome screen, choose <strong>File &gt; Open...</strong>, or drag compatible files into the application window. Select your file and confirm the open operation.</p>
+<p>The experiment appears in the data list. Select it and open <strong>Overview</strong>. Confirm that the instrument, temperature, date, concentrations, injection count, and other available metadata agree with your experiment record.</p>
+<h2 id="2-check-experiment-details">2. Check experiment details</h2>
+<p>Open <strong>Details...</strong> for the selected experiment. Check at least:</p>
+<ul class="manual-list"><li>cell and syringe concentrations;</li><li>concentration uncertainties, if you intend to propagate them;</li><li>temperature;</li><li>comments and attributes relevant to later analysis.</li></ul>
+<p>Apply corrections only when you have an independent experimental basis. Concentration entries influence the calculated concentration ratio and fitted parameters.</p>
+<aside class="manual-callout callout-caution" role="note" aria-label="Caution"><strong>Caution:</strong> A fit can converge with incorrect concentrations. Convergence is not evidence that the experiment details are correct.</aside>
+<h2 id="3-process-a-raw-thermogram">3. Process a raw thermogram</h2>
+<p>If the import contains a thermogram, open <strong>Process Data</strong>.</p>
+<ol class="manual-list"><li>Start with <strong>Spline</strong> baseline, <strong>Balanced</strong> point density, and the default integration settings.</li><li>Inspect whether baseline points represent the signal between injections rather than the peaks.</li><li>Inspect the start and end of every integration region. A region should include the injection response without extending unnecessarily into baseline noise.</li><li>Adjust the global start or length controls when most injections need the same change. Drag an individual region marker when one injection is different.</li><li>Reprocess and inspect the integrated heats and uncertainty bars.</li></ol>
+<p>Use <strong>Polynomial</strong> when a single smooth global drift describes the baseline, or <strong>Segmented</strong> when local baseline behavior is more appropriate. These alternatives are explained in <a href="/manual/processing-thermograms">Processing thermograms</a>.</p>
+<aside class="manual-callout callout-interpretation" role="note" aria-label="Interpretation"><strong>Interpretation:</strong> A visually smooth baseline is not sufficient by itself. Check whether the integrated heat trend and residual baseline are physically plausible and whether the result is stable under reasonable processing choices.</aside>
+<h2 id="4-fit-one-set-of-sites">4. Fit one set of sites</h2>
+<p>Open <strong>Analyze Data</strong>, choose <strong>Single experiment</strong>, and select <strong>One-Set-Of-Sites</strong>.</p>
+<ol class="manual-list"><li>Review the initial parameter values. Use physically plausible orders of magnitude for affinity, enthalpy, and stoichiometry.</li><li>Keep standard parameter limits unless the system requires a justified alternative.</li><li>Choose an optimizer. <strong>Levenberg-Marquardt</strong> is efficient near a suitable solution; <strong>Nelder-Mead</strong> can be useful when the starting surface is less cooperative.</li><li>Optionally enable <strong>Weight by injection error</strong> when the integration uncertainties are meaningful for the dataset.</li><li>Choose <strong>None</strong>, <strong>Bootstrap residuals</strong>, or <strong>Leave-one-out</strong> for error estimation.</li><li>Choose <strong>Run Fit</strong>.</li></ol>
+<p>If the fit fails or reaches a limit, revisit the details, processing, initial values, and model choice before expanding limits. See <a href="/manual/fitting-models">Fitting models</a> and <a href="/manual/preferences-troubleshooting">Preferences and troubleshooting</a>.</p>
+<h2 id="5-review-the-result">5. Review the result</h2>
+<p>Inspect the fitted curve together with the heats, uncertainty bars, and residuals. Then select the resulting <strong>Analysis Result</strong> and check:</p>
+<ul class="manual-list"><li>the included experiment and injections;</li><li>fitted parameter values and units;</li><li>convergence and fit loss;</li><li>whether weighting and uncertainty estimation match your intention;</li><li>parameter uncertainty or confidence intervals, when calculated;</li><li>result validity.</li></ul>
+<aside class="manual-callout callout-interpretation" role="note" aria-label="Interpretation"><strong>Interpretation:</strong> Parameter precision does not establish model adequacy. Look for structured residuals, sensitivity to initial values, values at limits, excessive parameter correlation, or disagreement with known stoichiometry and experimental conditions.</aside>
+<h2 id="6-save-a-portable-project">6. Save a portable project</h2>
+<p>Choose <strong>File &gt; Save As...</strong> and save the project as <code>.ftxtc</code>. The project contains imported data, experiment details, processing state, fits, results, and available advanced-analysis output. Keep the original instrument files as source records even though the project is portable.</p>
+<p>If autosave is enabled, it supplements normal saving; it is not a replacement for a named project file.</p>
+<h2 id="7-export-a-figure">7. Export a figure</h2>
+<p>Return to the experiment and open <strong>Final Figure</strong>. Choose the elements you need, such as the thermogram, integrated heats, fitted curve, residuals, confidence band, or parameter information. Review axis ranges and labels, then use the figure export or print command provided by the view.</p>
+<p>Use <strong>Analysis Result Exporter...</strong> when you need numerical result tables rather than a graphic. Use <strong>File &gt; Export Integrated Peaks...</strong> for injection-level heats.</p>
+<h2 id="what-you-have-created">What you have created</h2>
+<p>You now have a saved, reproducible analysis project and a figure based on its current processing and fit. Continue with:</p>
+<ul class="manual-list"><li><a href="/manual/workspace-experiments">Workspace and experiment management</a> for multi-file projects;</li><li><a href="/manual/multiple-experiments">Multiple-experiment analysis</a> for global fits;</li><li><a href="/manual/figures-printing-export">Figures, printing, and export</a> for publication output.</li></ul>
+      <nav class="manual-pager" aria-label="Adjacent manual chapters"><a class="manual-pager-prev" href="/manual"><span>Previous</span>FT-ITC Analysis user manual</a><a class="manual-pager-next" href="/manual/installation-files-projects"><span>Next</span>Installation, files, and projects</a></nav>
+    </article>
+  </main>
+  <footer class="footer wrap"><a class="brand" href="/"><img src="/assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a><p>Transparent tools for calorimetry.</p><div><a href="/resources.html">Resources</a><a data-link="repository" href="#">GitHub</a><a data-link="support" href="/support.html">Support</a></div><small>© <span data-year></span> FT-ITC Analysis</small></footer>
+  <script src="/script.js"></script>
+</body>
+</html>

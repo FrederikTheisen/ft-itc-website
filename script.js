@@ -1,9 +1,9 @@
 const site = {
-  download: 'app-desktop.html#platforms',
+  download: '/app-desktop.html#platforms',
   webApp: 'https://app.ft-itc.org',
   repository: 'https://github.com/FrederikTheisen/FT-ITC-Analysis',
   issues: 'https://github.com/FrederikTheisen/FT-ITC-Analysis/issues',
-  support: 'support.html',
+  support: '/support.html',
   supportEmail: 'mailto:support@ft-itc.org'
 };
 
@@ -13,9 +13,9 @@ document.querySelectorAll('[data-link]').forEach((link) => {
 });
 
 const installPages = {
-  macos: 'install-macos.html',
-  windows: 'install-windows.html',
-  linux: 'install-linux.html'
+  macos: '/install-macos.html',
+  windows: '/install-windows.html',
+  linux: '/install-linux.html'
 };
 
 const detectDesktopPlatform = () => {

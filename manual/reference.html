@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reference | FT-ITC Analysis User Manual</title>
+  <meta name="description" content="Look up supported formats, terminology, models, uncertainty language, keyboard conventions, symbols, and source references.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#173540">
+  <link rel="canonical" href="https://ft-itc.org/manual/reference">
+  <link rel="icon" href="/assets/icon-180.png" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/icon-180.png">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="manual" data-manual-slug="reference">
+  <header class="topbar wrap">
+    <a class="brand" href="/"><img src="/assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+      <a data-nav="app" href="/app-desktop.html">Desktop app</a><a data-link="webApp" href="https://app.ft-itc.org" target="_blank" rel="noreferrer">Web viewer ↗</a><a data-nav="resources" href="/resources.html">Resources</a><a data-nav="analysis" href="/analysis.html">Advanced analysis</a><a data-nav="manual" href="/manual" aria-current="page">Manual</a>
+      <a class="button button-primary nav-download" data-link="download" href="/app-desktop.html#platforms">Download <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+  <main class="manual-page wrap">
+    <p class="manual-kicker">FT-ITC Analysis 1.4.3 user manual</p>
+    <nav class="manual-chapters" aria-label="Manual chapters"><a class="manual-nav-link" href="/manual"><span>01</span> FT-ITC Analysis user manual</a><a class="manual-nav-link" href="/manual/quick-start"><span>02</span> Quick start</a><a class="manual-nav-link" href="/manual/installation-files-projects"><span>03</span> Installation, files, and projects</a><a class="manual-nav-link" href="/manual/workspace-experiments"><span>04</span> Workspace and experiment management</a><a class="manual-nav-link" href="/manual/processing-thermograms"><span>05</span> Processing thermograms</a><a class="manual-nav-link" href="/manual/fitting-models"><span>06</span> Fitting models</a><a class="manual-nav-link" href="/manual/multiple-experiments"><span>07</span> Multiple-experiment analysis</a><a class="manual-nav-link" href="/manual/results-advanced-analysis"><span>08</span> Results and advanced analyses</a><a class="manual-nav-link" href="/manual/figures-printing-export"><span>09</span> Figures, printing, and export</a><a class="manual-nav-link" href="/manual/additional-tools"><span>10</span> Additional tools</a><a class="manual-nav-link" href="/manual/preferences-troubleshooting"><span>11</span> Preferences and troubleshooting</a><a class="manual-nav-link is-current" href="/manual/reference" aria-current="page"><span>12</span> Reference</a></nav>
+    <article class="manual-content">
+      <h1 id="reference">Reference</h1><p class="manual-summary">Look up supported formats, terminology, models, uncertainty language, keyboard conventions, symbols, and source references.</p><p class="manual-freshness">Last verified: <time datetime="2026-08-22">2026-08-22</time></p>
+<h2 id="file-formats">File formats</h2>
+<div class="manual-table-wrap"><table class="manual-table"><thead><tr>
+<th scope="col">Extension</th>
+<th scope="col">Category</th>
+<th scope="col">User purpose</th>
+</tr></thead><tbody>
+<tr><td><code>.itc</code></td><td>Raw thermogram</td><td>MicroCal-style experiment import</td></tr>
+<tr><td><code>.vpitc</code></td><td>Raw thermogram</td><td>VP-ITC experiment import</td></tr>
+<tr><td><code>.ta</code></td><td>Instrument export</td><td>TA Instruments/NanoAnalyze import</td></tr>
+<tr><td><code>.apj</code></td><td>Project export</td><td>PEAQ-ITC experiment import</td></tr>
+<tr><td><code>.dat</code></td><td>Integrated heats</td><td>Fit injection heats without thermogram processing</td></tr>
+<tr><td><code>.aff</code></td><td>Integrated heats</td><td>Fit injection heats without thermogram processing</td></tr>
+<tr><td><code>.dh</code></td><td>Integrated heats</td><td>Fit injection heats without thermogram processing</td></tr>
+<tr><td><code>.ftxtc</code></td><td>Current project</td><td>Save and exchange complete FT-ITC analysis state</td></tr>
+<tr><td><code>.ftitc</code></td><td>Legacy project</td><td>Import historical FT-ITC projects, then save as <code>.ftxtc</code></td></tr>
+<tr><td><code>.csv</code> / <code>.tsv</code></td><td>Table export</td><td>Exchange peak or fitted-result tables</td></tr>
+<tr><td><code>.pdf</code></td><td>Figure output</td><td>Preserve publication and print layout</td></tr>
+</tbody></table></div>
+<h2 id="workspace-terminology">Workspace terminology</h2>
+<div class="manual-table-wrap"><table class="manual-table"><thead><tr>
+<th scope="col">Term</th>
+<th scope="col">Meaning in FT-ITC Analysis</th>
+</tr></thead><tbody>
+<tr><td>Experiment</td><td>One imported or designed ITC dataset, including details and analysis state</td></tr>
+<tr><td>Data list</td><td>Project navigator containing experiments and Analysis Results</td></tr>
+<tr><td>Selected</td><td>The item currently shown or targeted by a selection-specific command</td></tr>
+<tr><td>Enabled / active</td><td>Eligible for a multi-item operation or analysis</td></tr>
+<tr><td>Injection inclusion</td><td>Whether an individual injection participates in fitting</td></tr>
+<tr><td>Processing</td><td>Baseline correction and thermogram peak integration</td></tr>
+<tr><td>Solution</td><td>Fitted model state for an experiment</td></tr>
+<tr><td>Analysis Result</td><td>Stored combined result, members, constraints, uncertainty, and validity snapshot</td></tr>
+<tr><td>Valid result</td><td>A result whose recorded fit inputs still match current project state</td></tr>
+<tr><td>Attribute</td><td>Experiment metadata used for organization, constraints, or derived analyses</td></tr>
+<tr><td>Tandem experiment</td><td>Consecutive syringe-load segments treated as one continuing titration</td></tr>
+</tbody></table></div>
+<h2 id="baseline-and-integration-summary">Baseline and integration summary</h2>
+<div class="manual-table-wrap"><table class="manual-table"><thead><tr>
+<th scope="col">Choice</th>
+<th scope="col">Best considered when</th>
+<th scope="col">Main diagnostic</th>
+</tr></thead><tbody>
+<tr><td>Spline</td><td>Local graphical control is needed</td><td>Point placement, smoothness, and sensitivity</td></tr>
+<tr><td>Polynomial</td><td>One smooth global drift is plausible</td><td>End behavior and degree dependence</td></tr>
+<tr><td>Segmented</td><td>Local drift differs through the run</td><td>Continuity and local over-flexibility</td></tr>
+<tr><td>Time integration</td><td>A common response duration is defensible</td><td>Consistent return toward baseline</td></tr>
+<tr><td>Factor integration</td><td>Peak shapes require scaled lengths</td><td>Stability of estimated endpoints</td></tr>
+<tr><td>Fit integration</td><td>Fitted peak shape can guide endpoints</td><td>Fit adequacy for atypical peaks</td></tr>
+</tbody></table></div>
+<h2 id="model-selection-summary">Model-selection summary</h2>
+<div class="manual-table-wrap"><table class="manual-table"><thead><tr>
+<th scope="col">Model</th>
+<th scope="col">Intended pattern</th>
+<th scope="col">Principal caution</th>
+</tr></thead><tbody>
+<tr><td>One-Set-Of-Sites</td><td>One class of equivalent non-interacting sites</td><td>Can hide heterogeneity or coupled processes</td></tr>
+<tr><td>Two-Sets-Of-Sites</td><td>Two independently fitted site classes</td><td>High parameter demand and label ambiguity</td></tr>
+<tr><td>Competitive Binding</td><td>Titration into a preformed competing system</td><td>Depends strongly on competitor inputs and assumptions</td></tr>
+<tr><td>Dissociation</td><td>Injected preformed complex dissociates</td><td>Species preparation and concentration bookkeeping must match</td></tr>
+</tbody></table></div>
+<p>Syringe correction is a model option where exposed, not a fifth public model.</p>
+<h2 id="constraint-terminology">Constraint terminology</h2>
+<div class="manual-table-wrap"><table class="manual-table"><thead><tr>
+<th scope="col">State</th>
+<th scope="col">Meaning</th>
+</tr></thead><tbody>
+<tr><td>Free</td><td>Separate value estimated for each experiment</td></tr>
+<tr><td>Shared</td><td>One value estimated across the selected experiments</td></tr>
+<tr><td>Fixed</td><td>Supplied value held constant during fitting</td></tr>
+<tr><td>Temperature-dependent</td><td>Values linked by the model's temperature relationship</td></tr>
+</tbody></table></div>
+<h2 id="uncertainty-glossary">Uncertainty glossary</h2>
+<div class="manual-table-wrap"><table class="manual-table"><thead><tr>
+<th scope="col">Term</th>
+<th scope="col">Meaning</th>
+</tr></thead><tbody>
+<tr><td>Injection error</td><td>Estimated uncertainty of an integrated injection heat from local corrected noise and integration behavior</td></tr>
+<tr><td>Weighted fit</td><td>A fit in which observations are scaled by their injection-error estimates</td></tr>
+<tr><td>Bootstrap residuals</td><td>Repeated refitting using resampled residual behavior</td></tr>
+<tr><td>Leave-one-out</td><td>Repeated refitting with observations omitted in turn</td></tr>
+<tr><td>Standard deviation</td><td>Spread summary of available resampled parameter values</td></tr>
+<tr><td>95% confidence interval</td><td>Interval derived from the available uncertainty distribution and method</td></tr>
+<tr><td>Concentration uncertainty</td><td>Entered uncertainty propagated through supported resampling workflows</td></tr>
+<tr><td>Confidence band</td><td>Visual uncertainty region for a fitted curve when supported by stored results</td></tr>
+<tr><td>Systematic error</td><td>Bias not necessarily represented by the fit or resampling method</td></tr>
+</tbody></table></div>
+<h2 id="common-thermodynamic-symbols">Common thermodynamic symbols</h2>
+<div class="manual-table-wrap"><table class="manual-table"><thead><tr>
+<th scope="col">Symbol</th>
+<th scope="col">Meaning</th>
+</tr></thead><tbody>
+<tr><td><code>N</code></td><td>Stoichiometry or site-number term under the selected model</td></tr>
+<tr><td><code>alpha</code></td><td>Syringe-side active-concentration correction when syringe correction is enabled</td></tr>
+<tr><td><code>Ka</code></td><td>Association constant</td></tr>
+<tr><td><code>Kd</code></td><td>Dissociation constant</td></tr>
+<tr><td><code>Delta H</code></td><td>Binding enthalpy change</td></tr>
+<tr><td><code>Delta G</code></td><td>Gibbs free-energy change</td></tr>
+<tr><td><code>T Delta S</code></td><td>Entropic contribution at the evaluation temperature</td></tr>
+<tr><td><code>Delta Cp</code></td><td>Heat-capacity change in a supported temperature-dependent analysis</td></tr>
+<tr><td><code>q</code></td><td>Integrated injection heat</td></tr>
+<tr><td><code>sigma</code></td><td>Standard uncertainty or spread, according to context</td></tr>
+</tbody></table></div>
+<p>Always use the units displayed or exported by the application. Do not combine values expressed in different energy, concentration, or temperature units without conversion.</p>
+<h2 id="keyboard-conventions">Keyboard conventions</h2>
+<p>The operating-system command modifier is <strong>Command</strong> on macOS and <strong>Ctrl</strong> on Windows or Linux. Standard shortcuts for open, save, copy, and preferences follow the active platform where provided.</p>
+<p>On the welcome screen, <strong>Enter</strong> opens the file chooser and <strong>Space</strong> can open recent data. While reviewing individual integration regions, <strong>Space</strong> can copy the current integration length to the next injection and advance the view.</p>
+<p>Keyboard focus matters. If a shortcut changes text or has no effect, click the intended graph or workspace control and try again.</p>
+<h2 id="reporting-checklist">Reporting checklist</h2>
+<p>For a reproducible result, record:</p>
+<ul class="manual-list"><li>application version and software citation;</li><li>input source and experiment identifiers;</li><li>concentrations, uncertainties, temperature, and relevant attributes;</li><li>baseline and integration approach;</li><li>excluded experiments or injections and reasons;</li><li>model, initial-value strategy, constraints, limits, optimizer, and weighting;</li><li>uncertainty method and successful refit behavior;</li><li>evaluation temperature and units;</li><li>advanced-analysis assumptions;</li><li>project and export filenames.</li></ul>
+<h2 id="references-and-further-information">References and further information</h2>
+<ul class="manual-list"><li><a href="https://github.com/FrederikTheisen/FT-ITC-Analysis" target="_blank" rel="noreferrer">FT-ITC Analysis repository</a></li><li><a href="https://github.com/FrederikTheisen/FT-ITC-Analysis/releases" target="_blank" rel="noreferrer">FT-ITC Analysis releases</a></li><li><a href="https://github.com/FrederikTheisen/FT-ITC-Analysis/wiki" target="_blank" rel="noreferrer">FT-ITC Analysis wiki</a></li><li><a href="https://doi.org/10.5281/zenodo.14832177" target="_blank" rel="noreferrer">Software DOI: 10.5281/zenodo.14832177</a></li><li><strong>Help &gt; Citation</strong> in the application for current paper and versioned software citation text</li></ul>
+<p>For scientific use, consult the primary literature appropriate to the binding model, experimental design, error model, and derived analysis. The application citation identifies the software; it does not replace citations for the underlying method.</p>
+      <nav class="manual-pager" aria-label="Adjacent manual chapters"><a class="manual-pager-prev" href="/manual/preferences-troubleshooting"><span>Previous</span>Preferences and troubleshooting</a><span></span></nav>
+    </article>
+  </main>
+  <footer class="footer wrap"><a class="brand" href="/"><img src="/assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a><p>Transparent tools for calorimetry.</p><div><a href="/resources.html">Resources</a><a data-link="repository" href="#">GitHub</a><a data-link="support" href="/support.html">Support</a></div><small>© <span data-year></span> FT-ITC Analysis</small></footer>
+  <script src="/script.js"></script>
+</body>
+</html>

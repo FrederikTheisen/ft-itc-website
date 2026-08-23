@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Processing thermograms | FT-ITC Analysis User Manual</title>
+  <meta name="description" content="Choose and refine baselines, set integration regions, manage injections, and judge whether processing is defensible.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#173540">
+  <link rel="canonical" href="https://ft-itc.org/manual/processing-thermograms">
+  <link rel="icon" href="/assets/icon-180.png" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/icon-180.png">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="manual" data-manual-slug="processing-thermograms">
+  <header class="topbar wrap">
+    <a class="brand" href="/"><img src="/assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+      <a data-nav="app" href="/app-desktop.html">Desktop app</a><a data-link="webApp" href="https://app.ft-itc.org" target="_blank" rel="noreferrer">Web viewer ↗</a><a data-nav="resources" href="/resources.html">Resources</a><a data-nav="analysis" href="/analysis.html">Advanced analysis</a><a data-nav="manual" href="/manual" aria-current="page">Manual</a>
+      <a class="button button-primary nav-download" data-link="download" href="/app-desktop.html#platforms">Download <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+  <main class="manual-page wrap">
+    <p class="manual-kicker">FT-ITC Analysis 1.4.3 user manual</p>
+    <nav class="manual-chapters" aria-label="Manual chapters"><a class="manual-nav-link" href="/manual"><span>01</span> FT-ITC Analysis user manual</a><a class="manual-nav-link" href="/manual/quick-start"><span>02</span> Quick start</a><a class="manual-nav-link" href="/manual/installation-files-projects"><span>03</span> Installation, files, and projects</a><a class="manual-nav-link" href="/manual/workspace-experiments"><span>04</span> Workspace and experiment management</a><a class="manual-nav-link is-current" href="/manual/processing-thermograms" aria-current="page"><span>05</span> Processing thermograms</a><a class="manual-nav-link" href="/manual/fitting-models"><span>06</span> Fitting models</a><a class="manual-nav-link" href="/manual/multiple-experiments"><span>07</span> Multiple-experiment analysis</a><a class="manual-nav-link" href="/manual/results-advanced-analysis"><span>08</span> Results and advanced analyses</a><a class="manual-nav-link" href="/manual/figures-printing-export"><span>09</span> Figures, printing, and export</a><a class="manual-nav-link" href="/manual/additional-tools"><span>10</span> Additional tools</a><a class="manual-nav-link" href="/manual/preferences-troubleshooting"><span>11</span> Preferences and troubleshooting</a><a class="manual-nav-link" href="/manual/reference"><span>12</span> Reference</a></nav>
+    <article class="manual-content">
+      <h1 id="processing-thermograms">Processing thermograms</h1><p class="manual-summary">Choose and refine baselines, set integration regions, manage injections, and judge whether processing is defensible.</p><p class="manual-freshness">Last verified: <time datetime="2026-08-22">2026-08-22</time></p>
+<p>Processing subtracts an estimated baseline from differential power and integrates the corrected response within each injection region. It produces an injection heat and estimated uncertainty for fitting. It does not decide whether the baseline, integration window, or experiment is scientifically appropriate.</p>
+<p>Integrated-heat imports do not contain a thermogram and therefore do not use this workflow.</p>
+<h2 id="prepare-the-experiment">Prepare the experiment</h2>
+<p>Before processing, open <strong>Details...</strong> and confirm temperature, concentrations, injection schedule, and instrument metadata. Then open <strong>Process Data</strong> and inspect the complete trace before zooming into individual injections.</p>
+<p>Look for equilibration drift, discontinuities, unusually shaped peaks, failed injections, and changes in noise. These observations guide baseline choice and identify injections that deserve closer review.</p>
+<h2 id="choose-a-baseline">Choose a baseline</h2>
+<h3 id="spline">Spline</h3>
+<p><strong>Spline</strong> places control points in usable baseline regions and interpolates between them. It provides the most direct graphical control.</p>
+<ul class="manual-list"><li><strong>Linear</strong> connects neighboring control points without smooth curvature.</li><li><strong>Smooth</strong> interpolates a continuous smooth baseline through the controls.</li><li><strong>Sparse</strong>, <strong>Balanced</strong>, and <strong>Dense</strong> adjust the target point density.</li><li><strong>Mean</strong>, <strong>Median</strong>, and <strong>Min volatility</strong> determine how a representative local handle value is obtained.</li></ul>
+<p>Show spline points when reviewing the fit. Add or remove a point when an interval needs more or less control; drag a point to correct its value. Lock an individual point when it should survive later automatic processing changes.</p>
+<aside class="manual-callout callout-recommendation" role="note" aria-label="Recommendation"><strong>Recommendation:</strong> Start with <strong>Balanced</strong> density. Add complexity only where the baseline trace supports it. Dense control points can follow noise or absorb genuine injection signal.</aside>
+<h3 id="polynomial">Polynomial</h3>
+<p><strong>Polynomial</strong> fits one polynomial across the thermogram. Points with large residuals are iteratively rejected according to the z-limit, helping prevent injection peaks from dominating the fit. Polynomial degree controls global flexibility.</p>
+<p>Use this baseline when drift is smooth across the entire run. Inspect both ends of the trace, where high-degree polynomials can behave poorly. A lower degree is easier to justify; a higher degree should solve a visible baseline problem rather than merely reduce residuals.</p>
+<h3 id="segmented">Segmented</h3>
+<p><strong>Segmented</strong> fits local constant, linear, or quadratic behavior around integration regions and evaluates a piecewise baseline through the run. It is useful when drift changes locally or a single global polynomial is too rigid.</p>
+<p>Check continuity and the baseline immediately before and after each peak. Local flexibility can accommodate real drift but can also hide a poorly chosen integration region.</p>
+<h3 id="convert-to-spline">Convert to spline</h3>
+<p>Convert a polynomial or segmented baseline to <strong>Spline</strong> when the automatic result is a good starting point but needs point-level editing. The conversion changes the editable representation; review the whole trace again before accepting it.</p>
+<h2 id="control-which-data-establish-the-baseline">Control which data establish the baseline</h2>
+<p>By default, data inside integration regions are excluded from baseline fitting. The <strong>Discard integrated regions</strong> setting controls this behavior. Because the baseline and integration windows are coupled, moving a boundary can change both the area of integration and the baseline estimate.</p>
+<aside class="manual-callout callout-caution" role="note" aria-label="Caution"><strong>Caution:</strong> Do not tune boundaries solely to obtain expected heats. Boundaries should follow the thermogram response and a consistent processing rule.</aside>
+<h2 id="set-integration-regions">Set integration regions</h2>
+<p>Each injection has a start delay and an end offset within its injection scope. Use global controls when all or most injections need the same rule, and graphical markers when an injection needs an individual adjustment.</p>
+<p>The supported integration-length modes are:</p>
+<ul class="manual-list"><li><strong>Time</strong> - use a common time length.</li><li><strong>Factor</strong> - estimate a peak-dependent length from injection shapes and apply a scale factor.</li><li><strong>Fit</strong> - fit injection peak shapes and use the fitted behavior to estimate end offsets.</li></ul>
+<p>End times are constrained to the injection scope and a minimum interval. If a requested window is outside those limits, the application uses a valid interval instead.</p>
+<h3 id="review-injection-by-injection">Review injection by injection</h3>
+<p>Zoom to an individual injection and confirm that the region starts at the intended response and ends after the signal has returned sufficiently toward baseline. When the keyboard shortcut is active, <strong>Space</strong> copies the current integration length to the next injection and advances the view. Always confirm the next region rather than assuming identical kinetics.</p>
+<p>Review the first injection separately. A small first injection can behave differently because of syringe diffusion, backlash, or experimental design. Exclude it from fitting only for an identified reason.</p>
+<h2 id="understand-injection-uncertainty">Understand injection uncertainty</h2>
+<p>The application estimates uncertainty from corrected baseline noise around an injection and the number of corrected samples in its integration region. The estimate uses robust noise handling and an autocorrelation correction before combining integration and baseline-level contributions.</p>
+<p>Display the uncertainty bars and compare them across the run. Longer regions normally collect more baseline noise; an unstable baseline can increase uncertainty. Weighting a fit by injection error uses these estimates, so inspect them before enabling weighting.</p>
+<aside class="manual-callout callout-interpretation" role="note" aria-label="Interpretation"><strong>Interpretation:</strong> Error bars describe estimated measurement uncertainty under the selected processing. They do not account for every systematic error, and they do not validate the baseline model.</aside>
+<h2 id="copy-processing">Copy processing</h2>
+<p>Use the processing-copy command when multiple experiments were collected with sufficiently similar timing and response characteristics. Copying is a starting point, not confirmation that every baseline and integration region is suitable.</p>
+<p>After copying:</p>
+<ol class="manual-list"><li>Inspect the entire destination thermogram.</li><li>Check baseline controls and every integration region.</li><li>Compare uncertainty behavior.</li><li>Reprocess and save only after review.</li></ol>
+<h2 id="lock-processing">Lock processing</h2>
+<p>Lock the processor after the baseline and integration regions are accepted. A processing lock freezes the result and disables integration-region and spline-point editing. Unlock it to revise the processing.</p>
+<p>Locking protects against accidental edits; it does not certify the analysis. If the processor is locked and controls appear unavailable, check the lock state before diagnosing a software problem.</p>
+<h2 id="include-or-exclude-injections">Include or exclude injections</h2>
+<p>Injection inclusion affects fitting. Exclude an injection when the raw trace or experimental record identifies a delivery, equilibration, or integration problem. Use the display to confirm which points are omitted.</p>
+<aside class="manual-callout callout-recommendation" role="note" aria-label="Recommendation"><strong>Recommendation:</strong> Fit with and without a questionable injection and record the reason for the final choice. A large residual alone is evidence to investigate, not an automatic exclusion rule.</aside>
+<h2 id="diagnose-the-processed-result">Diagnose the processed result</h2>
+<p>Before fitting, ask:</p>
+<ul class="manual-list"><li>Does the corrected thermogram return sensibly toward zero between injections?</li><li>Are baseline transitions or oscillations introduced by the chosen method?</li><li>Do integration regions follow a consistent experimental rule?</li><li>Are uncertainty bars plausible relative to visible noise?</li><li>Are discontinuities associated with known events?</li><li>Is the heat trend stable under small, defensible changes in processing?</li></ul>
+<p>If not, revisit the simplest relevant choice: details, excluded baseline regions, baseline family, baseline flexibility, or integration boundaries. Do not use model fitting to compensate for unresolved thermogram processing.</p>
+<h2 id="preserve-processing-decisions">Preserve processing decisions</h2>
+<p>Save the project as <code>.ftxtc</code> after processing. The project stores the configured baseline, integration state, raw and corrected peak information, optional buffer subtraction, and inclusion state. Export integrated peaks when you need a human-readable injection table, but retain the project for a reproducible continuation.</p>
+      <nav class="manual-pager" aria-label="Adjacent manual chapters"><a class="manual-pager-prev" href="/manual/workspace-experiments"><span>Previous</span>Workspace and experiment management</a><a class="manual-pager-next" href="/manual/fitting-models"><span>Next</span>Fitting models</a></nav>
+    </article>
+  </main>
+  <footer class="footer wrap"><a class="brand" href="/"><img src="/assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a><p>Transparent tools for calorimetry.</p><div><a href="/resources.html">Resources</a><a data-link="repository" href="#">GitHub</a><a data-link="support" href="/support.html">Support</a></div><small>© <span data-year></span> FT-ITC Analysis</small></footer>
+  <script src="/script.js"></script>
+</body>
+</html>
