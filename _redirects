@@ -1,2 +1,27 @@
+# Legacy URLs use permanent redirects so search engines consolidate them with
+# the extensionless canonical URLs used in the sitemap.
+/index.html / 301
+/app-desktop.html /app-desktop 301
+/resources.html /resources 301
+/support.html /support 301
+/analysis.html /analysis 301
+/install-macos.html /install-macos 301
+/install-windows.html /install-windows 301
+/install-linux.html /install-linux 301
+/manual.html /manual 301
+/manual/quick-start.html /manual/quick-start 301
+/manual/installation-files-projects.html /manual/installation-files-projects 301
+/manual/workspace-experiments.html /manual/workspace-experiments 301
+/manual/processing-thermograms.html /manual/processing-thermograms 301
+/manual/fitting-models.html /manual/fitting-models 301
+/manual/multiple-experiments.html /manual/multiple-experiments 301
+/manual/results-advanced-analysis.html /manual/results-advanced-analysis 301
+/manual/figures-printing-export.html /manual/figures-printing-export 301
+/manual/additional-tools.html /manual/additional-tools 301
+/manual/preferences-troubleshooting.html /manual/preferences-troubleshooting 301
+/manual/reference.html /manual/reference 301
+/tutorials/how-to-analyze-itc-data /how-to-analyze-itc-data 301
+/tutorials/how-to-analyze-itc-data.html /how-to-analyze-itc-data 301
+/how-to-analyze-itc-data.html /how-to-analyze-itc-data 301
 /workflow /app-desktop#advanced-processing 301
 /workflow.html /app-desktop#advanced-processing 301
