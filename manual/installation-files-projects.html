@@ -25,7 +25,7 @@
     <p class="manual-kicker">FT-ITC Analysis 1.4.3 user manual</p>
     <nav class="manual-chapters" aria-label="Manual chapters"><a class="manual-nav-link" href="/manual"><span>01</span> FT-ITC Analysis user manual</a><a class="manual-nav-link" href="/manual/quick-start"><span>02</span> Quick start</a><a class="manual-nav-link is-current" href="/manual/installation-files-projects" aria-current="page"><span>03</span> Installation, files, and projects</a><a class="manual-nav-link" href="/manual/workspace-experiments"><span>04</span> Workspace</a><a class="manual-nav-link" href="/manual/processing-thermograms"><span>05</span> Processing</a><a class="manual-nav-link" href="/manual/fitting-models"><span>06</span> Single-experiment fitting</a><a class="manual-nav-link" href="/manual/multiple-experiments"><span>07</span> Multiple-experiment fitting</a><a class="manual-nav-link" href="/manual/results-advanced-analysis"><span>08</span> Results and advanced analyses</a><a class="manual-nav-link" href="/manual/figures-printing-export"><span>09</span> Figures and export</a><a class="manual-nav-link" href="/manual/additional-tools"><span>10</span> Tools</a><a class="manual-nav-link" href="/manual/preferences-troubleshooting"><span>11</span> Preferences</a><a class="manual-nav-link" href="/manual/reference"><span>12</span> Reference</a></nav>
     <article class="manual-content">
-      <h1 id="installation-files-and-projects">Installation, files, and projects</h1><p class="manual-summary">Install FT-ITC Analysis, open supported data, save portable projects, and use autosave or recovery safely.</p><p class="manual-freshness">Last verified: <time datetime="2026-08-23">2026-08-23</time></p>
+<h1 id="installation-files-and-projects">Installation, files, and projects</h1><p class="manual-summary">Install FT-ITC Analysis, open supported data, save portable projects, and use autosave or recovery safely.</p><p class="manual-freshness">Last verified: <time datetime="2026-08-24">2026-08-24</time></p>
 <h2 id="install-the-application">Install the application</h2>
 <p>Use the <a href="https://github.com/FrederikTheisen/FT-ITC-Analysis/releases/latest" target="_blank" rel="noreferrer">latest FT-ITC Analysis release</a> for current packages and release notes. Verify that the file came from the project release channel before accepting an operating-system security prompt. The examples below describe package types available at this manual's verification date and may change between releases. Installation problems can be reported through the <a href="https://github.com/FrederikTheisen/FT-ITC-Analysis/issues" target="_blank" rel="noreferrer">GitHub issue tracker</a>.</p>
 <h3 id="macos">macOS</h3>
@@ -44,6 +44,7 @@
 <tr><td><code>.itc</code></td><td>MicroCal-style raw data</td><td>Yes</td></tr>
 <tr><td><code>.ta</code></td><td>TA Instruments/NanoAnalyze export</td><td>Usually</td></tr>
 <tr><td><code>.apj</code></td><td>PEAQ-ITC project export</td><td>As supported by import</td></tr>
+<tr><td><code>.opj</code></td><td>Legacy Origin ITC project</td><td>Yes, when an embedded trace is present</td></tr>
 <tr><td><code>.dat</code></td><td>Integrated heats</td><td>No</td></tr>
 <tr><td><code>.aff</code></td><td>Integrated heats</td><td>No</td></tr>
 <tr><td><code>.dh</code></td><td>Integrated heats</td><td>No</td></tr>
@@ -51,6 +52,7 @@
 <tr><td><code>.ftitc</code></td><td>Legacy FT-ITC project</td><td>Stored legacy state</td></tr>
 </tbody></table></div>
 <p>PEAQ project imports are converted into experiment information understood by FT-ITC Analysis. Content that is specific to the source application is not automatically equivalent to a native FT-ITC project.</p>
+<p>Legacy Origin <code>.opj</code> imports select the first compatible ITC worksheet in project order and restore its source heats, injection metadata, and embedded thermogram when available. ResultsLog text is retained in the experiment comments as provenance. Origin baseline processing, fitted models, and Fit/DY columns are not imported or converted into native FT-ITC fits. Newer <code>.opju</code> files are not supported.</p>
 <h2 id="open-files">Open files</h2>
 <p>Choose <strong>File &gt; Open...</strong>, use the welcome-screen action, or drag files into the application. Multiple raw or integrated files can be opened together.</p>
 <p>When you open an FT-ITC project while other data is loaded, choose whether to replace the current document or append the project's contents. Replace is appropriate when the opened project should become the complete working document. Append is useful for bringing experiments or results into an existing comparison project.</p>
