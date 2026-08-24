@@ -3,21 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Processing thermograms | FT-ITC Analysis User Manual</title>
-  <meta name="description" content="Choose a baseline, set integration regions, understand injection uncertainty, and propagate or lock processing.">
+  <title>Processing | FT-ITC Analysis User Manual</title>
+  <meta name="description" content="Baseline models, integration regions, injection uncertainty, and processing propagation and locking.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#173540">
   <link rel="canonical" href="https://ft-itc.org/manual/processing-thermograms">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="FT-ITC Analysis">
-  <meta property="og:title" content="Processing thermograms | FT-ITC Analysis User Manual">
-  <meta property="og:description" content="Choose a baseline, set integration regions, understand injection uncertainty, and propagate or lock processing.">
+  <meta property="og:title" content="Processing | FT-ITC Analysis User Manual">
+  <meta property="og:description" content="Baseline models, integration regions, injection uncertainty, and processing propagation and locking.">
   <meta property="og:url" content="https://ft-itc.org/manual/processing-thermograms">
   <meta property="og:image" content="https://ft-itc.org/manual/assets/processing-workspace.webp">
   <meta property="og:image:alt" content="Light-theme Process Data workspace for a JORS experiment, showing the thermogram, Spline baseline controls, integration settings, and graph navigation.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Processing thermograms | FT-ITC Analysis User Manual">
-  <meta name="twitter:description" content="Choose a baseline, set integration regions, understand injection uncertainty, and propagate or lock processing.">
+  <meta name="twitter:title" content="Processing | FT-ITC Analysis User Manual">
+  <meta name="twitter:description" content="Baseline models, integration regions, injection uncertainty, and processing propagation and locking.">
   <meta name="twitter:image" content="https://ft-itc.org/manual/assets/processing-workspace.webp">
   <meta name="twitter:image:alt" content="Light-theme Process Data workspace for a JORS experiment, showing the thermogram, Spline baseline controls, integration settings, and graph navigation.">
   <script type="application/ld+json">
@@ -28,8 +28,8 @@
           "@type": "WebPage",
           "@id": "https://ft-itc.org/manual/processing-thermograms#webpage",
           "url": "https://ft-itc.org/manual/processing-thermograms",
-          "name": "Processing thermograms | FT-ITC Analysis User Manual",
-          "description": "Choose a baseline, set integration regions, understand injection uncertainty, and propagate or lock processing.",
+          "name": "Processing | FT-ITC Analysis User Manual",
+          "description": "Baseline models, integration regions, injection uncertainty, and processing propagation and locking.",
           "inLanguage": "en-US",
           "dateModified": "2026-08-24",
           "isPartOf": { "@id": "https://ft-itc.org/#website" },
@@ -41,7 +41,7 @@
           "@id": "https://ft-itc.org/manual/processing-thermograms#techarticle",
           "url": "https://ft-itc.org/manual/processing-thermograms",
           "headline": "Processing",
-          "description": "Choose a baseline, set integration regions, understand injection uncertainty, and propagate or lock processing.",
+          "description": "Baseline models, integration regions, injection uncertainty, and processing propagation and locking.",
           "inLanguage": "en-US",
           "dateModified": "2026-08-24",
           "author": { "@type": "Person", "name": "Frederik Theisen" },
@@ -78,7 +78,7 @@
   </header>
   <main class="manual-page wrap">
     <p class="manual-kicker">FT-ITC Analysis 1.4.3 user manual</p>
-    <nav class="manual-chapters" aria-label="Manual chapters"><a class="manual-nav-link" href="/manual"><span>01</span> FT-ITC Analysis user manual</a><a class="manual-nav-link" href="/manual/quick-start"><span>02</span> Quick start</a><a class="manual-nav-link" href="/manual/installation-files-projects"><span>03</span> Installation, files, and projects</a><a class="manual-nav-link" href="/manual/workspace-experiments"><span>04</span> Workspace</a><a class="manual-nav-link is-current" href="/manual/processing-thermograms" aria-current="page"><span>05</span> Processing</a><a class="manual-nav-link" href="/manual/fitting-models"><span>06</span> Single-experiment fitting</a><a class="manual-nav-link" href="/manual/multiple-experiments"><span>07</span> Multiple-experiment fitting</a><a class="manual-nav-link" href="/manual/results-advanced-analysis"><span>08</span> Results and advanced analyses</a><a class="manual-nav-link" href="/manual/figures-printing-export"><span>09</span> Figures and export</a><a class="manual-nav-link" href="/manual/additional-tools"><span>10</span> Tools</a><a class="manual-nav-link" href="/manual/preferences-troubleshooting"><span>11</span> Preferences</a><a class="manual-nav-link" href="/manual/reference"><span>12</span> Reference</a></nav>
+    <nav class="manual-chapters" aria-label="Manual chapters"><a class="manual-nav-link" href="/manual"><span>01</span> FT-ITC Analysis user manual</a><a class="manual-nav-link" href="/manual/quick-start"><span>02</span> Quick start</a><a class="manual-nav-link" href="/manual/installation-files-projects"><span>03</span> Installation, files, and projects</a><a class="manual-nav-link" href="/manual/workspace-experiments"><span>04</span> Workspace</a><a class="manual-nav-link is-current" href="/manual/processing-thermograms" aria-current="page"><span>05</span> Processing</a><a class="manual-nav-link" href="/manual/fitting-models"><span>06</span> Single-experiment fitting</a><a class="manual-nav-link" href="/manual/multiple-experiments"><span>07</span> Multiple-experiment fitting</a><a class="manual-nav-link" href="/manual/results-advanced-analysis"><span>08</span> Results and advanced analyses</a><a class="manual-nav-link" href="/manual/figures-printing-export"><span>09</span> Figures and export</a><a class="manual-nav-link" href="/manual/additional-tools"><span>10</span> Tools</a><a class="manual-nav-link" href="/manual/preferences-troubleshooting"><span>11</span> Settings and defaults</a><a class="manual-nav-link" href="/manual/reference"><span>12</span> Glossary and equations</a></nav>
     <article class="manual-content">
 <h1 id="processing">Processing</h1><p class="manual-summary">Baseline models, integration regions, injection uncertainty, and processing propagation and locking.</p><p class="manual-freshness">Last verified: <time datetime="2026-08-24">2026-08-24</time></p>
 <p>The <strong>Process Data</strong> workspace estimates and subtracts a baseline from the differential-power trace and integrates the corrected response for each injection. Processing produces an injection heat with an estimated uncertainty for later fitting. The application cannot determine whether a baseline or integration boundary is scientifically appropriate for the experiment.</p>
@@ -111,7 +111,7 @@
 <h3 id="convert-to-a-spline">Convert to a spline</h3>
 <p>A Polynomial or Segmented baseline can be converted to a <strong>Smooth</strong> or <strong>Linear</strong> Spline when the automatic baseline is a useful starting point for graphical editing. Conversion changes the baseline representation and creates editable spline points.</p>
 <h2 id="integration-regions">Integration regions</h2>
-<figure class="manual-figure"><img src="/manual/assets/processing-selected-injection.webp" alt="Light-theme Process Data view focused on one JORS injection, showing its boundaries, Start and Length controls, Fit Peaks, and Copy to next peak." loading="lazy" decoding="async" width="2400" height="1576"><figcaption>Selecting an injection exposes its individual boundaries and navigation controls.</figcaption></figure>
+<figure class="manual-figure"><img src="/manual/assets/processing-selected-injection.webp" alt="Light-theme Process Data view focused on one JORS injection, showing its boundaries, Start and Length controls, Fit Peaks, and Copy to next peak." loading="lazy" decoding="async" width="2624" height="1800"><figcaption>Selecting an injection exposes its individual boundaries and navigation controls.</figcaption></figure>
 <p>Each injection region has a start and an end boundary. <strong>Start</strong> sets the offset of the start boundary relative to the injection. The value displayed as <strong>Length</strong> positions the end boundary that many seconds after the injection begins; it is not a separate processing mode.</p>
 <p>Either boundary can be dragged in the graph or adjusted with the controls. The application constrains the start and end to a valid interval within the injection scope and preserves a minimum separation between them.</p>
 <h3 id="estimate-end-points-with-fit-peaks">Estimate end points with Fit Peaks</h3>

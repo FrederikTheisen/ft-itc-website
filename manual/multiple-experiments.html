@@ -3,23 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Multiple-experiment analysis | FT-ITC Analysis User Manual</title>
+  <title>Multiple-experiment fitting | FT-ITC Analysis User Manual</title>
   <meta name="description" content="Multi-dataset fitting across processed Active experiments, including constraints, shared options, diagnostics, and combined results.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#173540">
   <link rel="canonical" href="https://ft-itc.org/manual/multiple-experiments">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="FT-ITC Analysis">
-  <meta property="og:title" content="Multiple-experiment analysis | FT-ITC Analysis User Manual">
+  <meta property="og:title" content="Multiple-experiment fitting | FT-ITC Analysis User Manual">
   <meta property="og:description" content="Multi-dataset fitting across processed Active experiments, including constraints, shared options, diagnostics, and combined results.">
   <meta property="og:url" content="https://ft-itc.org/manual/multiple-experiments">
   <meta property="og:image" content="https://ft-itc.org/manual/assets/multiple-experiment-fit.webp">
-  <meta property="og:image:alt" content="Multiple-experiment Analyze Data view configured to fit three Active experiments individually, showing the fitted curve, residuals, shared model settings, uncertainty controls, and result-creation controls">
+  <meta property="og:image:alt" content="Multiple-experiment Analyze Data view configured to fit three Active experiments globally with shared enthalpy, showing the fitted curve, residuals, model settings, uncertainty controls, and result-creation controls">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Multiple-experiment analysis | FT-ITC Analysis User Manual">
+  <meta name="twitter:title" content="Multiple-experiment fitting | FT-ITC Analysis User Manual">
   <meta name="twitter:description" content="Multi-dataset fitting across processed Active experiments, including constraints, shared options, diagnostics, and combined results.">
   <meta name="twitter:image" content="https://ft-itc.org/manual/assets/multiple-experiment-fit.webp">
-  <meta name="twitter:image:alt" content="Multiple-experiment Analyze Data view configured to fit three Active experiments individually, showing the fitted curve, residuals, shared model settings, uncertainty controls, and result-creation controls">
+  <meta name="twitter:image:alt" content="Multiple-experiment Analyze Data view configured to fit three Active experiments globally with shared enthalpy, showing the fitted curve, residuals, model settings, uncertainty controls, and result-creation controls">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -28,7 +28,7 @@
           "@type": "WebPage",
           "@id": "https://ft-itc.org/manual/multiple-experiments#webpage",
           "url": "https://ft-itc.org/manual/multiple-experiments",
-          "name": "Multiple-experiment analysis | FT-ITC Analysis User Manual",
+          "name": "Multiple-experiment fitting | FT-ITC Analysis User Manual",
           "description": "Multi-dataset fitting across processed Active experiments, including constraints, shared options, diagnostics, and combined results.",
           "inLanguage": "en-US",
           "dateModified": "2026-08-23",
@@ -78,7 +78,7 @@
   </header>
   <main class="manual-page wrap">
     <p class="manual-kicker">FT-ITC Analysis 1.4.3 user manual</p>
-    <nav class="manual-chapters" aria-label="Manual chapters"><a class="manual-nav-link" href="/manual"><span>01</span> FT-ITC Analysis user manual</a><a class="manual-nav-link" href="/manual/quick-start"><span>02</span> Quick start</a><a class="manual-nav-link" href="/manual/installation-files-projects"><span>03</span> Installation, files, and projects</a><a class="manual-nav-link" href="/manual/workspace-experiments"><span>04</span> Workspace</a><a class="manual-nav-link" href="/manual/processing-thermograms"><span>05</span> Processing</a><a class="manual-nav-link" href="/manual/fitting-models"><span>06</span> Single-experiment fitting</a><a class="manual-nav-link is-current" href="/manual/multiple-experiments" aria-current="page"><span>07</span> Multiple-experiment fitting</a><a class="manual-nav-link" href="/manual/results-advanced-analysis"><span>08</span> Results and advanced analyses</a><a class="manual-nav-link" href="/manual/figures-printing-export"><span>09</span> Figures and export</a><a class="manual-nav-link" href="/manual/additional-tools"><span>10</span> Tools</a><a class="manual-nav-link" href="/manual/preferences-troubleshooting"><span>11</span> Preferences</a><a class="manual-nav-link" href="/manual/reference"><span>12</span> Reference</a></nav>
+    <nav class="manual-chapters" aria-label="Manual chapters"><a class="manual-nav-link" href="/manual"><span>01</span> FT-ITC Analysis user manual</a><a class="manual-nav-link" href="/manual/quick-start"><span>02</span> Quick start</a><a class="manual-nav-link" href="/manual/installation-files-projects"><span>03</span> Installation, files, and projects</a><a class="manual-nav-link" href="/manual/workspace-experiments"><span>04</span> Workspace</a><a class="manual-nav-link" href="/manual/processing-thermograms"><span>05</span> Processing</a><a class="manual-nav-link" href="/manual/fitting-models"><span>06</span> Single-experiment fitting</a><a class="manual-nav-link is-current" href="/manual/multiple-experiments" aria-current="page"><span>07</span> Multiple-experiment fitting</a><a class="manual-nav-link" href="/manual/results-advanced-analysis"><span>08</span> Results and advanced analyses</a><a class="manual-nav-link" href="/manual/figures-printing-export"><span>09</span> Figures and export</a><a class="manual-nav-link" href="/manual/additional-tools"><span>10</span> Tools</a><a class="manual-nav-link" href="/manual/preferences-troubleshooting"><span>11</span> Settings and defaults</a><a class="manual-nav-link" href="/manual/reference"><span>12</span> Glossary and equations</a></nav>
     <article class="manual-content">
 <h1 id="multiple-experiment-fitting">Multiple-experiment fitting</h1><p class="manual-summary">Multi-dataset fitting across processed Active experiments, including constraints, shared options, diagnostics, and combined results.</p><p class="manual-freshness">Last verified: <time datetime="2026-08-23">2026-08-23</time></p>
 <p><strong>Multiple experiments</strong> is the multi-dataset mode in <strong>Analyze Data</strong>. It represents at least two processed <strong>Active</strong> experiments with one shared model context and one combined <strong>Analysis Result</strong>. When every constraint is <strong>None</strong>, the members are fitted independently. When one or more supported constraints are active, the solver performs one connected global optimization. Each experiment remains a member of the result, with member-specific parameters where the constraint state is <strong>None</strong>.</p>
@@ -86,7 +86,7 @@
 <h2 id="fit">Fit</h2>
 <p>The <strong>Fit</strong> tab identifies the <strong>Mode</strong> as <strong>Multiple experiments</strong> and exposes the shared <strong>Model</strong> selection. The solver controls include <strong>Algorithm</strong>, <strong>Errors</strong>, <strong>Bootstrap</strong>, <strong>Limits</strong>, <strong>Weight by injection error</strong>, and <strong>Unlock parameters</strong>. The available <strong>Algorithm</strong> values are <strong>Nelder-Mead</strong> and <strong>Levenberg-Marquardt</strong>; the error-estimation values are <strong>None</strong>, <strong>Bootstrap residuals</strong>, and <strong>Leave-one-out</strong>.</p>
 <p>The <strong>Result</strong> controls describe whether a completed fit is stored as an <strong>Analysis Result</strong> and whether that result opens automatically. <strong>Run Fit</strong> and <strong>Stop</strong> are the fit controls. The status area records termination state, RMSD, iteration count, elapsed time, and error-estimation outcome when applicable. A multiple-experiment analysis is ready only when every member has usable processed data and the set contains at least two members.</p>
-<figure class="manual-figure"><img src="/manual/assets/multiple-experiment-fit.webp" alt="Multiple-experiment Analyze Data view configured to fit three Active experiments individually, showing the fitted curve, residuals, shared model settings, uncertainty controls, and result-creation controls." loading="lazy" decoding="async" width="2624" height="1632"><figcaption>With all global constraints set to <strong>None</strong>, this multiple-experiment view is configured to fit the member experiments individually.</figcaption></figure>
+<figure class="manual-figure"><img src="/manual/assets/multiple-experiment-fit.webp" alt="Multiple-experiment Analyze Data view configured to fit three Active experiments globally with shared enthalpy, showing the fitted curve, residuals, model settings, uncertainty controls, and result-creation controls." loading="lazy" decoding="async" width="2624" height="1632"><figcaption>A shared enthalpy constraint connects the three Active experiments in one global fit.</figcaption></figure>
 <h2 id="parameters">Parameters</h2>
 <p>The <strong>Parameters</strong> tab contains the exposed fit parameters and, in multiple-experiment mode, the <strong>Global constraints</strong> section. Parameter rows show the current value, units, uncertainty information when available, and the parameter lock state. A parameter value or lock state is a parameter setting; it is separate from the relationship between members.</p>
 <p>The constraint states have these meanings:</p>
