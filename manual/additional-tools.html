@@ -8,13 +8,68 @@
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#173540">
   <link rel="canonical" href="https://ft-itc.org/manual/additional-tools">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="FT-ITC Analysis">
+  <meta property="og:title" content="Tools | FT-ITC Analysis User Manual">
+  <meta property="og:description" content="Design simulated titrations, subtract buffer controls, and merge standard or back-mixed tandem experiments.">
+  <meta property="og:url" content="https://ft-itc.org/manual/additional-tools">
+  <meta property="og:image" content="https://ft-itc.org/manual/assets/experiment-designer-model.webp">
+  <meta property="og:image:alt" content="Experiment Designer Model view showing a synthetic one-set-of-sites fit and editable N-value, enthalpy, and affinity parameters">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tools | FT-ITC Analysis User Manual">
+  <meta name="twitter:description" content="Design simulated titrations, subtract buffer controls, and merge standard or back-mixed tandem experiments.">
+  <meta name="twitter:image" content="https://ft-itc.org/manual/assets/experiment-designer-model.webp">
+  <meta name="twitter:image:alt" content="Experiment Designer Model view showing a synthetic one-set-of-sites fit and editable N-value, enthalpy, and affinity parameters">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://ft-itc.org/manual/additional-tools#webpage",
+          "url": "https://ft-itc.org/manual/additional-tools",
+          "name": "Tools | FT-ITC Analysis User Manual",
+          "description": "Design simulated titrations, subtract buffer controls, and merge standard or back-mixed tandem experiments.",
+          "inLanguage": "en-US",
+          "dateModified": "2026-08-23",
+          "isPartOf": { "@id": "https://ft-itc.org/#website" },
+          "mainEntity": { "@id": "https://ft-itc.org/manual/additional-tools#techarticle" },
+          "breadcrumb": { "@id": "https://ft-itc.org/manual/additional-tools#breadcrumb" }
+        },
+        {
+          "@type": "TechArticle",
+          "@id": "https://ft-itc.org/manual/additional-tools#techarticle",
+          "url": "https://ft-itc.org/manual/additional-tools",
+          "headline": "Tools",
+          "description": "Design simulated titrations, subtract buffer controls, and merge standard or back-mixed tandem experiments.",
+          "inLanguage": "en-US",
+          "dateModified": "2026-08-23",
+          "author": { "@type": "Person", "name": "Frederik Theisen" },
+          "publisher": { "@type": "Organization", "@id": "https://ft-itc.org/#organization", "name": "FT-ITC Analysis", "url": "https://ft-itc.org/" },
+          "image": "https://ft-itc.org/manual/assets/experiment-designer-model.webp",
+          "about": { "@id": "https://ft-itc.org/app-desktop#software" },
+          "mainEntityOfPage": { "@id": "https://ft-itc.org/manual/additional-tools#webpage" },
+          "breadcrumb": { "@id": "https://ft-itc.org/manual/additional-tools#breadcrumb" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://ft-itc.org/manual/additional-tools#breadcrumb",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "FT-ITC Analysis", "item": "https://ft-itc.org/" },
+            { "@type": "ListItem", "position": 2, "name": "Manual", "item": "https://ft-itc.org/manual" },
+            { "@type": "ListItem", "position": 3, "name": "Tools", "item": "https://ft-itc.org/manual/additional-tools" }
+          ]
+        }
+      ]
+    }
+  </script>
   <link rel="icon" href="/assets/icon-180.png" type="image/png">
   <link rel="apple-touch-icon" href="/assets/icon-180.png">
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body data-page="manual" data-manual-slug="additional-tools">
   <header class="topbar wrap">
-    <a class="brand" href="/"><img src="/assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a>
+    <a class="brand" href="/"><img src="/assets/icon-180.png" alt="" width="180" height="180"><span>FT-ITC <em>Analysis</em></span></a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
       <a data-nav="app" href="/app-desktop">Desktop app</a><a data-link="webApp" href="https://app.ft-itc.org" target="_blank" rel="noreferrer">Web viewer ↗</a><a data-nav="resources" href="/resources">Resources</a><a data-nav="analysis" href="/analysis">Advanced analysis</a><a data-nav="manual" href="/manual" aria-current="page">Manual</a>
@@ -31,15 +86,15 @@
 <p><strong>Experiment Designer...</strong> creates a synthetic titration from instrument, concentration, injection, and model parameters. The graph updates as the design changes. The designer does not add the synthetic experiment or its fit as a project item.</p>
 <h3 id="setup-and-model-controls">Setup and model controls</h3>
 <p>The <strong>Setup</strong> tab contains <strong>Instrument</strong>, <strong>Cell uM</strong>, <strong>Syringe uM</strong>, injection <strong>Count</strong>, and <strong>Volume uL</strong>. Count and volume define the injection schedule. <strong>Automatic injection volume</strong> derives the injection volume from the selected instrument’s standard syringe volume and injection count. <strong>Small first injection</strong> gives the first injection of each load a smaller volume and marks it excluded. <strong>Tandem simulation</strong> creates consecutive loads, with <strong>Segments</strong> defining their count and the designer’s tandem back-mixing model.</p>
-<figure class="manual-figure"><img src="/manual/assets/experiment-designer-setup.png" alt="Experiment Designer Setup view showing the synthetic fit, instrument, concentrations, injection schedule, automatic volume, small first injection, tandem, and noise controls." loading="lazy" decoding="async"></figure>
+<figure class="manual-figure"><img src="/manual/assets/experiment-designer-setup.webp" alt="Experiment Designer Setup view showing the synthetic fit, instrument, concentrations, injection schedule, automatic volume, small first injection, tandem, and noise controls." loading="lazy" decoding="async" width="1920" height="1416"></figure>
 <p>The <strong>Model</strong> tab contains <strong>Type</strong>, exposed model <strong>Parameters</strong>, and model-specific <strong>Options</strong>. <strong>Simulate noise</strong> adds synthetic measurement noise. <strong>Apply / Fit</strong> fits the synthetic data in the designer window and reports the fit on its graph; neither the simulation nor this fit becomes an Analysis Result or Experiment Data entry.</p>
-<figure class="manual-figure"><img src="/manual/assets/experiment-designer-model.png" alt="Experiment Designer Model view showing a synthetic one-set-of-sites fit and editable N-value, enthalpy, and affinity parameters." loading="lazy" decoding="async"></figure>
+<figure class="manual-figure"><img src="/manual/assets/experiment-designer-model.webp" alt="Experiment Designer Model view showing a synthetic one-set-of-sites fit and editable N-value, enthalpy, and affinity parameters." loading="lazy" decoding="async" width="1920" height="1416"></figure>
 <h2 id="buffer-subtraction">Buffer Subtraction</h2>
 <p><strong>Buffer Subtraction...</strong> models background heat from one processed reference experiment and applies the resulting correction to one or more target experiments. The reference selector shows experiment metadata and a <strong>Processed</strong> or <strong>Not yet processed</strong> status. The target list excludes the selected reference and supports multiple targets. A processed reference is required; its processing state is described in <a href="/manual/processing-thermograms">Processing thermograms</a>.</p>
 <p>The <strong>Method</strong> selector contains <strong>Matched</strong>, <strong>Linear</strong>, and <strong>Exp. decay</strong>:</p>
 <ul class="manual-list"><li><strong>Matched</strong> evaluates the reference heat at each target injection number, using nearby included reference injections when the matching injection is unavailable.</li><li><strong>Linear</strong> fits a line through valid, included reference injections and evaluates it across target injections.</li><li><strong>Exp. decay</strong> fits an exponential-decay model through valid, included reference injections when enough points are available.</li></ul>
 <p>The preview graph shows reference and target heats and the selected subtraction model. Reference-point inclusion changes the points available to the fitted methods. <strong>Focus Y axis on buffer data</strong> changes only the preview range. A continuous model line appears for <strong>Linear</strong> and <strong>Exp. decay</strong>; <strong>Matched</strong> is represented by injection-level reference values.</p>
-<figure class="manual-figure"><img src="/manual/assets/buffer-subtraction.png" alt="Buffer Subtraction window showing a processed reference, selected target, Linear method, focused buffer-data axis, fitted reference line, and Apply controls." loading="lazy" decoding="async"></figure>
+<figure class="manual-figure"><img src="/manual/assets/buffer-subtraction.webp" alt="Buffer Subtraction window showing a processed reference, selected target, Linear method, focused buffer-data axis, fitted reference line, and Apply controls." loading="lazy" decoding="async" width="1800" height="1276"></figure>
 <aside class="manual-callout callout-calculation" role="note" aria-label="Calculation"><strong>Calculation:</strong><div class="manual-equations"><math class="manual-equation" display="block" aria-label="q sub i corrected equals q sub i target minus q sub i reference"><mrow><msub><mi>q</mi><mrow><mi>i</mi><mo>,</mo><mtext>corr</mtext></mrow></msub><mo>=</mo><msub><mi>q</mi><mrow><mi>i</mi><mo>,</mo><mtext>target</mtext></mrow></msub><mo>−</mo><msub><mi>q</mi><mrow><mi>i</mi><mo>,</mo><mtext>ref</mtext></mrow></msub></mrow></math><p class="manual-equation-note">The selected method determines the reference value evaluated for injection <em>i</em>. <em>q</em><sub>i,target</sub> is the target heat, <em>q</em><sub>i,ref</sub> is the corresponding reference value, and <em>q</em><sub>i,corr</sub> is the corrected heat used downstream.</p></div></aside>
 <p><strong>Apply</strong> stores the reference and method on each target. The corrected heats are then used by downstream fitting and export while the original integrated heats remain unchanged. The reference Experiment Data becomes inactive. Changes in its processing or injection inclusion update the target corrections. The subtraction is project data and can affect the validity of dependent results.</p>
 <h2 id="experiment-merger">Experiment Merger</h2>
@@ -47,7 +102,7 @@
 <p>The merge <strong>Mode</strong> selector contains:</p>
 <ul class="manual-list"><li><strong>Simple tandem</strong>, which concatenates the segments using the standard concentration progression without a user-selected back-mixing correction.</li><li><strong>Fixed back-mixing</strong>, which applies one configured mixing fraction at every segment transition.</li><li><strong>Auto back-mixing</strong>, which scans for a transition mixing fraction and is available for up to three source experiments.</li></ul>
 <p>Back-mixing controls include <strong>Dead vol. uL</strong>, the <strong>Mixing</strong> fraction, and <strong>Remove titrated overflow</strong>. Dead volume represents the filling-stem or overflow volume above the active cell volume. The overflow control records whether titrated overflow was removed between segments. In Fixed mode, the slider supplies the fraction; in Auto mode, the scanner determines the transition values.</p>
-<figure class="manual-figure"><img src="/manual/assets/experiment-merger-auto.png" alt="Experiment Merger showing three ordered tandem segments, Auto back-mixing, dead volume, mixing result, overflow removal, and Create controls." loading="lazy" decoding="async"></figure>
+<figure class="manual-figure"><img src="/manual/assets/experiment-merger-auto.webp" alt="Experiment Merger showing three ordered tandem segments, Auto back-mixing, dead volume, mixing result, overflow removal, and Create controls." loading="lazy" decoding="async" width="1560" height="1236"></figure>
 <p><strong>Create</strong> produces a new processed Experiment Data item. Its thermogram samples are time-shifted and concatenated, its injection sequence retains segment boundaries, and its segment metadata stores the calculated starting active-cell and active-titrant concentrations. The merged item’s comments record the selected tandem mode and back-mixing parameters. Source experiments remain separate and are not changed by creation; the new item is marked as a tandem experiment and is not eligible as a later merger source. The resulting item can be fitted through <a href="/manual/fitting-models">Analyze Data</a>.</p>
 <h2 id="interpretation-of-tool-state">Interpretation of tool state</h2>
 <p>The tools expose state labels rather than claims about physical history. Buffer reference status <strong>Processed</strong> means integration has completed; <strong>Not yet processed</strong> means that prerequisite is absent. The merger status <strong>Invalid back-mixing settings</strong> describes control validation, while <strong>Auto back-mixing is available for up to three experiments</strong> describes the scanner limit. A selected mixing fraction or fitted subtraction model is a software correction with model uncertainty, not a measurement of unobserved liquid mixing or background heat.</p>
@@ -55,7 +110,7 @@
       <nav class="manual-pager" aria-label="Adjacent manual chapters"><a class="manual-pager-prev" href="/manual/figures-printing-export"><span>Previous</span>Figures and export</a><a class="manual-pager-next" href="/manual/preferences-troubleshooting"><span>Next</span>Preferences</a></nav>
     </article>
   </main>
-  <footer class="footer wrap"><a class="brand" href="/"><img src="/assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a><p>Transparent tools for calorimetry.</p><div><a href="/resources">Resources</a><a data-link="repository" href="#">GitHub</a><a data-link="support" href="/support">Support</a></div><small>© <span data-year></span> FT-ITC Analysis</small></footer>
+  <footer class="footer wrap"><a class="brand" href="/"><img src="/assets/icon-180.png" alt="" width="180" height="180"><span>FT-ITC <em>Analysis</em></span></a><p>Transparent tools for calorimetry.</p><div><a href="/resources">Resources</a><a data-link="repository" href="#">GitHub</a><a data-link="support" href="/support">Support</a></div><small>© <span data-year></span> FT-ITC Analysis</small></footer>
   <script src="/script.js"></script>
 </body>
 </html>

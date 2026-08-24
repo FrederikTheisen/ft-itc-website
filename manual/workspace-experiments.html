@@ -8,13 +8,68 @@
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#173540">
   <link rel="canonical" href="https://ft-itc.org/manual/workspace-experiments">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="FT-ITC Analysis">
+  <meta property="og:title" content="Workspace | FT-ITC Analysis User Manual">
+  <meta property="og:description" content="The application window, Experiment Data capabilities, and Analysis Result capabilities.">
+  <meta property="og:url" content="https://ft-itc.org/manual/workspace-experiments">
+  <meta property="og:image" content="https://ft-itc.org/manual/assets/experiment-data-workspace.webp">
+  <meta property="og:image:alt" content="Light-theme FT-ITC Analysis window with Experiment Data selected and the Overview workflow open.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Workspace | FT-ITC Analysis User Manual">
+  <meta name="twitter:description" content="The application window, Experiment Data capabilities, and Analysis Result capabilities.">
+  <meta name="twitter:image" content="https://ft-itc.org/manual/assets/experiment-data-workspace.webp">
+  <meta name="twitter:image:alt" content="Light-theme FT-ITC Analysis window with Experiment Data selected and the Overview workflow open.">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://ft-itc.org/manual/workspace-experiments#webpage",
+          "url": "https://ft-itc.org/manual/workspace-experiments",
+          "name": "Workspace | FT-ITC Analysis User Manual",
+          "description": "The application window, Experiment Data capabilities, and Analysis Result capabilities.",
+          "inLanguage": "en-US",
+          "dateModified": "2026-08-23",
+          "isPartOf": { "@id": "https://ft-itc.org/#website" },
+          "mainEntity": { "@id": "https://ft-itc.org/manual/workspace-experiments#techarticle" },
+          "breadcrumb": { "@id": "https://ft-itc.org/manual/workspace-experiments#breadcrumb" }
+        },
+        {
+          "@type": "TechArticle",
+          "@id": "https://ft-itc.org/manual/workspace-experiments#techarticle",
+          "url": "https://ft-itc.org/manual/workspace-experiments",
+          "headline": "Workspace",
+          "description": "The application window, Experiment Data capabilities, and Analysis Result capabilities.",
+          "inLanguage": "en-US",
+          "dateModified": "2026-08-23",
+          "author": { "@type": "Person", "name": "Frederik Theisen" },
+          "publisher": { "@type": "Organization", "@id": "https://ft-itc.org/#organization", "name": "FT-ITC Analysis", "url": "https://ft-itc.org/" },
+          "image": "https://ft-itc.org/manual/assets/experiment-data-workspace.webp",
+          "about": { "@id": "https://ft-itc.org/app-desktop#software" },
+          "mainEntityOfPage": { "@id": "https://ft-itc.org/manual/workspace-experiments#webpage" },
+          "breadcrumb": { "@id": "https://ft-itc.org/manual/workspace-experiments#breadcrumb" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://ft-itc.org/manual/workspace-experiments#breadcrumb",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "FT-ITC Analysis", "item": "https://ft-itc.org/" },
+            { "@type": "ListItem", "position": 2, "name": "Manual", "item": "https://ft-itc.org/manual" },
+            { "@type": "ListItem", "position": 3, "name": "Workspace", "item": "https://ft-itc.org/manual/workspace-experiments" }
+          ]
+        }
+      ]
+    }
+  </script>
   <link rel="icon" href="/assets/icon-180.png" type="image/png">
   <link rel="apple-touch-icon" href="/assets/icon-180.png">
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body data-page="manual" data-manual-slug="workspace-experiments">
   <header class="topbar wrap">
-    <a class="brand" href="/"><img src="/assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a>
+    <a class="brand" href="/"><img src="/assets/icon-180.png" alt="" width="180" height="180"><span>FT-ITC <em>Analysis</em></span></a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
       <a data-nav="app" href="/app-desktop">Desktop app</a><a data-link="webApp" href="https://app.ft-itc.org" target="_blank" rel="noreferrer">Web viewer ↗</a><a data-nav="resources" href="/resources">Resources</a><a data-nav="analysis" href="/analysis">Advanced analysis</a><a data-nav="manual" href="/manual" aria-current="page">Manual</a>
@@ -32,7 +87,7 @@
 <p>The rest of the window follows the selected item and task:</p>
 <ul class="manual-list"><li>The workflow navigator switches between the available stages of an experiment.</li><li>The workspace contains the graphs, tables, and controls for the current task.</li><li>Workflow controls provide options for the view or analysis currently open.</li><li>Item actions apply to the selected Experiment Data or Analysis Result.</li><li>The application menu contains project commands, tools, preferences, and help.</li></ul>
 <h2 id="experiment-data">Experiment Data</h2>
-<figure class="manual-figure"><img src="/manual/assets/experiment-data-workspace.png" alt="Light-theme FT-ITC Analysis window with Experiment Data selected and the Overview workflow open." loading="lazy" decoding="async"><figcaption>Selecting Experiment Data opens its experiment workflow in the shared workspace.</figcaption></figure>
+<figure class="manual-figure"><img src="/manual/assets/experiment-data-workspace.webp" alt="Light-theme FT-ITC Analysis window with Experiment Data selected and the Overview workflow open." loading="lazy" decoding="async" width="2288" height="1632"><figcaption>Selecting Experiment Data opens its experiment workflow in the shared workspace.</figcaption></figure>
 <p>Experiment Data represents an imported or application-created dataset. Its list entry provides identifying information and a summary of its processing or fitted state.</p>
 <h3 id="experiment-workflow">Experiment workflow</h3>
 <p>Four task views are available for Experiment Data:</p>
@@ -43,7 +98,7 @@
 <h3 id="experiment-data-actions">Experiment Data actions</h3>
 <ul class="manual-list"><li><strong>Details...</strong> opens the editable experiment information and attributes.</li><li><strong>Duplicate Data</strong> creates another project item from the selected Experiment Data.</li><li><strong>Export Selected Data...</strong> exports the selected dataset.</li><li><strong>Clear Solution</strong> removes the fitted solution currently attached to the Experiment Data.</li><li><strong>Remove Data</strong> removes the item from the open project without deleting its source file.</li></ul>
 <h2 id="analysis-result">Analysis Result</h2>
-<figure class="manual-figure"><img src="/manual/assets/analysis-result-workspace.png" alt="Light-theme FT-ITC Analysis window with an Analysis Result selected, showing its parameters, validity, and Update Result action." loading="lazy" decoding="async"><figcaption>An Analysis Result opens its dedicated result workspace when selected.</figcaption></figure>
+<figure class="manual-figure"><img src="/manual/assets/analysis-result-workspace.webp" alt="Light-theme FT-ITC Analysis window with an Analysis Result selected, showing its parameters, validity, and Update Result action." loading="lazy" decoding="async" width="2288" height="1632"><figcaption>An Analysis Result opens its dedicated result workspace when selected.</figcaption></figure>
 <p>An Analysis Result stores a fit for one or more experiments together with its model, constraints, fitting settings, uncertainty output, and member solutions. Its list entry summarizes the stored fit.</p>
 <h3 id="result-workspace">Result workspace</h3>
 <p>The result workspace provides these views:</p>
@@ -57,7 +112,7 @@
       <nav class="manual-pager" aria-label="Adjacent manual chapters"><a class="manual-pager-prev" href="/manual/installation-files-projects"><span>Previous</span>Installation, files, and projects</a><a class="manual-pager-next" href="/manual/processing-thermograms"><span>Next</span>Processing</a></nav>
     </article>
   </main>
-  <footer class="footer wrap"><a class="brand" href="/"><img src="/assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a><p>Transparent tools for calorimetry.</p><div><a href="/resources">Resources</a><a data-link="repository" href="#">GitHub</a><a data-link="support" href="/support">Support</a></div><small>© <span data-year></span> FT-ITC Analysis</small></footer>
+  <footer class="footer wrap"><a class="brand" href="/"><img src="/assets/icon-180.png" alt="" width="180" height="180"><span>FT-ITC <em>Analysis</em></span></a><p>Transparent tools for calorimetry.</p><div><a href="/resources">Resources</a><a data-link="repository" href="#">GitHub</a><a data-link="support" href="/support">Support</a></div><small>© <span data-year></span> FT-ITC Analysis</small></footer>
   <script src="/script.js"></script>
 </body>
 </html>

@@ -8,13 +8,68 @@
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#173540">
   <link rel="canonical" href="https://ft-itc.org/manual/multiple-experiments">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="FT-ITC Analysis">
+  <meta property="og:title" content="Multiple-experiment analysis | FT-ITC Analysis User Manual">
+  <meta property="og:description" content="Multi-dataset fitting across processed Active experiments, including constraints, shared options, diagnostics, and combined results.">
+  <meta property="og:url" content="https://ft-itc.org/manual/multiple-experiments">
+  <meta property="og:image" content="https://ft-itc.org/manual/assets/multiple-experiment-fit.webp">
+  <meta property="og:image:alt" content="Multiple-experiment Analyze Data view configured to fit three Active experiments individually, showing the fitted curve, residuals, shared model settings, uncertainty controls, and result-creation controls">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Multiple-experiment analysis | FT-ITC Analysis User Manual">
+  <meta name="twitter:description" content="Multi-dataset fitting across processed Active experiments, including constraints, shared options, diagnostics, and combined results.">
+  <meta name="twitter:image" content="https://ft-itc.org/manual/assets/multiple-experiment-fit.webp">
+  <meta name="twitter:image:alt" content="Multiple-experiment Analyze Data view configured to fit three Active experiments individually, showing the fitted curve, residuals, shared model settings, uncertainty controls, and result-creation controls">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://ft-itc.org/manual/multiple-experiments#webpage",
+          "url": "https://ft-itc.org/manual/multiple-experiments",
+          "name": "Multiple-experiment analysis | FT-ITC Analysis User Manual",
+          "description": "Multi-dataset fitting across processed Active experiments, including constraints, shared options, diagnostics, and combined results.",
+          "inLanguage": "en-US",
+          "dateModified": "2026-08-23",
+          "isPartOf": { "@id": "https://ft-itc.org/#website" },
+          "mainEntity": { "@id": "https://ft-itc.org/manual/multiple-experiments#techarticle" },
+          "breadcrumb": { "@id": "https://ft-itc.org/manual/multiple-experiments#breadcrumb" }
+        },
+        {
+          "@type": "TechArticle",
+          "@id": "https://ft-itc.org/manual/multiple-experiments#techarticle",
+          "url": "https://ft-itc.org/manual/multiple-experiments",
+          "headline": "Multiple-experiment fitting",
+          "description": "Multi-dataset fitting across processed Active experiments, including constraints, shared options, diagnostics, and combined results.",
+          "inLanguage": "en-US",
+          "dateModified": "2026-08-23",
+          "author": { "@type": "Person", "name": "Frederik Theisen" },
+          "publisher": { "@type": "Organization", "@id": "https://ft-itc.org/#organization", "name": "FT-ITC Analysis", "url": "https://ft-itc.org/" },
+          "image": "https://ft-itc.org/manual/assets/multiple-experiment-fit.webp",
+          "about": { "@id": "https://ft-itc.org/app-desktop#software" },
+          "mainEntityOfPage": { "@id": "https://ft-itc.org/manual/multiple-experiments#webpage" },
+          "breadcrumb": { "@id": "https://ft-itc.org/manual/multiple-experiments#breadcrumb" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://ft-itc.org/manual/multiple-experiments#breadcrumb",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "FT-ITC Analysis", "item": "https://ft-itc.org/" },
+            { "@type": "ListItem", "position": 2, "name": "Manual", "item": "https://ft-itc.org/manual" },
+            { "@type": "ListItem", "position": 3, "name": "Multiple-experiment fitting", "item": "https://ft-itc.org/manual/multiple-experiments" }
+          ]
+        }
+      ]
+    }
+  </script>
   <link rel="icon" href="/assets/icon-180.png" type="image/png">
   <link rel="apple-touch-icon" href="/assets/icon-180.png">
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body data-page="manual" data-manual-slug="multiple-experiments">
   <header class="topbar wrap">
-    <a class="brand" href="/"><img src="/assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a>
+    <a class="brand" href="/"><img src="/assets/icon-180.png" alt="" width="180" height="180"><span>FT-ITC <em>Analysis</em></span></a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
       <a data-nav="app" href="/app-desktop">Desktop app</a><a data-link="webApp" href="https://app.ft-itc.org" target="_blank" rel="noreferrer">Web viewer ↗</a><a data-nav="resources" href="/resources">Resources</a><a data-nav="analysis" href="/analysis">Advanced analysis</a><a data-nav="manual" href="/manual" aria-current="page">Manual</a>
@@ -31,7 +86,7 @@
 <h2 id="fit">Fit</h2>
 <p>The <strong>Fit</strong> tab identifies the <strong>Mode</strong> as <strong>Multiple experiments</strong> and exposes the shared <strong>Model</strong> selection. The solver controls include <strong>Algorithm</strong>, <strong>Errors</strong>, <strong>Bootstrap</strong>, <strong>Limits</strong>, <strong>Weight by injection error</strong>, and <strong>Unlock parameters</strong>. The available <strong>Algorithm</strong> values are <strong>Nelder-Mead</strong> and <strong>Levenberg-Marquardt</strong>; the error-estimation values are <strong>None</strong>, <strong>Bootstrap residuals</strong>, and <strong>Leave-one-out</strong>.</p>
 <p>The <strong>Result</strong> controls describe whether a completed fit is stored as an <strong>Analysis Result</strong> and whether that result opens automatically. <strong>Run Fit</strong> and <strong>Stop</strong> are the fit controls. The status area records termination state, RMSD, iteration count, elapsed time, and error-estimation outcome when applicable. A multiple-experiment analysis is ready only when every member has usable processed data and the set contains at least two members.</p>
-<figure class="manual-figure"><img src="/manual/assets/multiple-experiment-fit.png" alt="Multiple-experiment Analyze Data view configured to fit three Active experiments individually, showing the fitted curve, residuals, shared model settings, uncertainty controls, and result-creation controls." loading="lazy" decoding="async"><figcaption>With all global constraints set to <strong>None</strong>, this multiple-experiment view is configured to fit the member experiments individually.</figcaption></figure>
+<figure class="manual-figure"><img src="/manual/assets/multiple-experiment-fit.webp" alt="Multiple-experiment Analyze Data view configured to fit three Active experiments individually, showing the fitted curve, residuals, shared model settings, uncertainty controls, and result-creation controls." loading="lazy" decoding="async" width="2624" height="1632"><figcaption>With all global constraints set to <strong>None</strong>, this multiple-experiment view is configured to fit the member experiments individually.</figcaption></figure>
 <h2 id="parameters">Parameters</h2>
 <p>The <strong>Parameters</strong> tab contains the exposed fit parameters and, in multiple-experiment mode, the <strong>Global constraints</strong> section. Parameter rows show the current value, units, uncertainty information when available, and the parameter lock state. A parameter value or lock state is a parameter setting; it is separate from the relationship between members.</p>
 <p>The constraint states have these meanings:</p>
@@ -42,7 +97,7 @@
 <p>The interface omits unsupported states for the current model. The corresponding labels can appear as <strong>Temp. dependent</strong>, <strong>Independent</strong>, or <strong>Shared</strong>; they describe the same temperature-dependent, member-specific, and common relationships.</p>
 <p>With <strong>Offset: None</strong>, each experiment has its own fitted injection-heat offset. With <strong>Offset: Same for all</strong>, the Parameters tab exposes one common offset value, which can also be locked to hold that value fixed across every member.</p>
 <aside class="manual-callout callout-calculation" role="note" aria-label="Calculation"><strong>Calculation:</strong><div class="manual-equations"><math class="manual-equation" display="block" aria-label="Delta H of T equals Delta H ref plus Delta C sub p times T minus T ref"><mrow><mrow><mo>Δ</mo><mi>H</mi></mrow><mo>(</mo><mi>T</mi><mo>)</mo><mo>=</mo><msub><mrow><mo>Δ</mo><mi>H</mi></mrow><mtext>ref</mtext></msub><mo>+</mo><msub><mrow><mo>Δ</mo><mi>C</mi></mrow><mi>p</mi></msub><mo>(</mo><mi>T</mi><mo>−</mo><msub><mi>T</mi><mtext>ref</mtext></msub><mo>)</mo></mrow></math><math class="manual-equation" display="block" aria-label="K sub a of T equals exponential of negative Delta G divided by R T"><mrow><msub><mi>K</mi><mi>a</mi></msub><mo>(</mo><mi>T</mi><mo>)</mo><mo>=</mo><mi mathvariant="normal">exp</mi><mo>[</mo><mo>−</mo><mfrac><mrow><mo>Δ</mo><mi>G</mi></mrow><mrow><mi>R</mi><mi>T</mi></mrow></mfrac><mo>]</mo></mrow></math><p class="manual-equation-note"><em>ΔH</em><sub>ref</sub> is the enthalpy at the reference temperature, and <em>ΔC</em><sub>p</sub> is the common heat-capacity term. Temperature-dependent affinity is represented through a common free-energy term. <em>T</em> and <em>T</em><sub>ref</sub> are absolute temperatures.</p></div></aside>
-<figure class="manual-figure"><img src="/manual/assets/multiple-experiment-constraints.png" alt="Two Parameters views showing global N-value, enthalpy, and affinity constraints with the common enthalpy parameter unlocked and locked." loading="lazy" decoding="async"></figure>
+<figure class="manual-figure"><img src="/manual/assets/multiple-experiment-constraints.webp" alt="Two Parameters views showing global N-value, enthalpy, and affinity constraints with the common enthalpy parameter unlocked and locked." loading="lazy" decoding="async" width="1360" height="1150"></figure>
 <h2 id="options">Options</h2>
 <p>The <strong>Options</strong> tab contains the options exposed by the selected model. In multiple-experiment mode, an option is a property of the shared model context and applies to every member. This includes model-specific concentration, stoichiometry, syringe-correction, or prebound-species settings when those options are exposed. The option values are preserved with the combined Analysis Result.</p>
 <p>An option that changes which parameters are exposed can also change the available parameter rows and constraint states. For example, model options that share or replace stoichiometry alter which N-values are independently represented. The available rows always describe the active model and option combination.</p>
@@ -55,7 +110,7 @@
       <nav class="manual-pager" aria-label="Adjacent manual chapters"><a class="manual-pager-prev" href="/manual/fitting-models"><span>Previous</span>Single-experiment fitting</a><a class="manual-pager-next" href="/manual/results-advanced-analysis"><span>Next</span>Results and advanced analyses</a></nav>
     </article>
   </main>
-  <footer class="footer wrap"><a class="brand" href="/"><img src="/assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a><p>Transparent tools for calorimetry.</p><div><a href="/resources">Resources</a><a data-link="repository" href="#">GitHub</a><a data-link="support" href="/support">Support</a></div><small>© <span data-year></span> FT-ITC Analysis</small></footer>
+  <footer class="footer wrap"><a class="brand" href="/"><img src="/assets/icon-180.png" alt="" width="180" height="180"><span>FT-ITC <em>Analysis</em></span></a><p>Transparent tools for calorimetry.</p><div><a href="/resources">Resources</a><a data-link="repository" href="#">GitHub</a><a data-link="support" href="/support">Support</a></div><small>© <span data-year></span> FT-ITC Analysis</small></footer>
   <script src="/script.js"></script>
 </body>
 </html>

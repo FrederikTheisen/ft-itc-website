@@ -8,13 +8,68 @@
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#173540">
   <link rel="canonical" href="https://ft-itc.org/manual/fitting-models">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="FT-ITC Analysis">
+  <meta property="og:title" content="Fitting models | FT-ITC Analysis User Manual">
+  <meta property="og:description" content="Fit one experiment, configure model and uncertainty options, control injection inclusion, and interpret fit diagnostics.">
+  <meta property="og:url" content="https://ft-itc.org/manual/fitting-models">
+  <meta property="og:image" content="https://ft-itc.org/manual/assets/fitting-workspace.webp">
+  <meta property="og:image:alt" content="Analyze Data workspace showing a fitted one-set-of-sites curve, residuals, fitting controls, and fit status">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Fitting models | FT-ITC Analysis User Manual">
+  <meta name="twitter:description" content="Fit one experiment, configure model and uncertainty options, control injection inclusion, and interpret fit diagnostics.">
+  <meta name="twitter:image" content="https://ft-itc.org/manual/assets/fitting-workspace.webp">
+  <meta name="twitter:image:alt" content="Analyze Data workspace showing a fitted one-set-of-sites curve, residuals, fitting controls, and fit status">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://ft-itc.org/manual/fitting-models#webpage",
+          "url": "https://ft-itc.org/manual/fitting-models",
+          "name": "Fitting models | FT-ITC Analysis User Manual",
+          "description": "Fit one experiment, configure model and uncertainty options, control injection inclusion, and interpret fit diagnostics.",
+          "inLanguage": "en-US",
+          "dateModified": "2026-08-23",
+          "isPartOf": { "@id": "https://ft-itc.org/#website" },
+          "mainEntity": { "@id": "https://ft-itc.org/manual/fitting-models#techarticle" },
+          "breadcrumb": { "@id": "https://ft-itc.org/manual/fitting-models#breadcrumb" }
+        },
+        {
+          "@type": "TechArticle",
+          "@id": "https://ft-itc.org/manual/fitting-models#techarticle",
+          "url": "https://ft-itc.org/manual/fitting-models",
+          "headline": "Single-experiment fitting",
+          "description": "Fit one experiment, configure model and uncertainty options, control injection inclusion, and interpret fit diagnostics.",
+          "inLanguage": "en-US",
+          "dateModified": "2026-08-23",
+          "author": { "@type": "Person", "name": "Frederik Theisen" },
+          "publisher": { "@type": "Organization", "@id": "https://ft-itc.org/#organization", "name": "FT-ITC Analysis", "url": "https://ft-itc.org/" },
+          "image": "https://ft-itc.org/manual/assets/fitting-workspace.webp",
+          "about": { "@id": "https://ft-itc.org/app-desktop#software" },
+          "mainEntityOfPage": { "@id": "https://ft-itc.org/manual/fitting-models#webpage" },
+          "breadcrumb": { "@id": "https://ft-itc.org/manual/fitting-models#breadcrumb" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://ft-itc.org/manual/fitting-models#breadcrumb",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "FT-ITC Analysis", "item": "https://ft-itc.org/" },
+            { "@type": "ListItem", "position": 2, "name": "Manual", "item": "https://ft-itc.org/manual" },
+            { "@type": "ListItem", "position": 3, "name": "Single-experiment fitting", "item": "https://ft-itc.org/manual/fitting-models" }
+          ]
+        }
+      ]
+    }
+  </script>
   <link rel="icon" href="/assets/icon-180.png" type="image/png">
   <link rel="apple-touch-icon" href="/assets/icon-180.png">
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body data-page="manual" data-manual-slug="fitting-models">
   <header class="topbar wrap">
-    <a class="brand" href="/"><img src="/assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a>
+    <a class="brand" href="/"><img src="/assets/icon-180.png" alt="" width="180" height="180"><span>FT-ITC <em>Analysis</em></span></a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
       <a data-nav="app" href="/app-desktop">Desktop app</a><a data-link="webApp" href="https://app.ft-itc.org" target="_blank" rel="noreferrer">Web viewer ↗</a><a data-nav="resources" href="/resources">Resources</a><a data-nav="analysis" href="/analysis">Advanced analysis</a><a data-nav="manual" href="/manual" aria-current="page">Manual</a>
@@ -29,11 +84,11 @@
 <p><strong>Analyze Data</strong> in <strong>Single experiment</strong> mode fits the integrated heats of the selected Experiment Data. The fit uses the included injections together with the experiment concentrations, injection volumes, cell volume, temperature, and any model-specific information.</p>
 <p>The inspector has four tabs:</p>
 <ul class="manual-list"><li><strong>Fit</strong> selects the model, optimizer, error-estimation method, limits, weighting, and result output.</li><li><strong>Parameters</strong> shows the model parameters and their starting or fixed values.</li><li><strong>Options</strong> contains settings specific to the selected model.</li><li><strong>Display</strong> controls the fitted curve and diagnostic information shown in the graph.</li></ul>
-<figure class="manual-figure"><img src="/manual/assets/fitting-workspace.png" alt="Analyze Data workspace showing a fitted one-set-of-sites curve, residuals, fitting controls, and fit status." loading="lazy" decoding="async"><figcaption>Analyze Data combines the fitted-heats graph and residuals with the controls for configuring and running the fit.</figcaption></figure>
+<figure class="manual-figure"><img src="/manual/assets/fitting-workspace.webp" alt="Analyze Data workspace showing a fitted one-set-of-sites curve, residuals, fitting controls, and fit status." loading="lazy" decoding="async" width="2624" height="1632"><figcaption>Analyze Data combines the fitted-heats graph and residuals with the controls for configuring and running the fit.</figcaption></figure>
 <p>Multiple-experiment fitting uses additional experiment selection and parameter constraints; see <a href="/manual/multiple-experiments">Multiple-experiment fitting</a>.</p>
 <h2 id="injection-inclusion">Injection inclusion</h2>
 <p>Selecting an injection point in the integrated-heats graph changes whether it is included in the fit. Excluded injections do not contribute to the objective function. The <strong>Excluded points</strong> option in <strong>Display</strong> keeps excluded injections visible and available for selection.</p>
-<figure class="manual-figure"><img src="/manual/assets/fitting-injection-inclusion.png" alt="Analyze Data graph with excluded injections visible and the Display controls for the fit and its diagnostics." loading="lazy" decoding="async"><figcaption>Excluded injections remain visible when Excluded points is enabled and can be selected for inclusion again.</figcaption></figure>
+<figure class="manual-figure"><img src="/manual/assets/fitting-injection-inclusion.webp" alt="Analyze Data graph with excluded injections visible and the Display controls for the fit and its diagnostics." loading="lazy" decoding="async" width="1580" height="1260"><figcaption>Excluded injections remain visible when Excluded points is enabled and can be selected for inclusion again.</figcaption></figure>
 <p>Changing injection inclusion does not rerun the fit. The fitted curve and parameters continue to represent the previous fit until <strong>Run Fit</strong> is used again. An inclusion change can also invalidate an Analysis Result that contains the experiment.</p>
 <h2 id="models">Models</h2>
 <h3 id="one-set-of-sites">One-Set-Of-Sites</h3>
@@ -59,7 +114,7 @@
 <math class="manual-equation" display="block" aria-label="Delta G equals R T natural log K sub d equals negative R T natural log K sub a"><mrow><mrow><mo>Δ</mo><mi>G</mi></mrow><mo>=</mo><mi>R</mi><mi>T</mi><mi mathvariant="normal">ln</mi><mo>(</mo><msub><mi>K</mi><mi>d</mi></msub><mo>)</mo><mo>=</mo><mo>−</mo><mi>R</mi><mi>T</mi><mi mathvariant="normal">ln</mi><mo>(</mo><msub><mi>K</mi><mi>a</mi></msub><mo>)</mo></mrow></math>
 <math class="manual-equation" display="block" aria-label="negative T delta S equals delta G minus delta H"><mrow><mo>−</mo><mi>T</mi><mrow><mo>Δ</mo><mi>S</mi></mrow><mo>=</mo><mrow><mo>Δ</mo><mi>G</mi></mrow><mo>−</mo><mrow><mo>Δ</mo><mi>H</mi></mrow></mrow></math><p class="manual-equation-note">Here, <i>R</i> is the gas constant, and the final relationship matches the <strong>−TΔS</strong> quantity reported by the application.</p></div></aside>
 <h2 id="parameters-and-model-options">Parameters and model options</h2>
-<figure class="manual-figure"><img src="/manual/assets/fitting-parameters-options.png" alt="Parameters and Options inspectors showing fitted values, Locked controls, syringe correction, and fixed stoichiometry." loading="lazy" decoding="async"><figcaption>Parameters exposes parameter values and locks; Options contains settings specific to the selected model.</figcaption></figure>
+<figure class="manual-figure"><img src="/manual/assets/fitting-parameters-options.webp" alt="Parameters and Options inspectors showing fitted values, Locked controls, syringe correction, and fixed stoichiometry." loading="lazy" decoding="async" width="1354" height="900"><figcaption>Parameters exposes parameter values and locks; Options contains settings specific to the selected model.</figcaption></figure>
 <p>The application generates initial parameter values from the experiment and can reuse an attached fitted solution where applicable. Entering a value replaces the generated starting value for that parameter. Values are displayed in the current application units. Clearing a value returns the parameter to automatic initialization.</p>
 <p><strong>Locked</strong> holds a parameter at its displayed value during the primary fit. An unlocked parameter is adjusted by the optimizer. Locked values remain part of the model and affect every other fitted parameter even though they are not estimated by that fit.</p>
 <p>Analysis choices are retained separately for the available fitting modes and models. <strong>Restore defaults</strong> clears the stored analysis inputs and restores the fitting-related defaults, including the standard limit policy and result-output defaults.</p>
@@ -98,7 +153,7 @@
       <nav class="manual-pager" aria-label="Adjacent manual chapters"><a class="manual-pager-prev" href="/manual/processing-thermograms"><span>Previous</span>Processing</a><a class="manual-pager-next" href="/manual/multiple-experiments"><span>Next</span>Multiple-experiment fitting</a></nav>
     </article>
   </main>
-  <footer class="footer wrap"><a class="brand" href="/"><img src="/assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a><p>Transparent tools for calorimetry.</p><div><a href="/resources">Resources</a><a data-link="repository" href="#">GitHub</a><a data-link="support" href="/support">Support</a></div><small>© <span data-year></span> FT-ITC Analysis</small></footer>
+  <footer class="footer wrap"><a class="brand" href="/"><img src="/assets/icon-180.png" alt="" width="180" height="180"><span>FT-ITC <em>Analysis</em></span></a><p>Transparent tools for calorimetry.</p><div><a href="/resources">Resources</a><a data-link="repository" href="#">GitHub</a><a data-link="support" href="/support">Support</a></div><small>© <span data-year></span> FT-ITC Analysis</small></footer>
   <script src="/script.js"></script>
 </body>
 </html>

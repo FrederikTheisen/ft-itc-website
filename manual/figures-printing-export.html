@@ -8,13 +8,68 @@
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#173540">
   <link rel="canonical" href="https://ft-itc.org/manual/figures-printing-export">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="FT-ITC Analysis">
+  <meta property="og:title" content="Figures and export | FT-ITC Analysis User Manual">
+  <meta property="og:description" content="Configure final and supporting figures, print active graphs, and export data, peaks, results, and publication-ready PDFs.">
+  <meta property="og:url" content="https://ft-itc.org/manual/figures-printing-export">
+  <meta property="og:image" content="https://ft-itc.org/manual/assets/final-figure-workspace.webp">
+  <meta property="og:image:alt" content="Final Figure workspace showing a publication preview, General controls, page dimensions, information content, uncertainty, and PDF output scopes">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Figures and export | FT-ITC Analysis User Manual">
+  <meta name="twitter:description" content="Configure final and supporting figures, print active graphs, and export data, peaks, results, and publication-ready PDFs.">
+  <meta name="twitter:image" content="https://ft-itc.org/manual/assets/final-figure-workspace.webp">
+  <meta name="twitter:image:alt" content="Final Figure workspace showing a publication preview, General controls, page dimensions, information content, uncertainty, and PDF output scopes">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://ft-itc.org/manual/figures-printing-export#webpage",
+          "url": "https://ft-itc.org/manual/figures-printing-export",
+          "name": "Figures and export | FT-ITC Analysis User Manual",
+          "description": "Configure final and supporting figures, print active graphs, and export data, peaks, results, and publication-ready PDFs.",
+          "inLanguage": "en-US",
+          "dateModified": "2026-08-23",
+          "isPartOf": { "@id": "https://ft-itc.org/#website" },
+          "mainEntity": { "@id": "https://ft-itc.org/manual/figures-printing-export#techarticle" },
+          "breadcrumb": { "@id": "https://ft-itc.org/manual/figures-printing-export#breadcrumb" }
+        },
+        {
+          "@type": "TechArticle",
+          "@id": "https://ft-itc.org/manual/figures-printing-export#techarticle",
+          "url": "https://ft-itc.org/manual/figures-printing-export",
+          "headline": "Figures and export",
+          "description": "Configure final and supporting figures, print active graphs, and export data, peaks, results, and publication-ready PDFs.",
+          "inLanguage": "en-US",
+          "dateModified": "2026-08-23",
+          "author": { "@type": "Person", "name": "Frederik Theisen" },
+          "publisher": { "@type": "Organization", "@id": "https://ft-itc.org/#organization", "name": "FT-ITC Analysis", "url": "https://ft-itc.org/" },
+          "image": "https://ft-itc.org/manual/assets/final-figure-workspace.webp",
+          "about": { "@id": "https://ft-itc.org/app-desktop#software" },
+          "mainEntityOfPage": { "@id": "https://ft-itc.org/manual/figures-printing-export#webpage" },
+          "breadcrumb": { "@id": "https://ft-itc.org/manual/figures-printing-export#breadcrumb" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://ft-itc.org/manual/figures-printing-export#breadcrumb",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "FT-ITC Analysis", "item": "https://ft-itc.org/" },
+            { "@type": "ListItem", "position": 2, "name": "Manual", "item": "https://ft-itc.org/manual" },
+            { "@type": "ListItem", "position": 3, "name": "Figures and export", "item": "https://ft-itc.org/manual/figures-printing-export" }
+          ]
+        }
+      ]
+    }
+  </script>
   <link rel="icon" href="/assets/icon-180.png" type="image/png">
   <link rel="apple-touch-icon" href="/assets/icon-180.png">
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body data-page="manual" data-manual-slug="figures-printing-export">
   <header class="topbar wrap">
-    <a class="brand" href="/"><img src="/assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a>
+    <a class="brand" href="/"><img src="/assets/icon-180.png" alt="" width="180" height="180"><span>FT-ITC <em>Analysis</em></span></a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
       <a data-nav="app" href="/app-desktop">Desktop app</a><a data-link="webApp" href="https://app.ft-itc.org" target="_blank" rel="noreferrer">Web viewer ↗</a><a data-nav="resources" href="/resources">Resources</a><a data-nav="analysis" href="/analysis">Advanced analysis</a><a data-nav="manual" href="/manual" aria-current="page">Manual</a>
@@ -35,14 +90,14 @@
 <h3 id="general">General</h3>
 <p>The <strong>General</strong> tab defines the page and common content. Page controls specify width and height in centimeters and the base font size. Energy and time controls set the displayed units. Content controls include the data graph, axis titles, experiment details, model information, fit parameters, and the information-box placement. The uncertainty selector provides <strong>Automatic</strong>, <strong>SD</strong>, <strong>CI</strong>, <strong>SD + CI</strong>, and <strong>None</strong>.</p>
 <p>The parameter controls determine which information appears in the information box: thermodynamic, derived, or offset parameters; temperature; concentrations; injection delay; instrument; and user-defined attributes. The information box is descriptive figure content and does not alter the underlying fit.</p>
-<figure class="manual-figure"><img src="/manual/assets/final-figure-workspace.png" alt="Final Figure workspace showing a publication preview, General controls, page dimensions, information content, uncertainty, and PDF output scopes." loading="lazy" decoding="async"></figure>
+<figure class="manual-figure"><img src="/manual/assets/final-figure-workspace.webp" alt="Final Figure workspace showing a publication preview, General controls, page dimensions, information content, uncertainty, and PDF output scopes." loading="lazy" decoding="async" width="2488" height="1632"></figure>
 <h3 id="data-graph">Data Graph</h3>
 <p>The <strong>Data Graph</strong> tab controls the differential-power trace. Power and time axis titles, tick density, and explicit minimum and maximum values define the axes. <strong>Corrected data</strong> selects the baseline-corrected trace when one is available. <strong>Shared power axis</strong> applies one power-axis range across the active experiments represented by a figure set.</p>
 <p>Baseline controls expose the baseline, its <strong>Solid</strong> or <strong>Dashed</strong> style, <strong>Under data</strong> or <strong>Over data</strong> layer, and line width. <strong>Integration ranges</strong> displays the integration intervals as <strong>Bar</strong>, <strong>Fill</strong>, or <strong>Endpoint lines</strong>. These overlays describe processing and do not recalculate integration.</p>
 <h3 id="fit-graph">Fit Graph</h3>
 <p>The <strong>Fit Graph</strong> tab controls the integrated-heats and model panels. Enthalpy and molar-ratio axis titles, tick density, and explicit ranges define the axes. Symbols are <strong>Square</strong> or <strong>Circle</strong>, with an independent point size. <strong>Shared X axis</strong> and <strong>Shared enthalpy axis</strong> unify the corresponding ranges across active experiments; the residual-axis range follows the shared enthalpy setting when configured for unified residual axes.</p>
 <p><strong>Fit line</strong> displays the fitted binding curve with a selected width and <strong>Smooth</strong>, <strong>Spline</strong>, or <strong>Linear</strong> smoothness. <strong>Show residuals graph</strong> adds the residual panel, and <strong>Residual gap</strong> separates it visually from the fit panel. The display controls include the zero enthalpy line, confidence band, error bars, excluded points, excluded error bars, and offset-corrected heats. Error bars use processed injection uncertainties; confidence bands require bootstrap uncertainty in the fitted solution; fit lines and residuals require a fitted solution.</p>
-<figure class="manual-figure"><img src="/manual/assets/final-figure-graph-controls.png" alt="Data Graph and Fit Graph inspectors showing axis, corrected-data, baseline, symbol, shared-axis, fit-line, and PDF output controls." loading="lazy" decoding="async"></figure>
+<figure class="manual-figure"><img src="/manual/assets/final-figure-graph-controls.webp" alt="Data Graph and Fit Graph inspectors showing axis, corrected-data, baseline, symbol, shared-axis, fit-line, and PDF output controls." loading="lazy" decoding="async" width="1348" height="1335"></figure>
 <h2 id="numerical-data-export">Numerical data export</h2>
 <p><strong>File &gt; Export Data...</strong> opens the numerical export dialog. <strong>Export Selected Data...</strong> invokes the same export for the selected experiment. The data scope is one of <strong>Selected experiment</strong>, <strong>Active experiments</strong>, or <strong>All experiments</strong>.</p>
 <p>The format list contains:</p>
@@ -51,17 +106,17 @@
 <h2 id="analysis-result-exporter">Analysis Result Exporter</h2>
 <p><strong>Analysis Result Exporter...</strong> builds a table from one or more selected Analysis Results. <strong>Summary rows</strong> emits result-level rows; <strong>All replicate rows</strong> emits the individual fitted/member rows. Error layout is <strong>Value with error</strong> or <strong>Separate columns</strong>. Uncertainty style is <strong>SD</strong>, <strong>CI</strong>, or <strong>SD + CI</strong>. The file format is <strong>CSV</strong> or <strong>TSV</strong>. Energy values use the current application energy unit, and temperature presentation is <strong>Celsius</strong> or <strong>Kelvin</strong>.</p>
 <p>The configured table is available through <strong>Copy</strong> and <strong>Export...</strong>. Copy places the same delimited text on the clipboard; Export writes it to a file.</p>
-<figure class="manual-figure"><img src="/manual/assets/analysis-result-exporter.png" alt="Analysis Result Exporter showing selected results, summary-row mode, uncertainty layout and style, CSV format, temperature units, Copy, and Export." loading="lazy" decoding="async"></figure>
+<figure class="manual-figure"><img src="/manual/assets/analysis-result-exporter.webp" alt="Analysis Result Exporter showing selected results, summary-row mode, uncertainty layout and style, CSV format, temperature units, Copy, and Export." loading="lazy" decoding="async" width="1704" height="1400"></figure>
 <h2 id="supporting-figure">Supporting Figure</h2>
 <p><strong>Supporting Figure...</strong> composes figures from Experiment Data and Analysis Results into a multi-panel canvas. The <strong>Figure order</strong> list defines source order; <strong>Add…</strong>, <strong>Remove</strong>, <strong>Up</strong>, and <strong>Down</strong> change the composition. The source picker can filter available experiment and result figures by name or type.</p>
 <p>Common plot size specifies width and height in centimeters. Grid controls specify columns and rows. Typography controls define base font size, point size, line weight, and tick style. <strong>Panel letters</strong>, <strong>Group result figures</strong>, and the parameter and information box control affect panel labeling, result grouping, and annotations. The preview zoom shows the rendered canvas at 25%, 50%, 75%, or 100%. <strong>Export PDF...</strong> writes the composed supporting figure as a PDF.</p>
-<figure class="manual-figure"><img src="/manual/assets/supporting-figure.png" alt="Supporting Figure window showing ordered experiment panels, preview zoom, grid, plot dimensions, typography, panel letters, and PDF export." loading="lazy" decoding="async"></figure>
+<figure class="manual-figure"><img src="/manual/assets/supporting-figure.webp" alt="Supporting Figure window showing ordered experiment panels, preview zoom, grid, plot dimensions, typography, panel letters, and PDF export." loading="lazy" decoding="async" width="2366" height="1560"></figure>
 <h2 id="printing">Printing</h2>
 <p><strong>File &gt; Print</strong> prints the active graph or figure through the operating system’s print workflow. The active target can be the overview thermogram, processing graph, analysis graph, result graph, or Final Figure, depending on the selected workspace. The operating-system print dialog supplies the available printer and PDF destinations; the graph content comes from the active application view.</p>
       <nav class="manual-pager" aria-label="Adjacent manual chapters"><a class="manual-pager-prev" href="/manual/results-advanced-analysis"><span>Previous</span>Results and advanced analyses</a><a class="manual-pager-next" href="/manual/additional-tools"><span>Next</span>Tools</a></nav>
     </article>
   </main>
-  <footer class="footer wrap"><a class="brand" href="/"><img src="/assets/icon-180.png" alt=""><span>FT-ITC <em>Analysis</em></span></a><p>Transparent tools for calorimetry.</p><div><a href="/resources">Resources</a><a data-link="repository" href="#">GitHub</a><a data-link="support" href="/support">Support</a></div><small>© <span data-year></span> FT-ITC Analysis</small></footer>
+  <footer class="footer wrap"><a class="brand" href="/"><img src="/assets/icon-180.png" alt="" width="180" height="180"><span>FT-ITC <em>Analysis</em></span></a><p>Transparent tools for calorimetry.</p><div><a href="/resources">Resources</a><a data-link="repository" href="#">GitHub</a><a data-link="support" href="/support">Support</a></div><small>© <span data-year></span> FT-ITC Analysis</small></footer>
   <script src="/script.js"></script>
 </body>
 </html>
