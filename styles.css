@@ -1790,24 +1790,12 @@ a:focus-visible,button:focus-visible {
 }
 
 .manual-content h2 {
-  margin: 52px -18px 20px;
-  padding: 17px 20px 18px;
-  border-left: 5px solid var(--mint);
-  border-radius: 8px;
+  margin: 52px 0 20px;
+  padding: 0 0 12px;
+  border-bottom: 2px solid #a7d7c7;
   color: var(--ink);
-  background: var(--mint-pale);
+  background: transparent;
   font-size: clamp(1.55rem, 3vw, 2.25rem);
-  box-shadow: 0 8px 22px rgb(23 53 64 / .045);
-}
-
-.manual-content h2:nth-of-type(3n + 2) {
-  border-left-color: var(--sun);
-  background: #fff7e9;
-}
-
-.manual-content h2:nth-of-type(3n) {
-  border-left-color: var(--coral);
-  background: #fff1ee;
 }
 
 .manual-content h3 {
@@ -1990,7 +1978,7 @@ a:focus-visible,button:focus-visible {
   .manual-chapters { margin-bottom: 34px; padding: 10px; }
   .manual-nav-link { flex: 1 1 145px; }
   .manual-content h1 { padding-top: 13px; }
-  .manual-content h2 { margin: 42px -10px 18px; padding: 15px 15px 16px; }
+  .manual-content h2 { margin: 42px 0 18px; padding: 0 0 10px; }
   .manual-callout.callout-calculation { margin-inline: -5px; padding: 18px 16px; }
   .manual-equation { font-size: 1.05rem; }
   .manual-pager { grid-template-columns: 1fr; }
@@ -2006,7 +1994,7 @@ a:focus-visible,button:focus-visible {
   .manual-page { width: auto; padding: 0; }
   .manual-content { max-width: none; }
   .manual-content h1::before { background: #000; }
-  .manual-content h2 { margin-inline: 0; border: 1px solid #999; border-left-width: 5px; background: #fff !important; box-shadow: none; }
+  .manual-content h2 { margin-inline: 0; border: 0; border-bottom: 1px solid #999; background: transparent !important; }
   .manual-content p,
   .manual-content li,
   .manual-summary,
