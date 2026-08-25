@@ -715,6 +715,10 @@ figure figcaption {
   color: var(--ink);
 }
 
+.tutorial-note {
+  margin-top: 28px;
+}
+
 .tutorial-feature-grid {
   display: grid;
   grid-template-columns: minmax(0,1.34fr) minmax(300px,.86fr);
