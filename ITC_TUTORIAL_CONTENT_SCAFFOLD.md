@@ -1,5 +1,10 @@
 # ITC tutorial content + information-architecture scaffold
 
+> The current page has a full, plain-English editing source in
+> [`ITC_TUTORIAL_EDITABLE_SOURCE.md`](ITC_TUTORIAL_EDITABLE_SOURCE.md).
+> Edit that file for the existing public tutorial; use this scaffold when
+> planning a new data-led case study or a tutorial series.
+
 > Working source document — not website copy. Fill the `[Fill in]` prompts in
 > rough scientific language; accuracy is more useful than polish. Once the
 > case details are here, this can be turned into a credible public tutorial
