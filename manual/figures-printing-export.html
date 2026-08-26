@@ -31,7 +31,7 @@
           "name": "Figures and export | FT-ITC Analysis User Manual",
           "description": "Configure final and supporting figures, print active graphs, and export data, peaks, results, and publication-ready PDFs.",
           "inLanguage": "en-US",
-          "dateModified": "2026-08-25",
+          "dateModified": "2026-08-26",
           "isPartOf": { "@id": "https://ft-itc.org/#website" },
           "mainEntity": { "@id": "https://ft-itc.org/manual/figures-printing-export#techarticle" },
           "breadcrumb": { "@id": "https://ft-itc.org/manual/figures-printing-export#breadcrumb" }
@@ -43,7 +43,7 @@
           "headline": "Figures and export",
           "description": "Configure final and supporting figures, print active graphs, and export data, peaks, results, and publication-ready PDFs.",
           "inLanguage": "en-US",
-          "dateModified": "2026-08-25",
+          "dateModified": "2026-08-26",
           "author": { "@type": "Person", "name": "Frederik Theisen" },
           "publisher": { "@type": "Organization", "@id": "https://ft-itc.org/#organization", "name": "FT-ITC Analysis", "url": "https://ft-itc.org/" },
           "image": "https://ft-itc.org/manual/assets/final-figure-workspace.webp",
@@ -77,10 +77,10 @@
     </nav>
   </header>
   <main class="manual-page wrap">
-    <p class="manual-kicker">FT-ITC Analysis 1.4.3 user manual</p>
+    <p class="manual-kicker">FT-ITC Analysis 1.5.0 user manual</p>
     <nav class="manual-chapters" aria-label="Manual chapters"><a class="manual-nav-link" href="/manual"><span>01</span> FT-ITC Analysis user manual</a><a class="manual-nav-link" href="/manual/quick-start"><span>02</span> Quick start</a><a class="manual-nav-link" href="/manual/installation-files-projects"><span>03</span> Installation, files, and projects</a><a class="manual-nav-link" href="/manual/workspace-experiments"><span>04</span> Workspace</a><a class="manual-nav-link" href="/manual/processing-thermograms"><span>05</span> Processing</a><a class="manual-nav-link" href="/manual/fitting-models"><span>06</span> Single-experiment fitting</a><a class="manual-nav-link" href="/manual/multiple-experiments"><span>07</span> Multiple-experiment fitting</a><a class="manual-nav-link" href="/manual/results-advanced-analysis"><span>08</span> Results and advanced analyses</a><a class="manual-nav-link is-current" href="/manual/figures-printing-export" aria-current="page"><span>09</span> Figures and export</a><a class="manual-nav-link" href="/manual/additional-tools"><span>10</span> Tools</a><a class="manual-nav-link" href="/manual/preferences-troubleshooting"><span>11</span> Settings and defaults</a><a class="manual-nav-link" href="/manual/reference"><span>12</span> Glossary and equations</a></nav>
     <article class="manual-content">
-<h1 id="figures-and-export">Figures and export</h1><p class="manual-summary">Configure final and supporting figures, print active graphs, and export data, peaks, results, and publication-ready PDFs.</p><p class="manual-freshness">Last verified: <time datetime="2026-08-25">2026-08-25</time></p>
+<h1 id="figures-and-export">Figures and export</h1><p class="manual-summary">Configure final and supporting figures, print active graphs, and export data, peaks, results, and publication-ready PDFs.</p><p class="manual-freshness">Last verified: <time datetime="2026-08-26">2026-08-26</time></p>
 <p>FT-ITC Analysis keeps publication figures, numerical data, and fitted result tables as separate output types. <strong>Final Figure</strong> is an Experiment Data workflow. An Analysis Result does not open directly as a Final Figure; <strong>Export Associated Final Figures...</strong> on a result exports figures for the experiment solutions associated with that result.</p>
 <h2 id="final-figure">Final Figure</h2>
 <p>The <strong>Final Figure</strong> workspace renders the selected Experiment Data as a publication figure. Its preview and PDF output reflect the selected experiment, processing state, fitted solution, and figure options. An Analysis Result can supply fitted solutions for associated figure export, but the result itself is not the Final Figure workspace input.</p>
@@ -88,7 +88,7 @@
 <ul class="manual-list"><li><strong>Current</strong> exports the displayed experiment figure to one PDF.</li><li><strong>Active</strong> exports figures for Active Experiment Data.</li><li><strong>All</strong> exports figures for all Experiment Data in the project.</li></ul>
 <p>The result-list command <strong>Export Associated Final Figures...</strong> loads the result’s member solutions into their experiments and writes one final-figure PDF per associated experiment. It is available for a result with exportable solutions. See <a href="/manual/results-advanced-analysis">Results and advanced analyses</a> for result validity and stored member-solution behavior.</p>
 <h3 id="general">General</h3>
-<p>The <strong>General</strong> tab defines the page and common content. Page controls specify width and height in centimeters and the base font size. The <strong>Energy units</strong> selector provides <strong>Automatic</strong>, <strong>J</strong>, <strong>kJ</strong>, <strong>cal</strong>, and <strong>kcal</strong>. <strong>Automatic</strong> resolves one normal molar-energy unit from the figure's central plotted/result values; a fixed choice applies to all normal energy values. The selected family also controls thermogram units: differential power is <strong>µW</strong> or <strong>µcal/s</strong>, while integrated heat is <strong>µJ</strong> or <strong>µcal</strong>. Time controls set the displayed time unit. Content controls include the data graph, axis titles, experiment details, model information, fit parameters, and the information-box placement. The uncertainty selector provides <strong>Automatic</strong>, <strong>SD</strong>, <strong>CI</strong>, <strong>SD + CI</strong>, and <strong>None</strong>.</p>
+<p>The <strong>General</strong> tab defines the page and common content. Page controls specify width and height in centimeters and the base font size. The <strong>Energy units</strong> selector provides <strong>Automatic</strong>, <strong>J</strong>, <strong>kJ</strong>, <strong>cal</strong>, and <strong>kcal</strong>. <strong>Automatic</strong> resolves one normal molar-energy unit from the figure's central plotted/result values; a fixed choice applies to all normal energy values. The selected family also controls thermogram units: differential power is <strong>µW</strong> or <strong>µcal/s</strong>, while integrated heat is <strong>µJ</strong> or <strong>µcal</strong>. Time controls set the displayed time unit. Content controls include the data graph, axis titles, experiment details, model information, fit parameters, and the information-box placement. The uncertainty selector provides <strong>Automatic</strong>, <strong>SD</strong>, <strong>CI</strong>, <strong>SD + CI</strong>, and <strong>None</strong>. <strong>Automatic</strong> uses the same per-quantity asymmetry rule described under <a href="/manual/results-advanced-analysis#uncertainty-and-evaluation-temperature">Uncertainty and evaluation temperature</a>.</p>
 <p>The parameter controls determine which information appears in the information box: thermodynamic, derived, or offset parameters; temperature; concentrations; injection delay; instrument; and user-defined attributes. The information box is descriptive figure content and does not alter the underlying fit.</p>
 <figure class="manual-figure"><img src="/manual/assets/final-figure-workspace.webp" alt="Final Figure workspace showing a publication preview, Automatic energy selection, page dimensions, information content, uncertainty, and PDF output scopes." loading="lazy" decoding="async" width="1563" height="1006"><figcaption>Final Figure combines a live publication preview with page, content, and PDF export controls.</figcaption></figure>
 <h3 id="data-graph">Data Graph</h3>
