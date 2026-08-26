@@ -10,7 +10,7 @@ status: "Editable content source — not rendered automatically"
 
 # How to Analyze ITC Data: From Thermogram to Binding Parameters
 
-Use this guide for a first pass through your own raw ITC experiment. Open the file, check the trace, set a baseline, integrate the peaks, fit a model, then save and export the result.
+Use this guide for a first pass through your own raw ITC experiment. Open the file, inspect the differential-power trace, assign a baseline, integrate the injection peaks, fit a binding model, then save and export the result.
 
 > **How to edit this file**
 >
@@ -18,11 +18,11 @@ Use this guide for a first pass through your own raw ITC experiment. Open the fi
 
 ## The short version
 
-1. **Open and check the experiment.** Confirm the sample, titrant, concentrations, temperature, injection settings, and any imported comments that mean a saved value should be corrected.
-2. **Look at the trace first.** Check the peak and baseline behaviour across the run, including whether the signal returns before the next injection.
-3. **Set the baseline.** Choose a simple starting baseline, place it in quiet trace regions, and compare the trace with the heat series.
-4. **Integrate the peaks.** Check a few injections closely, then use the same approach across the run.
-5. **Fit, review, save, and export.** Run a model that matches the experiment, inspect the curve and residuals, save the project, and export the final figure.
+1. **Open and check the experiment.** Confirm the cell and syringe solutions, concentrations, temperature, injection settings, and any imported comments that mean a saved value should be corrected.
+2. **Inspect the trace first.** Check the injection peaks and baseline behaviour across the run, including whether the power signal returns to the baseline before the next injection.
+3. **Assign the baseline.** Choose a simple baseline representation, use baseline regions between injections to guide it, and compare the differential-power trace with the series of integrated heats.
+4. **Integrate the injection peaks.** Inspect early, middle, and late injections, then apply a consistent integration rule across the run.
+5. **Fit, review, save, and export.** Run a binding model that matches the experiment, inspect the fitted binding isotherm and residuals, save the project, and export the final figure.
 
 ---
 
@@ -30,19 +30,19 @@ Use this guide for a first pass through your own raw ITC experiment. Open the fi
 
 ### Open the experiment and check what the file contains
 
-Start by checking what you imported and the experiment details that go with it. The workflow moves from a raw power trace, to integrated heats, to a fitted isotherm.
+Start by checking what you imported and the experiment details that go with it. The workflow moves from a raw differential-power trace, to integrated heats, to a fitted binding isotherm.
 
 #### Raw thermogram
 
-The thermogram records differential power over time. Each injection produces a peak whose direction and size depend on the heat associated with the experiment and the instrument convention.
+The thermogram is the differential-power trace recorded as a function of time. Each injection produces a peak whose sign and magnitude reflect the net heat of injection and the instrument sign convention.
 
 #### Integrated heats
 
-Peak integration assigns an area to each injection after baseline handling. Those values can contain binding heat as well as mixing, dilution, buffer mismatch, temperature-equilibration and other contributions.
+Integrating the baseline-corrected differential-power response gives one heat for each injection. The integrated heats can contain the heat of binding as well as mixing, dilution, buffer mismatch, thermal equilibration, and other contributions.
 
 #### Fitted isotherm and parameters
 
-The integrated heats are plotted against a concentration or molar-ratio coordinate to form a binding isotherm. A selected model then estimates quantities such as _K_<sub>d</sub> or _K_<sub>a</sub>, stoichiometry, and enthalpy.
+The integrated heats are plotted against a concentration or molar-ratio coordinate to form a binding isotherm. A selected binding model then estimates quantities such as _K_<sub>d</sub> or _K_<sub>a</sub>, stoichiometry, and enthalpy.
 
 Check the cell and syringe identities, concentrations, temperature, buffer, injection volume, spacing, and imported comments. These values set the molar-ratio axis and are part of the fit.
 
@@ -64,13 +64,13 @@ Check the cell and syringe identities, concentrations, temperature, buffer, inje
 
 > **Before baseline correction**
 >
-> Scan the full trace, then zoom into an early injection. Look at peak direction, baseline behaviour, and whether the signal has returned before the next injection begins.
+> Scan the full differential-power trace, then inspect an early injection. Check the peak sign, baseline behaviour, and whether the power signal returns to the baseline before the next injection begins.
 
 ## 2. Baseline correction
 
-### Set a baseline, then look at the heats
+### Assign a baseline, then inspect the integrated heats
 
-Start with the simplest baseline that follows the quiet regions of the trace. Use **Polynomial** for smooth drift, **Spline** when you want to place points directly, or **Segmented** when different parts of the run need local treatment.
+Start with the simplest baseline representation that follows the baseline regions between injections and observed drift. Use **Polynomial** for smooth global drift, **Spline** to place editable points in baseline regions, or **Segmented** when the drift changes locally across the run.
 
 ![FT-ITC Analysis Process Data workspace with a black thermogram trace, red baseline and processing controls](media/tutorials/processing-and-analysis/avalonia-processing.webp)
 
@@ -78,15 +78,15 @@ Start with the simplest baseline that follows the quiet regions of the trace. Us
 
 <!-- Website layout note: use the existing compact side-by-side page layout. Show the full screenshot at its natural aspect ratio. -->
 
-> **Caution — the baseline changes every integrated heat**
+> **Caution — the assigned baseline affects every integrated heat**
 >
-> Let the quiet parts of the trace set the baseline. After a change, compare both the trace and the heat series rather than adjusting the baseline to make a preferred fitted curve.
+> Use the baseline regions before and after injections to guide the baseline. After a change, compare the differential-power trace and the series of integrated heats rather than adjusting the baseline to force a preferred binding isotherm or model fit.
 
-With a Spline, move the automatic points or place your own where the trace has settled. Right-click a point to remove it or mark it linear; mark neighbouring points linear when you want a straight section between them. After a larger change, review the heat series before moving on.
+With a Spline, move the automatic points or place your own in baseline regions between injections. Right-click a point to remove it or mark it linear; mark neighbouring points linear when you want a straight section between them. After a larger change, review the integrated heats before moving on.
 
 ![Close view of an ITC thermogram with a red baseline and editable control points](media/tutorials/processing-and-analysis/processing-baseline-linear.webp)
 
-*Use the red line and control points to match the baseline to the quiet parts of the trace.*
+*Use the red line and control points to align the baseline with the regions between injections.*
 
 <!-- Website layout note: show the full portrait screenshot at its natural aspect ratio with a compact maximum width of about 520px. -->
 
@@ -96,21 +96,21 @@ With a Spline, move the automatic points or place your own where the trace has s
 
 ## 3. Peak integration
 
-### Integrate the peaks and review the series
+### Integrate injection peaks and inspect the integrated heats
 
-Select an early, middle, and late injection. Use **Start** and **Length** to cover the response until it has returned to the baseline before the next event.
+Select an early, middle, and late injection. Use **Start** and **Length** to set integration boundaries that include the full response and end after the power signal has returned to the baseline, before the next injection.
 
-**Fit Peaks** is a useful first estimate for end points, and you can adjust any result afterwards. Use **Copy to next peak** when neighbouring injections need the same treatment; press **Space** to move through the selected peaks. When the peak regions are set, review the complete heat series against the thermogram.
+**Fit Peaks** provides initial estimates for the integration end boundaries, and you can adjust any result afterwards. Use **Copy to next peak** when neighbouring injections need the same treatment; press **Space** to move through the selected peaks. When the integration regions are set, review the complete series of integrated heats against the thermogram.
 
 ![Selected ITC injection with a blue integration window and calculated injection heat](media/tutorials/processing-and-analysis/avalonia-processing-zoom.webp)
 
-*Use the selected-injection view to set one peak region, then apply the same rule across the series.*
+*Use the selected-injection view to set an integration region, then apply the same rule across the series.*
 
 <!-- Website layout note: show the full screenshot at its natural aspect ratio with a maximum width of about 720px. -->
 
 > **If you have a matched buffer or dilution reference**
 >
-> Use Buffer Subtraction to compare the background heat with the main experiment. Start with **Matched** when the reference uses the same injection schedule; **Linear** and **Exp. decay** are alternatives when the reference changes across the run.
+> Use Buffer Subtraction to compare the primary titration with its matched buffer or dilution reference. Start with **Matched** when the reference uses the same injection schedule; **Linear** and **Exp. decay** are alternatives when the reference heat changes across the run.
 >
 > [Read the buffer-subtraction workflow](https://ft-itc.org/manual/additional-tools#buffer-subtraction)
 
@@ -118,13 +118,13 @@ Select an early, middle, and late injection. Use **Start** and **Length** to cov
 
 ---
 
-## 4. Fit the experiment
+## 4. Fit the binding isotherm
 
-### Choose a first model and run the fit
+### Fit the binding isotherm with a first model
 
-Open **Analyze Data** in **Single experiment** mode once the integrated heats and experiment details are ready. **One-Set-Of-Sites** is a useful first model when the experiment represents one class of equivalent, independent sites. Use another model when it better matches the experiment you performed.
+Open **Analyze Data** in **Single experiment** mode once the integrated heats and experiment details are ready. Select a binding model that is appropriate for the molecular system and experimental design. **One-Set-Of-Sites** is a useful first model when the system has one class of equivalent, independent sites.
 
-Check the units, concentrations, and starting values, then select **Run Fit**. The graph updates with the fitted curve, residuals, and parameter values.
+Check the units, concentrations, and starting parameter values, then select **Run Fit**. The graph updates with the fitted binding isotherm, residuals, and parameter estimates.
 
 ![FT-ITC Analysis Analyze Data workspace showing a One-Set-Of-Sites fit, residuals and Bootstrap residuals settings](media/tutorials/processing-and-analysis/analysis-basic.webp)
 
@@ -132,9 +132,9 @@ Check the units, concentrations, and starting values, then select **Run Fit**. T
 
 <!-- Website layout note: use the existing compact side-by-side page layout. Show the full screenshot at its natural aspect ratio. -->
 
-> **Caution — a fitted curve is not the whole decision**
+> **Caution — a fitted curve does not establish a model**
 >
-> Choose a model because it represents the experiment, then inspect the curve and residuals. If a part of the fit stands out, return to the trace, baseline, or peak regions before trying a different model.
+> Choose a model because it represents the system and experiment, then compare the fitted curve with the integrated heats and inspect the residual pattern. If a discrepancy stands out, return to the trace, baseline, or integration regions before trying a different model.
 
 For related experiments that belong to one series, continue with [multiple-experiment fitting](https://ft-itc.org/manual/multiple-experiments) or [Advanced analysis](https://ft-itc.org/analysis).
 
@@ -144,13 +144,13 @@ For related experiments that belong to one series, continue with [multiple-exper
 
 ## 5. Review, save, and export
 
-### Check the fit, save the project, and make the final figure
+### Check the fitted isotherm, save the project, and make the final figure
 
-Look at the fitted curve and residuals together. If one part of the plot stands out, return to the corresponding trace, baseline, or peak region and make one focused change before running the fit again.
+Look at the fitted binding isotherm and residuals together. If a particular injection or region departs from the fit, return to the corresponding trace, baseline, or integration region and make one focused change before running the fit again.
 
 ![FT-ITC Analysis fitted-result view showing parameter values, residuals and result status](media/tutorials/processing-and-analysis/analysis-result.webp)
 
-*The result view keeps the fitted values, curve, and residuals together for review.*
+*The result view keeps the fitted parameter estimates, binding isotherm, and residuals together for review.*
 
 <!-- Website layout note: show the full screenshot at its natural aspect ratio with a maximum width of about 720px. -->
 
@@ -158,7 +158,7 @@ Save the project as **.ftxtc** once you have useful processing, then save it aga
 
 ![FT-ITC Analysis Final Figure workspace showing a thermogram, fitted binding isotherm, residuals and PDF export controls](media/tutorials/processing-and-analysis/finalfigure.webp)
 
-*Before exporting, check that the thermogram, fitted isotherm, residuals, labels, and parameter box describe the same result.*
+*Before exporting, check that the thermogram, fitted binding isotherm, residuals, labels, and parameter box describe the same analysis.*
 
 <!-- Website layout note: show the full screenshot at its natural aspect ratio with a maximum width of about 800px. -->
 
@@ -174,23 +174,23 @@ Raw **.itc**, **.nitc**, **.ta**, and **.apj** inputs begin in **Process Data**.
 
 ### What baseline should I start with?
 
-Start with the simplest option that follows the quiet parts of the trace: **Polynomial** for smooth drift, **Spline** for direct point editing, or **Segmented** for locally changing drift. Look at the trace and heat series after each change. [See baseline models](https://ft-itc.org/manual/processing-thermograms#baseline-models-and-editing).
+Start with the simplest baseline representation that follows the baseline regions between injections: **Polynomial** for smooth global drift, **Spline** for editable points in baseline regions, or **Segmented** when drift changes locally. Compare the differential-power trace and integrated heats after each change. [See baseline models](https://ft-itc.org/manual/processing-thermograms#baseline-models-and-editing).
 
 ### How should I set peak boundaries?
 
-Use **Start** and **Length** to include the response until it returns to the baseline before the next injection. Check more than one injection, then use **Fit Peaks** or **Copy to next peak** to speed up repeated work. [See integration regions](https://ft-itc.org/manual/processing-thermograms#integration-regions).
+Use **Start** and **Length** to set integration boundaries that include the full injection response and end after the power signal returns to the baseline, before the next injection. Check more than one injection, then use **Fit Peaks** or **Copy to next peak** to speed up repeated work. [See integration regions](https://ft-itc.org/manual/processing-thermograms#integration-regions).
 
 ### Do I need a buffer or dilution reference?
 
-Use a matched reference when you collected one and want to compare background heat with the main experiment. If you did not collect one, continue with the main experiment and review the fitted result in context. [See Buffer Subtraction](https://ft-itc.org/manual/additional-tools#buffer-subtraction).
+Use a matched buffer or dilution reference when you collected one and want to estimate background heats for the same injection sequence. If you did not collect one, continue with the primary titration and interpret the integrated heats in experimental context. [See Buffer Subtraction](https://ft-itc.org/manual/additional-tools#buffer-subtraction).
 
 ### Which binding model should I try first?
 
-Start with the model that matches the experiment you performed. **One-Set-Of-Sites** is a useful first choice for one class of equivalent, independent sites; the manual describes the other available models and their inputs. [See the model reference](https://ft-itc.org/manual/fitting-models#models).
+Start with a binding model that matches the molecular system and experimental design. **One-Set-Of-Sites** is a useful first choice for one class of equivalent, independent sites; the manual describes the other available models and their inputs. [See the model reference](https://ft-itc.org/manual/fitting-models#models).
 
 ### What should I do if the curve or residuals look wrong?
 
-Work backwards from the part of the curve that stands out: inspect the matching heat, peak region, baseline, and trace, then make one focused change and rerun the fit. If the application itself behaves unexpectedly, [contact Support](https://ft-itc.org/support).
+Identify the injections or regions responsible for the discrepancy, then inspect the corresponding integrated heat, integration region, baseline, and differential-power trace. Make one focused change and rerun the fit. If the application itself behaves unexpectedly, [contact Support](https://ft-itc.org/support).
 
 ---
 

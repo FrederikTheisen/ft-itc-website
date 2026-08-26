@@ -118,7 +118,7 @@
             "name": "What baseline should I start with?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Start with the simplest option that follows the quiet parts of the trace: Polynomial for smooth drift, Spline for direct point editing, or Segmented for locally changing drift. Look at the trace and heat series after each change. See baseline models."
+              "text": "Start with the simplest baseline representation that follows the baseline regions between injections: Polynomial for smooth global drift, Spline for editable points in baseline regions, or Segmented when drift changes locally. Compare the differential-power trace and integrated heats after each change. See baseline models."
             }
           },
           {
@@ -126,7 +126,7 @@
             "name": "How should I set peak boundaries?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Use Start and Length to include the response until it returns to the baseline before the next injection. Check more than one injection, then use Fit Peaks or Copy to next peak to speed up repeated work. See integration regions."
+              "text": "Use Start and Length to set integration boundaries that include the full injection response and end after the power signal returns to the baseline, before the next injection. Check more than one injection, then use Fit Peaks or Copy to next peak to speed up repeated work. See integration regions."
             }
           },
           {
@@ -134,7 +134,7 @@
             "name": "Do I need a buffer or dilution reference?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Use a matched reference when you collected one and want to compare background heat with the main experiment. If you did not collect one, continue with the main experiment and review the fitted result in context. See Buffer Subtraction."
+              "text": "Use a matched buffer or dilution reference when you collected one and want to estimate background heats for the same injection sequence. If you did not collect one, continue with the primary titration and interpret the integrated heats in experimental context. See Buffer Subtraction."
             }
           },
           {
@@ -142,7 +142,7 @@
             "name": "Which binding model should I try first?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Start with the model that matches the experiment you performed. One-Set-Of-Sites is a useful first choice for one class of equivalent, independent sites; the manual describes the other available models and their inputs. See the model reference."
+              "text": "Start with a binding model that matches the molecular system and experimental design. One-Set-Of-Sites is a useful first choice for one class of equivalent, independent sites; the manual describes the other available models and their inputs. See the model reference."
             }
           },
           {
@@ -150,7 +150,7 @@
             "name": "What should I do if the curve or residuals look wrong?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Work backwards from the part of the curve that stands out: inspect the matching heat, peak region, baseline, and trace, then make one focused change and rerun the fit. If the application itself behaves unexpectedly, contact Support."
+              "text": "Identify the injections or regions responsible for the discrepancy, then inspect the corresponding integrated heat, integration region, baseline, and differential-power trace. Make one focused change and rerun the fit. If the application itself behaves unexpectedly, contact Support."
             }
           }
         ]
@@ -177,7 +177,7 @@
       <section class="page-hero wrap">
         <p class="eyebrow">ITC data analysis tutorial</p>
         <h1>How to Analyze ITC Data: <span>From Thermogram to Binding Parameters</span></h1>
-        <p class="lede">A practical first pass through your own raw ITC experiment: check the file, process the thermogram, fit a model, then save and export the result.</p>
+        <p class="lede">A practical first pass through your own raw ITC experiment: inspect the differential-power trace, integrate the injection peaks, fit a binding model, then save and export the result.</p>
         <p class="eyebrow">Frederik Theisen · FT-ITC Analysis · <time datetime="2026-08-27">Updated 27 August 2026</time></p>
         <nav class="tutorial-contents" aria-label="On this page">
           <a href="#import">Import</a>
@@ -200,28 +200,28 @@
               <span>01</span>
               <div>
                 <h3>Open and check the experiment</h3>
-                <p>Confirm the sample, titrant, concentrations, temperature, injection settings, and imported comments.</p>
+                <p>Confirm the cell and syringe solutions, concentrations, temperature, injection settings, and imported comments.</p>
               </div>
             </article>
             <article>
               <span>02</span>
               <div>
-                <h3>Set the baseline</h3>
-                <p>Choose a simple starting baseline, place it in quiet trace regions, and compare the trace with the heat series.</p>
+                <h3>Assign the baseline</h3>
+                <p>Choose a simple baseline representation, use baseline regions between injections to guide it, and compare the differential-power trace with the series of integrated heats.</p>
               </div>
             </article>
             <article>
               <span>03</span>
               <div>
-                <h3>Integrate the peaks</h3>
-                <p>Check a few injections closely, then use the same approach across the run.</p>
+                <h3>Integrate the injection peaks</h3>
+                <p>Inspect early, middle, and late injections, then apply a consistent integration rule across the run.</p>
               </div>
             </article>
             <article>
               <span>04</span>
               <div>
-                <h3>Fit the experiment</h3>
-                <p>Run a model that matches the experiment and inspect the curve and residuals.</p>
+                <h3>Fit the binding isotherm</h3>
+                <p>Run a binding model that matches the experiment and inspect the fitted binding isotherm and residuals.</p>
               </div>
             </article>
             <article>
@@ -234,7 +234,7 @@
           </div>
           <aside class="note-box tutorial-note" role="note">
             <h3>A practical first pass</h3>
-            <p>Use a copy of your own project. The screenshots show where the controls live; the trace, heat series, fitted curve, and residuals show what each change does in your experiment.</p>
+            <p>Use a copy of your own project. The screenshots show where the controls live; the differential-power trace, integrated heats, fitted binding isotherm, and residuals show what each change does in your experiment.</p>
             <a href="/manual/quick-start">Open the application quick start <span>→</span></a>
           </aside>
         </div>
@@ -244,28 +244,28 @@
         <div class="section-heading narrow">
           <p class="eyebrow">01 · Import and experiment context</p>
           <h2>Open the experiment and check what the file contains.</h2>
-          <p>Start by checking what you imported and the experiment details that go with it. The workflow moves from a raw power trace, to integrated heats, to a fitted isotherm.</p>
+          <p>Start by checking what you imported and the experiment details that go with it. The workflow moves from a raw differential-power trace, to integrated heats, to a fitted binding isotherm.</p>
         </div>
         <div class="numbered-list">
           <article>
             <span>01</span>
             <div>
               <h3>Raw thermogram</h3>
-              <p>The thermogram records differential power over time. Each injection produces a peak whose direction and size depend on the heat associated with the experiment and the instrument convention.</p>
+              <p>The thermogram is the differential-power trace recorded as a function of time. Each injection produces a peak whose sign and magnitude reflect the net heat of injection and the instrument sign convention.</p>
             </div>
           </article>
           <article>
             <span>02</span>
             <div>
               <h3>Integrated heats</h3>
-              <p>Peak integration assigns an area to each injection after baseline handling. Those values can contain binding heat as well as mixing, dilution, buffer mismatch, temperature-equilibration and other contributions.</p>
+              <p>Integrating the baseline-corrected differential-power response gives one heat for each injection. The integrated heats can contain the heat of binding as well as mixing, dilution, buffer mismatch, thermal equilibration, and other contributions.</p>
             </div>
           </article>
           <article>
             <span>03</span>
             <div>
               <h3>Fitted isotherm and parameters</h3>
-              <p>The integrated heats form a binding isotherm. A selected model then estimates quantities such as <em>K</em><sub>d</sub> or <em>K</em><sub>a</sub>, stoichiometry, and enthalpy.</p>
+              <p>The integrated heats form a binding isotherm. A selected binding model then estimates quantities such as <em>K</em><sub>d</sub> or <em>K</em><sub>a</sub>, stoichiometry, and enthalpy.</p>
             </div>
           </article>
         </div>
@@ -289,7 +289,7 @@
         <div class="wrap">
           <aside class="tutorial-preflight" role="note">
             <p class="eyebrow">Before baseline correction</p>
-            <p>Scan the full trace, then zoom into an early injection. Look at peak direction, baseline behaviour, and whether the signal has returned before the next injection begins.</p>
+            <p>Scan the full differential-power trace, then inspect an early injection. Check the peak sign, baseline behaviour, and whether the power signal returns to the baseline before the next injection begins.</p>
           </aside>
           <div class="tutorial-feature-grid">
             <figure class="tutorial-figure tutorial-figure--processing">
@@ -300,21 +300,21 @@
             </figure>
             <div>
               <p class="eyebrow">02 · Baseline correction</p>
-              <h2>Set a baseline, then look at the heats.</h2>
-              <p>Start with the simplest baseline that follows the quiet regions of the trace. Use <strong>Polynomial</strong> for smooth drift, <strong>Spline</strong> when you want to place points directly, or <strong>Segmented</strong> when different parts of the run need local treatment.</p>
-              <p>With a Spline, move the automatic points or place your own where the trace has settled. Right-click a point to remove it or mark it linear; mark neighbouring points linear when you want a straight section between them.</p>
+              <h2>Assign a baseline, then inspect the integrated heats.</h2>
+              <p>Start with the simplest baseline representation that follows the baseline regions between injections and observed drift. Use <strong>Polynomial</strong> for smooth global drift, <strong>Spline</strong> to place editable points in baseline regions, or <strong>Segmented</strong> when the drift changes locally across the run.</p>
+              <p>With a Spline, move the automatic points or place your own in baseline regions between injections. Right-click a point to remove it or mark it linear; mark neighbouring points linear when you want a straight section between them.</p>
             </div>
           </div>
           <aside class="note-box tutorial-caution" role="note">
-            <h3>Caution — the baseline changes every integrated heat</h3>
-            <p>Let the quiet parts of the trace set the baseline. After a change, compare both the trace and the heat series rather than adjusting the baseline to make a preferred fitted curve.</p>
+            <h3>Caution — the assigned baseline affects every integrated heat</h3>
+            <p>Use the baseline regions before and after injections to guide the baseline. After a change, compare the differential-power trace and the series of integrated heats rather than adjusting the baseline to force a preferred binding isotherm or model fit.</p>
           </aside>
-          <p class="lede">After a larger change, review the heat series before moving on.</p>
+          <p class="lede">After a larger change, review the integrated heats before moving on.</p>
           <figure class="tutorial-showcase tutorial-showcase--baseline-detail">
             <div class="tutorial-crop">
               <img src="media/tutorials/processing-and-analysis/processing-baseline-linear.webp" alt="Close view of an ITC thermogram with a red baseline and editable control points" width="1010" height="1190" loading="lazy" decoding="async">
             </div>
-            <figcaption>Use the red line and control points to match the baseline to the quiet parts of the trace.</figcaption>
+            <figcaption>Use the red line and control points to align the baseline with the regions between injections.</figcaption>
           </figure>
           <a class="text-link" href="/manual/processing-thermograms">Read the processing controls in the manual <span>→</span></a>
         </div>
@@ -323,29 +323,29 @@
       <section id="integration" class="section wrap">
         <div class="section-heading narrow">
           <p class="eyebrow">03 · Peak integration</p>
-          <h2>Integrate the peaks and review the series.</h2>
-          <p>Set one rule from the trace, then check that it still works across the experiment.</p>
+          <h2>Integrate injection peaks and inspect the integrated heats.</h2>
+          <p>Set one integration rule from the differential-power trace, then check that it still works across the experiment.</p>
         </div>
         <div class="numbered-list">
           <article>
             <span>01</span>
             <div>
               <h3>Check early, middle, and late injections</h3>
-              <p>Use <strong>Start</strong> and <strong>Length</strong> to cover the response until it has returned to the baseline before the next event.</p>
+              <p>Use <strong>Start</strong> and <strong>Length</strong> to set integration boundaries that include the full response and end after the power signal has returned to the baseline, before the next injection.</p>
             </div>
           </article>
           <article>
             <span>02</span>
             <div>
-              <h3>Use the endpoint tools</h3>
-              <p><strong>Fit Peaks</strong> is a useful first estimate for end points, and you can adjust any result afterwards. Use <strong>Copy to next peak</strong> when neighbouring injections need the same treatment; press <strong>Space</strong> to move through selected peaks.</p>
+              <h3>Use the integration-boundary tools</h3>
+              <p><strong>Fit Peaks</strong> provides initial estimates for the integration end boundaries, and you can adjust any result afterwards. Use <strong>Copy to next peak</strong> when neighbouring injections need the same treatment; press <strong>Space</strong> to move through selected peaks.</p>
             </div>
           </article>
           <article>
             <span>03</span>
             <div>
-              <h3>Review the complete heat series</h3>
-              <p>When the peak regions are set, compare the full heat series with the thermogram before fitting.</p>
+              <h3>Review the complete series of integrated heats</h3>
+              <p>When the integration regions are set, compare the full series of integrated heats with the thermogram before fitting.</p>
             </div>
           </article>
         </div>
@@ -353,11 +353,11 @@
           <div class="tutorial-crop">
             <img src="media/tutorials/processing-and-analysis/avalonia-processing-zoom.webp" alt="Selected ITC injection with a blue integration window and calculated injection heat" width="2576" height="1666" loading="lazy" decoding="async">
           </div>
-          <figcaption>Use the selected-injection view to set one peak region, then apply the same rule across the series.</figcaption>
+          <figcaption>Use the selected-injection view to set an integration region, then apply the same rule across the series.</figcaption>
         </figure>
         <aside class="note-box tutorial-optional" role="note">
           <h3>If you have a matched buffer or dilution reference</h3>
-          <p>Use Buffer Subtraction to compare the background heat with the main experiment. Start with <strong>Matched</strong> when the reference uses the same injection schedule; <strong>Linear</strong> and <strong>Exp. decay</strong> are alternatives when the reference changes across the run.</p>
+          <p>Use Buffer Subtraction to compare the primary titration with its matched buffer or dilution reference. Start with <strong>Matched</strong> when the reference uses the same injection schedule; <strong>Linear</strong> and <strong>Exp. decay</strong> are alternatives when the reference heat changes across the run.</p>
           <a href="/manual/additional-tools#buffer-subtraction">Read the buffer-subtraction workflow <span>→</span></a>
         </aside>
         <a class="text-link" href="/manual/processing-thermograms#integration-regions">Read about integration regions and processing-derived error <span>→</span></a>
@@ -372,13 +372,13 @@
             <figcaption>The fitting view puts the model, isotherm, residuals, and fit controls in one place.</figcaption>
           </figure>
           <div>
-            <p class="eyebrow">04 · Fit the experiment</p>
-            <h2>Choose a first model and run the fit.</h2>
-            <p>Open <strong>Analyze Data</strong> in <strong>Single experiment</strong> mode once the integrated heats and experiment details are ready. <strong>One-Set-Of-Sites</strong> is a useful first model when the experiment represents one class of equivalent, independent sites.</p>
-            <p>Use another model when it better matches the experiment you performed. Check the units, concentrations, and starting values, then select <strong>Run Fit</strong>.</p>
+            <p class="eyebrow">04 · Fit the binding isotherm</p>
+            <h2>Fit the binding isotherm with a first model.</h2>
+            <p>Open <strong>Analyze Data</strong> in <strong>Single experiment</strong> mode once the integrated heats and experiment details are ready. Select a binding model that is appropriate for the molecular system and experimental design. <strong>One-Set-Of-Sites</strong> is a useful first model when the system has one class of equivalent, independent sites.</p>
+            <p>Check the units, concentrations, and starting parameter values, then select <strong>Run Fit</strong>. The graph updates with the fitted binding isotherm, residuals, and parameter estimates.</p>
             <aside class="note-box tutorial-caution" role="note">
-              <h3>Caution — a fitted curve is not the whole decision</h3>
-              <p>Choose a model because it represents the experiment, then inspect the curve and residuals. If a part of the fit stands out, return to the trace, baseline, or peak regions before trying a different model.</p>
+              <h3>Caution — a fitted curve does not establish a model</h3>
+              <p>Choose a model because it represents the system and experiment, then compare the fitted curve with the integrated heats and inspect the residual pattern. If a discrepancy stands out, return to the trace, baseline, or integration regions before trying a different model.</p>
             </aside>
             <p>For related experiments that belong to one series, continue with <a href="/manual/multiple-experiments">multiple-experiment fitting</a> or <a href="/analysis">Advanced analysis</a>.</p>
             <a class="text-link" href="/manual/fitting-models#models">Read the documented model assumptions <span>→</span></a>
@@ -389,23 +389,23 @@
       <section id="reporting" class="section wrap">
         <div class="section-heading narrow">
           <p class="eyebrow">05 · Review, save, and export</p>
-          <h2>Check the fit, save the project, and make the final figure.</h2>
-          <p>Look at the fitted curve and residuals together. If one part of the plot stands out, return to the corresponding trace, baseline, or peak region and make one focused change before running the fit again.</p>
+          <h2>Check the fitted isotherm, save the project, and make the final figure.</h2>
+          <p>Look at the fitted binding isotherm and residuals together. If a particular injection or region departs from the fit, return to the corresponding trace, baseline, or integration region and make one focused change before running the fit again.</p>
         </div>
         <figure class="tutorial-showcase tutorial-showcase--result">
           <div class="tutorial-crop">
             <img src="media/tutorials/processing-and-analysis/analysis-result.webp" alt="FT-ITC Analysis fitted-result view showing parameter values, residuals and result status" width="2576" height="1666" loading="lazy" decoding="async">
           </div>
-          <figcaption>The result view keeps the fitted values, curve, and residuals together for review.</figcaption>
+          <figcaption>The result view keeps the fitted parameter estimates, binding isotherm, and residuals together for review.</figcaption>
         </figure>
         <div class="two-column tutorial-export-copy">
           <div>
-            <p>Save the project as <code>.ftxtc</code> once you have useful processing, then save it again after fitting. Use <strong>Final Figure</strong> to assemble the thermogram, fitted isotherm, and residuals, then select <strong>Export PDF</strong>.</p>
+            <p>Save the project as <code>.ftxtc</code> once you have useful processing, then save it again after fitting. Use <strong>Final Figure</strong> to assemble the thermogram, fitted binding isotherm, and residuals, then select <strong>Export PDF</strong>.</p>
             <a class="text-link" href="/manual/figures-printing-export">Read the figures and export guide <span>→</span></a>
           </div>
           <aside class="note-box" role="note">
             <h3>Before you export</h3>
-            <p>Check that the thermogram, fitted isotherm, residuals, labels, and parameter box describe the same result.</p>
+            <p>Check that the thermogram, fitted binding isotherm, residuals, labels, and parameter box describe the same analysis.</p>
           </aside>
         </div>
         <figure class="tutorial-showcase tutorial-showcase--export">
@@ -430,23 +430,23 @@
             </details>
             <details>
               <summary>What baseline should I start with?</summary>
-              <div><p>Start with the simplest option that follows the quiet parts of the trace: <strong>Polynomial</strong> for smooth drift, <strong>Spline</strong> for direct point editing, or <strong>Segmented</strong> for locally changing drift. Look at the trace and heat series after each change. <a href="/manual/processing-thermograms#baseline-models-and-editing">See baseline models</a>.</p></div>
+              <div><p>Start with the simplest baseline representation that follows the baseline regions between injections: <strong>Polynomial</strong> for smooth global drift, <strong>Spline</strong> for editable points in baseline regions, or <strong>Segmented</strong> when drift changes locally. Compare the differential-power trace and integrated heats after each change. <a href="/manual/processing-thermograms#baseline-models-and-editing">See baseline models</a>.</p></div>
             </details>
             <details>
               <summary>How should I set peak boundaries?</summary>
-              <div><p>Use <strong>Start</strong> and <strong>Length</strong> to include the response until it returns to the baseline before the next injection. Check more than one injection, then use <strong>Fit Peaks</strong> or <strong>Copy to next peak</strong> to speed up repeated work. <a href="/manual/processing-thermograms#integration-regions">See integration regions</a>.</p></div>
+              <div><p>Use <strong>Start</strong> and <strong>Length</strong> to set integration boundaries that include the full injection response and end after the power signal returns to the baseline, before the next injection. Check more than one injection, then use <strong>Fit Peaks</strong> or <strong>Copy to next peak</strong> to speed up repeated work. <a href="/manual/processing-thermograms#integration-regions">See integration regions</a>.</p></div>
             </details>
             <details>
               <summary>Do I need a buffer or dilution reference?</summary>
-              <div><p>Use a matched reference when you collected one and want to compare background heat with the main experiment. If you did not collect one, continue with the main experiment and review the fitted result in context. <a href="/manual/additional-tools#buffer-subtraction">See Buffer Subtraction</a>.</p></div>
+              <div><p>Use a matched buffer or dilution reference when you collected one and want to estimate background heats for the same injection sequence. If you did not collect one, continue with the primary titration and interpret the integrated heats in experimental context. <a href="/manual/additional-tools#buffer-subtraction">See Buffer Subtraction</a>.</p></div>
             </details>
             <details>
               <summary>Which binding model should I try first?</summary>
-              <div><p>Start with the model that matches the experiment you performed. <strong>One-Set-Of-Sites</strong> is a useful first choice for one class of equivalent, independent sites; the manual describes the other available models and their inputs. <a href="/manual/fitting-models#models">See the model reference</a>.</p></div>
+              <div><p>Start with a binding model that matches the molecular system and experimental design. <strong>One-Set-Of-Sites</strong> is a useful first choice for one class of equivalent, independent sites; the manual describes the other available models and their inputs. <a href="/manual/fitting-models#models">See the model reference</a>.</p></div>
             </details>
             <details>
               <summary>What should I do if the curve or residuals look wrong?</summary>
-              <div><p>Work backwards from the part of the curve that stands out: inspect the matching heat, peak region, baseline, and trace, then make one focused change and rerun the fit. If the application itself behaves unexpectedly, <a href="/support">contact Support</a>.</p></div>
+              <div><p>Identify the injections or regions responsible for the discrepancy, then inspect the corresponding integrated heat, integration region, baseline, and differential-power trace. Make one focused change and rerun the fit. If the application itself behaves unexpectedly, <a href="/support">contact Support</a>.</p></div>
             </details>
           </div>
         </div>
