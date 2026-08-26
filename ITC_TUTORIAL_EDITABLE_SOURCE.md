@@ -4,6 +4,7 @@ title: "How to Analyze ITC Data: From Thermogram to Binding Parameters"
 description: "A practical FT-ITC Analysis guide from raw thermogram to fitted result."
 author: "Frederik Theisen · FT-ITC Analysis"
 last_updated: "2026-08-26"
+last_synced: "2026-08-26"
 status: "Editable content source — not rendered automatically"
 ---
 

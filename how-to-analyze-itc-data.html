@@ -4,20 +4,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>How to Analyze ITC Data | FT-ITC Tutorial</title>
-    <meta name="description" content="Learn how to analyze ITC data: inspect thermograms, correct baselines, integrate injection peaks, fit binding models and assess residuals, uncertainty and exportable results with FT-ITC Analysis.">
+    <meta name="description" content="A practical FT-ITC Analysis guide from raw thermogram to fitted result.">
     <meta name="robots" content="index,follow,max-image-preview:large">
     <meta name="theme-color" content="#173540">
     <link rel="canonical" href="https://ft-itc.org/how-to-analyze-itc-data">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="FT-ITC Analysis">
     <meta property="og:title" content="How to Analyze ITC Data | FT-ITC Tutorial">
-    <meta property="og:description" content="A practical guide to isothermal titration calorimetry data analysis, from raw thermogram and baseline correction through fitting, residuals, uncertainty and export.">
+    <meta property="og:description" content="A practical FT-ITC Analysis guide from raw thermogram to fitted result.">
     <meta property="og:url" content="https://ft-itc.org/how-to-analyze-itc-data">
     <meta property="og:image" content="https://ft-itc.org/media/tutorials/processing-and-analysis/analysis-basic.webp">
     <meta property="og:image:alt" content="FT-ITC Analysis showing a binding-model fit, residuals and fit setup controls">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="How to Analyze ITC Data | FT-ITC Tutorial">
-    <meta name="twitter:description" content="A practical guide to isothermal titration calorimetry data analysis, from raw thermogram and baseline correction through fitting, residuals, uncertainty and export.">
+    <meta name="twitter:description" content="A practical FT-ITC Analysis guide from raw thermogram to fitted result.">
     <meta name="twitter:image" content="https://ft-itc.org/media/tutorials/processing-and-analysis/analysis-basic.webp">
     <meta name="twitter:image:alt" content="FT-ITC Analysis showing a binding-model fit, residuals and fit setup controls">
     <link rel="icon" href="assets/icon-180.png" type="image/png">
@@ -32,10 +32,10 @@
             "@id": "https://ft-itc.org/how-to-analyze-itc-data",
             "url": "https://ft-itc.org/how-to-analyze-itc-data",
             "name": "How to Analyze ITC Data | FT-ITC Tutorial",
-            "description": "A practical guide to isothermal titration calorimetry data analysis, from raw thermogram and baseline correction through fitting, residuals, uncertainty and export.",
+            "description": "A practical FT-ITC Analysis guide from raw thermogram to fitted result.",
             "inLanguage": "en-GB",
             "datePublished": "2026-08-20",
-            "dateModified": "2026-08-25",
+            "dateModified": "2026-08-26",
             "isPartOf": {
               "@id": "https://ft-itc.org/#website"
             },
@@ -52,10 +52,10 @@
             "url": "https://ft-itc.org/how-to-analyze-itc-data",
             "headline": "How to Analyze ITC Data: From Thermogram to Binding Parameters",
             "name": "How to Analyze ITC Data | FT-ITC Tutorial",
-            "description": "Learn how to analyze ITC data by inspecting thermograms, correcting baselines, integrating injection peaks, fitting binding models and reviewing residuals and uncertainty.",
+            "description": "A practical FT-ITC Analysis guide from raw thermogram to fitted result.",
             "inLanguage": "en-GB",
             "datePublished": "2026-08-20",
-            "dateModified": "2026-08-25",
+            "dateModified": "2026-08-26",
             "articleSection": "ITC data analysis",
             "about": {
               "@type": "Thing",
@@ -121,8 +121,8 @@
       <section class="page-hero wrap">
         <p class="eyebrow">ITC data analysis tutorial</p>
         <h1>How to Analyze ITC Data: <span>From Thermogram to Binding Parameters</span></h1>
-        <p class="lede">Isothermal titration calorimetry data analysis is a chain of decisions: inspect the raw thermogram, establish a defensible baseline, integrate injection peaks, account for matched background or dilution heat, fit a model that reflects the experiment, and review residuals and uncertainty before interpreting the parameters. This is a practical, decision-led walkthrough in FT-ITC Analysis—not a claim that one attractive curve validates the model or experiment.</p>
-        <p class="eyebrow">Frederik Theisen · FT-ITC Analysis · <time datetime="2026-08-25">Updated 25 August 2026</time></p>
+        <p class="lede">This guide follows the normal FT-ITC Analysis workflow: open an experiment, look at the thermogram, set a baseline, integrate the peaks, fit a model, and make a clear figure or result table. Start with the straightforward route, look at what changes on screen, and refine the analysis when the data give you a reason to.</p>
+        <p class="eyebrow">Frederik Theisen · FT-ITC Analysis · <time datetime="2026-08-26">Updated 26 August 2026</time></p>
         <nav class="tutorial-contents" aria-label="On this page">
           <a href="#import">Import</a>
           <a href="#thermogram">Thermogram</a>
@@ -139,52 +139,51 @@
         <div class="wrap">
           <div class="section-heading narrow">
             <p class="eyebrow">The short version</p>
-            <h2>Follow the evidence from signal to result.</h2>
-            <p>A useful ITC analysis keeps the raw measurement, processing choices, fitted model and reporting context connected. The order below is a practical starting point for one experiment before considering any global analysis.</p>
+            <h2>A straightforward first pass.</h2>
+            <p>Work through these five steps, then use the screenshots and details below to refine the analysis when it helps.</p>
           </div>
           <div class="numbered-list">
             <article>
               <span>01</span>
               <div>
-                <h3>Import and check the experiment</h3>
-                <p>Confirm the sample and titrant, concentrations, temperature, injection settings, units and available reference experiment before changing the data.</p>
+                <h3>Open and check the experiment</h3>
+                <p>Confirm the sample, titrant, concentrations, temperature and injection settings.</p>
               </div>
             </article>
             <article>
               <span>02</span>
               <div>
-                <h3>Inspect the thermogram</h3>
-                <p>Look for stable between-injection regions, plausible peak shapes, baseline drift, irregular injections and signals that may reflect mixing or dilution.</p>
+                <h3>Look at the thermogram</h3>
+                <p>Get a feel for peak shape, baseline behaviour and the overall progression of the experiment.</p>
               </div>
             </article>
             <article>
               <span>03</span>
               <div>
                 <h3>Set the baseline and integrate</h3>
-                <p>Choose a baseline representation, inspect each integration boundary, then check the resulting heat series before fitting an isotherm.</p>
+                <p>Start simply, inspect a few peaks closely, then review the full heat series.</p>
               </div>
             </article>
             <article>
               <span>04</span>
               <div>
-                <h3>Correct background heat when justified</h3>
-                <p>Use a matched buffer or dilution experiment when the design supports it, and distinguish a physical correction from a model offset.</p>
+                <h3>Use a reference when you have one</h3>
+                <p>Apply a buffer or dilution correction if it is part of the experiment.</p>
               </div>
             </article>
             <article>
               <span>05</span>
               <div>
-                <h3>Fit, review and export</h3>
-                <p>Fit a model that reflects the chemistry, review residuals and conditional uncertainty, save the project, and export a result that retains its analytical context.</p>
+                <h3>Fit, compare and export</h3>
+                <p>Run a sensible first model, inspect the curve and residuals, then save and report the result.</p>
               </div>
             </article>
           </div>
           <aside class="note-box tutorial-note" role="note">
-            <h3>What this tutorial is—and is not</h3>
-            <p>The screenshots use a representative FT-ITC Analysis project to show where decisions are made. They are not a validation dataset or a numerical result to reproduce. Keep your own instrument file, experimental record and controls alongside every processing decision.</p>
-            <a href="/manual/quick-start">Follow the application quick start <span>→</span></a>
+            <h3>A practical first pass</h3>
+            <p>The screenshots show where the relevant controls live. Open a copy of your own project, try the first-pass settings, and compare the trace, integrated heats, fitted curve and residuals as you go.</p>
+            <a href="/manual/quick-start">Open the application quick start <span>→</span></a>
           </aside>
-          <a class="text-link" href="/app-desktop#platforms">Download FT-ITC Analysis for your platform <span>→</span></a>
         </div>
       </section>
 
@@ -192,7 +191,7 @@
         <div class="section-heading narrow">
           <p class="eyebrow">01 · Import and experiment context</p>
           <h2>Open the experiment and verify what the file contains.</h2>
-          <p>Before asking what a fitted parameter means, distinguish the different data products that appear during an ITC workflow and verify the experimental metadata that determines them.</p>
+          <p>Start by checking what you imported and the experiment details that go with it. The workflow moves from raw power trace, to integrated heats, to a fitted isotherm.</p>
         </div>
         <div class="numbered-list">
           <article>
@@ -217,12 +216,12 @@
             </div>
           </article>
         </div>
-        <p class="lede">When you import an experiment, verify cell and syringe identities, sample and titrant concentrations, temperature, buffer and salt composition, injection volume and spacing, units, and whether a matched reference or dilution measurement exists. Those entries set the molar-ratio axis and influence the fitted parameters.</p>
+        <p class="lede">When you import an experiment, check the cell and syringe identities, concentrations, temperature, buffer, injection volume and spacing. These values set the molar-ratio axis and are part of the fit.</p>
         <aside class="note-box tutorial-note" role="note">
-          <h3>Match the workflow to the input</h3>
-          <p><strong>Raw thermogram inputs:</strong> MicroCal-style <code>.itc</code>, TA NanoITC <code>.nitc</code>, NanoAnalyze <code>.ta</code>, and PEAQ-ITC <code>.apj</code> imports enter the thermogram-processing workflow. A PEAQ project supplies the raw thermogram and injection information from its first experiment; process and fit that restored raw data in FT-ITC Analysis rather than assuming its earlier PEAQ processing or fit was imported.</p>
-          <p><strong>Integrated-heats inputs:</strong> compatible <code>.dat</code>, <code>.aff</code> and <code>.dh</code> files begin with experiment details and fitting, because they do not contain a thermogram for baseline correction, peak integration, or processing-derived injection uncertainty.</p>
-          <p><strong>Project inputs:</strong> current <code>.ftxtc</code> projects preserve the working analysis context, while legacy <code>.ftitc</code> projects remain openable.</p>
+          <h3>Choose the right starting point</h3>
+          <p><strong>Raw thermogram inputs:</strong> MicroCal-style <code>.itc</code>, TA NanoITC <code>.nitc</code>, NanoAnalyze <code>.ta</code>, and PEAQ-ITC <code>.apj</code> open into the thermogram-processing workflow.</p>
+          <p><strong>Integrated-heats inputs:</strong> compatible <code>.dat</code>, <code>.aff</code> and <code>.dh</code> files begin with experiment details and fitting.</p>
+          <p><strong>Project inputs:</strong> <code>.ftxtc</code> and legacy <code>.ftitc</code> reopen an FT-ITC project.</p>
           <a href="/manual/installation-files-projects#supported-input-formats">Read the full file-format reference <span>→</span></a>
         </aside>
         <figure class="tutorial-showcase tutorial-showcase--start">
@@ -244,9 +243,9 @@
           <div>
             <p class="eyebrow">02 · Thermogram processing</p>
             <h2>Inspect the thermogram before changing it.</h2>
-            <p>Good ITC thermogram analysis begins with inspection, not automatic fitting. Review stable regions between injections, the approximate direction and shape of each peak, baseline drift, slow return to baseline, irregular or missing injections, and any change that appears only after a particular addition.</p>
-            <p>Look closely at the first injection as well as the later series. If it behaves differently, investigate the injection window, equilibration and recorded metadata; do not discard it merely because it is inconvenient. If you later exclude an injection from a fit, record why and rerun the fit after the change.</p>
-            <p>A clean-looking trace is not by itself evidence of a valid binding experiment. A signal can also reflect dilution, aggregation, precipitation, buffer mismatch, a concentration error or instrument behaviour. Use the thermogram to decide where processing needs attention; do not adjust the trace only to create a preferred-looking isotherm.</p>
+            <p>Start with the whole trace. Look at the direction and shape of the peaks, how the baseline behaves between injections, whether the signal returns, and how the series changes as the titration progresses.</p>
+            <p>Then zoom in on a few peaks. The first injection may look different from the later ones, and some traces will need more time to recover between injections. That is useful information: see how the baseline and integration window behave before deciding whether to change anything.</p>
+            <p>The processing view is made for trying small adjustments and seeing their effect. Keep the original file or a saved copy of the project so you can compare a revised processing choice with your starting point.</p>
             <a class="text-link" href="/manual/processing-thermograms">Read the processing controls in the manual <span>→</span></a>
           </div>
         </div>
@@ -255,29 +254,29 @@
       <section id="baseline" class="section wrap">
         <div class="section-heading narrow">
           <p class="eyebrow">03 · Baseline correction</p>
-          <h2>Set a baseline before you look at the heats.</h2>
-          <p>The baseline estimates the non-injection power underneath a signal that is only directly observed between injections. It can therefore influence every integrated heat that follows, and the application cannot decide whether a particular baseline is scientifically appropriate for your experiment.</p>
+          <h2>Start with a useful baseline.</h2>
+          <p>The baseline estimates the non-injection power underneath the peaks. Start with the simplest baseline that follows the quiet regions of the trace, then see how the integrated heats look.</p>
         </div>
         <div class="numbered-list">
           <article>
             <span>01</span>
             <div>
               <h3>Choose a representation that matches the observed drift</h3>
-              <p>Use <strong>Polynomial</strong> for smooth global drift, <strong>Spline</strong> when direct graphical control is useful, or <strong>Segmented</strong> for locally changing baseline behaviour. More flexibility can follow genuine drift, but it can also follow noise or absorb part of an injection response.</p>
+              <p>Try <strong>Polynomial</strong> for smooth global drift, <strong>Spline</strong> when you want to place and edit points directly, or <strong>Segmented</strong> when different parts of the trace need local treatment. There is no need to guess perfectly at the start: compare the result with the trace and refine only where it helps.</p>
             </div>
           </article>
           <article>
             <span>02</span>
             <div>
               <h3>Anchor the baseline in usable regions between peaks</h3>
-              <p>Identify where the instrument has returned towards its local baseline. In a Spline baseline, make the assumption visible through the editable points; do not place or move them to create the heat series you expect from a model.</p>
+              <p>Place the baseline in the parts of the trace between peaks where the instrument has settled. With a Spline, the editable points make the choice easy to see and adjust.</p>
             </div>
           </article>
           <article>
             <span>03</span>
             <div>
               <h3>Check what a changed boundary also changes</h3>
-              <p>When <strong>Discard integrated regions</strong> is enabled, data inside the integration regions are omitted when the baseline is recalculated. Moving a boundary can then change both the integrated area and the estimated baseline—not just one number.</p>
+              <p>When <strong>Discard integrated regions</strong> is enabled, moving an integration boundary can change both the integrated area and the recalculated baseline. Check the trace and the heat series together after a larger adjustment.</p>
             </div>
           </article>
         </div>
@@ -285,7 +284,7 @@
           <div class="tutorial-crop tutorial-crop--baseline">
             <img src="media/tutorials/processing-and-analysis/processing-baseline-linear.webp" alt="Close view of an ITC thermogram with a red baseline and editable control points" width="1010" height="1190" loading="lazy" decoding="async">
           </div>
-          <figcaption>The red baseline and control points make the local processing assumption visible. Review them against the trace, not against a preferred isotherm.</figcaption>
+          <figcaption>The red baseline and control points make the local processing choice visible. Start by matching them to the trace.</figcaption>
         </figure>
       </section>
 
@@ -293,33 +292,33 @@
         <div class="wrap">
           <div class="section-heading narrow">
             <p class="eyebrow">04 · Peak integration</p>
-            <h2>Integrate every injection deliberately.</h2>
-            <p>Integration turns the processed thermogram into the heats used for fitting. Treat the start and end of each selected region as part of the measurement, not as a way to repair an inconvenient result.</p>
+            <h2>Integrate the peaks and look at the series.</h2>
+            <p>Integration turns the processed thermogram into the heats used for fitting. Start with the default regions, then inspect a few selected peaks before applying the same approach across the series.</p>
           </div>
           <div class="numbered-list">
             <article>
               <span>01</span>
               <div>
                 <h3>Inspect the Start and Length boundaries</h3>
-                <p>Use the selected-peak view to check that the interval captures the intended response without extending unnecessarily into neighbouring recovery or baseline noise. Inspect more than one peak, including any atypical first or late injection.</p>
+                <p>Use the selected-peak view to check that the interval captures the response and settles before the next event. It is worth looking at an early, middle and late injection rather than judging the whole run from one peak.</p>
               </div>
             </article>
             <article>
               <span>02</span>
               <div>
-                <h3>Use endpoint tools as a starting point, not a verdict</h3>
-                <p><strong>Fit Peaks</strong> estimates integration end points from the decay of the baseline-corrected response; it does not fit the binding isotherm or choose a permanent integration mode. <strong>Copy to next peak</strong> can speed a defensible repeating rule, but every copied boundary still needs inspection.</p>
+                <h3>Try the endpoint tools</h3>
+                <p><strong>Fit Peaks</strong> can estimate the end point from the peak decay. It is a quick way to get started, and you can still adjust any endpoint afterwards. <strong>Copy to next peak</strong> is useful when neighbouring peaks need the same treatment.</p>
               </div>
             </article>
             <article>
               <span>03</span>
               <div>
                 <h3>Keep integration choices separate from fit exclusions</h3>
-                <p>Excluding a point in <strong>Analyze Data</strong> prevents that injection from contributing to the fit, while keeping it visible for review. It does not rerun the fit automatically, so record the reason and choose <strong>Run Fit</strong> again before interpreting the changed result.</p>
+                <p>In <strong>Analyze Data</strong>, you can leave an injection out of the fit while keeping it visible on the graph. If you change which injections are included, choose <strong>Run Fit</strong> again to update the curve and parameters.</p>
               </div>
             </article>
           </div>
-          <p class="lede">After integration, review the complete heat series against the thermogram: direction and scale, changes across the titration, outliers, late-injection behaviour and any unexplained jump. There is no automatic baseline or integration rule that is correct for every experiment.</p>
+          <p class="lede">After integration, review the complete heat series against the thermogram. Look for a sensible progression across the titration, obvious outliers, and anything worth checking again before fitting.</p>
           <figure class="tutorial-showcase">
             <div class="tutorial-crop tutorial-crop--integration">
               <img src="media/tutorials/processing-and-analysis/avalonia-processing-zoom.webp" alt="Selected ITC injection with a blue integration window and calculated injection heat" width="2576" height="1666" loading="lazy" decoding="async">
@@ -334,14 +333,13 @@
         <div class="wrap two-column">
           <div>
             <p class="eyebrow">05 · Background heat</p>
-            <h2>Decide whether a buffer or dilution correction is justified.</h2>
-            <p>Integrated heats do not automatically equal binding heats. A matched reference can help estimate heat from buffer mismatch, dilution or mixing, but the right correction depends on how the experiment was designed and what the control actually measures.</p>
-            <p>Distinguish a physical reference subtraction from a mathematical offset in a binding model. A fitted offset can account for a consistent background term; it does not replace a well-designed control experiment.</p>
+            <h2>Use a buffer or dilution reference when you have one.</h2>
+            <p>If you collected a matched buffer or dilution reference, use it to look at the background heat alongside the main experiment. FT-ITC Analysis can apply that correction and keep the original integrated heats in the project.</p>
           </div>
           <div class="note-box">
-            <h3>Before subtracting a reference</h3>
-            <p>Check that the cell and syringe contents, buffer, concentration range, temperature and injection schedule are sufficiently matched for the intended comparison.</p>
-            <p>FT-ITC Analysis offers <strong>Matched</strong>, <strong>Linear</strong> and <strong>Exp. decay</strong> reference models. Choose one that represents the available control, retain the reference data, and note how the correction changes both the heat series and its uncertainty.</p>
+            <h3>A simple way to start</h3>
+            <p>Begin with <strong>Matched</strong> when the reference follows the same injection schedule. <strong>Linear</strong> and <strong>Exp. decay</strong> are useful alternatives when the reference heat changes across the run.</p>
+            <p>Compare the corrected heat series with the original and use the option that makes sense for the reference you collected.</p>
             <a href="/manual/additional-tools#buffer-subtraction">Read the buffer-subtraction workflow <span>→</span></a>
           </div>
         </div>
@@ -353,15 +351,15 @@
             <div class="tutorial-crop tutorial-crop--interface">
               <img src="media/tutorials/processing-and-analysis/analysis-basic.webp" alt="FT-ITC Analysis Analyze Data workspace showing a One-Set-Of-Sites fit, residuals and Bootstrap residuals settings" width="2576" height="1666" loading="lazy" decoding="async">
             </div>
-            <figcaption>The fit view keeps the selected model, isotherm, residuals, weighting and error method in the same evidence chain.</figcaption>
+            <figcaption>The fit view puts the selected model, isotherm, residuals, weighting and error method in one place.</figcaption>
           </figure>
           <div>
             <p class="eyebrow">06 · Binding-model fitting</p>
-            <h2>Fit an ITC binding model, not just a curve.</h2>
-            <p>Open <strong>Analyze Data</strong> in <strong>Single experiment</strong> mode only after the integrated heats and experiment details are ready. The screen shown here uses <strong>One-Set-Of-Sites</strong> as a teaching example; it represents equivalent, independent sites and is not a universal default.</p>
-            <p>FT-ITC Analysis also documents <strong>Two-Sets-Of-Sites</strong>, <strong>Competitive Binding</strong> and <strong>Dissociation</strong> models. Select only a model whose assumptions match the chemistry and experimental design. A lower fitting loss or attractive curve does not by itself establish that a more complex model is supported.</p>
-            <p>The fit uses the included injections together with concentrations, injection volumes, cell volume, temperature and model-specific information. Check units, concentrations, starting values, limits and weighting before <strong>Run Fit</strong>. Apparent stoichiometry alone cannot distinguish a concentration error from other effects that change the fitted value.</p>
-            <p>For two or more processed <strong>Active</strong> experiments, <strong>Multiple experiments</strong> can retain member-specific parameters or apply scientifically justified <strong>Same for all</strong> or <strong>Temperature dependent</strong> constraints. A combined result should still be read with every member curve and residual in view; see <a href="/manual/multiple-experiments">multiple-experiment fitting</a> for the constraint details.</p>
+            <h2>Start with a sensible binding model.</h2>
+            <p>Open <strong>Analyze Data</strong> in <strong>Single experiment</strong> mode once the integrated heats and experiment details are ready. The screen shown here uses <strong>One-Set-Of-Sites</strong>, a useful first model for one class of equivalent, independent sites.</p>
+            <p>FT-ITC Analysis also includes <strong>Two-Sets-Of-Sites</strong>, <strong>Competitive Binding</strong> and <strong>Dissociation</strong> models. Start with the model that fits the experiment you performed, then compare alternatives if the first result leaves something unexplained.</p>
+            <p>The fit uses the included injections together with concentrations, injection volumes, cell volume, temperature and model-specific information. Check the units, concentrations and starting values, then choose <strong>Run Fit</strong>. The graph updates with the fitted curve, residuals and parameter values so you can see what the model is doing.</p>
+            <p>For two or more processed <strong>Active</strong> experiments, <strong>Multiple experiments</strong> can fit the runs together. You can leave parameters separate, set them <strong>Same for all</strong>, or use a supported <strong>Temperature dependent</strong> relationship. It is a useful next step when the experiments belong to the same series.</p>
             <a class="text-link" href="/manual/fitting-models#models">Read the documented model assumptions <span>→</span></a>
           </div>
         </div>
@@ -371,36 +369,36 @@
         <div class="wrap">
           <div class="section-heading narrow">
             <p class="eyebrow">07 · Fit quality and uncertainty</p>
-            <h2>Read residuals, processing-derived error and resampling together.</h2>
-            <p>A fitted parameter is more useful when the evidence around it is visible. Review the data, model, residuals and uncertainty as one result rather than reducing the analysis to a single goodness-of-fit statistic.</p>
+            <h2>Look at the fit, residuals and uncertainty together.</h2>
+            <p>The fit view brings the heats, curve, residuals and parameter values together. Use it to see how well the model follows the experiment and where a different processing or fitting choice might be worth trying.</p>
           </div>
           <div class="numbered-list">
             <article>
               <span>01</span>
               <div>
                 <h3>Look for structure in the residuals</h3>
-                <p>Residuals show the difference between observed integrated heats and model-predicted heats. Check whether they are broadly scattered around zero or instead show curvature, a trend, clusters or one injection that dominates the fit. Structured residuals can indicate an unsuitable model, processing choice or experimental problem.</p>
+                <p>Residuals show the difference between the integrated heats and the fitted curve. A quick look often reveals whether the model follows the series evenly or misses a part of the titration.</p>
               </div>
             </article>
             <article>
               <span>02</span>
               <div>
                 <h3>Know what injection-error weighting represents</h3>
-                <p>For processed thermograms, each injection error bar is an estimated ±1 standard deviation from local baseline-corrected noise, time correlation, integration length and baseline uncertainty. <strong>Weight by injection error</strong> uses that processing-derived estimate in the fitting objective. Integrated-heats imports do not provide this thermogram-derived estimate.</p>
+                <p>For processed thermograms, FT-ITC can estimate an error bar for each injection. <strong>Weight by injection error</strong> uses those estimates during fitting, which can be helpful when some peaks are noticeably noisier than others.</p>
               </div>
             </article>
             <article>
               <span>03</span>
               <div>
-                <h3>Read resampling intervals conditionally</h3>
-                <p><strong>Bootstrap residuals</strong> creates synthetic datasets from the fit residuals and refits them; the reported interval is calculated around the primary solution rather than replacing it with a resampled average. <strong>Leave-one-out</strong> is a different reduced-data refit. State which method and interval you show.</p>
+                <h3>Try an uncertainty calculation</h3>
+                <p>Choose <strong>Bootstrap residuals</strong> when you want repeated residual-based refits, or <strong>Leave-one-out</strong> when you want to see how the result changes as individual included injections are omitted. The result view shows the completed calculation and the resulting intervals.</p>
               </div>
             </article>
             <article>
               <span>04</span>
               <div>
-                <h3>Keep the wider error budget in view</h3>
-                <p>Repeat key decisions one at a time: baseline representation, integration boundaries, injection inclusion, reference correction and model choice. Fitted uncertainty does not automatically cover concentration error, sample heterogeneity, baseline bias, systematic instrument effects or model misspecification.</p>
+                <h3>Compare a few sensible alternatives</h3>
+                <p>If a result seems sensitive, try one change at a time: a different baseline, a revised integration boundary, a different included point, a reference correction or another model. Comparing these runs is often more informative than trying to decide everything in advance.</p>
               </div>
             </article>
           </div>
@@ -408,7 +406,7 @@
             <div class="tutorial-crop tutorial-crop--uncertainty">
               <img src="media/tutorials/processing-and-analysis/analysis-result.webp" alt="FT-ITC Analysis fitted-result view showing parameter intervals, residuals and BootstrapResiduals completion status" width="2576" height="1666" loading="lazy" decoding="async">
             </div>
-            <figcaption>Review fitted values and intervals with the residual plot and the successful and failed bootstrap-refit counts, rather than interpreting one reported number in isolation.</figcaption>
+            <figcaption>Review fitted values and intervals beside the residual plot and the bootstrap-refit counts.</figcaption>
           </figure>
           <a class="text-link" href="/manual/fitting-models#parameter-uncertainty">Read the uncertainty and diagnostic definitions <span>→</span></a>
         </div>
@@ -419,16 +417,15 @@
           <div class="two-column">
             <div>
               <p class="eyebrow">08 · Reporting</p>
-              <h2>Export a traceable ITC result.</h2>
-              <p>A publication figure should make the relationship between the raw signal, integrated heats, fitted model and residuals legible. Do not export only a final parameter table when the processing choices determine how that table was produced.</p>
-              <p>Save a processed <code>.ftxtc</code> project before fitting if you need a reusable processing checkpoint, then save again after fitting to retain the solution and any Analysis Result. Retain the original input file, baseline and integration decisions, reference correction, model assumptions, parameter estimates, uncertainty method, residuals, temperature and concentration metadata.</p>
+              <h2>Save and export the result.</h2>
+              <p>A clear figure makes it easy to see the thermogram, integrated heats, fitted curve and residuals together. FT-ITC keeps these views available while you prepare the result.</p>
+              <p>Save the project as <code>.ftxtc</code> once you have a useful processing checkpoint, then save again after fitting so the solution and any Analysis Result travel with the project.</p>
               <p>Use <strong>Final Figure</strong> to compose an experiment figure and export its PDF. Use <strong>Analysis Result Exporter...</strong> for result tables, or <strong>Export Integrated Peaks</strong> when the injection-level heats are the useful output.</p>
               <a class="text-link" href="/manual/figures-printing-export">Read the figures and export guide <span>→</span></a>
             </div>
             <div class="note-box">
-              <h3>Keep the evidence together</h3>
-              <p>FT-ITC projects keep the analysis context available for review. Export vector-based publication and supporting figures only after checking that the labels, units, fit and residuals describe the same processed result.</p>
-              <p>The screenshots use an illustrative example project. Treat its visible numerical values as interface context, not as a result to reproduce.</p>
+              <h3>Before you export</h3>
+              <p>Check the labels, units, fit and residuals. The project keeps the analysis together, so you can return to the same processing and fitting choices later.</p>
             </div>
           </div>
           <figure class="tutorial-showcase tutorial-showcase--export">
@@ -444,36 +441,36 @@
         <div class="wrap">
           <div class="section-heading narrow">
             <p class="eyebrow">Troubleshooting</p>
-            <h2>Stop and revisit when the evidence does not hold together.</h2>
-            <p>Difficult data are often a reason to revisit the experiment and processing decisions, not simply to add a more complex model.</p>
+            <h2>If something looks off.</h2>
+            <p>Go back to the thermogram and heat series, then try one focused change at a time.</p>
           </div>
           <div class="numbered-list">
             <article>
               <span>01</span>
               <div>
                 <h3>Baseline drift or slow recovery</h3>
-                <p>Recheck the baseline regions, injection spacing and equilibration behaviour. Compare alternative processing choices without hiding regions that carry useful information.</p>
+                <p>Try a different baseline type or inspect the quiet regions between peaks more closely. If the trace is slow to recover, it can also be useful to look at the injection spacing.</p>
               </div>
             </article>
             <article>
               <span>02</span>
               <div>
                 <h3>Noisy, overlapping or irregular peaks</h3>
-                <p>Inspect whether integration windows are capturing the intended events. Exclude an injection only with a documented reason, rerun the fit after changing inclusion, and consider whether the underlying experiment can support a quantitative fit.</p>
+                <p>Zoom in on the affected peaks and adjust the integration boundaries if needed. You can also see how the fit changes when a clearly problematic point is left out and the fit is rerun.</p>
               </div>
             </article>
             <article>
               <span>03</span>
               <div>
                 <h3>Poor saturation or unstable parameters</h3>
-                <p>Check concentration range, signal size, reference heat and model assumptions. A more complicated fit cannot recover information that the experiment did not measure.</p>
+                <p>Check the concentrations, the range covered by the titration and the signal size. Then try a different starting value or a different model if it matches the experiment better.</p>
               </div>
             </article>
             <article>
               <span>04</span>
               <div>
                 <h3>Systematic residuals</h3>
-                <p>Compare the residual pattern with the thermogram, integration choices and plausible alternative models before treating the fitted parameters as interpretable.</p>
+                <p>Go back to the heat series and thermogram, then try one alternative baseline, integration choice or model. The comparison usually points to the most useful next step.</p>
               </div>
             </article>
           </div>
@@ -490,28 +487,28 @@
             <span>01</span>
             <div>
               <h3>How do I analyse ITC data?</h3>
-              <p>Inspect the thermogram and experimental context, correct the baseline, integrate injection peaks, apply a justified background correction, fit a suitable binding model, review residuals and uncertainty, and export the result with its processing history.</p>
+              <p>Open the experiment, inspect the thermogram, set a baseline, integrate the peaks, fit a model, look at the residuals, and save or export the result. Work through the steps in order and use the visible graphs to guide the next adjustment.</p>
             </div>
           </article>
           <article>
             <span>02</span>
             <div>
               <h3>Why is ITC baseline correction important?</h3>
-              <p>The baseline is used to estimate the non-injection power underneath each peak. A different baseline can change the integrated heats and therefore the fitted isotherm, so the choice should be reviewed against the thermogram and documented.</p>
+              <p>The baseline sets the reference level underneath each peak, so it affects the integrated heats. Use the trace to place it, then look at how the heat series changes if you try a different baseline treatment.</p>
             </div>
           </article>
           <article>
             <span>03</span>
             <div>
               <h3>Do I need ITC buffer subtraction or dilution correction?</h3>
-              <p>Not every experiment needs the same correction. Use a matched reference when the experimental design supports the comparison, and distinguish measured background heat from an offset term included in a model.</p>
+              <p>If you collected a matched buffer or dilution reference, compare it with the main experiment and use the buffer-subtraction tool. If you did not collect one, continue with the main experiment and inspect the fitted offset in context.</p>
             </div>
           </article>
           <article>
             <span>04</span>
             <div>
               <h3>What should ITC residuals look like?</h3>
-              <p>Residuals should be inspected for structure rather than judged by a single threshold. Trends, curvature, clusters or a dominant injection can indicate that processing, model choice or experiment quality needs further review.</p>
+              <p>Residuals should sit reasonably evenly around zero. If one part of the plot stands out, go back to the corresponding heats or thermogram and try a focused adjustment.</p>
             </div>
           </article>
           <article>
@@ -527,9 +524,9 @@
       <section class="section section-tint">
         <div class="wrap two-column">
           <div>
-            <p class="eyebrow">Continue the workflow</p>
-            <h2>Start with one experiment. Then ask what belongs together.</h2>
-            <p>Use the manual for the exact application controls, work through a local single-experiment analysis first, and move to multiple-experiment fitting only when related experiments need a justified shared model.</p>
+            <p class="eyebrow">Further reading</p>
+            <h2>Continue from the manual.</h2>
+            <p>Use the manual for the detailed controls, then return to the experiment whenever you want to try a related processing or fitting option.</p>
           </div>
           <div class="note-box">
             <h3>Further reading in the manual</h3>
