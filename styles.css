@@ -1249,7 +1249,7 @@ a:focus-visible,button:focus-visible {
 
 .reference-list a {
   display: grid;
-  grid-template-columns: 100px 1fr 25px;
+  grid-template-columns: minmax(125px,max-content) minmax(0,1fr) 25px;
   gap: 22px;
   align-items: center;
   padding: 25px 14px;
@@ -1265,6 +1265,7 @@ a:focus-visible,button:focus-visible {
 .reference-list > a > span {
   color: #438d78;
   font: 700 .75rem ui-monospace,monospace;
+  white-space: nowrap;
 }
 
 .reference-list strong,.reference-list small {
@@ -1630,7 +1631,7 @@ a:focus-visible,button:focus-visible {
 }
 
 .reference-list a {
-  grid-template-columns: 55px 1fr 15px;
+  grid-template-columns: max-content minmax(0,1fr) 15px;
   gap: 12px;
   padding-inline: 0;
 }
