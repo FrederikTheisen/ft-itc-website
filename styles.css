@@ -744,27 +744,9 @@ figure figcaption {
 }
 
 .tutorial-crop img {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.tutorial-crop--start {
-  aspect-ratio: 5 / 3;
-}
-
-.tutorial-crop--start img {
-  transform: scale(2.05);
-  transform-origin: 70% 52%;
-}
-
-.tutorial-crop--interface {
-  aspect-ratio: 1.31 / 1;
-}
-
-.tutorial-crop--interface img {
-  transform: scale(1.12);
-  transform-origin: 66% 52%;
+  height: auto;
 }
 
 .tutorial-showcase {
@@ -778,15 +760,6 @@ figure figcaption {
 
 .tutorial-showcase--uncertainty {
   max-width: 1080px;
-}
-
-.tutorial-crop--uncertainty {
-  aspect-ratio: 1.55 / 1;
-}
-
-.tutorial-crop--uncertainty img {
-  transform: scale(1.16);
-  transform-origin: 20% 50%;
 }
 
 .tutorial-dual-figure {
@@ -805,20 +778,6 @@ figure figcaption {
   padding: 9px;
   border: 1px solid var(--line);
   background: var(--paper);
-}
-
-.tutorial-crop--baseline,.tutorial-crop--integration {
-  aspect-ratio: 1 / 1;
-}
-
-.tutorial-crop--baseline img {
-  transform: scale(1.02);
-  transform-origin: center 32%;
-}
-
-.tutorial-crop--integration img {
-  transform: scale(1.35);
-  transform-origin: 46% 52%;
 }
 
 .tutorial-dual-panel p {

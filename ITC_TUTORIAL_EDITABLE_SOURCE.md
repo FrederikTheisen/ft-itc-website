@@ -62,7 +62,7 @@ When you import an experiment, check the cell and syringe identities, concentrat
 
 *Start with **Open File…**, then check the experiment context before changing the data.*
 
-<!-- Website layout note: a compact crop focuses on the Open File control. -->
+<!-- Website layout note: show the full screenshot at its natural aspect ratio; the Open File control remains visible. -->
 
 ---
 
@@ -82,7 +82,7 @@ The processing view is made for trying small adjustments and seeing their effect
 
 *In the Process Data workspace, read the black thermogram trace, red baseline and processing controls together.*
 
-<!-- Website layout note: use a wide crop that keeps the trace, red baseline, and right-hand controls legible. -->
+<!-- Website layout note: show the full screenshot at its natural aspect ratio, keeping the trace, red baseline, and controls together. -->
 
 ---
 
@@ -108,7 +108,7 @@ When **Discard integrated regions** is enabled, moving an integration boundary c
 
 *The red baseline and control points make the local processing choice visible. Start by matching them to the trace.*
 
-<!-- Website layout note: use a close, near-square crop centred on the baseline and control points. -->
+<!-- Website layout note: show the full portrait screenshot at its natural aspect ratio. -->
 
 ---
 
@@ -138,7 +138,7 @@ After integration, review the complete heat series against the thermogram. Look 
 
 *The blue interval is one selected injection. Use it to check the local integration decision, then review the same rule across the series.*
 
-<!-- Website layout note: use a close crop focused on the selected injection, blue interval, and measured heat. -->
+<!-- Website layout note: show the full screenshot at its natural aspect ratio, with the selected injection, blue interval, measured heat, and controls visible. -->
 
 ---
 
@@ -174,7 +174,7 @@ For two or more processed **Active** experiments, **Multiple experiments** can f
 
 *The fit view puts the selected model, isotherm, residuals, weighting and error method in one place.*
 
-<!-- Website layout note: use a wide crop that keeps model selection, isotherm, residuals, weighting, and the error method readable. -->
+<!-- Website layout note: show the full screenshot at its natural aspect ratio, keeping the model selection, isotherm, residuals, weighting, and error method together. -->
 
 ---
 
@@ -206,7 +206,7 @@ If a result seems sensitive, try one change at a time: a different baseline, a r
 
 *Review fitted values and intervals beside the residual plot and the bootstrap-refit counts.*
 
-<!-- Website layout note: keep the parameter intervals, residuals, and bootstrap status line legible. -->
+<!-- Website layout note: show the full screenshot at its natural aspect ratio, with parameter intervals, residuals, and bootstrap status visible. -->
 
 ---
 
@@ -230,7 +230,7 @@ Use **Final Figure** to compose an experiment figure and export its PDF. Use **A
 
 *Before selecting **Export PDF**, make sure the thermogram, fitted isotherm, residuals, labels and parameter box all describe the same processed result.*
 
-<!-- Website layout note: use a wide crop that keeps the full assembled figure and Export PDF control in view. -->
+<!-- Website layout note: show the full screenshot at its natural aspect ratio, keeping the assembled figure and Export PDF control in view. -->
 
 ---
 
