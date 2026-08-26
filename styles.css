@@ -755,11 +755,51 @@ figure figcaption {
 }
 
 .tutorial-showcase--start {
-  max-width: 680px;
+  max-width: 560px;
 }
 
-.tutorial-showcase--uncertainty {
-  max-width: 1080px;
+.tutorial-showcase--baseline-detail {
+  max-width: 520px;
+}
+
+.tutorial-showcase--integration,
+.tutorial-showcase--result {
+  max-width: 720px;
+}
+
+.tutorial-showcase--export {
+  max-width: 800px;
+}
+
+.tutorial-preflight {
+  max-width: 780px;
+  margin: 0 0 48px;
+  padding: 0 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.tutorial-preflight p:last-child {
+  margin: 8px 0 0;
+  color: var(--ink-soft);
+}
+
+.tutorial-caution,.tutorial-optional {
+  margin-top: 32px;
+}
+
+.tutorial-caution {
+  border-left: 4px solid #bf8638;
+  background: #fffaf1;
+}
+
+.tutorial-optional {
+  border-left: 4px solid #438d78;
+  background: #f4faf7;
+}
+
+.tutorial-export-copy {
+  margin: 48px 0 0;
+  align-items: start;
 }
 
 .tutorial-dual-figure {
