@@ -740,7 +740,7 @@ figure figcaption {
 
 .tutorial-crop {
   overflow: hidden;
-  background: var(--paper);
+  background: transparent;
 }
 
 .tutorial-crop img {
