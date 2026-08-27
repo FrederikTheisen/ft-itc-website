@@ -78,9 +78,9 @@ Start with the simplest baseline representation that follows the baseline region
 
 <!-- Website layout note: use the existing compact side-by-side page layout. Show the full screenshot at its natural aspect ratio. -->
 
-> **Caution — the assigned baseline affects every integrated heat**
+> **Keep processing and fitting separate**
 >
-> Use the baseline regions before and after injections to guide the baseline. After a change, compare the differential-power trace and the series of integrated heats rather than adjusting the baseline to force a preferred binding isotherm or model fit.
+> Set the baseline and integration boundaries from the differential-power trace. Then inspect the integrated heats before fitting; do not change the processing simply to make a binding model fit better.
 
 With a Spline, move the automatic points or place your own in baseline regions between injections. Right-click a point to remove it or mark it linear; mark neighbouring points linear when you want a straight section between them. After a larger change, review the integrated heats before moving on.
 
@@ -108,9 +108,9 @@ Select an early, middle, and late injection. Use **Start** and **Length** to set
 
 <!-- Website layout note: show the full screenshot at its natural aspect ratio with a maximum width of about 720px. -->
 
-> **If you have a matched buffer or dilution reference**
+> **If you have a buffer titration**
 >
-> Use Buffer Subtraction to compare the primary titration with its matched buffer or dilution reference. Start with **Matched** when the reference uses the same injection schedule; **Linear** and **Exp. decay** are alternatives when the reference heat changes across the run.
+> Most analyses do not need a buffer titration. The main reason to use one is dilution heat that is non-constant across the run; it can also provide a no-interaction control for weak, low-enthalpy binding. In Buffer Subtraction, start with **Linear**: point-by-point **Matched** subtraction carries the reference noise into the corrected heats. If binding is not saturated at the end of the experiment, the reference can also help constrain the injection-heat offset; assess that correction carefully.
 >
 > [Read the buffer-subtraction workflow](https://ft-itc.org/manual/additional-tools#buffer-subtraction)
 
@@ -182,7 +182,7 @@ Use **Start** and **Length** to set integration boundaries that include the full
 
 ### Do I need a buffer or dilution reference?
 
-Use a matched buffer or dilution reference when you collected one and want to estimate background heats for the same injection sequence. If you did not collect one, continue with the primary titration and interpret the integrated heats in experimental context. [See Buffer Subtraction](https://ft-itc.org/manual/additional-tools#buffer-subtraction).
+No. Most analyses do not need a buffer titration. Consider one primarily when dilution heat is non-constant; it can also provide a no-interaction control for weak, low-enthalpy binding. Use **Linear** as the default subtraction; if binding is not saturated at the end of the experiment, a buffer titration can also help constrain the injection-heat offset, but assess that correction carefully. [See Buffer Subtraction](https://ft-itc.org/manual/additional-tools#buffer-subtraction).
 
 ### Which binding model should I try first?
 

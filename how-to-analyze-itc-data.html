@@ -134,7 +134,7 @@
             "name": "Do I need a buffer or dilution reference?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Use a matched buffer or dilution reference when you collected one and want to estimate background heats for the same injection sequence. If you did not collect one, continue with the primary titration and interpret the integrated heats in experimental context. See Buffer Subtraction."
+              "text": "No. Most analyses do not need a buffer titration. Consider one primarily when dilution heat is non-constant; it can also provide a no-interaction control for weak, low-enthalpy binding. Use Linear as the default subtraction; if binding is not saturated at the end of the experiment, a buffer titration can also help constrain the injection-heat offset, but assess that correction carefully. See Buffer Subtraction."
             }
           },
           {
@@ -305,9 +305,9 @@
               <p>With a Spline, move the automatic points or place your own in baseline regions between injections. Right-click a point to remove it or mark it linear; mark neighbouring points linear when you want a straight section between them.</p>
             </div>
           </div>
-          <aside class="note-box tutorial-caution" role="note">
-            <h3>Caution — the assigned baseline affects every integrated heat</h3>
-            <p>Use the baseline regions before and after injections to guide the baseline. After a change, compare the differential-power trace and the series of integrated heats rather than adjusting the baseline to force a preferred binding isotherm or model fit.</p>
+          <aside class="note-box tutorial-note" role="note">
+            <h3>Keep processing and fitting separate</h3>
+            <p>Set the baseline and integration boundaries from the differential-power trace. Then inspect the integrated heats before fitting; do not change the processing simply to make a binding model fit better.</p>
           </aside>
           <p class="lede">After a larger change, review the integrated heats before moving on.</p>
           <figure class="tutorial-showcase tutorial-showcase--baseline-detail">
@@ -356,8 +356,8 @@
           <figcaption>Use the selected-injection view to set an integration region, then apply the same rule across the series.</figcaption>
         </figure>
         <aside class="note-box tutorial-optional" role="note">
-          <h3>If you have a matched buffer or dilution reference</h3>
-          <p>Use Buffer Subtraction to compare the primary titration with its matched buffer or dilution reference. Start with <strong>Matched</strong> when the reference uses the same injection schedule; <strong>Linear</strong> and <strong>Exp. decay</strong> are alternatives when the reference heat changes across the run.</p>
+          <h3>If you have a buffer titration</h3>
+          <p>Most analyses do not need a buffer titration. The main reason to use one is dilution heat that is non-constant across the run; it can also provide a no-interaction control for weak, low-enthalpy binding. In Buffer Subtraction, start with <strong>Linear</strong>: point-by-point <strong>Matched</strong> subtraction carries the reference noise into the corrected heats. If binding is not saturated at the end of the experiment, the reference can also help constrain the injection-heat offset; assess that correction carefully.</p>
           <a href="/manual/additional-tools#buffer-subtraction">Read the buffer-subtraction workflow <span>→</span></a>
         </aside>
         <a class="text-link" href="/manual/processing-thermograms#integration-regions">Read about integration regions and processing-derived error <span>→</span></a>
@@ -438,7 +438,7 @@
             </details>
             <details>
               <summary>Do I need a buffer or dilution reference?</summary>
-              <div><p>Use a matched buffer or dilution reference when you collected one and want to estimate background heats for the same injection sequence. If you did not collect one, continue with the primary titration and interpret the integrated heats in experimental context. <a href="/manual/additional-tools#buffer-subtraction">See Buffer Subtraction</a>.</p></div>
+              <div><p>No. Most analyses do not need a buffer titration. Consider one primarily when dilution heat is non-constant; it can also provide a no-interaction control for weak, low-enthalpy binding. Use <strong>Linear</strong> as the default subtraction; if binding is not saturated at the end of the experiment, a buffer titration can also help constrain the injection-heat offset, but assess that correction carefully. <a href="/manual/additional-tools#buffer-subtraction">See Buffer Subtraction</a>.</p></div>
             </details>
             <details>
               <summary>Which binding model should I try first?</summary>
