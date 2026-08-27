@@ -31,7 +31,7 @@
           "name": "Processing | FT-ITC Analysis User Manual",
           "description": "Baseline models, integration regions, injection uncertainty, and processing propagation and locking.",
           "inLanguage": "en-US",
-          "dateModified": "2026-08-25",
+          "dateModified": "2026-08-28",
           "isPartOf": { "@id": "https://ft-itc.org/#website" },
           "mainEntity": { "@id": "https://ft-itc.org/manual/processing-thermograms#techarticle" },
           "breadcrumb": { "@id": "https://ft-itc.org/manual/processing-thermograms#breadcrumb" }
@@ -43,7 +43,7 @@
           "headline": "Processing",
           "description": "Baseline models, integration regions, injection uncertainty, and processing propagation and locking.",
           "inLanguage": "en-US",
-          "dateModified": "2026-08-25",
+          "dateModified": "2026-08-28",
           "author": { "@type": "Person", "name": "Frederik Theisen" },
           "publisher": { "@type": "Organization", "@id": "https://ft-itc.org/#organization", "name": "FT-ITC Analysis", "url": "https://ft-itc.org/" },
           "image": "https://ft-itc.org/manual/assets/processing-workspace.webp",
@@ -80,8 +80,9 @@
     <p class="manual-kicker">FT-ITC Analysis 1.5.0 user manual</p>
     <nav class="manual-chapters" aria-label="Manual chapters"><a class="manual-nav-link" href="/manual"><span>01</span> FT-ITC Analysis user manual</a><a class="manual-nav-link" href="/manual/quick-start"><span>02</span> Quick start</a><a class="manual-nav-link" href="/manual/installation-files-projects"><span>03</span> Installation, files, and projects</a><a class="manual-nav-link" href="/manual/workspace-experiments"><span>04</span> Workspace</a><a class="manual-nav-link is-current" href="/manual/processing-thermograms" aria-current="page"><span>05</span> Processing</a><a class="manual-nav-link" href="/manual/fitting-models"><span>06</span> Single-experiment fitting</a><a class="manual-nav-link" href="/manual/multiple-experiments"><span>07</span> Multiple-experiment fitting</a><a class="manual-nav-link" href="/manual/results-advanced-analysis"><span>08</span> Results and advanced analyses</a><a class="manual-nav-link" href="/manual/figures-printing-export"><span>09</span> Figures and export</a><a class="manual-nav-link" href="/manual/additional-tools"><span>10</span> Tools</a><a class="manual-nav-link" href="/manual/preferences-troubleshooting"><span>11</span> Settings and defaults</a><a class="manual-nav-link" href="/manual/reference"><span>12</span> Glossary and equations</a></nav>
     <article class="manual-content">
-<h1 id="processing">Processing</h1><p class="manual-summary">Baseline models, integration regions, injection uncertainty, and processing propagation and locking.</p><p class="manual-freshness">Last verified: <time datetime="2026-08-25">2026-08-25</time></p>
-<p>The <strong>Process Data</strong> workspace estimates and subtracts a baseline from the differential-power trace and integrates the corrected response for each injection. Processing produces an injection heat with an estimated uncertainty for later fitting. The application cannot determine whether a baseline or integration boundary is scientifically appropriate for the experiment.</p>
+<h1 id="processing">Processing</h1><p class="manual-summary">Baseline models, integration regions, injection uncertainty, and processing propagation and locking.</p><p class="manual-freshness">Last verified: <time datetime="2026-08-28">2026-08-28</time></p>
+<p>The <strong>Process Data</strong> workspace estimates and subtracts a baseline from the differential-power trace, integrates the corrected response for each injection, and estimates an uncertainty for the resulting heat. Polynomial and Segmented baselines provide repeatable, model-based treatment with less manual shaping when their assumptions suit the trace. Spline-point editing provides precise local control for difficult cases, while graphical boundary editing, <strong>Fit Peaks</strong>, and copying between injections accelerate integration-region adjustment.</p>
+<p>These controls make processing efficient without deciding the scientific interpretation for you. Confirm that the chosen baseline represents the signal between injections and that each integration region captures the observed response.</p>
 <p>Raw <code>.itc</code>, <code>.nitc</code>, <code>.ta</code>, and <code>.apj</code> imports use this workflow, as do Origin <code>.opj</code> imports that contain a usable time/power trace. Integrated-heat imports and Origin projects without a usable trace skip <strong>Process Data</strong>.</p>
 <aside class="manual-callout callout-calculation" role="note" aria-label="Calculation"><strong>Calculation:</strong><div class="manual-equations"><math class="manual-equation" display="block" aria-label="q sub i raw equals the integral of P of t minus b of t, d t"><mrow><msub><mi>q</mi><mrow><mi>i</mi><mo>,</mo><mtext>raw</mtext></mrow></msub><mo>=</mo><mo>∫</mo><mrow><mo>[</mo><mi>P</mi><mo>(</mo><mi>t</mi><mo>)</mo><mo>−</mo><mi>b</mi><mo>(</mo><mi>t</mi><mo>)</mo><mo>]</mo></mrow><mspace width="0.2em"></mspace><mi mathvariant="normal">d</mi><mi>t</mi></mrow></math>
 <math class="manual-equation" display="block" aria-label="Delta H sub i equals q sub i divided by n sub i"><mrow><msub><mrow><mo>Δ</mo><mi>H</mi></mrow><mi>i</mi></msub><mo>=</mo><mfrac><msub><mi>q</mi><mi>i</mi></msub><msub><mi>n</mi><mi>i</mi></msub></mfrac></mrow></math>

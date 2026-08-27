@@ -31,7 +31,7 @@
           "name": "Installation, files, and projects | FT-ITC Analysis User Manual",
           "description": "Install FT-ITC Analysis, open supported data, save portable projects, and use autosave or recovery safely.",
           "inLanguage": "en-US",
-          "dateModified": "2026-08-27",
+          "dateModified": "2026-08-28",
           "isPartOf": { "@id": "https://ft-itc.org/#website" },
           "mainEntity": { "@id": "https://ft-itc.org/manual/installation-files-projects#techarticle" },
           "breadcrumb": { "@id": "https://ft-itc.org/manual/installation-files-projects#breadcrumb" }
@@ -43,7 +43,7 @@
           "headline": "Installation, files, and projects",
           "description": "Install FT-ITC Analysis, open supported data, save portable projects, and use autosave or recovery safely.",
           "inLanguage": "en-US",
-          "dateModified": "2026-08-27",
+          "dateModified": "2026-08-28",
           "author": { "@type": "Person", "name": "Frederik Theisen" },
           "publisher": { "@type": "Organization", "@id": "https://ft-itc.org/#organization", "name": "FT-ITC Analysis", "url": "https://ft-itc.org/" },
           "image": "https://ft-itc.org/media/avalonia/macos-installation-screen.webp",
@@ -80,7 +80,7 @@
     <p class="manual-kicker">FT-ITC Analysis 1.5.0 user manual</p>
     <nav class="manual-chapters" aria-label="Manual chapters"><a class="manual-nav-link" href="/manual"><span>01</span> FT-ITC Analysis user manual</a><a class="manual-nav-link" href="/manual/quick-start"><span>02</span> Quick start</a><a class="manual-nav-link is-current" href="/manual/installation-files-projects" aria-current="page"><span>03</span> Installation, files, and projects</a><a class="manual-nav-link" href="/manual/workspace-experiments"><span>04</span> Workspace</a><a class="manual-nav-link" href="/manual/processing-thermograms"><span>05</span> Processing</a><a class="manual-nav-link" href="/manual/fitting-models"><span>06</span> Single-experiment fitting</a><a class="manual-nav-link" href="/manual/multiple-experiments"><span>07</span> Multiple-experiment fitting</a><a class="manual-nav-link" href="/manual/results-advanced-analysis"><span>08</span> Results and advanced analyses</a><a class="manual-nav-link" href="/manual/figures-printing-export"><span>09</span> Figures and export</a><a class="manual-nav-link" href="/manual/additional-tools"><span>10</span> Tools</a><a class="manual-nav-link" href="/manual/preferences-troubleshooting"><span>11</span> Settings and defaults</a><a class="manual-nav-link" href="/manual/reference"><span>12</span> Glossary and equations</a></nav>
     <article class="manual-content">
-<h1 id="installation-files-and-projects">Installation, files, and projects</h1><p class="manual-summary">Install FT-ITC Analysis, open supported data, save portable projects, and use autosave or recovery safely.</p><p class="manual-freshness">Last verified: <time datetime="2026-08-27">2026-08-27</time></p>
+<h1 id="installation-files-and-projects">Installation, files, and projects</h1><p class="manual-summary">Install FT-ITC Analysis, open supported data, save portable projects, and use autosave or recovery safely.</p><p class="manual-freshness">Last verified: <time datetime="2026-08-28">2026-08-28</time></p>
 <h2 id="install-the-application">Install the application</h2>
 <p>Use the <a href="https://github.com/FrederikTheisen/FT-ITC-Analysis/releases/latest" target="_blank" rel="noreferrer">latest FT-ITC Analysis release</a> for current packages and release notes. Verify that the file came from the project release channel before accepting an operating-system security prompt. The examples below describe package types available at this manual's verification date and may change between releases. Installation problems can be reported through the <a href="https://github.com/FrederikTheisen/FT-ITC-Analysis/issues" target="_blank" rel="noreferrer">GitHub issue tracker</a>.</p>
 <h3 id="macos">macOS</h3>
@@ -100,22 +100,20 @@
 <tr><td><code>.nitc</code></td><td>TA Instruments NanoITC native data</td><td>Raw thermogram and injections</td></tr>
 <tr><td><code>.ta</code></td><td>TA Instruments/NanoAnalyze export</td><td>Raw thermogram and injections</td></tr>
 <tr><td><code>.apj</code></td><td>PEAQ-ITC project</td><td>Raw thermogram and injections from the first experiment</td></tr>
-<tr><td><code>.opj</code></td><td>Origin ITC project</td><td>Raw thermogram or integrated heats, according to the recognized worksheet</td></tr>
+<tr><td><code>.opj</code></td><td>Origin project file</td><td>Raw thermogram or integrated heats, according to the recognized worksheet</td></tr>
 <tr><td><code>.dat</code></td><td>Integrated-heats table</td><td>Integrated heats and injections</td></tr>
 <tr><td><code>.aff</code></td><td>Integrated-heats table</td><td>Integrated heats and injections</td></tr>
 <tr><td><code>.dh</code></td><td>Legacy integrated-heats file</td><td>Integrated heats and injections</td></tr>
 <tr><td><code>.ftxtc</code></td><td>Current FT-ITC project</td><td>Stored project state</td></tr>
-<tr><td><code>.ftitc</code></td><td>Deprecated FT-ITC project</td><td>Stored project state from pre-publication builds</td></tr>
 </tbody></table></div>
 <p>NanoAnalyze <code>.ta</code> files are raw thermogram exports. FT-ITC Analysis restores their time/power data and injection information as unprocessed Experiment Data.</p>
 <p>PEAQ-ITC <code>.apj</code> projects contain a raw thermogram as well as injection and analysis information. FT-ITC Analysis imports the raw thermogram and injection information from the first experiment in the project. Integrated heats, processing choices, and fitted results produced by PEAQ are not imported; process and fit the restored raw data in FT-ITC Analysis.</p>
 <p>Native NanoITC <code>.nitc</code> imports restore the raw thermogram, injection schedule, concentrations, cell volume, temperature and stirring information, and available source provenance. They open as unprocessed Experiment Data and follow the normal thermogram-processing workflow.</p>
-<p>Origin <code>.opj</code> files are general Origin project containers. FT-ITC Analysis searches them for the first recognized ITC worksheet and can restore either its original time/power trace or its integrated heats. When a raw trace is available, it is imported as an unprocessed thermogram and is authoritative even if the worksheet also contains integrated heats. If no usable trace is present, the worksheet heat values are used as integrated input and <strong>Process Data</strong> is skipped. ResultsLog text is retained in the experiment comments as provenance. Origin baseline processing, fitted models, and Fit/DY columns are not imported or converted into native FT-ITC fits. Newer <code>.opju</code> files are not supported.</p>
+<p>Origin <code>.opj</code> files are general project containers. FT-ITC Analysis searches them for the first recognized ITC worksheet and can restore either its original time/power trace or its integrated heats. When a raw trace is available, it is imported as an unprocessed thermogram and is authoritative even if the worksheet also contains integrated heats. If no usable trace is present, the worksheet heat values are used as integrated input and <strong>Process Data</strong> is skipped. ResultsLog text is retained in the experiment comments as provenance. Origin baseline processing, fitted models, and Fit/DY columns are not imported or converted into native FT-ITC fits. Newer <code>.opju</code> files are not supported.</p>
 <p>Delimited <code>.dat</code> and <code>.aff</code> inputs must provide <code>INJV</code> injection-volume and <code>DH</code> heat columns. Legacy <code>.dh</code> inputs use their fixed metadata-and-injection layout. Because these integrated-heat formats do not encode an unambiguous heat unit in every case, the application asks which energy unit to use during import. When several such files are opened together, the selected unit can be reused for the remaining files in that import operation. These formats contain no thermogram, so importing them cannot reconstruct a baseline or processing-derived injection uncertainties.</p>
 <h2 id="open-files">Open files</h2>
 <p>Choose <strong>File &gt; Open...</strong>, use the welcome-screen action, or drag files into the application. Multiple supported files can be opened together. Files opened into a populated document are added to its existing Data / Results list; this includes current <code>.ftxtc</code> projects. Clear the current document first when a current project should be opened by itself.</p>
 <aside class="manual-callout callout-caution" role="note" aria-label="Caution"><strong>Caution:</strong> After a current <code>.ftxtc</code> project is added to an existing document, that opened project becomes the document's current save destination. Use <strong>Save As...</strong> before saving if you do not intend to replace it with the combined document.</aside>
-<p>Deprecated <code>.ftitc</code> projects from pre-publication builds remain openable for compatibility. They leave the document without a current save destination, so save them as current <code>.ftxtc</code> projects. If other data are already loaded, the application asks whether to replace the current document or append the older project's contents.</p>
 <aside class="manual-callout callout-caution" role="note" aria-label="Caution"><strong>Caution:</strong> Appending can create similarly named experiments or results. Confirm the data list and details before fitting or exporting.</aside>
 <h2 id="save-projects">Save projects</h2>
 <p>Choose <strong>File &gt; Save</strong> to update a named current project, or <strong>File &gt; Save As...</strong> to choose a new name or location. Use the current <code>.ftxtc</code> format for ongoing work.</p>
