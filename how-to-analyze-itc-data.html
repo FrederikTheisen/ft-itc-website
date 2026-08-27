@@ -110,7 +110,7 @@
             "name": "Which workspace should I start in for my file?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Raw .itc, .nitc, .ta, and .apj inputs begin in Process Data. Compatible .dat, .aff, and .dh files already contain integrated heats, so they begin with experiment details and fitting. .ftxtc and legacy .ftitc files reopen an FT-ITC project. See supported formats."
+              "text": "Raw .itc, .nitc, .ta, and .apj inputs begin in Process Data. Origin .opj files begin there when they contain a usable time/power trace, or with fitting when they contain integrated heats only. Compatible .dat, .aff, and .dh files also begin with experiment details and fitting. .ftxtc files reopen an FT-ITC project. See supported formats."
             }
           },
           {
@@ -273,8 +273,9 @@
         <aside class="note-box tutorial-note" role="note">
           <h3>Choose the right starting point</h3>
           <p><strong>Raw thermogram inputs:</strong> MicroCal-style <code>.itc</code>, TA NanoITC <code>.nitc</code>, NanoAnalyze <code>.ta</code>, and PEAQ-ITC <code>.apj</code> open into the thermogram-processing workflow.</p>
+          <p><strong>Origin project inputs:</strong> <code>.opj</code> files open into thermogram processing when they contain a usable time/power trace, or begin with fitting when they contain integrated heats only.</p>
           <p><strong>Integrated-heats inputs:</strong> compatible <code>.dat</code>, <code>.aff</code>, and <code>.dh</code> files begin with experiment details and fitting.</p>
-          <p><strong>Project inputs:</strong> <code>.ftxtc</code> and legacy <code>.ftitc</code> reopen an FT-ITC project.</p>
+          <p><strong>FT-ITC project inputs:</strong> <code>.ftxtc</code> files reopen an FT-ITC project.</p>
           <a href="/manual/installation-files-projects#supported-input-formats">Read the full file-format reference <span>→</span></a>
         </aside>
         <figure class="tutorial-showcase tutorial-showcase--start">
@@ -426,7 +427,7 @@
           <div class="faq-list">
             <details open>
               <summary>Which workspace should I start in for my file?</summary>
-              <div><p>Raw <code>.itc</code>, <code>.nitc</code>, <code>.ta</code>, and <code>.apj</code> inputs begin in <strong>Process Data</strong>. Compatible <code>.dat</code>, <code>.aff</code>, and <code>.dh</code> files already contain integrated heats, so they begin with experiment details and fitting. <code>.ftxtc</code> and legacy <code>.ftitc</code> files reopen an FT-ITC project. <a href="/manual/installation-files-projects#supported-input-formats">See supported formats</a>.</p></div>
+              <div><p>Raw <code>.itc</code>, <code>.nitc</code>, <code>.ta</code>, and <code>.apj</code> inputs begin in <strong>Process Data</strong>. Origin <code>.opj</code> files begin there when they contain a usable time/power trace, or with fitting when they contain integrated heats only. Compatible <code>.dat</code>, <code>.aff</code>, and <code>.dh</code> files also begin with experiment details and fitting. <code>.ftxtc</code> files reopen an FT-ITC project. <a href="/manual/installation-files-projects#supported-input-formats">See supported formats</a>.</p></div>
             </details>
             <details>
               <summary>What baseline should I start with?</summary>
@@ -465,7 +466,7 @@
             <a href="/manual/processing-thermograms">Baseline, integration, and injection uncertainty <span>→</span></a>
             <a href="/manual/fitting-models">Single-experiment fitting and diagnostics <span>→</span></a>
             <a href="/manual/multiple-experiments">Multiple-experiment fitting and constraints <span>→</span></a>
-            <a href="/analysis">Advanced analysis and global fitting context <span>→</span></a>
+            <a href="/analysis">Multiple-experiment and advanced analysis <span>→</span></a>
           </div>
         </div>
       </section>

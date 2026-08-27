@@ -49,8 +49,9 @@ Check the cell and syringe identities, concentrations, temperature, buffer, inje
 > **Choose the right starting point**
 >
 > - **Raw thermogram inputs:** MicroCal-style **.itc**, TA NanoITC **.nitc**, NanoAnalyze **.ta**, and PEAQ-ITC **.apj** open into the thermogram-processing workflow.
+> - **Origin project inputs:** **.opj** files open into thermogram processing when they contain a usable time/power trace, or begin with fitting when they contain integrated heats only.
 > - **Integrated-heats inputs:** compatible **.dat**, **.aff**, and **.dh** files begin with experiment details and fitting.
-> - **Project inputs:** **.ftxtc** and legacy **.ftitc** reopen an FT-ITC project.
+> - **FT-ITC project inputs:** **.ftxtc** files reopen an FT-ITC project.
 >
 > [Read the full file-format reference](https://ft-itc.org/manual/installation-files-projects#supported-input-formats)
 
@@ -170,7 +171,7 @@ Save the project as **.ftxtc** once you have useful processing, then save it aga
 
 ### Which workspace should I start in for my file?
 
-Raw **.itc**, **.nitc**, **.ta**, and **.apj** inputs begin in **Process Data**. Compatible **.dat**, **.aff**, and **.dh** files already contain integrated heats, so they begin with experiment details and fitting. **.ftxtc** and legacy **.ftitc** files reopen an FT-ITC project. [See supported formats](https://ft-itc.org/manual/installation-files-projects#supported-input-formats).
+Raw **.itc**, **.nitc**, **.ta**, and **.apj** inputs begin in **Process Data**. Origin **.opj** files begin there when they contain a usable time/power trace, or with fitting when they contain integrated heats only. Compatible **.dat**, **.aff**, and **.dh** files also begin with experiment details and fitting. **.ftxtc** files reopen an FT-ITC project. [See supported formats](https://ft-itc.org/manual/installation-files-projects#supported-input-formats).
 
 ### What baseline should I start with?
 
@@ -200,4 +201,4 @@ Identify the injections or regions responsible for the discrepancy, then inspect
 - [Baseline, integration, and injection uncertainty](https://ft-itc.org/manual/processing-thermograms)
 - [Single-experiment fitting and diagnostics](https://ft-itc.org/manual/fitting-models)
 - [Multiple-experiment fitting and constraints](https://ft-itc.org/manual/multiple-experiments)
-- [Advanced analysis and global fitting context](https://ft-itc.org/analysis)
+- [Multiple-experiment and advanced analysis](https://ft-itc.org/analysis)

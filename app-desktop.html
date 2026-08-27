@@ -72,10 +72,11 @@
             "downloadUrl": "https://ft-itc.org/app-desktop#platforms",
             "featureList": [
               "Experiment Designer",
-              "Supported raw, integrated and project file formats",
+              "Supported raw, integrated and project file formats, including .nitc and .opj",
               "Flexible baselines and integration",
-              "Global fitting",
-              "Buffer subtraction and tandem merging",
+              "Multiple-experiment and global fitting",
+              "Advanced analyses",
+              "Buffer subtraction and experiment merging",
               "Uncertainty estimation",
               "Vector-based figure export"
             ],
@@ -141,7 +142,7 @@
             <span>Solid results.</span>
           </h1>
           <p class="lede">
-            FT-ITC Analysis is a free, open-source desktop workspace for importing, processing, fitting and presenting ITC data—with flexible controls for every analytical step.
+            FT-ITC Analysis is a free, open-source desktop workspace for importing, processing, fitting and presenting ITC data—with direct controls for processing, fitting, uncertainty estimation and figure preparation.
           </p>
           <div class="actions">
             <a class="button button-primary" href="#platforms">
@@ -211,23 +212,33 @@
           <div class="section-heading narrow">
             <p class="eyebrow">ITC file formats</p>
             <h2>Start from the data you have.</h2>
-            <p>Import compatible raw data, vendor exports and integrated heats from the tools you already use.</p>
+            <p>Import compatible raw data, vendor projects and integrated heats—including native <code>.nitc</code> and Origin <code>.opj</code> files.</p>
           </div>
-          <div class="file-grid">
+          <div class="file-grid file-grid--formats">
             <article>
               <code>.itc</code>
               <h3>MicroCal raw data</h3>
               <p>Open raw ITC experiments for inspection, baseline fitting and integration.</p>
             </article>
             <article>
-              <code>.TA</code>
+              <code>.nitc</code>
+              <h3>NanoITC native files</h3>
+              <p>Open native TA Instruments NanoITC thermograms with their injection schedule and experiment metadata ready for processing.</p>
+            </article>
+            <article>
+              <code>.ta</code>
               <h3>TA Instruments / NanoAnalyze</h3>
               <p>Import TA Instruments / NanoAnalyze exports for processing and analysis.</p>
             </article>
             <article>
               <code>.apj</code>
               <h3>MicroCal PEAQ-ITC projects</h3>
-              <p>Extract available integrated experiment data from PEAQ-ITC project files.</p>
+              <p>Import the raw thermogram and injection information from the first experiment in a PEAQ-ITC project.</p>
+            </article>
+            <article>
+              <code>.opj</code>
+              <h3>Origin ITC projects</h3>
+              <p>Import the first recognized ITC worksheet as a raw thermogram when available, or as integrated heats otherwise.</p>
             </article>
             <article>
               <code>.dat · .aff · .dh</code>
@@ -242,38 +253,25 @@
           <div>
             <p class="eyebrow">Advanced processing</p>
             <h2>Keep detailed processing decisions under your control.</h2>
-            <p>Refine spline baselines, adjust integration windows and exclude regions that should not contribute to the fitted heats. The processing view keeps those choices visible alongside the thermogram.</p>
+            <p>Refine baselines with precise control and adjust integration regions quickly. Start from a polynomial or segmented baseline, or edit spline points directly for difficult thermograms. Drag individual boundaries, estimate endpoints with Fit Peaks, or copy a region to the next injection to keep processing fast and consistent.</p>
           </div>
           <figure class="workflow-screenshot">
-            <img src="media/avalonia/AdvancedProcessing.webp" alt="FT-ITC Analysis advanced processing view showing a spline baseline, integration window controls and excluded thermogram regions" loading="lazy" decoding="async" width="1200" height="953">
-            <figcaption>Adjust the baseline and peak integration while reviewing their effect directly on the thermogram.</figcaption>
+            <img src="media/avalonia/AdvancedProcessing.webp" alt="FT-ITC Analysis advanced processing view with editable spline points, integration boundaries and Fit Peaks controls" loading="lazy" decoding="async" width="1200" height="953">
+            <figcaption>Edit the baseline and integration boundaries while viewing both directly on the thermogram.</figcaption>
           </figure>
         </div>
-      </section>
-      <section id="global-fitting" class="section wrap app-capabilities">
-        <div class="section-heading narrow">
-          <p class="eyebrow">Work across experiments</p>
-          <h2>Global fitting when your question spans experiments.</h2>
-          <p>Analyse related datasets together, sharing selected parameters while retaining experiment-specific values where needed.</p>
-        </div>
-        <div class="capability-grid capability-grid--compact">
-          <article class="capability-featured">
+        <div class="wrap capability-grid capability-grid--compact capability-grid--two processing-tools">
+          <article>
             <span>01</span>
-            <h3>Global fitting</h3>
-            <p>Simultaneously fit multiple isotherms, connect parameters through physical relationships, and evaluate systematic effects across temperature, buffer or salt conditions.</p>
+            <h3>Buffer subtraction</h3>
+            <p>Correct target heats with a processed reference using matched, linear or exponential-decay subtraction. Original integrated heats remain unchanged, while target and reference processing uncertainties are combined.</p>
           </article>
           <article>
             <span>02</span>
-            <h3>Buffer subtraction</h3>
-            <p>Apply direct, linear-fit or exponential-fit reference subtraction with propagated uncertainty.</p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>Tandem merging</h3>
-            <p>Combine syringe-refill experiments using standard concatenation or back-mixing compensation.</p>
+            <h3>Experiment merger</h3>
+            <p>Join consecutive thermogram segments into a new processed tandem experiment using simple concatenation, fixed back-mixing or automatic back-mixing.</p>
           </article>
         </div>
-        <a class="text-link" href="/analysis">Explore global fitting and advanced analysis <span>→</span></a>
       </section>
       <section id="final-figures" class="section section-tint">
         <div class="wrap final-figure-showcase">
@@ -287,6 +285,26 @@
             <figcaption>Configure the data graph, fitted curve and report details before exporting the final figure.</figcaption>
           </figure>
         </div>
+      </section>
+      <section id="global-fitting" class="section wrap app-capabilities">
+        <div class="section-heading narrow">
+          <p class="eyebrow">Multiple-experiment analysis</p>
+          <h2>Analyse multiple experiments—independently or globally.</h2>
+          <p>Fit related datasets in one combined analysis. Keep parameters experiment-specific, share selected values across the series, or apply supported temperature-dependent relationships.</p>
+        </div>
+        <div class="capability-grid capability-grid--compact capability-grid--two">
+          <article class="capability-featured">
+            <span>01</span>
+            <h3>Global fitting</h3>
+            <p>Connect multiple isotherms in one global optimization by sharing supported parameters or applying temperature-dependent constraints, while retaining experiment-specific values where needed.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Advanced analyses</h3>
+            <p>Use compatible One-Set-Of-Sites results to investigate temperature dependence, salt effects and proton linkage when the experiment series and metadata meet the analysis requirements.</p>
+          </article>
+        </div>
+        <a class="text-link" href="/analysis">Explore multiple-experiment fitting and advanced analyses <span>→</span></a>
       </section>
       <section class="section wrap two-column local-first">
         <div>

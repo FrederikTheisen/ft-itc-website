@@ -1177,6 +1177,14 @@ a:focus-visible,button:focus-visible {
   grid-column: auto;
 }
 
+.capability-grid--two {
+  grid-template-columns: repeat(2,1fr);
+}
+
+.processing-tools {
+  margin-top: 44px;
+}
+
 .capability-grid span {
   color: #438d78;
   font: 700 .74rem ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -1219,6 +1227,10 @@ a:focus-visible,button:focus-visible {
   display: grid;
   grid-template-columns: repeat(4,1fr);
   gap: 12px;
+}
+
+.file-grid--formats {
+  grid-template-columns: repeat(3,1fr);
 }
 
 .file-grid article {
