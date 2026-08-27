@@ -3,8 +3,8 @@ page: /how-to-analyze-itc-data
 title: "How to Analyze ITC Data: From Thermogram to Binding Parameters"
 description: "A practical FT-ITC Analysis guide from raw thermogram to fitted result."
 author: "Frederik Theisen · FT-ITC Analysis"
-last_updated: "2026-08-27"
-last_synced: "2026-08-27"
+last_updated: "2026-08-28"
+last_synced: "2026-08-28"
 status: "Editable content source — not rendered automatically"
 ---
 
@@ -125,7 +125,7 @@ Select an early, middle, and late injection. Use **Start** and **Length** to set
 
 Open **Analyze Data** in **Single experiment** mode once the integrated heats and experiment details are ready. Select a binding model from what is known about the molecular system and an initial evaluation of the binding isotherm. **One-Set-Of-Sites** is a useful first model when the system has one class of equivalent, independent sites.
 
-Check the units, concentrations, and starting parameter values, then select **Run Fit**. The graph updates with the fitted binding isotherm, residuals, and parameter estimates.
+Check the units, concentrations, and starting parameter values. Keep the **Limits** setting at **Standard** at first; if a fitted value reaches a bound, interpret it in relation to the data and model before choosing an expanded range. Then select **Run Fit**. The graph updates with the fitted binding isotherm, residuals, and parameter estimates.
 
 ![FT-ITC Analysis Analyze Data workspace showing a One-Set-Of-Sites fit, residuals and Bootstrap residuals settings](media/tutorials/processing-and-analysis/analysis-basic.webp)
 
@@ -147,7 +147,7 @@ For related experiments that belong to one series, continue with [multiple-exper
 
 ### Check the fitted isotherm, save the project, and make the final figure
 
-Look at the fitted binding isotherm and residuals together. If a particular injection or region departs from the fit, return to the corresponding trace, baseline, or integration region and make one focused change before running the fit again.
+Look at the fitted binding isotherm and residuals together. If a particular injection or region departs from the fit, inspect that injection and the surrounding peaks in the differential-power trace, then compare the corresponding integrated heat. The integration region or baseline may need adjustment before you rerun the fit.
 
 ![FT-ITC Analysis fitted-result view showing parameter values, residuals and result status](media/tutorials/processing-and-analysis/analysis-result.webp)
 
@@ -191,7 +191,7 @@ Start with a binding model based on knowledge of the molecular system and evalua
 
 ### What should I do if the curve or residuals look wrong?
 
-Identify the injections or regions responsible for the discrepancy, then inspect the corresponding integrated heat, integration region, baseline, and differential-power trace. Make one focused change and rerun the fit. If the application itself behaves unexpectedly, [contact Support](https://ft-itc.org/support).
+Inspect the affected injection and surrounding peaks in the differential-power trace, then compare the corresponding integrated heat. The integration region or baseline may need adjustment. Review the starting values, locked parameters, and **Limits** setting before rerunning the fit. If the same residual pattern occurs in replicate experiments, consider whether a different model is needed. [See fitting parameters and diagnostics](https://ft-itc.org/manual/fitting-models#parameters-and-model-options). If the application itself behaves unexpectedly, [contact Support](https://ft-itc.org/support).
 
 ---
 
