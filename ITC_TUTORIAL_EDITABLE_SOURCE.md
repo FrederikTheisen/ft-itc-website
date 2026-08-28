@@ -5,7 +5,7 @@ description: "A practical FT-ITC Analysis guide from raw thermogram to fitted re
 author: "Frederik Theisen · FT-ITC Analysis"
 last_updated: "2026-08-28"
 last_synced: "2026-08-28"
-status: "Editable content source — not rendered automatically"
+status: "Editable content source, not rendered automatically"
 ---
 
 # How to Analyze ITC Data: From Thermogram to Binding Parameters
@@ -133,7 +133,7 @@ Check the units, concentrations, and starting parameter values. Keep the **Limit
 
 <!-- Website layout note: use the existing compact side-by-side page layout. Show the full screenshot at its natural aspect ratio. -->
 
-> **Caution — a fitted curve does not establish a model**
+> **Caution: a fitted curve does not establish a model**
 >
 > Choose a model using knowledge of the system and what the binding isotherm can support, then compare the fitted curve with the integrated heats and inspect the residual pattern. Systematic deviations that recur across replicate experiments are a good indication that a different model may be required. For a discrepancy in one experiment, return to the trace, baseline, or integration regions before changing the model.
 

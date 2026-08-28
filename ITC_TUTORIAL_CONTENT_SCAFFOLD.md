@@ -5,7 +5,7 @@
 > Edit that file for the existing public tutorial; use this scaffold when
 > planning a new data-led case study or a tutorial series.
 
-> Working source document — not website copy. Fill the `[Fill in]` prompts in
+> Working source document, not website copy. Fill the `[Fill in]` prompts in
 > rough scientific language; accuracy is more useful than polish. Once the
 > case details are here, this can be turned into a credible public tutorial
 > without inventing experimental judgement or results.
@@ -35,9 +35,9 @@ occupying a permanent top-level navigation slot.
 
 Suggested public labels:
 
-- **Workflow** — *From instrument file to report*
-- **Advanced analysis** — *Global fitting and thermodynamic models*
-- **Worked examples** — reserved for real case studies, not generic guidance
+- **Workflow:** *From instrument file to report*
+- **Advanced analysis:** *Global fitting and thermodynamic models*
+- **Worked examples:** reserved for real case studies, not generic guidance
 
 ### Decision for the current generic tutorial page
 
@@ -68,11 +68,11 @@ and reported conclusion traceable to one another.
 
 ---
 
-## 3. Fill-in brief: Tutorial 1 — raw thermogram to integrated isotherm
+## 3. Fill-in brief: Tutorial 1: raw thermogram to integrated isotherm
 
 Copy this section when supplying the source material. Short notes, screenshots,
 or links to local data are all fine. Do not smooth over uncertainty or choices
-that were difficult — those are the useful parts of the tutorial.
+that were difficult; those are the useful parts of the tutorial.
 
 ### A. Editorial promise
 
@@ -90,7 +90,7 @@ that were difficult — those are the useful parts of the tutorial.
 - **Source instrument and original file type:** `[MicroCal .itc / TA NanoAnalyze .TA / PEAQ .apj / other]`
 - **FT-ITC version/build used:** `[Fill in]`
 - **What interaction is being measured:** `[Fill in; disclose only what may be public]`
-- **Why this run makes a useful example:** `[Fill in — e.g. modest drift, a questionable first injection, clear saturation, challenging baseline]`
+- **Why this run makes a useful example:** `[Fill in: e.g. modest drift, a questionable first injection, clear saturation, challenging baseline]`
 
 #### Experimental context readers need to judge the analysis
 
@@ -114,7 +114,7 @@ setting. Avoid “the software fixes this” language.
 - **What remained uncertain at this stage:** `[Fill in]`
 - **Screenshot / figure that proves the observation:** `[filename and what to look at]`
 
-### D. Baseline choice — describe a decision, not a button
+### D. Baseline choice: describe a decision, not a button
 
 - **Baseline method used:** `[Fill in]`
 - **Why it fits this trace:** `[Fill in: identify the relevant parts of the trace]`
@@ -137,7 +137,7 @@ setting. Avoid “the software fixes this” language.
 ### F. Handoff to fitting
 
 This first guide may stop before a full model comparison. State clearly what is
-passed to the fitting stage and why it is ready — or why it is not yet ready.
+passed to the fitting stage and why it is ready, or why it is not yet ready.
 
 - **Data entering the fit:** `[Fill in]`
 - **Candidate model for this case:** `[Fill in]`
@@ -146,7 +146,7 @@ passed to the fitting stage and why it is ready — or why it is not yet ready.
 - **Fit checks shown in this guide:** `[residuals / concentration plausibility / stoichiometry / replicate agreement / other]`
 - **Link or handoff to Tutorial 2:** `[Fill in]`
 
-### G. The result — and its limits
+### G. The result and its limits
 
 - **What result can be reported from this example:** `[Fill in]`
 - **Units, significant figures, and uncertainty convention:** `[Fill in]`
@@ -162,14 +162,14 @@ not decoration; it should let a reader verify a decision.
 
 | Proposed asset | Use only if it supports this exact statement | Crop / annotation request | Final caption in your words |
 | --- | --- | --- | --- |
-| `avalonia-startscreen.png` | `[Fill in — optional onboarding only]` | `[Fill in]` | `[Fill in]` |
-| `avalonia-processing.png` | `[Fill in — e.g. raw thermogram overview]` | `[Fill in]` | `[Fill in]` |
-| `avalonia-processing-zoom.png` | `[Fill in — close-up of an issue/decision]` | `[Fill in]` | `[Fill in]` |
-| `processing-baseline-linear.png` | `[Fill in — baseline rationale]` | `[Fill in]` | `[Fill in]` |
-| `avalonia-processing-baselineoption.png` | `[Fill in — likely troubleshooting/sidebar]` | `[Fill in]` | `[Fill in]` |
-| `analysis-basic.png` | `[Fill in — handoff to fit]` | `[Fill in]` | `[Fill in]` |
-| `analysis-result.png` | `[Fill in — residual/result check]` | `[Fill in]` | `[Fill in]` |
-| `finalfigure.png` | `[Fill in — reportable final figure]` | `[Fill in]` | `[Fill in]` |
+| `avalonia-startscreen.png` | `[Fill in: optional onboarding only]` | `[Fill in]` | `[Fill in]` |
+| `avalonia-processing.png` | `[Fill in: e.g. raw thermogram overview]` | `[Fill in]` | `[Fill in]` |
+| `avalonia-processing-zoom.png` | `[Fill in: close-up of an issue/decision]` | `[Fill in]` | `[Fill in]` |
+| `processing-baseline-linear.png` | `[Fill in: baseline rationale]` | `[Fill in]` | `[Fill in]` |
+| `avalonia-processing-baselineoption.png` | `[Fill in: likely troubleshooting/sidebar]` | `[Fill in]` | `[Fill in]` |
+| `analysis-basic.png` | `[Fill in: handoff to fit]` | `[Fill in]` | `[Fill in]` |
+| `analysis-result.png` | `[Fill in: residual/result check]` | `[Fill in]` | `[Fill in]` |
+| `finalfigure.png` | `[Fill in: reportable final figure]` | `[Fill in]` | `[Fill in]` |
 
 **Cropping rule:** crop to the evidence, not just to fill a visual slot. Add an
 arrow, bracket, or numbered callout only when the accompanying sentence says
@@ -193,7 +193,7 @@ state, or significance cannot be explained honestly.
 The following smaller briefs prevent the series from collapsing back into one
 generic “how to analyse ITC data” page.
 
-### Tutorial 2 — model selection and curve fitting
+### Tutorial 2: model selection and curve fitting
 
 - **Same dataset as Tutorial 1, or a new case?** `[Fill in]`
 - **Candidate models compared:** `[Fill in]`
@@ -203,7 +203,7 @@ generic “how to analyse ITC data” page.
 - **What the selected model cannot establish:** `[Fill in]`
 - **Figure evidence:** `[Fill in]`
 
-### Tutorial 3 — global analysis
+### Tutorial 3: global analysis
 
 - **Experiments joined in the analysis:** `[Fill in]`
 - **Variable changed between runs:** `[temperature / salt / protonation / concentration / other]`
@@ -213,7 +213,7 @@ generic “how to analyse ITC data” page.
 - **Comparison with individual fits:** `[Fill in]`
 - **Failure mode / caveat to show:** `[Fill in]`
 
-### Tutorial 4 — uncertainty and reporting
+### Tutorial 4: uncertainty and reporting
 
 - **Uncertainty method actually used:** `[standard errors / bootstrap / profile likelihood / sensitivity analysis / other]`
 - **What uncertainty source it captures:** `[Fill in]`
@@ -221,7 +221,7 @@ generic “how to analyse ITC data” page.
 - **Sensitivity tests performed:** `[baseline / excluded injection / concentration / model / other]`
 - **Reporting template that follows from this case:** `[Fill in]`
 
-### Tutorial 5 — MicroCal and TA/NanoAnalyze import
+### Tutorial 5: MicroCal and TA/NanoAnalyze import
 
 - **MicroCal file and instrument software used:** `[Fill in]`
 - **TA/NanoAnalyze file and software used:** `[Fill in]`
