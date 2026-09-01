@@ -1933,6 +1933,16 @@ a:focus-visible,button:focus-visible {
 }
 .manual-equation-note { margin: 14px auto 0; color: rgb(255 255 255 / .7) !important; font-size: .88rem; line-height: 1.6 !important; }
 .manual-callout.callout-calculation .manual-equation-note strong { color: #fff; }
+.manual-equation-group {
+  max-width: 74ch;
+  margin: 18px 0 22px;
+  padding: 12px 17px;
+  border-left: 3px solid #79cdb1;
+  border-radius: 0 8px 8px 0;
+  background: #eef7f1;
+}
+.manual-equation-group p { max-width: none; margin: 0; color: var(--ink); }
+.manual-formula { text-align: center; font-size: 1.05rem; line-height: 1.85 !important; }
 
 .manual-figure {
   overflow: hidden;
@@ -2038,6 +2048,8 @@ a:focus-visible,button:focus-visible {
   .manual-equation-note,
   .manual-callout.callout-calculation .manual-equation-note strong { color: #000 !important; }
   .manual-equations { overflow: visible; }
+  .manual-equation-group { border-color: #888; background: #fff; }
+  .manual-equation-group p { color: #000; }
   .manual-figure,
   .manual-table-wrap { box-shadow: none; }
   .manual-figure figcaption,
