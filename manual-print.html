@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FT-ITC Analysis User Manual</title>
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#173540">
+  <link rel="icon" href="/assets/icon-180.png" type="image/png">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="manual-print-page" data-page="manual">
+  <header class="topbar wrap">
+    <a class="brand" href="/"><img src="/assets/icon-180.png" alt="" width="180" height="180"><span>FT-ITC <em>Analysis</em></span></a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="/manual">Back to manual</a>
+    </nav>
+  </header>
+  <main class="manual-print-shell wrap">
+    <section class="manual-print-cover" aria-labelledby="manual-print-title">
+      <p class="manual-kicker">FT-ITC Analysis · User manual</p>
+      <h1 id="manual-print-title">FT-ITC Analysis<br><em>User manual</em></h1>
+      <p class="manual-print-lede">Processing, fitting, and interpreting isothermal titration calorimetry experiments.</p>
+      <p class="manual-print-edition">Version 1.5.0 · For macOS, Windows, and Linux</p>
+      <p class="manual-print-status" data-manual-print-status>Preparing the manual…</p>
+      <button class="button button-primary manual-print-trigger" type="button" data-print-all-manual>Print / Save as PDF <span aria-hidden="true">↓</span></button>
+    </section>
+    <section class="manual-print-toc" aria-labelledby="manual-print-toc-title">
+      <p class="manual-kicker">FT-ITC Analysis · User manual</p>
+      <h2 id="manual-print-toc-title">Contents</h2>
+      <ol data-manual-print-toc></ol>
+    </section>
+    <div class="manual-print-content" data-manual-print-content aria-live="polite"></div>
+  </main>
+  <script>
+    (() => {
+      const chapters = [
+        '/manual.html',
+        '/manual/quick-start.html',
+        '/manual/installation-files-projects.html',
+        '/manual/workspace-experiments.html',
+        '/manual/processing-thermograms.html',
+        '/manual/fitting-models.html',
+        '/manual/multiple-experiments.html',
+        '/manual/results-advanced-analysis.html',
+        '/manual/figures-printing-export.html',
+        '/manual/additional-tools.html',
+        '/manual/preferences-troubleshooting.html',
+        '/manual/reference.html'
+      ];
+      const content = document.querySelector('[data-manual-print-content]');
+      const toc = document.querySelector('[data-manual-print-toc]');
+      const status = document.querySelector('[data-manual-print-status]');
+      const printButton = document.querySelector('[data-print-all-manual]');
+
+      const load = async () => {
+        const pages = await Promise.all(chapters.map(async (path) => {
+          const response = await fetch(path);
+          if (!response.ok) throw new Error(`Unable to load ${path}`);
+          const source = new DOMParser().parseFromString(await response.text(), 'text/html');
+          return { path, article: source.querySelector('.manual-content') };
+        }));
+        pages.forEach(({ path, article }, index) => {
+          if (!article) throw new Error(`Missing manual content in ${path}`);
+          const title = article.querySelector('h1')?.textContent.trim() || `Chapter ${index + 1}`;
+          const summary = article.querySelector('.manual-summary')?.textContent.trim() || '';
+          const tocItem = document.createElement('li');
+          tocItem.innerHTML = `<span class="manual-print-toc-number">${String(index + 1).padStart(2, '0')}</span><span><strong>${title}</strong><small>${summary}</small></span>`;
+          toc.append(tocItem);
+          const chapter = document.createElement('article');
+          chapter.className = 'manual-print-chapter manual-content';
+          chapter.dataset.chapter = String(index + 1).padStart(2, '0');
+          chapter.innerHTML = article.innerHTML;
+          chapter.querySelectorAll('.manual-pager').forEach((element) => element.remove());
+          chapter.querySelectorAll('img').forEach((image) => {
+            image.removeAttribute('loading');
+            image.removeAttribute('decoding');
+          });
+          chapter.querySelectorAll('.manual-equation-group').forEach((equationGroup) => {
+            const previous = equationGroup.previousElementSibling;
+            if (!previous || previous.tagName !== 'P') return;
+            const keepGroup = document.createElement('div');
+            keepGroup.className = 'manual-print-keep-group';
+            previous.before(keepGroup);
+            keepGroup.append(previous, equationGroup);
+          });
+          Array.from(chapter.querySelectorAll('h2, h3')).forEach((heading) => {
+            const next = heading.nextElementSibling;
+            if (!next || next.matches('h1, h2, h3')) return;
+            const keepGroup = document.createElement('div');
+            keepGroup.className = 'manual-print-heading-group';
+            heading.before(keepGroup);
+            keepGroup.append(heading, next);
+          });
+          content.append(chapter);
+        });
+        await Promise.all(Array.from(content.querySelectorAll('img')).map((image) => (
+          image.complete
+            ? Promise.resolve()
+            : new Promise((resolve) => {
+                image.addEventListener('load', resolve, { once: true });
+                image.addEventListener('error', resolve, { once: true });
+              })
+        )));
+        status.textContent = 'Manual ready.';
+        printButton.disabled = false;
+      };
+
+      printButton.disabled = true;
+      printButton.addEventListener('click', () => window.print());
+      load().catch((error) => {
+        status.textContent = `The print edition could not be prepared: ${error.message}`;
+        status.classList.add('is-error');
+      });
+    })();
+  </script>
+</body>
+</html>

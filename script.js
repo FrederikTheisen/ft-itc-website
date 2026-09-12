@@ -289,3 +289,7 @@ if (viewerStatusCard && viewerStatusText && viewerStatusDescription) {
   checkViewerStatus();
   window.setInterval(checkViewerStatus, 60000);
 }
+
+document.querySelectorAll('[data-print-manual]').forEach((button) => {
+  button.addEventListener('click', () => window.print());
+});
