@@ -2165,16 +2165,19 @@ a:focus-visible,button:focus-visible {
   body.manual-print-page .manual-print-chapter .manual-equation,
   body.manual-print-page .manual-print-chapter .manual-equation-note { color: #fff !important; }
   body.manual-print-page .manual-print-chapter .manual-figure {
-    width: calc(100% - 1px);
-    max-width: calc(100% - 1px);
+    width: calc(100% - 2px);
+    max-width: calc(100% - 2px);
     min-width: 0;
     overflow: visible;
-    margin-right: 1px;
+    margin-right: 2px;
     margin-block: 8mm 7mm;
+    border-radius: 8px;
+    border-color: #438d78;
   }
   body.manual-print-page .manual-print-chapter .manual-figure figcaption {
     margin-right: 0;
     margin-left: 0;
+    border-radius: 0 0 7px 7px;
   }
   body.manual-print-page .manual-print-chapter .manual-figure img {
     max-width: 100%;
@@ -2185,11 +2188,16 @@ a:focus-visible,button:focus-visible {
   body.manual-print-page .manual-print-chapter .manual-callout,
   body.manual-print-page .manual-print-chapter .manual-table-wrap,
   body.manual-print-page .manual-print-chapter .manual-equation-group {
-    width: calc(100% - 1px);
-    max-width: calc(100% - 1px);
+    width: calc(100% - 2px);
+    max-width: calc(100% - 2px);
     min-width: 0;
-    margin-right: 1px;
+    margin-right: 2px;
     box-sizing: border-box;
+    border-radius: 8px;
+    border-color: #438d78;
+  }
+  body.manual-print-page .manual-print-chapter .manual-callout.callout-calculation {
+    border: 1px solid #438d78;
   }
   body.manual-print-page .manual-print-chapter .manual-table-wrap {
     overflow: visible;
@@ -2204,4 +2212,9 @@ a:focus-visible,button:focus-visible {
     page-break-before: avoid;
     page-break-inside: avoid;
   }
+}
+
+/* Figures and reports showcase. */
+.figures-output-grid {
+  margin-top: 32px;
 }
