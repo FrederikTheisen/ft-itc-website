@@ -192,6 +192,11 @@ h3 {
   text-transform: uppercase;
 }
 
+.hero .brand-tagline {
+  letter-spacing: normal;
+  text-transform: none;
+}
+
 .actions {
   display: flex;
   flex-wrap: wrap;
@@ -1443,7 +1448,7 @@ a:focus-visible,button:focus-visible {
 
 .footer {
   display: grid;
-  grid-template-columns: 1.25fr 1fr 1.25fr auto;
+  grid-template-columns: minmax(0, 1.5fr) 1fr auto;
   align-items: center;
   gap: 20px;
   min-height: 150px;
@@ -1451,11 +1456,20 @@ a:focus-visible,button:focus-visible {
   font-size: .8rem;
 }
 
+.footer-brand {
+  min-width: 0;
+}
+
+.footer .footer-brand p {
+  margin-top: 8px;
+  padding-left: 40px;
+}
+
 .footer p {
   margin: 0;
 }
 
-.footer > div {
+.footer > div:not(.footer-brand) {
   display: flex;
   gap: 15px;
   justify-content: flex-end;
@@ -1550,7 +1564,7 @@ a:focus-visible,button:focus-visible {
   padding: 35px 0;
 }
 
-.footer > div {
+.footer > div:not(.footer-brand) {
   justify-content: flex-start;
 }
 
@@ -1712,7 +1726,7 @@ a:focus-visible,button:focus-visible {
   gap: 15px;
 }
 
-.footer > div {
+.footer > div:not(.footer-brand) {
   justify-content: flex-start;
 }
 
