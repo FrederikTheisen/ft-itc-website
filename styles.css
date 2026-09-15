@@ -2171,19 +2171,19 @@ a:focus-visible,button:focus-visible {
   body.manual-print-page .manual-print-chapter .manual-equation,
   body.manual-print-page .manual-print-chapter .manual-equation-note { color: #fff !important; }
   body.manual-print-page .manual-print-chapter .manual-figure {
-    width: calc(100% - 2px);
-    max-width: calc(100% - 2px);
+    width: calc(100% - 4px);
+    max-width: calc(100% - 4px);
     min-width: 0;
-    overflow: visible;
-    margin-right: 2px;
+    overflow: hidden;
+    margin-right: 4px;
     margin-block: 8mm 7mm;
-    border-radius: 8px;
+    border-radius: 9px;
     border-color: #438d78;
   }
   body.manual-print-page .manual-print-chapter .manual-figure figcaption {
-    margin-right: 0;
-    margin-left: 0;
-    border-radius: 0 0 7px 7px;
+    margin-right: -11px;
+    margin-left: -11px;
+    border-radius: 0 0 8px 8px;
   }
   body.manual-print-page .manual-print-chapter .manual-figure img {
     max-width: 100%;
@@ -2194,13 +2194,14 @@ a:focus-visible,button:focus-visible {
   body.manual-print-page .manual-print-chapter .manual-callout,
   body.manual-print-page .manual-print-chapter .manual-table-wrap,
   body.manual-print-page .manual-print-chapter .manual-equation-group {
-    width: calc(100% - 2px);
-    max-width: calc(100% - 2px);
+    width: calc(100% - 4px);
+    max-width: calc(100% - 4px);
     min-width: 0;
-    margin-right: 2px;
+    margin-right: 4px;
     box-sizing: border-box;
-    border-radius: 8px;
+    border-radius: 9px;
     border-color: #438d78;
+    border-left-color: #438d78;
   }
   body.manual-print-page .manual-print-chapter .manual-callout.callout-calculation {
     border: 1px solid #438d78;
