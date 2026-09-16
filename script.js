@@ -301,6 +301,7 @@ if (registrationPage) {
   const statusText = registrationPage.querySelector('[data-registration-status]');
   const notice = registrationPage.querySelector('[data-registration-notice]');
   const turnstileBox = registrationPage.querySelector('[data-turnstile-container]');
+  const registrationApi = site.webApp;
   const state = { available: false, termsVersion: 'ft-itc-terms-1.0', privacyVersion: 'ft-itc-privacy-1.0', siteKey: '', csrfToken: '', turnstileToken: '', widgetId: null };
 
   const noticeMessage = (message, kind = 'error') => { notice.textContent = message; notice.dataset.state = kind; notice.hidden = !message; };
@@ -329,7 +330,7 @@ if (registrationPage) {
   const safeMessage = (code) => ({ 403: 'The security check could not be verified. Refresh the page and try again.', 413: 'That request is too large. Shorten the fields and try again.', 429: 'Registration is temporarily rate-limited. Please wait and try again later.', 503: 'Registration is temporarily unavailable. Please try again later.' }[code] || 'We could not submit the request. Please try again later.');
   const loadStatus = async () => {
     try {
-      const response = await fetch('/api/registration/status', { credentials: 'same-origin', headers: { Accept: 'application/json' } }); const data = await response.json(); if (!response.ok || !data || typeof data !== 'object') throw new Error();
+      const response = await fetch(`${registrationApi}/api/registration/status`, { credentials: 'include', headers: { Accept: 'application/json' } }); const data = await response.json(); if (!response.ok || !data || typeof data !== 'object') throw new Error();
       state.available = data.available === true || data.enabled === true || data.status === 'available'; state.siteKey = data.siteKey || data.siteKeyPublic || data.turnstileSiteKey || '0x4AAAAAAE43wMfgWhdF6K8P'; state.termsVersion = String(data.termsVersion || data.terms?.version || ''); state.privacyVersion = String(data.privacyVersion || data.privacy?.version || '');
       registrationPage.querySelector('[data-terms-version]').textContent = state.termsVersion ? `(version ${state.termsVersion})` : '(current version)'; registrationPage.querySelector('[data-privacy-version]').textContent = state.privacyVersion ? `(version ${state.privacyVersion})` : '(current version)';
       statusText.textContent = state.available ? 'Registration is currently available.' : (data.message || 'Registration is currently paused.'); enableForm(state.available); if (state.available) loadTurnstile(); else noticeMessage(data.message || 'Registration is currently unavailable. Please try again later.');
@@ -338,8 +339,8 @@ if (registrationPage) {
   form.addEventListener('submit', async (event) => {
     event.preventDefault(); noticeMessage(''); if (!validate()) return; submit.disabled = true; submit.textContent = 'Sending…';
     try {
-      if (!state.csrfToken) { const tokenResponse = await fetch('/api/viewer/token', { credentials: 'same-origin', headers: { Accept: 'application/json' } }); const tokenData = await tokenResponse.json().catch(() => null); state.csrfToken = tokenData?.requestToken || ''; }
-      const response = await fetch('/api/registration', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json', Accept: 'application/json', 'X-CSRF-TOKEN': state.csrfToken }, body: JSON.stringify({ name: form.elements.name.value.trim(), email: form.elements.email.value.trim(), organisation: form.elements.organisation.value.trim(), termsVersion: state.termsVersion, privacyVersion: state.privacyVersion, acceptedTerms: true, acknowledgedPrivacy: true, turnstileToken: state.turnstileToken }) });
+      if (!state.csrfToken) { const tokenResponse = await fetch(`${registrationApi}/api/viewer/token`, { credentials: 'include', headers: { Accept: 'application/json' } }); const tokenData = await tokenResponse.json().catch(() => null); state.csrfToken = tokenData?.requestToken || ''; }
+      const response = await fetch(`${registrationApi}/api/registration`, { method: 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json', Accept: 'application/json', 'X-CSRF-TOKEN': state.csrfToken }, body: JSON.stringify({ name: form.elements.name.value.trim(), email: form.elements.email.value.trim(), organisation: form.elements.organisation.value.trim(), termsVersion: state.termsVersion, privacyVersion: state.privacyVersion, acceptedTerms: true, acknowledgedPrivacy: true, turnstileToken: state.turnstileToken }) });
       if (response.status === 202) { form.reset(); resetTurnstile(); noticeMessage('If this address is eligible, an access email will arrive shortly.', 'success'); statusText.textContent = 'Request received.'; return; }
       if (response.status === 400) { const data = await response.json().catch(() => null); if (data?.errors) Object.keys(data.errors).forEach((key) => fieldError(key, 'Check this field.')); } throw new Error(safeMessage(response.status));
     } catch (error) { resetTurnstile(); noticeMessage(error.message || safeMessage(0)); statusText.textContent = 'Request not sent.'; } finally { submit.disabled = !state.available; submit.textContent = 'Request access ↗'; }

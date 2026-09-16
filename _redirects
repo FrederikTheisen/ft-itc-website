@@ -1,8 +1,5 @@
 # Legacy URLs use permanent redirects so search engines consolidate them with
 # the extensionless canonical URLs used in the sitemap.
-/api/registration/status https://app.ft-itc.org/api/registration/status 200
-/api/registration https://app.ft-itc.org/api/registration 200
-/api/viewer/token https://app.ft-itc.org/api/viewer/token 200
 /index.html / 301
 /app-desktop.html /app-desktop 301
 /resources.html /resources 301
