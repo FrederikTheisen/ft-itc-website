@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Register | FT-ITC Analysis</title>
+  <meta name="description" content="Request access to the registered FT-ITC Analysis web viewer.">
+  <meta name="robots" content="noindex,follow"><link rel="canonical" href="https://app.ft-itc.org/register">
+  <link rel="icon" href="assets/icon-180.png" type="image/png"><link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="register" data-registration-page>
+  <header class="topbar wrap"><a class="brand" href="/" aria-label="FT-ITC Analysis home"><img src="assets/icon-180.png" alt="" width="180" height="180"><span>FT-ITC <em>Analysis</em></span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button><nav id="site-nav" class="site-nav" aria-label="Primary navigation"><a data-nav="app" href="/app-desktop">Desktop app</a><a data-link="webApp" href="https://app.ft-itc.org">Web viewer ↗</a><a data-nav="resources" href="/resources">Resources</a><a data-nav="analysis" href="/analysis">Advanced analysis</a><a class="button button-primary nav-download" data-link="download" href="/app-desktop#platforms">Download <span aria-hidden="true">↗</span></a></nav></header>
+  <main>
+    <section class="page-hero wrap"><p class="eyebrow">Registered access</p><h1>Bring your work<br><span>back to the browser.</span></h1><p class="lede">Request access to the Registered tier for sharing and reviewing FT-ITC projects online. Registration availability and the current document versions are provided by the service.</p></section>
+    <section class="registration-layout wrap">
+      <div class="registration-intro"><p class="eyebrow">What to expect</p><h2>A small access request, with clear boundaries.</h2><div class="registration-points"><article><h3>Registered-tier access</h3><p>Use the web viewer with the access level and quotas described by the service. The server decides eligibility and assignment.</p></article><article><h3>Your access code arrives by email</h3><p>If your address is eligible, the service will email an access code. It is never shown in this browser and is not put in a URL.</p></article><article><h3>No marketing consent</h3><p>We collect only the information needed for registration, security, delivery and account support.</p></article></div></div>
+      <div class="registration-card"><h2>Request access</h2><p class="registration-status" data-registration-status role="status" aria-live="polite">Checking registration availability…</p><div class="registration-notice" data-registration-notice hidden role="alert"></div>
+        <form class="registration-form" data-registration-form novalidate>
+          <div class="field"><label for="registration-name">Name</label><input id="registration-name" name="name" type="text" autocomplete="name" maxlength="120" required aria-describedby="registration-name-help registration-name-error"><small id="registration-name-help">Up to 120 characters.</small><span class="field-error" id="registration-name-error" data-error-for="name"></span></div>
+          <div class="field"><label for="registration-email">Email address</label><input id="registration-email" name="email" type="email" autocomplete="email" maxlength="254" required aria-describedby="registration-email-help registration-email-error"><small id="registration-email-help">Use an address you can access.</small><span class="field-error" id="registration-email-error" data-error-for="email"></span></div>
+          <div class="field"><label for="registration-organisation">Organisation <span>(optional)</span></label><input id="registration-organisation" name="organisation" type="text" autocomplete="organization" maxlength="200" aria-describedby="registration-organisation-help registration-organisation-error"><small id="registration-organisation-help">Up to 200 characters.</small><span class="field-error" id="registration-organisation-error" data-error-for="organisation"></span></div>
+          <div class="checkbox-stack"><div class="checkbox-field"><input id="registration-terms" name="acceptedTerms" type="checkbox" required aria-describedby="registration-terms-error"><label for="registration-terms">I accept the <a href="/terms">Terms</a> <span data-terms-version>current version</span>.<small class="field-error" id="registration-terms-error" data-error-for="terms"></small></label></div><div class="checkbox-field"><input id="registration-privacy" name="acknowledgedPrivacy" type="checkbox" required aria-describedby="registration-privacy-error"><label for="registration-privacy">I acknowledge the <a href="/privacy">Privacy Notice</a> <span data-privacy-version>current version</span>.<small class="field-error" id="registration-privacy-error" data-error-for="privacy"></small></label></div></div>
+          <div class="turnstile-box" data-turnstile-container aria-describedby="registration-turnstile-error"></div><span class="field-error" id="registration-turnstile-error" data-error-for="turnstile"></span>
+          <button class="button button-primary" type="submit" data-registration-submit disabled>Request access <span aria-hidden="true">↗</span></button>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer class="footer wrap"><a class="brand" href="/"><img src="assets/icon-180.png" alt="" width="180" height="180"><span>FT-ITC <em>Analysis</em></span></a><p>From thermogram to thermodynamics</p><div><a href="/terms">Terms</a><a href="/privacy">Privacy</a><a data-link="support" href="/support">Support</a></div><small>© <span data-year></span> FT-ITC Analysis</small></footer><script src="script.js"></script>
+</body></html>

@@ -293,3 +293,56 @@ if (viewerStatusCard && viewerStatusText && viewerStatusDescription) {
 document.querySelectorAll('[data-print-manual]').forEach((button) => {
   button.addEventListener('click', () => window.print());
 });
+
+const registrationPage = document.querySelector('[data-registration-page]');
+if (registrationPage) {
+  const form = registrationPage.querySelector('[data-registration-form]');
+  const submit = registrationPage.querySelector('[data-registration-submit]');
+  const statusText = registrationPage.querySelector('[data-registration-status]');
+  const notice = registrationPage.querySelector('[data-registration-notice]');
+  const turnstileBox = registrationPage.querySelector('[data-turnstile-container]');
+  const state = { available: false, termsVersion: '', privacyVersion: '', siteKey: '', csrfToken: '', turnstileToken: '', widgetId: null };
+
+  const noticeMessage = (message, kind = 'error') => { notice.textContent = message; notice.dataset.state = kind; notice.hidden = !message; };
+  const fieldError = (field, message) => {
+    const input = field === 'terms' ? form.elements.acceptedTerms : field === 'privacy' ? form.elements.acknowledgedPrivacy : form.elements[field];
+    const error = registrationPage.querySelector(`[data-error-for="${field}"]`);
+    if (input) input.setAttribute('aria-invalid', message ? 'true' : 'false');
+    if (error) error.textContent = message || '';
+  };
+  const enableForm = (enabled) => { state.available = enabled; form.querySelectorAll('input,button').forEach((element) => { element.disabled = !enabled; }); submit.disabled = !enabled; };
+  const resetTurnstile = () => { state.turnstileToken = ''; if (window.turnstile && state.widgetId !== null) window.turnstile.reset(state.widgetId); };
+  const renderTurnstile = () => {
+    if (!window.turnstile || !state.siteKey || !turnstileBox) return;
+    state.widgetId = window.turnstile.render(turnstileBox, { sitekey: state.siteKey, callback: (token) => { state.turnstileToken = token; fieldError('turnstile', ''); }, 'expired-callback': () => { state.turnstileToken = ''; fieldError('turnstile', 'The security check expired. Complete it again.'); }, 'error-callback': () => { state.turnstileToken = ''; fieldError('turnstile', 'The security check could not be completed. Try again.'); } });
+  };
+  const loadTurnstile = () => { const script = document.createElement('script'); script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit'; script.async = true; script.defer = true; script.dataset.turnstileApi = 'true'; script.onload = renderTurnstile; document.head.appendChild(script); };
+  const validate = () => {
+    let valid = true; const name = form.elements.name.value.trim(); const email = form.elements.email.value.trim(); const organisation = form.elements.organisation.value.trim();
+    if (!name) { fieldError('name', 'Enter your name.'); valid = false; } else if (name.length > 120) { fieldError('name', 'Use 120 characters or fewer.'); valid = false; } else fieldError('name', '');
+    if (!email) { fieldError('email', 'Enter your email address.'); valid = false; } else if (email.length > 254 || !/^\S+@\S+\.\S+$/.test(email)) { fieldError('email', 'Enter a valid email address.'); valid = false; } else fieldError('email', '');
+    if (organisation.length > 200) { fieldError('organisation', 'Use 200 characters or fewer.'); valid = false; } else fieldError('organisation', '');
+    if (!form.elements.acceptedTerms.checked) { fieldError('terms', 'Accept the Terms to continue.'); valid = false; } else fieldError('terms', '');
+    if (!form.elements.acknowledgedPrivacy.checked) { fieldError('privacy', 'Acknowledge the Privacy Notice to continue.'); valid = false; } else fieldError('privacy', '');
+    if (!state.turnstileToken) { fieldError('turnstile', 'Complete the security check to continue.'); valid = false; } else fieldError('turnstile', ''); return valid;
+  };
+  const safeMessage = (code) => ({ 403: 'The security check could not be verified. Refresh the page and try again.', 413: 'That request is too large. Shorten the fields and try again.', 429: 'Registration is temporarily rate-limited. Please wait and try again later.', 503: 'Registration is temporarily unavailable. Please try again later.' }[code] || 'We could not submit the request. Please try again later.');
+  const loadStatus = async () => {
+    try {
+      const response = await fetch('/api/registration/status', { credentials: 'same-origin', headers: { Accept: 'application/json' } }); const data = await response.json(); if (!response.ok || !data || typeof data !== 'object') throw new Error();
+      state.available = data.available === true || data.enabled === true || data.status === 'available'; state.siteKey = data.siteKey || data.siteKeyPublic || data.turnstileSiteKey || '0x4AAAAAAE43wMfgWhdF6K8P'; state.termsVersion = String(data.termsVersion || data.terms?.version || ''); state.privacyVersion = String(data.privacyVersion || data.privacy?.version || '');
+      registrationPage.querySelector('[data-terms-version]').textContent = state.termsVersion ? `(version ${state.termsVersion})` : '(current version)'; registrationPage.querySelector('[data-privacy-version]').textContent = state.privacyVersion ? `(version ${state.privacyVersion})` : '(current version)';
+      statusText.textContent = state.available ? 'Registration is currently available.' : (data.message || 'Registration is currently paused.'); enableForm(state.available); if (state.available) loadTurnstile(); else noticeMessage(data.message || 'Registration is currently unavailable. Please try again later.');
+    } catch { enableForm(false); statusText.textContent = 'Registration availability could not be checked.'; noticeMessage('Registration is temporarily unavailable. Please try again later.'); }
+  };
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault(); noticeMessage(''); if (!validate()) return; submit.disabled = true; submit.textContent = 'Sending…';
+    try {
+      if (!state.csrfToken) { const tokenResponse = await fetch('/api/viewer/token', { credentials: 'same-origin', headers: { Accept: 'application/json' } }); const tokenData = await tokenResponse.json().catch(() => null); state.csrfToken = tokenData?.requestToken || ''; }
+      const response = await fetch('/api/registration', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json', Accept: 'application/json', 'X-CSRF-TOKEN': state.csrfToken }, body: JSON.stringify({ name: form.elements.name.value.trim(), email: form.elements.email.value.trim(), organisation: form.elements.organisation.value.trim(), termsVersion: state.termsVersion, privacyVersion: state.privacyVersion, acceptedTerms: true, acknowledgedPrivacy: true, turnstileToken: state.turnstileToken }) });
+      if (response.status === 202) { form.reset(); resetTurnstile(); noticeMessage('If this address is eligible, an access email will arrive shortly.', 'success'); statusText.textContent = 'Request received.'; return; }
+      if (response.status === 400) { const data = await response.json().catch(() => null); if (data?.errors) Object.keys(data.errors).forEach((key) => fieldError(key, 'Check this field.')); } throw new Error(safeMessage(response.status));
+    } catch (error) { resetTurnstile(); noticeMessage(error.message || safeMessage(0)); statusText.textContent = 'Request not sent.'; } finally { submit.disabled = !state.available; submit.textContent = 'Request access ↗'; }
+  });
+  loadStatus();
+}

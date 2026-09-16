@@ -1475,6 +1475,55 @@ a:focus-visible,button:focus-visible {
   white-space: nowrap;
 }
 
+/* Registration and legal pages */
+.registration-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(340px, .9fr);
+  gap: 72px;
+  align-items: start;
+  padding: 28px 0 90px;
+}
+
+.registration-intro h2 { font-size: clamp(2rem, 3.2vw, 3.25rem); }
+.registration-intro > p { max-width: 610px; }
+.registration-points { display: grid; gap: 0; margin: 34px 0 0; border-top: 1px solid var(--line); }
+.registration-points article { padding: 18px 0; border-bottom: 1px solid var(--line); }
+.registration-points h3 { margin-bottom: 5px; }
+.registration-points p { margin: 0; color: var(--ink-soft); font-size: .92rem; }
+.registration-card { padding: 30px; border: 1px solid var(--line); border-radius: 10px; background: var(--white); box-shadow: 0 18px 50px rgb(23 53 64 / .10); }
+.registration-card h2 { font-size: 1.8rem; margin-bottom: 9px; }
+.registration-card > p { color: var(--ink-soft); }
+.registration-form { display: grid; gap: 18px; margin-top: 24px; }
+.field { display: grid; gap: 6px; }
+.field label, .checkbox-field label { font-weight: 750; }
+.field input { width: 100%; padding: 12px 13px; border: 1px solid #aebdb8; border-radius: 6px; background: #fff; color: var(--ink); font: inherit; }
+.field input:focus, .checkbox-field input:focus, .button:focus-visible, a:focus-visible, button:focus-visible { outline: 3px solid rgb(72 154 130 / .38); outline-offset: 3px; }
+.field input[aria-invalid="true"] { border-color: var(--coral); }
+.field small, .checkbox-field small { color: var(--ink-soft); font-size: .82rem; line-height: 1.4; }
+.field-error { min-height: 1.25em; color: #a8443d; font-size: .82rem; }
+.checkbox-stack { display: grid; gap: 12px; }
+.checkbox-field { display: grid; grid-template-columns: 20px 1fr; gap: 9px; align-items: start; }
+.checkbox-field input { width: 18px; height: 18px; margin: 4px 0 0; accent-color: #438d78; }
+.checkbox-field label { font-weight: 500; }
+.turnstile-box { min-height: 65px; }
+.registration-notice { padding: 13px 15px; border-left: 4px solid var(--sun); background: #fff7e9; color: var(--ink); }
+.registration-notice[data-state="success"] { border-color: #438d78; background: var(--mint-pale); }
+.registration-notice[data-state="error"] { border-color: var(--coral); background: #fff1ee; }
+.registration-notice[hidden] { display: none; }
+.registration-status { margin: 0; color: var(--ink-soft); }
+.registration-card button[disabled] { cursor: wait; opacity: .58; transform: none; box-shadow: none; }
+.legal-layout { max-width: 800px; padding: 25px 0 90px; }
+.legal-layout h2 { font-size: 1.65rem; margin-top: 44px; }
+.legal-layout h3 { margin-top: 28px; }
+.legal-layout p, .legal-layout li { color: var(--ink-soft); }
+.legal-layout li { margin: 8px 0; }
+.version-label { color: #438d78; font-weight: 800; }
+
+@media (max-width:850px) {
+  .registration-layout { grid-template-columns: 1fr; gap: 38px; padding-top: 10px; }
+  .registration-card { padding: 23px; }
+}
+
 @media (max-width:850px) {
   .hero,.evidence-grid,.viewer-panel,.platform-intro,.download-grid,.method-layout,.two-column,.install-footer-grid,.linux-hero,.macos-install-layout,.macos-analysis-showcase,.workflow-processing-showcase,.final-figure-showcase,.support-contact-grid {
   grid-template-columns: 1fr;
