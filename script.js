@@ -301,7 +301,9 @@ if (registrationPage) {
   const statusText = registrationPage.querySelector('[data-registration-status]');
   const notice = registrationPage.querySelector('[data-registration-notice]');
   const turnstileBox = registrationPage.querySelector('[data-turnstile-container]');
-  const registrationApi = site.webApp;
+  // Pages Functions proxy these calls to the MIST service, keeping API and
+  // antiforgery-cookie requests same-origin for visitors on ft-itc.org.
+  const registrationApi = '';
   const state = { available: false, termsVersion: 'ft-itc-terms-1.0', privacyVersion: 'ft-itc-privacy-1.0', siteKey: '', csrfToken: '', turnstileToken: '', widgetId: null };
 
   const noticeMessage = (message, kind = 'error') => { notice.textContent = message; notice.dataset.state = kind; notice.hidden = !message; };
