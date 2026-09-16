@@ -10,6 +10,8 @@ Open `index.html` directly in a browser, or serve this folder with any static HT
 
 Create a Pages project from this folder using either Git integration or Direct Upload. The output directory is the repository root. After deployment, add `ft-itc.org` under the Pages project's **Custom domains**.
 
+The root `_worker.js` proxies the registration API to `app.ft-itc.org` while keeping the browser requests same-origin. Keep it in the uploaded output: unlike a `functions/` directory, Cloudflare supports `_worker.js` in both Wrangler and dashboard drag-and-drop deployments.
+
 The site keeps email separate: do not change the iCloud MX, SPF, DKIM, or domain-verification records.
 
 ## User manual
