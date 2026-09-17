@@ -10,7 +10,7 @@ Open `index.html` directly in a browser, or serve this folder with any static HT
 
 The site is deployed from this repository through Cloudflare Workers Builds. `wrangler.jsonc` publishes the repository root as static assets and uses `_worker.js` as the Worker entry point.
 
-The Worker proxies the registration API to `app.ft-itc.org` while keeping browser requests same-origin. Its source and deployment configuration are excluded from the public asset collection through `.assetsignore`.
+The Worker proxies the registration and activation API routes to `app.ft-itc.org` while keeping browser requests same-origin. It also serves `/activate` and activation API responses with `no-store` and restrictive referrer headers so activation tokens stay out of requests, referrers, and caches. Its source and deployment configuration are excluded from the public asset collection through `.assetsignore`.
 
 The site keeps email separate: do not change the iCloud MX, SPF, DKIM, or domain-verification records.
 

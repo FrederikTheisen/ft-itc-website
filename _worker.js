@@ -21,10 +21,29 @@ const proxyRegistrationRequest = (request, url) => {
   });
 };
 
+const withActivationSecurityHeaders = (response) => {
+  const headers = new Headers(response.headers);
+  headers.set('Cache-Control', 'no-store');
+  headers.set('Referrer-Policy', 'no-referrer');
+  headers.set('X-Content-Type-Options', 'nosniff');
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers
+  });
+};
+
 export default {
-  fetch(request, env) {
+  async fetch(request, env) {
     const url = new URL(request.url);
-    if (proxyPaths.has(url.pathname)) return proxyRegistrationRequest(request, url);
-    return env.ASSETS.fetch(request);
+    if (proxyPaths.has(url.pathname)) {
+      const response = await proxyRegistrationRequest(request, url);
+      return url.pathname === '/api/registration/activate'
+        ? withActivationSecurityHeaders(response)
+        : response;
+    }
+    const response = await env.ASSETS.fetch(request);
+    if (url.pathname !== '/activate' && url.pathname !== '/activate.html') return response;
+    return withActivationSecurityHeaders(response);
   }
 };
