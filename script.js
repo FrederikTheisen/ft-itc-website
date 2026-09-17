@@ -301,6 +301,9 @@ if (registrationPage) {
   const statusText = registrationPage.querySelector('[data-registration-status]');
   const notice = registrationPage.querySelector('[data-registration-notice]');
   const turnstileBox = registrationPage.querySelector('[data-turnstile-container]');
+  const formView = registrationPage.querySelector('[data-registration-form-view]');
+  const successView = registrationPage.querySelector('[data-registration-success]');
+  const registerAgain = registrationPage.querySelector('[data-registration-again]');
   // The website Worker proxies these calls to the MIST service, keeping API and
   // antiforgery-cookie requests same-origin for visitors on ft-itc.org.
   const registrationApi = '';
@@ -343,9 +346,16 @@ if (registrationPage) {
     try {
       if (!state.csrfToken) { const tokenResponse = await fetch(`${registrationApi}/api/viewer/token`, { credentials: 'include', headers: { Accept: 'application/json' } }); const tokenData = await tokenResponse.json().catch(() => null); state.csrfToken = tokenData?.requestToken || ''; }
       const response = await fetch(`${registrationApi}/api/registration`, { method: 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json', Accept: 'application/json', 'X-CSRF-TOKEN': state.csrfToken }, body: JSON.stringify({ name: form.elements.name.value.trim(), email: form.elements.email.value.trim(), organisation: form.elements.organisation.value.trim(), termsVersion: state.termsVersion, privacyVersion: state.privacyVersion, acceptedTerms: true, acknowledgedPrivacy: true, turnstileToken: state.turnstileToken }) });
-      if (response.status === 202) { form.reset(); resetTurnstile(); noticeMessage('If this address is eligible, check your email for a single-use activation link. It expires after 24 hours.', 'success'); statusText.textContent = 'Registration submitted.'; return; }
+      if (response.status === 202) {
+        form.reset(); resetTurnstile(); formView.hidden = true; successView.hidden = false;
+        successView.focus?.(); statusText.textContent = 'Registration submitted.'; return;
+      }
       if (response.status === 400) { const data = await response.json().catch(() => null); if (data?.errors) Object.keys(data.errors).forEach((key) => fieldError(key, 'Check this field.')); } throw new Error(safeMessage(response.status));
     } catch (error) { resetTurnstile(); noticeMessage(error.message || safeMessage(0)); statusText.textContent = 'Registration not submitted.'; } finally { submit.disabled = !state.available; submit.textContent = 'Submit registration'; }
+  });
+  registerAgain?.addEventListener('click', () => {
+    formView.hidden = false; successView.hidden = true; noticeMessage(''); statusText.textContent = state.available ? 'Registration is currently available.' : 'Registration is currently paused.';
+    form.elements.name.focus();
   });
   loadStatus();
 }

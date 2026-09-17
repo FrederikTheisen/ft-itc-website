@@ -1522,6 +1522,12 @@ a:focus-visible,button:focus-visible {
 .registration-notice[data-state="success"] { border-color: #438d78; background: var(--mint-pale); }
 .registration-notice[data-state="error"] { border-color: var(--coral); background: #fff1ee; }
 .registration-notice[hidden] { display: none; }
+.registration-success[hidden] { display: none; }
+.registration-success-lede { max-width: 560px; font-size: 1.05rem; }
+.registration-success ol { display: grid; gap: 10px; margin: 22px 0; padding-left: 1.5rem; color: var(--ink-soft); }
+.registration-success li { padding-left: 5px; }
+.registration-success-note { color: var(--ink-soft); }
+.registration-success .button { margin-top: 12px; }
 .registration-status { margin: 0; color: var(--ink-soft); }
 .registration-card button[disabled] { cursor: default; opacity: .58; transform: none; box-shadow: none; }
 .registration-guidance { padding-top: 28px; border-top: 1px solid var(--line); }
