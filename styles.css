@@ -373,6 +373,10 @@ figure figcaption {
   background: var(--mint-pale);
 }
 
+#final-figures {
+  padding-bottom: 64px;
+}
+
 .section-heading {
   max-width: 760px;
   margin-bottom: 46px;
@@ -1624,6 +1628,10 @@ a:focus-visible,button:focus-visible {
 
 .section {
   padding: 82px 0;
+}
+
+#final-figures {
+  padding-bottom: 48px;
 }
 
 .page-hero {
