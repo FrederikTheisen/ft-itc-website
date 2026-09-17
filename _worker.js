@@ -2,6 +2,7 @@ const registrationService = 'https://app.ft-itc.org';
 
 const proxyPaths = new Set([
   '/api/registration',
+  '/api/registration/activate',
   '/api/registration/status',
   '/api/viewer/token'
 ]);
