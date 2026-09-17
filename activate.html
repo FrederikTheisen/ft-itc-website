@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><meta name="robots" content="noindex,nofollow,noarchive"><title>Activate AI interpretation access | FT-ITC Analysis</title><link rel="canonical" href="https://ft-itc.org/activate"><link rel="icon" href="assets/icon-180.png" type="image/png"><link rel="stylesheet" href="styles.css"></head>
 <body data-page="activate"><header class="topbar wrap"><a class="brand" href="/" aria-label="FT-ITC Analysis home"><img src="assets/icon-180.png" alt="" width="180" height="180"><span>FT-ITC <em>Analysis</em></span></a></header>
-<main><section class="page-hero registration-page-header wrap"><p class="eyebrow">AI interpretation access</p><h1>Verify your email address.</h1><p class="lede">Confirm this email address to create Registered-tier interpretation access. The activation link expires after 24 hours and can be used once.</p></section><section class="registration-card wrap activate-card"><h2>Confirm activation</h2><p data-activation-status role="status" aria-live="polite">Checking activation link…</p><button class="button button-primary" type="button" data-activate disabled>Activate interpretation access</button><p class="field-help" data-activation-help></p><p><a href="/register">Return to registration</a> · <a href="mailto:support@ft-itc.org">Contact support</a></p></section></main>
+<main><section class="page-hero registration-page-header wrap"><p class="eyebrow">AI interpretation access</p><h1>Verify your email address.</h1><p class="lede">Confirm this email address to obtain a key for automatic interpretation access. The activation link expires after 24 hours and can be used once.</p></section><section class="registration-card wrap activate-card"><h2>Confirm activation</h2><p data-activation-status role="status" aria-live="polite">Checking activation link…</p><button class="button button-primary" type="button" data-activate disabled>Activate interpretation access</button><p class="field-help" data-activation-help></p><p><a href="/register">Return to registration</a> · <a href="mailto:support@ft-itc.org">Contact support</a></p></section></main>
 <footer class="footer wrap"><a class="brand" href="/"><img src="assets/icon-180.png" alt="" width="180" height="180"><span>FT-ITC <em>Analysis</em></span></a><p>From thermogram to thermodynamics</p><div><a data-link="repository" href="#">GitHub</a><a data-link="support" href="/support">Support</a><a href="/privacy">Privacy</a></div><small>© <span data-year></span> FT-ITC Analysis</small></footer>
 <script src="script.js"></script><script>
   const activationStatus = document.querySelector('[data-activation-status]');
@@ -33,11 +33,14 @@
       activationButton.textContent = 'Activating…';
       const token = activationToken;
       activationToken = '';
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 15000);
       try {
         const response = await fetch('/api/registration/activate', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify({ token })
+          body: JSON.stringify({ token }),
+          signal: controller.signal
         });
         if (response.ok) {
           activationStatus.textContent = 'Your email is verified.';
@@ -51,9 +54,11 @@
           activationButton.hidden = true;
         }
       } catch {
-        activationStatus.textContent = 'We could not activate this link right now.';
-        activationHelp.textContent = 'Please try again later or contact support.';
+        activationStatus.textContent = 'Activation may have completed.';
+        activationHelp.textContent = 'Check for the separate access-code email. If it does not arrive within a few minutes, check junk mail or contact support.';
         activationButton.hidden = true;
+      } finally {
+        clearTimeout(timeout);
       }
     });
   }

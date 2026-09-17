@@ -113,6 +113,7 @@ img {
   align-items: center;
   justify-content: center;
   gap: 11px;
+  cursor: pointer;
   padding: 12px 17px;
   border: 1px solid transparent;
   border-radius: 7px;
@@ -1522,7 +1523,7 @@ a:focus-visible,button:focus-visible {
 .registration-notice[data-state="error"] { border-color: var(--coral); background: #fff1ee; }
 .registration-notice[hidden] { display: none; }
 .registration-status { margin: 0; color: var(--ink-soft); }
-.registration-card button[disabled] { cursor: wait; opacity: .58; transform: none; box-shadow: none; }
+.registration-card button[disabled] { cursor: default; opacity: .58; transform: none; box-shadow: none; }
 .registration-guidance { padding-top: 28px; border-top: 1px solid var(--line); }
 .registration-guidance h2 { max-width: 650px; font-size: clamp(1.65rem, 3vw, 2.25rem); }
 .registration-guidance ol { display: grid; gap: 10px; margin: 22px 0; padding-left: 1.5rem; color: var(--ink-soft); }
