@@ -6,11 +6,11 @@ Static test site for `ft-itc.org`. It is intentionally independent of the deskto
 
 Open `index.html` directly in a browser, or serve this folder with any static HTTP server.
 
-## Cloudflare Pages
+## Cloudflare Workers
 
-Create a Pages project from this folder using either Git integration or Direct Upload. The output directory is the repository root. After deployment, add `ft-itc.org` under the Pages project's **Custom domains**.
+The site is deployed from this repository through Cloudflare Workers Builds. `wrangler.jsonc` publishes the repository root as static assets and uses `_worker.js` as the Worker entry point.
 
-The root `_worker.js` proxies the registration API to `app.ft-itc.org` while keeping the browser requests same-origin. Keep it in the uploaded output: unlike a `functions/` directory, Cloudflare supports `_worker.js` in both Wrangler and dashboard drag-and-drop deployments.
+The Worker proxies the registration API to `app.ft-itc.org` while keeping browser requests same-origin. Its source and deployment configuration are excluded from the public asset collection through `.assetsignore`.
 
 The site keeps email separate: do not change the iCloud MX, SPF, DKIM, or domain-verification records.
 
