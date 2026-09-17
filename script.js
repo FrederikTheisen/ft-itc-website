@@ -334,7 +334,7 @@ if (registrationPage) {
     try {
       const response = await fetch(`${registrationApi}/api/registration/status`, { credentials: 'include', headers: { Accept: 'application/json' } }); const data = await response.json(); if (!response.ok || !data || typeof data !== 'object') throw new Error();
       state.available = data.available === true || data.enabled === true || data.status === 'available'; state.siteKey = data.siteKey || data.siteKeyPublic || data.turnstileSiteKey || '0x4AAAAAAE43wMfgWhdF6K8P'; state.termsVersion = String(data.termsVersion || data.terms?.version || ''); state.privacyVersion = String(data.privacyVersion || data.privacy?.version || '');
-      registrationPage.querySelector('[data-terms-version]').textContent = state.termsVersion ? `(version ${state.termsVersion})` : '(current version)'; registrationPage.querySelector('[data-privacy-version]').textContent = state.privacyVersion ? `(version ${state.privacyVersion})` : '(current version)';
+      registrationPage.querySelector('[data-terms-version]')?.replaceChildren(); registrationPage.querySelector('[data-privacy-version]')?.replaceChildren();
       statusText.textContent = state.available ? 'Registration is currently available.' : (data.message || 'Registration is currently paused.'); enableForm(state.available); if (state.available) loadTurnstile(); else noticeMessage(data.message || 'Registration is currently unavailable. Please try again later.');
     } catch { enableForm(false); statusText.textContent = 'Registration availability could not be checked.'; noticeMessage('Registration is temporarily unavailable. Please try again later.'); }
   };
