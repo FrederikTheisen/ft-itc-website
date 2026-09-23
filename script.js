@@ -338,8 +338,8 @@ if (registrationPage) {
       const response = await fetch(`${registrationApi}/api/registration/status`, { credentials: 'include', headers: { Accept: 'application/json' } }); const data = await response.json(); if (!response.ok || !data || typeof data !== 'object') throw new Error();
       state.available = data.available === true || data.enabled === true || data.status === 'available'; state.siteKey = data.siteKey || data.siteKeyPublic || data.turnstileSiteKey || '0x4AAAAAAE43wMfgWhdF6K8P'; state.termsVersion = String(data.termsVersion || data.terms?.version || ''); state.privacyVersion = String(data.privacyVersion || data.privacy?.version || '');
       registrationPage.querySelector('[data-terms-version]')?.replaceChildren(); registrationPage.querySelector('[data-privacy-version]')?.replaceChildren();
-      statusText.textContent = state.available ? 'Registration is currently available.' : (data.message || 'Registration is currently paused.'); enableForm(state.available); if (state.available) loadTurnstile(); else noticeMessage(data.message || 'Registration is currently unavailable. Please try again later.');
-    } catch { enableForm(false); statusText.textContent = 'Registration availability could not be checked.'; noticeMessage('Registration is temporarily unavailable. Please try again later.'); }
+      statusText.textContent = state.available ? '' : (data.message || 'Registration is currently paused.'); statusText.hidden = state.available; enableForm(state.available); if (state.available) loadTurnstile(); else noticeMessage(data.message || 'Registration is currently unavailable. Please try again later.');
+    } catch { enableForm(false); statusText.textContent = 'Registration availability could not be checked.'; statusText.hidden = false; noticeMessage('Registration is temporarily unavailable. Please try again later.'); }
   };
   form.addEventListener('submit', async (event) => {
     event.preventDefault(); noticeMessage(''); if (!validate()) return; submit.disabled = true; submit.textContent = 'Sending…';
@@ -348,13 +348,13 @@ if (registrationPage) {
       const response = await fetch(`${registrationApi}/api/registration`, { method: 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json', Accept: 'application/json', 'X-CSRF-TOKEN': state.csrfToken }, body: JSON.stringify({ name: form.elements.name.value.trim(), email: form.elements.email.value.trim(), organisation: form.elements.organisation.value.trim(), termsVersion: state.termsVersion, privacyVersion: state.privacyVersion, acceptedTerms: true, acknowledgedPrivacy: true, turnstileToken: state.turnstileToken }) });
       if (response.status === 202) {
         form.reset(); resetTurnstile(); formView.hidden = true; successView.hidden = false;
-        successView.focus?.(); statusText.textContent = 'Registration submitted.'; return;
+        successView.focus?.(); statusText.textContent = 'Registration submitted.'; statusText.hidden = false; return;
       }
       if (response.status === 400) { const data = await response.json().catch(() => null); if (data?.errors) Object.keys(data.errors).forEach((key) => fieldError(key, 'Check this field.')); } throw new Error(safeMessage(response.status));
-    } catch (error) { resetTurnstile(); noticeMessage(error.message || safeMessage(0)); statusText.textContent = 'Registration not submitted.'; } finally { submit.disabled = !state.available; submit.textContent = 'Submit registration'; }
+    } catch (error) { resetTurnstile(); noticeMessage(error.message || safeMessage(0)); statusText.textContent = 'Registration not submitted.'; statusText.hidden = false; } finally { submit.disabled = !state.available; submit.textContent = 'Submit registration'; }
   });
   registerAgain?.addEventListener('click', () => {
-    formView.hidden = false; successView.hidden = true; noticeMessage(''); statusText.textContent = state.available ? 'Registration is currently available.' : 'Registration is currently paused.';
+    formView.hidden = false; successView.hidden = true; noticeMessage(''); statusText.textContent = state.available ? '' : 'Registration is currently paused.'; statusText.hidden = state.available;
     form.elements.name.focus();
   });
   loadStatus();
