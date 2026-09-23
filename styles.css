@@ -1523,6 +1523,15 @@ a:focus-visible,button:focus-visible {
 .checkbox-field { display: grid; grid-template-columns: 20px 1fr; gap: 9px; align-items: start; }
 .checkbox-field input { width: 18px; height: 18px; margin: 4px 0 0; accent-color: #438d78; }
 .checkbox-field label { font-weight: 500; }
+.checkbox-field label a {
+  color: #367d69;
+  font-weight: 750;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+.checkbox-field label a:hover { color: var(--ink); }
 .turnstile-box { min-height: 65px; }
 .registration-notice { padding: 13px 15px; border-left: 4px solid var(--sun); background: #fff7e9; color: var(--ink); }
 .registration-notice[data-state="success"] { border-color: #438d78; background: var(--mint-pale); }
