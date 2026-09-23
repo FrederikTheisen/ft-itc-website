@@ -1321,9 +1321,9 @@ a:focus-visible,button:focus-visible {
 
 .reference-list a {
   display: grid;
-  grid-template-columns: minmax(125px,max-content) minmax(0,1fr) 25px;
+  grid-template-columns: minmax(0,1fr) 25px;
   gap: 22px;
-  align-items: center;
+  align-items: start;
   padding: 25px 14px;
   border-bottom: 1px solid var(--line);
   background: transparent;
@@ -1334,7 +1334,9 @@ a:focus-visible,button:focus-visible {
   background: var(--mint-pale);
 }
 
-.reference-list > a > span {
+.reference-list > a > div > span {
+  display: block;
+  margin-bottom: 7px;
   color: #438d78;
   font: 700 .75rem ui-monospace,monospace;
   white-space: nowrap;
@@ -1789,7 +1791,7 @@ a:focus-visible,button:focus-visible {
 }
 
 .reference-list a {
-  grid-template-columns: max-content minmax(0,1fr) 15px;
+  grid-template-columns: minmax(0,1fr) 15px;
   gap: 12px;
   padding-inline: 0;
 }
