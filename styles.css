@@ -534,7 +534,7 @@ figure figcaption {
 
 .page-hero-with-preview .hero-title-line {
   display: block;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .page-hero-with-preview .hero-title-line-primary {
