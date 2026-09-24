@@ -2040,6 +2040,7 @@ a:focus-visible,button:focus-visible {
   color: #fff;
   font-size: 1.18rem;
 }
+.manual-equation-text { margin: 10px auto; color: #fff !important; text-align: center; font-size: 1.08rem; line-height: 1.65; overflow-wrap: anywhere; }
 .manual-equation-note { margin: 14px auto 0; color: rgb(255 255 255 / .7) !important; font-size: .88rem; line-height: 1.6 !important; }
 .manual-callout.callout-calculation .manual-equation-note strong { color: #fff; }
 .manual-equation-group {
@@ -2166,6 +2167,7 @@ a:focus-visible,button:focus-visible {
   .manual-callout.callout-calculation { border: 1px solid #888; color: #000; background: #fff; box-shadow: none; }
   .manual-callout.callout-calculation > strong:first-child,
   .manual-equation,
+  .manual-equation-text,
   .manual-equation-note,
   .manual-callout.callout-calculation .manual-equation-note strong { color: #000 !important; }
   .manual-equations { overflow: visible; }
@@ -2225,7 +2227,7 @@ a:focus-visible,button:focus-visible {
 }
 
 @media print {
-  @page { size: A4; margin: 14mm 15mm 16mm; }
+  @page { size: A4 portrait; margin: 14mm 15mm 16mm; }
   body.manual-print-page {
     background: #fff;
     -webkit-print-color-adjust: exact;
@@ -2234,7 +2236,13 @@ a:focus-visible,button:focus-visible {
   body.manual-print-page .topbar,
   body.manual-print-page .manual-print-status,
   body.manual-print-page .manual-print-trigger { display: none !important; }
-  body.manual-print-page .manual-print-shell { width: auto; padding: 0; }
+  body.manual-print-page .manual-print-shell {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
   body.manual-print-page .manual-print-cover {
     min-height: 0;
     height: 230mm;
