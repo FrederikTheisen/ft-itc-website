@@ -2000,6 +2000,7 @@ a:focus-visible,button:focus-visible {
   border: 1px solid var(--line);
   border-left: 4px solid #79cdb1;
   border-radius: 9px;
+  background-clip: padding-box;
   color: #36535a;
   background: #eef7f1;
   box-shadow: 0 8px 22px rgb(23 53 64 / .045);
@@ -2029,6 +2030,7 @@ a:focus-visible,button:focus-visible {
 
 .manual-callout.callout-calculation > strong:first-child { margin-bottom: 9px; color: var(--mint); }
 .manual-equations { overflow-x: auto; margin-top: 5px; padding: 2px 0 5px; scrollbar-color: rgb(121 205 177 / .65) transparent; }
+.manual-equations:where(.fits-width) { overflow-x: clip; }
 .manual-equation {
   display: block;
   width: max-content;
@@ -2046,6 +2048,7 @@ a:focus-visible,button:focus-visible {
   padding: 12px 17px;
   border-left: 3px solid #79cdb1;
   border-radius: 0 8px 8px 0;
+  background-clip: padding-box;
   background: #eef7f1;
 }
 .manual-equation-group p { max-width: none; margin: 0; color: var(--ink); }

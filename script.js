@@ -294,6 +294,20 @@ document.querySelectorAll('[data-print-manual]').forEach((button) => {
   button.addEventListener('click', () => window.print());
 });
 
+// Show horizontal scrolling only when an equation exceeds its available width.
+const equationBoxes = document.querySelectorAll('.manual-equations');
+if (equationBoxes.length) {
+  const updateEquationOverflow = () => equationBoxes.forEach((box) => {
+    const availableWidth = box.clientWidth;
+    const isOverflowing = [...box.querySelectorAll('.manual-equation')]
+      .some((equation) => equation.getBoundingClientRect().width > availableWidth + 1);
+    box.classList.toggle('fits-width', !isOverflowing);
+  });
+  updateEquationOverflow();
+  window.addEventListener('resize', updateEquationOverflow);
+  document.fonts?.ready.then(updateEquationOverflow);
+}
+
 const registrationPage = document.querySelector('[data-registration-page]');
 if (registrationPage) {
   const form = registrationPage.querySelector('[data-registration-form]');
