@@ -2000,7 +2000,7 @@ a:focus-visible,button:focus-visible {
   border: 1px solid var(--line);
   border-left: 4px solid #79cdb1;
   border-radius: 9px;
-  background-clip: padding-box;
+  background-clip: border-box;
   color: #36535a;
   background: #eef7f1;
   box-shadow: 0 8px 22px rgb(23 53 64 / .045);
@@ -2049,7 +2049,7 @@ a:focus-visible,button:focus-visible {
   padding: 12px 17px;
   border-left: 3px solid #79cdb1;
   border-radius: 0 8px 8px 0;
-  background-clip: padding-box;
+  background-clip: border-box;
   background: #eef7f1;
 }
 .manual-equation-group p { max-width: none; margin: 0; color: var(--ink); }
