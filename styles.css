@@ -2163,21 +2163,11 @@ a:focus-visible,button:focus-visible {
   .manual-print-heading-group,
   .manual-print-keep-group { break-inside: avoid; page-break-inside: avoid; }
   .manual-content a { color: inherit; text-decoration: none; }
-  .manual-callout { border-color: #888; color: #000; background: #fff; box-shadow: none; }
-  .manual-callout.callout-calculation { border: 1px solid #888; color: #000; background: #fff; box-shadow: none; }
-  .manual-callout.callout-calculation > strong:first-child,
-  .manual-equation,
-  .manual-equation-text,
-  .manual-equation-note,
-  .manual-callout.callout-calculation .manual-equation-note strong { color: #000 !important; }
+  .manual-callout { box-shadow: none; }
+  .manual-callout.callout-calculation { box-shadow: none; }
   .manual-equations { overflow: visible; }
-  .manual-equation-group { border-color: #888; background: #fff; }
-  .manual-equation-group p { color: #000; }
   .manual-figure,
   .manual-table-wrap { box-shadow: none; }
-  .manual-figure figcaption,
-  .manual-table th,
-  .manual-table tbody tr:nth-child(even) td { background: #fff; }
   .manual-callout,
   .manual-figure,
   .manual-table-wrap { break-inside: avoid; }
@@ -2205,6 +2195,7 @@ a:focus-visible,button:focus-visible {
 .manual-print-edition { margin: 24px 0 0; color: #438d78; font-size: .76rem; font-weight: 820; letter-spacing: .1em; text-transform: uppercase; }
 .manual-print-status { color: #75878a; font-size: .82rem; }
 .manual-print-status.is-error { color: #a44848; }
+.manual-print-download { width: fit-content; margin-top: 12px; }
 .manual-print-trigger { width: fit-content; margin-top: 12px; }
 .manual-print-trigger:disabled { cursor: wait; opacity: .6; }
 .manual-print-toc { max-width: 780px; margin: 0 auto; padding: 54px 0 72px; }
@@ -2227,14 +2218,52 @@ a:focus-visible,button:focus-visible {
 }
 
 @media print {
-  @page { size: A4 portrait; margin: 14mm 15mm 16mm; }
+  @page {
+    size: A4 portrait;
+    margin: 20mm 16mm 20mm;
+    @top-left {
+      content: "FT-ITC ANALYSIS";
+      color: #438d78;
+      font: 700 8pt Inter, ui-sans-serif, system-ui, sans-serif;
+      letter-spacing: .08em;
+    }
+    @top-right {
+      content: "USER MANUAL";
+      color: #597078;
+      font: 700 8pt Inter, ui-sans-serif, system-ui, sans-serif;
+      letter-spacing: .08em;
+    }
+    @bottom-left {
+      content: "FT-ITC Analysis · Software version 1.5.0";
+      color: #597078;
+      font: 8pt Inter, ui-sans-serif, system-ui, sans-serif;
+    }
+    @bottom-right {
+      content: counter(page);
+      color: #173540;
+      font: 700 8pt Inter, ui-sans-serif, system-ui, sans-serif;
+    }
+  }
   body.manual-print-page {
     background: #fff;
+    font-size: 10pt;
+    line-height: 1.45;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
+  body.manual-print-page .manual-content h1 { font-size: 25pt; }
+  body.manual-print-page .manual-content h2 { margin: 9mm 0 3mm; padding-bottom: 2mm; font-size: 16pt; }
+  body.manual-print-page .manual-content h3 { margin: 6mm 0 2mm; font-size: 11.5pt; }
+  body.manual-print-page .manual-content p,
+  body.manual-print-page .manual-content li { line-height: 1.48; }
+  body.manual-print-page .manual-content p { margin-block: 2.5mm; }
+  body.manual-print-page .manual-list { margin-bottom: 4mm; }
+  body.manual-print-page .manual-list li { margin-bottom: 1.5mm; }
+  body.manual-print-page .manual-summary { font-size: 11pt; }
+  body.manual-print-page .manual-freshness { margin-bottom: 5mm; font-size: 8pt; }
   body.manual-print-page .topbar,
   body.manual-print-page .manual-print-status,
+  body.manual-print-page .manual-print-download,
   body.manual-print-page .manual-print-trigger { display: none !important; }
   body.manual-print-page .manual-print-shell {
     box-sizing: border-box;
@@ -2245,7 +2274,7 @@ a:focus-visible,button:focus-visible {
   }
   body.manual-print-page .manual-print-cover {
     min-height: 0;
-    height: 230mm;
+    height: 220mm;
     padding: 0;
     break-after: page;
   }
@@ -2254,16 +2283,16 @@ a:focus-visible,button:focus-visible {
   body.manual-print-page .manual-print-cover .manual-print-edition { color: #438d78; }
   body.manual-print-page .manual-print-toc {
     max-width: none;
-    min-height: 230mm;
+    min-height: 0;
     padding: 0;
     break-after: page;
   }
-  body.manual-print-page .manual-print-toc h2 { margin-top: 0; font-size: 24pt; }
-  body.manual-print-page .manual-print-toc li { padding: 11px 0; }
-  body.manual-print-page .manual-print-toc small { font-size: 8.5pt; }
+  body.manual-print-page .manual-print-toc h2 { margin-top: 0; margin-bottom: 3mm; font-size: 20pt; }
+  body.manual-print-page .manual-print-toc li { padding: 1.4mm 0; }
+  body.manual-print-page .manual-print-toc small { font-size: 8pt; }
   body.manual-print-page .manual-print-chapter {
     max-width: none;
-    padding: 12mm 0 0;
+    padding: 7mm 0 0;
     border-top: 0;
     break-before: page;
   }
@@ -2271,14 +2300,6 @@ a:focus-visible,button:focus-visible {
   body.manual-print-page .manual-print-chapter .manual-pager,
   body.manual-print-page .manual-print-chapter .manual-actions,
   body.manual-print-page .manual-print-chapter .manual-chapters { display: none !important; }
-  body.manual-print-page .manual-print-chapter .manual-callout.callout-calculation {
-    border: 0;
-    color: #fff;
-    background: var(--navy);
-  }
-  body.manual-print-page .manual-print-chapter .manual-callout.callout-calculation > strong:first-child,
-  body.manual-print-page .manual-print-chapter .manual-equation,
-  body.manual-print-page .manual-print-chapter .manual-equation-note { color: #fff !important; }
   body.manual-print-page .manual-print-chapter .manual-figure {
     width: calc(100% - 4px);
     max-width: calc(100% - 4px);
@@ -2287,12 +2308,10 @@ a:focus-visible,button:focus-visible {
     margin-right: 4px;
     margin-block: 8mm 7mm;
     border-radius: 9px;
-    border-color: #438d78;
   }
   body.manual-print-page .manual-print-chapter .manual-figure figcaption {
     margin-right: -11px;
     margin-left: -11px;
-    border-radius: 0 0 8px 8px;
   }
   body.manual-print-page .manual-print-chapter .manual-figure img {
     max-width: 100%;
@@ -2308,16 +2327,10 @@ a:focus-visible,button:focus-visible {
     min-width: 0;
     margin-right: 4px;
     box-sizing: border-box;
-    border-radius: 9px;
-    border-color: #438d78;
-    border-left-color: #438d78;
   }
   body.manual-print-page .manual-print-chapter .manual-callout,
   body.manual-print-page .manual-print-chapter .manual-equation-group {
     background-clip: border-box;
-  }
-  body.manual-print-page .manual-print-chapter .manual-callout.callout-calculation {
-    border: 1px solid #438d78;
   }
   body.manual-print-page .manual-print-chapter .manual-table-wrap {
     overflow: visible;
@@ -2325,7 +2338,13 @@ a:focus-visible,button:focus-visible {
   body.manual-print-page .manual-print-chapter .manual-table {
     width: 100%;
     min-width: 0;
+    border-collapse: separate;
+    border-spacing: 0;
   }
+  body.manual-print-page .manual-print-chapter .manual-table thead th:first-child { border-top-left-radius: 8px; }
+  body.manual-print-page .manual-print-chapter .manual-table thead th:last-child { border-top-right-radius: 8px; }
+  body.manual-print-page .manual-print-chapter .manual-table tbody tr:last-child td:first-child { border-bottom-left-radius: 8px; }
+  body.manual-print-page .manual-print-chapter .manual-table tbody tr:last-child td:last-child { border-bottom-right-radius: 8px; }
   body.manual-print-page .manual-print-chapter .manual-equation-group {
     break-before: avoid;
     break-inside: avoid;
