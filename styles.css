@@ -2332,6 +2332,17 @@ a:focus-visible,button:focus-visible {
   body.manual-print-page .manual-print-chapter .manual-equation-group {
     background-clip: border-box;
   }
+  /* Paint the outline over the fill so PDF rendering cannot leave a white seam at rounded corners. */
+  body.manual-print-page .manual-print-chapter .manual-callout:not(.callout-calculation) {
+    --manual-print-accent: #79cdb1;
+    border: 0;
+    padding: 17px 19px 17px 22px;
+    box-shadow: inset 4px 0 0 var(--manual-print-accent), inset 0 0 0 1px var(--line);
+  }
+  body.manual-print-page .manual-print-chapter .manual-callout.callout-caution { --manual-print-accent: var(--coral); }
+  body.manual-print-page .manual-print-chapter .manual-callout.callout-interpretation { --manual-print-accent: var(--sun); }
+  body.manual-print-page .manual-print-chapter .manual-callout.callout-recommendation { --manual-print-accent: #438d78; }
+  body.manual-print-page .manual-print-chapter .manual-callout.callout-platform-note { --manual-print-accent: #6d9ac0; }
   body.manual-print-page .manual-print-chapter .manual-table-wrap {
     overflow: visible;
   }
