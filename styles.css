@@ -2351,6 +2351,8 @@ a:focus-visible,button:focus-visible {
   body.manual-print-page .manual-callout.callout-calculation > strong:first-child { color: #32745f; }
   body.manual-print-page .manual-callout.callout-calculation .manual-equation,
   body.manual-print-page .manual-callout.callout-calculation .manual-equation-text { color: var(--ink) !important; }
+  body.manual-print-page .manual-callout.callout-calculation .manual-equation { margin-block: 7px; font-size: 10pt; }
+  body.manual-print-page .manual-callout.callout-calculation .manual-equation-text { margin-block: 6px; font-size: 10pt; line-height: 1.45; }
   body.manual-print-page .manual-callout.callout-calculation .manual-equation-note { color: #48616b !important; }
   body.manual-print-page .manual-callout.callout-calculation .manual-equation-note strong { color: var(--ink); }
   body.manual-print-page .manual-print-chapter .manual-table-wrap {
