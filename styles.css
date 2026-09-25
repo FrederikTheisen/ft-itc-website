@@ -2343,8 +2343,26 @@ a:focus-visible,button:focus-visible {
   body.manual-print-page .manual-print-chapter .manual-callout.callout-interpretation { --manual-print-accent: var(--sun); }
   body.manual-print-page .manual-print-chapter .manual-callout.callout-recommendation { --manual-print-accent: #438d78; }
   body.manual-print-page .manual-print-chapter .manual-callout.callout-platform-note { --manual-print-accent: #6d9ac0; }
+  body.manual-print-page .manual-print-chapter .manual-callout.callout-calculation {
+    color: var(--ink);
+    background: #eef5f0;
+    box-shadow: inset 0 0 0 1px #cbded3;
+  }
+  body.manual-print-page .manual-callout.callout-calculation > strong:first-child { color: #32745f; }
+  body.manual-print-page .manual-callout.callout-calculation .manual-equation,
+  body.manual-print-page .manual-callout.callout-calculation .manual-equation-text { color: var(--ink) !important; }
+  body.manual-print-page .manual-callout.callout-calculation .manual-equation-note { color: #48616b !important; }
+  body.manual-print-page .manual-callout.callout-calculation .manual-equation-note strong { color: var(--ink); }
   body.manual-print-page .manual-print-chapter .manual-table-wrap {
     overflow: visible;
+    border: 0;
+    border-radius: 0;
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+  body.manual-print-page .manual-print-heading-group:has(.manual-table-wrap) {
+    break-inside: auto;
+    page-break-inside: auto;
   }
   body.manual-print-page .manual-print-chapter .manual-table {
     width: 100%;
@@ -2352,6 +2370,10 @@ a:focus-visible,button:focus-visible {
     border-collapse: separate;
     border-spacing: 0;
   }
+  body.manual-print-page .manual-table thead { display: table-header-group; }
+  body.manual-print-page .manual-table tr { break-inside: avoid; page-break-inside: avoid; }
+  body.manual-print-page .manual-table th,
+  body.manual-print-page .manual-table td { padding: 6px 9px; }
   body.manual-print-page .manual-print-chapter .manual-table thead th:first-child { border-top-left-radius: 8px; }
   body.manual-print-page .manual-print-chapter .manual-table thead th:last-child { border-top-right-radius: 8px; }
   body.manual-print-page .manual-print-chapter .manual-table tbody tr:last-child td:first-child { border-bottom-left-radius: 8px; }

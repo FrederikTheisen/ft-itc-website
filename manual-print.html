@@ -56,7 +56,7 @@
 
       const load = async () => {
         const pages = await Promise.all(chapters.map(async (path) => {
-          const response = await fetch(path);
+          const response = await fetch(path, { cache: 'no-store' });
           if (!response.ok) throw new Error(`Unable to load ${path}`);
           const source = new DOMParser().parseFromString(await response.text(), 'text/html');
           return { path, article: source.querySelector('.manual-content') };
@@ -76,6 +76,11 @@
           chapter.querySelectorAll('img').forEach((image) => {
             image.removeAttribute('loading');
             image.removeAttribute('decoding');
+            if (image.getAttribute('src')?.startsWith('/manual/assets/')) {
+              const currentImage = new URL(image.src);
+              currentImage.searchParams.set('print-refresh', String(Date.now()));
+              image.src = currentImage.href;
+            }
           });
           chapter.querySelectorAll('.manual-equation-group').forEach((equationGroup) => {
             const previous = equationGroup.previousElementSibling;
