@@ -2000,7 +2000,7 @@ a:focus-visible,button:focus-visible {
   border: 1px solid var(--line);
   border-left: 4px solid #79cdb1;
   border-radius: 9px;
-  background-clip: border-box;
+  background-clip: padding-box;
   color: #36535a;
   background: #eef7f1;
   box-shadow: 0 8px 22px rgb(23 53 64 / .045);
@@ -2049,7 +2049,7 @@ a:focus-visible,button:focus-visible {
   padding: 12px 17px;
   border-left: 3px solid #79cdb1;
   border-radius: 0 8px 8px 0;
-  background-clip: border-box;
+  background-clip: padding-box;
   background: #eef7f1;
 }
 .manual-equation-group p { max-width: none; margin: 0; color: var(--ink); }
@@ -2311,6 +2311,10 @@ a:focus-visible,button:focus-visible {
     border-radius: 9px;
     border-color: #438d78;
     border-left-color: #438d78;
+  }
+  body.manual-print-page .manual-print-chapter .manual-callout,
+  body.manual-print-page .manual-print-chapter .manual-equation-group {
+    background-clip: border-box;
   }
   body.manual-print-page .manual-print-chapter .manual-callout.callout-calculation {
     border: 1px solid #438d78;
