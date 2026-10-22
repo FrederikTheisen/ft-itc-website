@@ -2157,7 +2157,8 @@ a:focus-visible,button:focus-visible {
   .manual-content p,
   .manual-content li { widows: 3; orphans: 3; }
   .manual-content h2,
-  .manual-content h3 { break-after: avoid; page-break-after: avoid; }
+  .manual-content h3,
+  .manual-content h4 { break-after: avoid; page-break-after: avoid; }
   .manual-content h2 + p,
   .manual-content h3 + p { break-before: avoid; page-break-before: avoid; }
   .manual-print-heading-group,
@@ -2355,6 +2356,10 @@ a:focus-visible,button:focus-visible {
   body.manual-print-page .manual-callout.callout-calculation .manual-equation-text { margin-block: 6px; font-size: 10pt; line-height: 1.45; }
   body.manual-print-page .manual-callout.callout-calculation .manual-equation-note { color: #48616b !important; }
   body.manual-print-page .manual-callout.callout-calculation .manual-equation-note strong { color: var(--ink); }
+  body.manual-print-page .manual-content p:has(> strong:only-child):has(+ .callout-calculation) {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
   body.manual-print-page .manual-print-chapter .manual-table-wrap {
     overflow: visible;
     border: 0;
