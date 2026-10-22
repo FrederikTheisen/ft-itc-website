@@ -12,6 +12,30 @@ The site is deployed from this repository through Cloudflare Workers Builds. `wr
 
 The Worker proxies the registration and activation API routes to `app.ft-itc.org` while keeping browser requests same-origin. It also serves `/activate` and activation API responses with `no-store` and restrictive referrer headers so activation tokens stay out of requests, referrers, and caches. Its source and deployment configuration are excluded from the public asset collection through `.assetsignore`.
 
+### Authenticated API forwarding
+
+The four proxied API routes now require a production secret binding named
+`FTITC_WEBSITE_PROXY_SECRET`, containing 64 lowercase hexadecimal characters
+(32 random bytes). The Worker overwrites incoming assertions, sends the native
+Cloudflare `CF-Connecting-IP` as a validated IPv4 or expanded IPv6 address, and uses
+`Proxy-Authorization` for its origin credential. The matching Caddy configuration
+validates and strips both assertions before Kestrel; direct API clients keep their
+connection-peer identity. Missing/invalid Worker configuration returns a generic 503.
+
+Deploy the matching Caddy change first. Cloudflare Pseudo IPv4 must be **Off** or
+**Add Header**, not **Overwrite Headers**. The application repository's
+`scripts/caddy/README.md` contains the review candidate, local Caddy tests, rollout,
+rollback and rotation procedure. Deployed with approval on 2026-10-21; real-client
+IPv4 forwarding was verified live from two networks. IPv6 remains unverified.
+The code-only API deployment retained existing assets; include this currently
+uncommitted Worker change in the next repository build to retain the fix.
+Use a Cloudflare secret binding, never Wrangler vars, a committed environment file
+or a browser asset. Local `.dev.vars*`/`.env*` files and tests are excluded from
+published assets; local secret files are also ignored by Git.
+
+Run `node --test tests/worker.test.mjs` with Node.js 22 or newer for the dependency-free
+Worker regression suite. It preserves the existing cookie/CSRF and activation flows.
+
 The site keeps email separate: do not change the iCloud MX, SPF, DKIM, or domain-verification records.
 
 ## User manual

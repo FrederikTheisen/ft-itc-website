@@ -5,3 +5,7 @@ wrangler.jsonc
 .git/**
 .wrangler
 .wrangler/**
+tests
+tests/**
+.dev.vars*
+.env*
