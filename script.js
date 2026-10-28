@@ -241,7 +241,8 @@ const viewerStatusCard = document.querySelector('[data-viewer-status]');
 const viewerStatusText = document.querySelector('[data-viewer-status-text]');
 const viewerStatusDescription = document.querySelector('[data-viewer-status-description]');
 
-if (viewerStatusCard && viewerStatusText && viewerStatusDescription) {
+// Planned maintenance takes precedence over the image-based availability check.
+if (viewerStatusCard && viewerStatusText && viewerStatusDescription && viewerStatusCard.dataset.viewerStatus !== 'maintenance') {
   const setViewerStatus = (state) => {
     viewerStatusCard.dataset.viewerStatus = state;
 

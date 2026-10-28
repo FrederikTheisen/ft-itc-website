@@ -215,6 +215,88 @@ h3 {
   padding: 72px 0 84px;
 }
 
+/* Front-page news stays visible without JavaScript. Add or remove rows in index.html. */
+.announcements {
+  overflow: hidden;
+  margin-top: 16px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+}
+
+.announcement {
+  display: grid;
+  grid-template-columns: 124px 1fr auto;
+  align-items: baseline;
+  gap: 8px 20px;
+  padding: 16px 22px;
+  font-size: .9rem;
+  line-height: 1.55;
+}
+
+.announcement + .announcement {
+  border-top: 1px solid var(--line);
+}
+
+.announcement-maintenance {
+  background: #fff3e0;
+  color: #704614;
+}
+
+.announcement-maintenance p {
+  grid-column: 2 / -1;
+}
+
+.announcement-release {
+  background: var(--mint-pale);
+}
+
+.announcement-label {
+  margin: 0;
+  font-size: .7rem;
+  line-height: inherit;
+  font-weight: 850;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.announcement p {
+  margin: 0;
+}
+
+.announcement-link {
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.announcement-link:hover {
+  text-decoration-thickness: 2px;
+}
+
+.announcements + .hero {
+  padding-top: 48px;
+}
+
+@media (max-width: 620px) {
+  .announcement {
+    grid-template-columns: 1fr;
+    padding: 16px 18px;
+  }
+
+  .announcement-maintenance p {
+    grid-column: auto;
+  }
+
+  .announcement-link {
+    justify-self: start;
+    padding-block: 5px;
+  }
+
+  .announcements + .hero {
+    padding-top: 36px;
+  }
+}
+
 .trust-list {
   display: flex;
   flex-wrap: wrap;

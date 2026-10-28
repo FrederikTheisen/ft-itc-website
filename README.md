@@ -6,6 +6,17 @@ Static test site for `ft-itc.org`. It is intentionally independent of the deskto
 
 Open `index.html` directly in a browser, or serve this folder with any static HTTP server.
 
+## Front-page announcements
+
+Edit the `.announcements` block in `index.html` to add, change or remove news and
+service notices. The rows are static HTML and remain visible without JavaScript.
+Keep the maintenance notice in place until the services are restored. The viewer
+card further down the page uses `data-viewer-status="maintenance"` to pause its
+automatic availability check during maintenance. When service resumes, remove the
+maintenance announcement, set the card back to `data-viewer-status="checking"`,
+and restore its initial status text to “Checking availability…” and description to
+“Open a project in the browser for easy sharing and review.”
+
 ## Cloudflare Workers
 
 The site is deployed from this repository through Cloudflare Workers Builds. `wrangler.jsonc` publishes the repository root as static assets and uses `_worker.js` as the Worker entry point.
