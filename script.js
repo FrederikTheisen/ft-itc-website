@@ -65,21 +65,21 @@ document.querySelectorAll('[data-year]').forEach((year) => { year.textContent = 
 const releasePlatforms = {
   macos: {
     enabled: true,
-    minimumVersion: '1.4.2',
+    minimumVersion: '1.5.0',
     assetPattern: /\.dmg$/i,
     downloadLabel: 'Download FT-ITC for macOS',
     releaseDescription: 'Signed and notarized universal application.'
   },
   windows: {
     enabled: true,
-    minimumVersion: '1.4.2',
-    assetPattern: /_win-x64-setup\.exe$/i,
+    minimumVersion: '1.5.0',
+    assetPattern: /[-_]win-x64-setup\.exe$/i,
     downloadLabel: 'Download Windows x64 (.exe)',
     releaseDescription: '64-bit Windows installer.'
   },
   linux: {
     enabled: true,
-    minimumVersion: '1.4.2',
+    minimumVersion: '1.5.0',
     assetPattern: /^ft-itc-analysis_[\d.]+_amd64\.deb$/i,
     downloadLabel: 'Download Linux AMD64 (.deb)',
     releaseDescription: 'AMD64 Debian package for Debian-based desktop Linux.'
@@ -198,6 +198,12 @@ if (releaseStatus && releaseVersion && releaseDate && platformDownload && releas
       : null;
 
     releaseVersion.textContent = release.tag;
+    document.querySelectorAll('[data-release-number]').forEach((element) => {
+      element.textContent = release.tag.replace(/^v/i, '');
+    });
+    document.querySelectorAll('[data-installer-filename]').forEach((element) => {
+      element.textContent = asset.name;
+    });
     releaseDate.textContent = `Released ${new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }).format(new Date(release.publishedAt))} · ${releasePlatform.releaseDescription}`;
     platformDownload.href = asset.url;
     platformDownload.removeAttribute('aria-disabled');

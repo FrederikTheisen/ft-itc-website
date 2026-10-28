@@ -49,6 +49,20 @@ Worker regression suite. It preserves the existing cookie/CSRF and activation fl
 
 The site keeps email separate: do not change the iCloud MX, SPF, DKIM, or domain-verification records.
 
+## Installer releases
+
+The published installer baseline is v1.5.0 (28 Oct 2026). When updating it, verify
+the public GitHub release's exact asset names and digests, then update the version
+labels and structured metadata in `index.html`, `app-desktop.html` and the three
+`install-*.html` pages. Update the Linux install/checksum commands and show only
+verification files actually attached to that release. Keep `minimumVersion` in
+`script.js` at the published baseline so cached older releases cannot replace it.
+The install pages use these static links when JavaScript or the GitHub API is
+unavailable; the automatic lookup can select a newer compatible public release.
+
+Run `node --test tests/releases.test.mjs` for installer selection, metadata,
+checksum and fallback regression checks.
+
 ## User manual
 
 The authoritative editable manual is in the application repository at `Documentation/UserManual/`. This repository contains publication output only: `manual.html`, the eleven flat chapter files in `manual/`, the published `manual.pdf`, and the public images those pages reference.
