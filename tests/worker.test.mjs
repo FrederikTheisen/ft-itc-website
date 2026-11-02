@@ -5,7 +5,7 @@ import test from 'node:test';
 const source = readFileSync(new URL('../_worker.js', import.meta.url), 'utf8');
 const worker = (await import(`data:text/javascript;base64,${Buffer.from(source).toString('base64')}`)).default;
 const secret = 'a'.repeat(64); // Test fixture only; never a deployment credential.
-const routes = ['/api/registration', '/api/registration/activate', '/api/registration/status', '/api/viewer/token'];
+const routes = ['/api/registration', '/api/registration/activate', '/api/registration/status', '/api/viewer/token', '/api/interpretation/status', '/api/interpretation/generate'];
 
 async function invoke(path, options = {}) {
   const { address = '198.51.100.7', method = 'GET', extra = {} } = options;
@@ -43,7 +43,7 @@ for (const route of routes) {
     ['::ffff:192.0.2.7', '0000:0000:0000:0000:0000:ffff:c000:0207']
   ]) {
     test(`authenticated ${route} preserves the request for ${address}`, async () => {
-      const method = route === '/api/registration' || route.endsWith('/activate') ? 'POST' : 'GET';
+      const method = route === '/api/registration' || route.endsWith('/activate') || route.endsWith('/generate') ? 'POST' : 'GET';
       const { response, calls } = await invoke(`${route}?verification=1`, { address, method });
       assert.equal(response.status, 200);
       assert.equal(calls.length, 1);
@@ -88,7 +88,7 @@ for (const configured of [undefined, '', 'short', 'A'.repeat(64), `${secret},${s
     assert.equal((await response.text()).includes(secret), false);
   });
 }
-for (const path of ['/', '/activate', '/app.js', '/api/internal/health', '/api/registration/extra']) {
+for (const path of ['/', '/activate', '/app.js', '/api/internal/health', '/api/registration/extra', '/api/interpretation/extra', '/api/interpretation/generate/extra', '/api/interpretation/generate/']) {
   test(`does not send proxy credentials to an unproxied path ${path}`, async () => {
     const { response, calls } = await invoke(path, { configured: null });
     assert.equal(await response.text(), 'static asset');

@@ -4,7 +4,9 @@ const proxyPaths = new Set([
   '/api/registration',
   '/api/registration/activate',
   '/api/registration/status',
-  '/api/viewer/token'
+  '/api/viewer/token',
+  '/api/interpretation/status',
+  '/api/interpretation/generate'
 ]);
 
 // Send one unambiguous address format for Caddy to validate independently.
@@ -32,7 +34,7 @@ const proxyRegistrationRequest = (request, url, env) => {
   // Deployment requires Pseudo IPv4 to leave this edge-generated address intact.
   const address = visitorAddress(request.headers.get('CF-Connecting-IP'));
   if (typeof secret !== 'string' || !/^[a-f0-9]{64}$/.test(secret) || !address) {
-    return new Response(JSON.stringify({ code: 'website_proxy_unavailable', message: 'Registration is temporarily unavailable.' }), {
+    return new Response(JSON.stringify({ code: 'website_proxy_unavailable', message: 'The requested service is temporarily unavailable.' }), {
       status: 503, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }
     });
   }
