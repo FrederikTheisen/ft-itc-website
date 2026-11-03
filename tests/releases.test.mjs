@@ -100,3 +100,129 @@ test('API failure preserves the static download fallback', async () => {
   assert.equal(get('platform-download').href, 'static download');
   assert.equal(get('release-version').textContent, 'static fallback');
 });
+
+const releasesApi = 'https://api.github.com/repos/FrederikTheisen/FT-ITC-Analysis/releases?per_page=20';
+const releaseCacheKey = 'ft-itc-release-cache-v2';
+function overviewRelease(version, platforms = Object.keys(filenames), publishedAt = '2026-11-03T10:19:27Z') {
+  return {
+    tag_name: `v${version}`, published_at: publishedAt, draft: false, prerelease: false,
+    assets: platforms.map((platform) => {
+      const name = filenames[platform].replaceAll('1.5.0', version);
+      return { name, state: 'uploaded', browser_download_url: `${base.replace('1.5.0', version)}${name}` };
+    })
+  };
+}
+
+function runOverviewPage(page, { releases = [], storage, cached = true, fetchFails = false } = {}) {
+  const html = readFileSync(new URL(`../${page}.html`, import.meta.url), 'utf8');
+  const labels = [...html.matchAll(/<span data-platform-release="([^"]+)">([^<]+)<\/span>/g)]
+    .map(([, platform, text]) => ({ dataset: { platformRelease: platform }, textContent: text }));
+  assert.equal(labels.length, 3);
+  const schemaElement = { textContent: html.match(/<script type="application\/ld\+json" data-release-schema>([\s\S]*?)<\/script>/)[1] };
+  const originalSchema = JSON.parse(schemaElement.textContent);
+  const fetchCalls = [];
+  const cache = storage ?? new Map(cached
+    ? [[releaseCacheKey, JSON.stringify({ savedAt: Date.now(), releases })]] : []);
+  runInNewContext(source, {
+    document: {
+      body: { dataset: { page: page === 'index' ? 'home' : 'app' } },
+      querySelector: () => null,
+      querySelectorAll: (selector) => selector === '[data-platform-release]' ? labels
+        : selector === '[data-release-schema]' ? [schemaElement] : []
+    },
+    URL, Date, Intl, AbortController,
+    window: { setTimeout: () => 1, clearTimeout() {} },
+    sessionStorage: { getItem: (key) => cache.get(key) ?? null, setItem: (key, value) => cache.set(key, value) },
+    fetch: async (url) => {
+      fetchCalls.push(url);
+      // A strict metadata-only stub: never perform network requests, including installer probes.
+      assert.equal(url, releasesApi);
+      if (fetchFails) throw new Error('Network unavailable');
+      return { ok: true, json: async () => releases };
+    }
+  });
+  return {
+    html, originalSchema, storage: cache, fetchCalls,
+    versions: () => Object.fromEntries(labels.map((label) => [label.dataset.platformRelease, label.textContent])),
+    schema: () => JSON.parse(schemaElement.textContent)
+  };
+}
+const allVersions = (version) => ({ macos: version, windows: version, linux: version });
+const softwareEntry = (schema) => schema['@graph'].find((entry) => entry['@type'] === 'SoftwareApplication');
+
+for (const page of ['index', 'app-desktop']) {
+  test(`${page}: static platform labels and metadata fall back to 1.5.1`, () => {
+    const view = runOverviewPage(page);
+    assert.deepEqual(view.versions(), allVersions('v1.5.1'));
+    assert.equal(softwareEntry(view.schema()).softwareVersion, '1.5.1');
+    for (const platform of Object.keys(filenames)) assert.ok(view.html.includes(`href="/install-${platform}"`));
+    if (page === 'index') {
+      assert.ok(view.html.includes('FT-ITC Analysis <strong>1.5</strong> is now publicly available.'));
+      const banner = view.html.match(/<div class="announcement announcement-release">([\s\S]*?)<\/div>/)[1];
+      assert.ok(!banner.includes('data-platform-release'));
+    }
+  });
+
+  test(`${page}: newer cached stable releases update all cards and only the software version metadata`, () => {
+    const current = overviewRelease('1.5.2');
+    const ignored = overviewRelease('9.0.0');
+    const view = runOverviewPage(page, { releases: [{ ...ignored, draft: true }, { ...ignored, prerelease: true }, current] });
+    assert.deepEqual(view.versions(), allVersions('v1.5.2'));
+    const expectedSchema = structuredClone(view.originalSchema);
+    softwareEntry(expectedSchema).softwareVersion = '1.5.2';
+    assert.deepEqual(view.schema(), expectedSchema);
+    assert.deepEqual(view.fetchCalls, []);
+  });
+
+  test(`${page}: each card follows its own platform's latest available installer`, () => {
+    const view = runOverviewPage(page, { releases: [
+      overviewRelease('1.5.2', ['windows'], '2026-11-04T10:00:00Z'),
+      overviewRelease('1.5.1')
+    ] });
+    assert.deepEqual(view.versions(), { macos: 'v1.5.1', windows: 'v1.5.2', linux: 'v1.5.1' });
+    assert.equal(softwareEntry(view.schema()).softwareVersion, '1.5.2');
+  });
+
+  test(`${page}: older cached metadata cannot downgrade 1.5.1 fallbacks`, () => {
+    const view = runOverviewPage(page, { releases: [overviewRelease('1.5.0')] });
+    assert.deepEqual(view.versions(), allVersions('v1.5.1'));
+    assert.deepEqual(view.schema(), view.originalSchema);
+    assert.deepEqual(view.fetchCalls, []);
+  });
+
+  test(`${page}: fresh lookup requests metadata once and shares its cache with the other overview`, async () => {
+    const view = runOverviewPage(page, { releases: [overviewRelease('1.5.2')], cached: false });
+    await new Promise(setImmediate);
+    assert.deepEqual(view.versions(), allVersions('v1.5.2'));
+    assert.deepEqual(view.fetchCalls, [releasesApi]);
+    const other = runOverviewPage(page === 'index' ? 'app-desktop' : 'index', { storage: view.storage });
+    assert.deepEqual(other.versions(), allVersions('v1.5.2'));
+    assert.deepEqual(other.fetchCalls, []);
+  });
+
+  test(`${page}: API failure preserves all static versions and schema`, async () => {
+    const view = runOverviewPage(page, { cached: false, fetchFails: true });
+    await new Promise(setImmediate);
+    assert.deepEqual(view.versions(), allVersions('v1.5.1'));
+    assert.deepEqual(view.schema(), view.originalSchema);
+    assert.deepEqual(view.fetchCalls, [releasesApi]);
+  });
+}
+
+test('expired overview cache refreshes from metadata without requesting installer URLs', async () => {
+  const storage = new Map([[releaseCacheKey, JSON.stringify({ savedAt: Date.now() - 31 * 60 * 1000, releases: [release] })]]);
+  const view = runOverviewPage('index', { storage, releases: [overviewRelease('1.5.2')] });
+  await new Promise(setImmediate);
+  assert.deepEqual(view.versions(), allVersions('v1.5.2'));
+  assert.deepEqual(view.fetchCalls, [releasesApi]);
+});
+
+test('overview metadata compares numeric versions when platforms have different releases', () => {
+  const view = runOverviewPage('index', { releases: [
+    overviewRelease('1.5.2', ['windows'], '2026-11-05T10:00:00Z'),
+    overviewRelease('1.5.10', ['macos'], '2026-11-04T10:00:00Z'),
+    overviewRelease('1.5.1', ['linux'])
+  ] });
+  assert.deepEqual(view.versions(), { macos: 'v1.5.10', windows: 'v1.5.2', linux: 'v1.5.1' });
+  assert.equal(softwareEntry(view.schema()).softwareVersion, '1.5.10');
+});

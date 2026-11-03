@@ -51,7 +51,7 @@ The site keeps email separate: do not change the iCloud MX, SPF, DKIM, or domain
 
 ## Installer releases
 
-The published installer baseline is v1.5.0 (28 Oct 2026). When updating it, verify
+The static installer fallback is v1.5.0 (28 Oct 2026). When updating it, verify
 the public GitHub release's exact asset names and digests, then update the version
 labels and structured metadata in `index.html`, `app-desktop.html` and the three
 `install-*.html` pages. Update the Linux install/checksum commands and show only
@@ -59,6 +59,16 @@ verification files actually attached to that release. Keep `minimumVersion` in
 `script.js` at the published baseline so cached older releases cannot replace it.
 The install pages use these static links when JavaScript or the GitHub API is
 unavailable; the automatic lookup can select a newer compatible public release.
+
+The homepage and desktop overview share that lookup and its 30-minute session
+cache. Each platform card shows the newest stable release with a matching
+installer, without replacing its displayed fallback with an older version. The
+application's structured version metadata follows the newest selected platform
+release. These pages currently use 1.5.1 as their static fallback. The release
+banner is edited separately and stays at 1.5 until its wording is changed manually.
+The lookup reads GitHub release metadata only; it does not request installer
+URLs. Release tests use offline metadata fixtures and must not probe download
+links, including with HEAD requests, because those can affect download counts.
 
 Run `node --test tests/releases.test.mjs` for installer selection, metadata,
 checksum and fallback regression checks.

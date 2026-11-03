@@ -100,8 +100,10 @@ const linuxInstallCommand = document.querySelector('[data-linux-install-command]
 const linuxChecksumCommand = document.querySelector('[data-linux-checksum-command]');
 const currentPlatform = document.body.dataset.platform;
 const releasePlatform = releasePlatforms[currentPlatform];
+const platformReleaseLabels = document.querySelectorAll('[data-platform-release]');
+const hasReleasePanel = releaseStatus && releaseVersion && releaseDate && platformDownload && releasePlatform?.enabled;
 
-if (releaseStatus && releaseVersion && releaseDate && platformDownload && releasePlatform?.enabled) {
+if (hasReleasePanel || platformReleaseLabels.length) {
   const releasesApi = 'https://api.github.com/repos/FrederikTheisen/FT-ITC-Analysis/releases?per_page=20';
   const cacheKey = 'ft-itc-release-cache-v2';
   const cacheLifetime = 30 * 60 * 1000;
@@ -171,23 +173,57 @@ if (releaseStatus && releaseVersion && releaseDate && platformDownload && releas
     }
   };
 
-  const showRelease = (releases) => {
-    const versionParts = (value) => {
-      const match = value.match(/^v?(\d+)\.(\d+)\.(\d+)$/i);
-      return match ? match.slice(1).map(Number) : null;
-    };
-    const isAtLeastMinimumVersion = (value) => {
-      const candidate = versionParts(value);
-      const minimum = versionParts(releasePlatform.minimumVersion);
-      if (!candidate || !minimum) return false;
-      for (let index = 0; index < candidate.length; index += 1) {
-        if (candidate[index] > minimum[index]) return true;
-        if (candidate[index] < minimum[index]) return false;
+  const versionParts = (value) => {
+    const match = value.match(/^v?(\d+)\.(\d+)\.(\d+)$/i);
+    return match ? match.slice(1).map(Number) : null;
+  };
+  const isAtLeastVersion = (value, minimumValue) => {
+    const candidate = versionParts(value);
+    const minimum = versionParts(minimumValue);
+    if (!candidate || !minimum) return false;
+    for (let index = 0; index < candidate.length; index += 1) {
+      if (candidate[index] > minimum[index]) return true;
+      if (candidate[index] < minimum[index]) return false;
+    }
+    return true;
+  };
+  const findPlatformRelease = (releases, platform, minimumVersion = platform.minimumVersion) => releases.find((candidate) =>
+    isAtLeastVersion(candidate.tag, minimumVersion)
+      && candidate.assets.some((asset) => platform.assetPattern.test(asset.name)));
+
+  const showPlatformVersions = (releases) => {
+    let newestVersion = null;
+    platformReleaseLabels.forEach((label) => {
+      const platform = releasePlatforms[label.dataset.platformRelease];
+      if (!platform?.enabled) return;
+      // The rendered fallback can be newer than the shared release cache.
+      const release = findPlatformRelease(releases, platform, label.textContent.trim());
+      if (!release) return;
+      label.textContent = release.tag;
+      if (!newestVersion || isAtLeastVersion(release.tag, newestVersion)) newestVersion = release.tag;
+    });
+    if (!newestVersion) return;
+
+    document.querySelectorAll('[data-release-schema]').forEach((element) => {
+      try {
+        const schema = JSON.parse(element.textContent);
+        let changed = false;
+        schema['@graph'].forEach((entry) => {
+          if (entry['@type'] !== 'SoftwareApplication' || !isAtLeastVersion(newestVersion, entry.softwareVersion)) return;
+          const version = newestVersion.replace(/^v/i, '');
+          if (entry.softwareVersion === version) return;
+          entry.softwareVersion = version;
+          changed = true;
+        });
+        if (changed) element.textContent = JSON.stringify(schema, null, 2);
+      } catch {
+        // Preserve static metadata if it cannot be updated.
       }
-      return true;
-    };
-    const release = releases.find((candidate) => isAtLeastMinimumVersion(candidate.tag)
-      && candidate.assets.some((asset) => releasePlatform.assetPattern.test(asset.name)));
+    });
+  };
+
+  const showRelease = (releases) => {
+    const release = findPlatformRelease(releases, releasePlatform);
     const asset = release?.assets.find((candidate) => releasePlatform.assetPattern.test(candidate.name));
     if (!release || !asset) return;
 
@@ -233,11 +269,15 @@ if (releaseStatus && releaseVersion && releaseDate && platformDownload && releas
     releaseStatus.dataset.releaseStatus = 'available';
   };
 
+  const showReleases = (releases) => {
+    showPlatformVersions(releases);
+    if (hasReleasePanel) showRelease(releases);
+  };
   const cachedReleases = readCachedReleases();
   if (cachedReleases) {
-    showRelease(cachedReleases);
+    showReleases(cachedReleases);
   } else {
-    fetchReleases().then(showRelease).catch(() => {
+    fetchReleases().then(showReleases).catch(() => {
       // Static content and the stable direct-download URL remain available.
     });
   }
