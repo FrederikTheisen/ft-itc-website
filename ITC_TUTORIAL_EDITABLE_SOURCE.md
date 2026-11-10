@@ -155,11 +155,11 @@ Look at the fitted binding isotherm and residuals together. If a particular inje
 
 <!-- Website layout note: show the full screenshot at its natural aspect ratio with a maximum width of about 720px. -->
 
-Save the project as **.ftxtc** once you have useful processing, then save it again after fitting. Use **Final Figure** to assemble the thermogram, fitted isotherm, and residuals, then select **Export PDF**.
+Save the project as **.ftxtc** once you have useful processing, then save it again after fitting. Use **Final Figure** to assemble the thermogram, fitted isotherm, and residuals.
+
+Under **Export PDF**, choose **Selected** for the figure in the preview, **Active** for the active experiments, or **All** for every experiment in the project. The app saves one PDF per experiment.
 
 ![FT-ITC Analysis Final Figure workspace showing a thermogram, fitted binding isotherm, residuals and PDF export controls](media/tutorials/processing-and-analysis/finalfigure.webp)
-
-*Before exporting, check that the thermogram, fitted binding isotherm, residuals, labels, and parameter box describe the same analysis.*
 
 <!-- Website layout note: show the full screenshot at its natural aspect ratio with a maximum width of about 800px. -->
 
