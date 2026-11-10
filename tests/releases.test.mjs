@@ -4,16 +4,16 @@ import test from 'node:test';
 import { runInNewContext } from 'node:vm';
 
 const source = readFileSync(new URL('../script.js', import.meta.url), 'utf8');
-const base = 'https://github.com/FrederikTheisen/FT-ITC-Analysis/releases/download/v1.5.0/';
+const base = 'https://github.com/FrederikTheisen/FT-ITC-Analysis/releases/download/v1.5.1/';
 const filenames = {
-  macos: 'ft-itc-analysis_1.5.0_macos-universal.dmg',
-  windows: 'FT-ITC-Analysis-1.5.0-win-x64-setup.exe',
-  linux: 'ft-itc-analysis_1.5.0_amd64.deb'
+  macos: 'ft-itc-analysis_1.5.1_macos-universal.dmg',
+  windows: 'FT-ITC-Analysis-1.5.1-win-x64-setup.exe',
+  linux: 'ft-itc-analysis_1.5.1_amd64.deb'
 };
-const linuxDigest = '340acfa11ffde2924d7e6f92e532beb53edea309555f9e0f854fe4e3ef78a597';
-// Published v1.5.0 asset names and Linux digest, verified against GitHub on 28 Oct 2026.
+const linuxDigest = 'f3c7ab179fcd25a2e77d34a2411b66701fedc105ae727c91cb378df66312ad7e';
+// Published v1.5.1 asset names and Linux digest, verified against GitHub on 9 Nov 2026.
 const release = {
-  tag_name: 'v1.5.0', published_at: '2026-10-28T11:06:53Z', draft: false, prerelease: false,
+  tag_name: 'v1.5.1', published_at: '2026-11-03T10:19:27Z', draft: false, prerelease: false,
   assets: Object.values(filenames).map((name) => ({
     name, state: 'uploaded', browser_download_url: base + name,
     ...(name.endsWith('.deb') ? { digest: `sha256:${linuxDigest}` } : {})
@@ -51,11 +51,11 @@ for (const platform of Object.keys(filenames)) {
     const html = readFileSync(new URL(`../install-${platform}.html`, import.meta.url), 'utf8');
     const schema = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
     const software = schema['@graph'].find((entry) => entry['@type'] === 'SoftwareApplication');
-    assert.equal(software.softwareVersion, '1.5.0');
+    assert.equal(software.softwareVersion, '1.5.1');
     assert.equal(software.downloadUrl, base + filenames[platform]);
     assert.ok(html.includes(`data-platform-download href="${base + filenames[platform]}"`));
-    assert.ok(html.includes('Released 28 Oct 2026'));
-    assert.ok(!html.includes('1.4.2'));
+    assert.ok(html.includes('Released 3 Nov 2026'));
+    assert.ok(!html.includes('1.5.0'));
     if (platform === 'linux') {
       assert.ok(html.includes(`data-download-signature href="#" hidden`));
       assert.ok(html.includes(`echo "${linuxDigest}  ${filenames.linux}" | sha256sum --check -`));
@@ -63,10 +63,10 @@ for (const platform of Object.keys(filenames)) {
   });
 
   test(`${platform}: cached public release selects the correct installer`, () => {
-    const ignored = { ...release, tag_name: 'v9.0.0', published_at: '2026-10-29T11:00:00Z' };
+    const ignored = { ...release, tag_name: 'v9.0.0', published_at: '2026-11-04T11:00:00Z' };
     const get = runReleasePage(platform, [{ ...ignored, draft: true }, { ...ignored, prerelease: true }, release]);
-    assert.equal(get('release-version').textContent, 'v1.5.0');
-    assert.equal(get('release-number').textContent, '1.5.0');
+    assert.equal(get('release-version').textContent, 'v1.5.1');
+    assert.equal(get('release-number').textContent, '1.5.1');
     assert.equal(get('platform-download').href, base + filenames[platform]);
     assert.equal(get('installer-filename').textContent, filenames[platform]);
     assert.equal(get('release-status').dataset.releaseStatus, 'available');
@@ -80,18 +80,18 @@ for (const platform of Object.keys(filenames)) {
   });
 }
 
-test('a cached older release cannot downgrade the static 1.5.0 installer', () => {
-  const get = runReleasePage('windows', [{ ...release, tag_name: 'v1.4.2' }]);
+test('a cached older release cannot downgrade the static 1.5.1 installer', () => {
+  const get = runReleasePage('windows', [overviewRelease('1.5.0', ['windows'], '2026-10-28T11:06:53Z')]);
   assert.equal(get('platform-download').href, 'static download');
   assert.equal(get('release-version').textContent, 'static fallback');
 });
 
 test('a newer Windows release keeps introductory version and setup filename in sync', () => {
-  const updated = JSON.parse(JSON.stringify(release).replaceAll('1.5.0', '1.5.1'));
+  const updated = overviewRelease('1.5.2', ['windows'], '2026-11-04T10:00:00Z');
   const get = runReleasePage('windows', [updated]);
-  assert.equal(get('release-version').textContent, 'v1.5.1');
-  assert.equal(get('release-number').textContent, '1.5.1');
-  assert.equal(get('installer-filename').textContent, 'FT-ITC-Analysis-1.5.1-win-x64-setup.exe');
+  assert.equal(get('release-version').textContent, 'v1.5.2');
+  assert.equal(get('release-number').textContent, '1.5.2');
+  assert.equal(get('installer-filename').textContent, 'FT-ITC-Analysis-1.5.2-win-x64-setup.exe');
 });
 
 test('API failure preserves the static download fallback', async () => {
@@ -107,8 +107,8 @@ function overviewRelease(version, platforms = Object.keys(filenames), publishedA
   return {
     tag_name: `v${version}`, published_at: publishedAt, draft: false, prerelease: false,
     assets: platforms.map((platform) => {
-      const name = filenames[platform].replaceAll('1.5.0', version);
-      return { name, state: 'uploaded', browser_download_url: `${base.replace('1.5.0', version)}${name}` };
+      const name = filenames[platform].replaceAll('1.5.1', version);
+      return { name, state: 'uploaded', browser_download_url: `${base.replace('1.5.1', version)}${name}` };
     })
   };
 }

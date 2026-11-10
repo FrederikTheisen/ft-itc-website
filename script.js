@@ -41,6 +41,15 @@ document.querySelectorAll('[data-link="download"]').forEach((link) => {
   });
 });
 
+// Name the visitor's platform on download buttons that carry a replaceable label.
+const platformNames = { macos: 'macOS', windows: 'Windows', linux: 'Linux' };
+const visitorPlatform = typeof navigator === 'undefined' ? null : detectDesktopPlatform();
+if (visitorPlatform) {
+  document.querySelectorAll('[data-download-label]').forEach((label) => {
+    label.textContent = `Download for ${platformNames[visitorPlatform]}`;
+  });
+}
+
 document.querySelectorAll('a[aria-disabled="true"]').forEach((link) => {
   link.addEventListener('click', (event) => {
     if (link.getAttribute('aria-disabled') === 'true') event.preventDefault();
@@ -65,21 +74,21 @@ document.querySelectorAll('[data-year]').forEach((year) => { year.textContent = 
 const releasePlatforms = {
   macos: {
     enabled: true,
-    minimumVersion: '1.5.0',
+    minimumVersion: '1.5.1',
     assetPattern: /\.dmg$/i,
     downloadLabel: 'Download FT-ITC for macOS',
     releaseDescription: 'Signed and notarized universal application.'
   },
   windows: {
     enabled: true,
-    minimumVersion: '1.5.0',
+    minimumVersion: '1.5.1',
     assetPattern: /[-_]win-x64-setup\.exe$/i,
     downloadLabel: 'Download Windows x64 (.exe)',
     releaseDescription: '64-bit Windows installer.'
   },
   linux: {
     enabled: true,
-    minimumVersion: '1.5.0',
+    minimumVersion: '1.5.1',
     assetPattern: /^ft-itc-analysis_[\d.]+_amd64\.deb$/i,
     downloadLabel: 'Download Linux AMD64 (.deb)',
     releaseDescription: 'AMD64 Debian package for Debian-based desktop Linux.'

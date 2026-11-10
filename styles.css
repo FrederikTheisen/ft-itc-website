@@ -328,6 +328,31 @@ h3 {
   max-width: 450px;
 }
 
+/* Homepage hero with the application window as its figure. */
+.hero--app {
+  grid-template-columns: 1fr 1.1fr;
+  gap: 48px;
+}
+
+.hero--app h1 {
+  font-size: clamp(2.9rem,5.3vw,5rem);
+}
+
+.hero-figure--app {
+  max-width: none;
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+}
+
+/* The screenshot carries its own window shadow inside a transparent margin. */
+.hero-figure--app img {
+  width: 108%;
+  max-width: 108%;
+  margin: -3% -4% -5%;
+}
+
 figure figcaption {
   padding-top: 11px;
   color: var(--ink-soft);
@@ -445,6 +470,33 @@ figure figcaption {
 .capability-list span:first-child {
   border-color: #a7d7c7;
   color: #28755f;
+}
+
+.format-strip .capability-list {
+  align-items: center;
+}
+
+.format-strip .capability-list span:first-child {
+  border-color: var(--line);
+  color: var(--ink-soft);
+}
+
+.format-strip code {
+  color: #28755f;
+  font: 700 .74rem ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+
+.format-strip .text-link {
+  margin: 0 0 0 8px;
+  font-size: .78rem;
+}
+
+.format-strip .capability-list .text-link span {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font-size: inherit;
 }
 
 .section {
@@ -1296,6 +1348,10 @@ a:focus-visible,button:focus-visible {
   color: var(--mint);
 }
 
+.capability-grid + .text-link {
+  margin-top: 26px;
+}
+
 .capability-grid h3 {
   margin: 27px 0 8px;
 }
@@ -1432,6 +1488,18 @@ a:focus-visible,button:focus-visible {
   margin-top: 5px;
   color: var(--ink-soft);
   font-size: .78rem;
+}
+
+.cite-note {
+  max-width: 760px;
+  margin: 26px 0 0;
+  color: var(--ink-soft);
+  font-size: .88rem;
+}
+
+.cite-note a {
+  color: #28755f;
+  font-weight: 700;
 }
 
 .reference-list b {

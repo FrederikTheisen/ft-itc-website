@@ -51,7 +51,7 @@ The site keeps email separate: do not change the iCloud MX, SPF, DKIM, or domain
 
 ## Installer releases
 
-The static installer fallback is v1.5.0 (28 Oct 2026). When updating it, verify
+The static installer fallback is v1.5.1 (3 Nov 2026). When updating it, verify
 the public GitHub release's exact asset names and digests, then update the version
 labels and structured metadata in `index.html`, `app-desktop.html` and the three
 `install-*.html` pages. Update the Linux install/checksum commands and show only

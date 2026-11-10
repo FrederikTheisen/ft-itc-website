@@ -9,3 +9,5 @@ tests
 tests/**
 .dev.vars*
 .env*
+.claude
+.claude/**

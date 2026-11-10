@@ -125,7 +125,7 @@ Select an early, middle, and late injection. Use **Start** and **Length** to set
 
 Open **Analyze Data** in **Single experiment** mode once the integrated heats and experiment details are ready. Select a binding model from what is known about the molecular system and an initial evaluation of the binding isotherm. **One-Set-Of-Sites** is a useful first model when the system has one class of equivalent, independent sites.
 
-Check the units, concentrations, and starting parameter values. Keep the **Limits** setting at **Standard** at first; if a fitted value reaches a bound, interpret it in relation to the data and model before choosing an expanded range. Then select **Run Fit**. The graph updates with the fitted binding isotherm, residuals, and parameter estimates.
+Check the units, concentrations, and starting parameter values. Keep the **Limits** setting at **Standard** at first; if a fitted value reaches a bound, interpret it in relation to the data and model before choosing an expanded range. Use **Bootstrap residuals** or **Profile likelihood** to estimate parameter uncertainty. Use **Leave-one-out** to check how sensitive the fit is to individual injections, or choose **None** to skip these calculations. Then select **Run Fit**. The graph updates with the fitted binding isotherm, residuals, and parameter estimates.
 
 ![FT-ITC Analysis Analyze Data workspace showing a One-Set-Of-Sites fit, residuals and Bootstrap residuals settings](media/tutorials/processing-and-analysis/analysis-basic.webp)
 
@@ -139,7 +139,7 @@ Check the units, concentrations, and starting parameter values. Keep the **Limit
 
 For related experiments that belong to one series, continue with [multiple-experiment fitting](https://ft-itc.org/manual/multiple-experiments) or [Advanced analysis](https://ft-itc.org/analysis).
 
-[Read the documented model assumptions](https://ft-itc.org/manual/fitting-models#models)
+[Read the documented model assumptions](https://ft-itc.org/manual/fitting-models#one-set-of-sites)
 
 ---
 
@@ -187,7 +187,7 @@ No. Most analyses do not need a buffer titration. Consider one primarily when di
 
 ### Which binding model should I try first?
 
-Start with a binding model based on knowledge of the molecular system and evaluation of the binding isotherm. **One-Set-Of-Sites** is a useful first choice for one class of equivalent, independent sites; the manual describes the other available models and their inputs. [See the model reference](https://ft-itc.org/manual/fitting-models#models).
+Start with a binding model based on knowledge of the molecular system and evaluation of the binding isotherm. **One-Set-Of-Sites** is a useful first choice for one class of equivalent, independent sites; the manual describes the other available models and their inputs. [See the model reference](https://ft-itc.org/manual/fitting-models#one-set-of-sites).
 
 ### What should I do if the curve or residuals look wrong?
 
